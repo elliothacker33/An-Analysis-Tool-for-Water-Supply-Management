@@ -17,37 +17,37 @@ class Vertex;
 class Edge;
 class Graph;
 
-
 ////EDGE
-class Edge{
+    class Edge{
 
-private:
+        private:
 
-    Pipe *info;
-    Vertex *dest;
-    Vertex *origin;
+            Pipe *info;
+            Vertex *dest;
+            Vertex *origin;
 
 
-public:
+        public:
 
-    Edge();
-    Edge(Vertex *d, Vertex *o){
-        dest = d;
-        origin = o;
+            Edge();
+            Edge(Pipe *i, Vertex *d, Vertex *o){
+                info = i;
+                dest = d;
+                origin = o;
+            };
+
+            Pipe* getInfo(){
+                return info;
+            }
+
+            Vertex* getDest(){
+                return dest;
+            }
+
+            Vertex* getOrigin(){
+                return origin;
+            }
     };
-
-    Pipe* getInfo(){
-        return info;
-    }
-
-    Vertex* getDest(){
-        return dest;
-    }
-
-    Vertex* getOrigin(){
-        return origin;
-    }
-};
 
 ////VERTEX
     class Vertex{
@@ -100,26 +100,44 @@ public:
             }
     };
 
-////GRAPH
 
+////GRAPH
     class Graph{
 
-    private:
+        private:
 
-        int elementCount = -1;
+            //int elementCount = -1;
 
-        unordered_map<string, class Vertex*> vertexSet;
-        unordered_map<string, class Edge*> edgeSet;
+            unordered_map<string, class Vertex*> vertexSet;
+            int vertexCount = 0;
 
-    public:
+            unordered_map<string, class Edge*> edgeSet;
+            int edgeCount = 0;
 
-        Graph();
-        vector<class Vertex> get_vertexSet();
+        public:
 
-        int getElementCount(){
-            elementCount += 1;
-            return elementCount;
-        }
+            Graph();
+
+            unordered_map<string, class Vertex*> get_vertexSet(){
+                return vertexSet;
+            };
+
+            unordered_map<string, class Edge*> get_edgeSet(){
+                return edgeSet;
+            };
+
+            int getVertexCount(){
+                return vertexCount;
+            }
+
+            int getEdgeCount(){
+                return edgeCount;
+            }
+
+            /*int getElementCount(){
+                elementCount += 1;
+                return elementCount;
+            }*/
     };
 
 

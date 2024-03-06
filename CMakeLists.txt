@@ -10,4 +10,6 @@ add_executable(projectDA main.cpp
         "Custom Classes/Vertexes/city.h"
         "Custom Classes/pipes.h"
         "Custom Classes/vertexParent.h"
-        "Custom Classes/element.h")
+        "Custom Classes/element.h"
+        manager.h
+        menu.h)
