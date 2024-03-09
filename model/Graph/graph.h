@@ -8,49 +8,34 @@
 #include <vector>
 #include <unordered_map>
 #include "../Custom Classes/vertexParent.h"
-#include "../Custom Classes/pipes.h"
 
 using namespace std;
 
 
-class Vertex;
-class Edge;
-class Graph;
 
-////EDGE
-    class Edge{
+class Edge{
 
-        private:
+    public:
+        Edge(int capacity, Vertex *d, Vertex *o);
+        Edge(Edge& other); // Ideal to use for reverse edges.
+        void setReverseEdge(Edge* e);
+        void setFlow(int flow);
+        double getFlow() const;
+        Edge* getReverseEdge() const;
+        int getCapacity() const;
+        Vertex* getDest() const;
+        Vertex* getOrigin() const;
 
-            Pipe *info;
-            Vertex *dest;
-            Vertex *origin;
+    private:
+        Vertex *dest;
+        Vertex *origin;
+        int capacity;
+        Edge* reverse = nullptr;
+        double flow;
 
-
-        public:
-
-            Edge();
-            Edge(Pipe *i, Vertex *d, Vertex *o){
-                info = i;
-                dest = d;
-                origin = o;
-            };
-
-            Pipe* getInfo(){
-                return info;
-            }
-
-            Vertex* getDest(){
-                return dest;
-            }
-
-            Vertex* getOrigin(){
-                return origin;
-            }
     };
 
-////VERTEX
-    class Vertex{
+class Vertex{
 
         private:
             class vertexParent *info;
