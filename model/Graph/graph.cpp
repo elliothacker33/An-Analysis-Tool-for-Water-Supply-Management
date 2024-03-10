@@ -44,3 +44,54 @@ void Edge::setFlow(int flow){
 double Edge::getFlow() const{
     return this->flow;
 }
+
+string City::getName() const{
+    return this->name;
+}
+string City::getCode() const{
+    return this->code;
+}
+int City::getDemand() const{
+    return this->demand;
+}
+int City::getPopulation() const{
+    return this->population;
+}
+int City::getId() const{
+    return this->id;
+}
+
+string Station::getCode() const{
+    return this->code;
+}
+int Station::getId() const{
+    return this->id;
+}
+
+string Reservoir::getName() const{
+    return this->name;
+}
+string Reservoir::getCode() const{
+    return this->code;
+}
+string Reservoir::getMunicipality() const{
+    return this->municipality;
+}
+int Reservoir::getId() const{
+    return this->id;
+}
+int Reservoir::getMaxDelivery() const{
+    return this->maxDelivery;
+}
+
+// Methods for Vertex;
+
+const char City::getType() const{
+    return 'C';
+}
+const char Station::getType() const{
+    return 'S';
+}
+const char Reservoir::getType() const{
+    return 'R';
+}

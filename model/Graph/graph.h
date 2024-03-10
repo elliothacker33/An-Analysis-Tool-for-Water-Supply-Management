@@ -35,55 +35,74 @@ class Edge{
 
     };
 
-class Vertex{
+class Vertex {
+public:
+    virtual const char getType() const = 0;
+};
 
-        private:
-            class vertexParent *info;
-            int inDegree = 0;
-            int outDegree = 0;
+// Derived class representing a City
+class City : public Vertex {
+public:
+    City(const string& name,const string& code,const int demand,const int population,const int id)
+        : name(name), code(code), demand(demand), population(population), id(id) {}
 
-            vector<class Edge*> adjacentEdges;
+    const char getType() const override;
+
+    // Getters
+    string getName() const;
+    string getCode() const;
+    int getDemand() const;
+    int getPopulation() const;
+    int getId() const;
 
 
-        public:
-            
-            Vertex();
-        
-            vector<class Edge*> getAdj() {
-                return adjacentEdges;
-            }
+private:
+    string name;
+    string code;
+    int demand;
+    int population;
+    int id;
+};
 
-            int getInDegree(){
-                return inDegree;
-            }
+// Derived class representing a Station
+class Station : public Vertex {
+public:
+    Station(const string& code,const int id) : code(code),id(id){}
 
-            void addIndegree(int i) {
-                inDegree += i;
-            }
+    const char getType() const override;
 
-            void addEdge(Edge *e){
-                outDegree += 1;
+    // Getters
+    string getCode() const;
+    int getId() const;
 
-                e->getDest()->addIndegree(1);
 
-                adjacentEdges.push_back(e);
-            }
+private:
+    string code;
+    int id;
+};
 
-            void removeEdge(Edge *e){
-                outDegree += -1;
+// Derived class representing a Reservoir
+class Reservoir : public Vertex {
+public:
+    Reservoir(const string& name,const string& municipality,const string& code,const int maxDelivery,const int id)
+        : name(name), code(code), municipality(municipality), maxDelivery(maxDelivery), id(id) {}
 
-                e->getDest()->addIndegree(-1);
+    const char getType() const override;
+    // Getters
+    string getName() const;
+    string getMunicipality() const;
+    string getCode() const;
+    int getMaxDelivery() const;
+    int getId() const;
 
-                for(int i = 0; i < outDegree; i++){
-                    Edge* d = adjacentEdges.at(i);
 
-                    if(d == e){
-                        adjacentEdges.erase(next(adjacentEdges.begin(), i));
-                        break;
-                    }
-                };
-            }
-    };
+private:
+    string name;
+    string municipality;
+    string code;
+    int maxDelivery;
+    int id;
+};
 
 
 ////GRAPH
