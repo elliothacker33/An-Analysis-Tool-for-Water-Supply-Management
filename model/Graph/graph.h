@@ -1,52 +1,64 @@
-//
-// Created by up202205140 on 06/03/2024.
-//
 
 #ifndef PROJECTDA_GRAPH_H
 #define PROJECTDA_GRAPH_H
-#include <iostream>
-#include <vector>
-#include <unordered_map>
-#include "../Custom Classes/vertexParent.h"
 
+class Vertex;
+class Edge;
 using namespace std;
-
-
-
+#include <string>
+#include <vector>
+#include <iostream>
 class Edge{
 
-    public:
-        Edge(int capacity, Vertex *d, Vertex *o);
-        Edge(Edge& other); // Ideal to use for reverse edges.
-        void setReverseEdge(Edge* e);
-        void setFlow(int flow);
-        double getFlow() const;
-        Edge* getReverseEdge() const;
-        int getCapacity() const;
-        Vertex* getDest() const;
-        Vertex* getOrigin() const;
+public:
+    Edge(Vertex* orig, Vertex* dest, int capacity);
+    void setResidualEdge(Edge* e);
+    void setFlow(int flow);
+    double getFlow() const;
+    Edge* getResidualEdge() const;
+    int getCapacity() const;
+    Vertex* getDest() const;
+    Vertex* getOrigin() const;
 
-    private:
-        Vertex *dest;
-        Vertex *origin;
-        int capacity;
-        Edge* reverse = nullptr;
-        double flow;
+protected:
+    Vertex* orig;
+    Vertex* dest;
+    int capacity;
+    Edge* residual = nullptr;
+    double flow = 0;
+};
 
-    };
 
 class Vertex {
+protected:
+    bool visited = false;
+    int outDegree = 0;
+    int inDegree = 0;
+    vector<Edge*> adj;
+    vector<Edge*> incoming;
 public:
-    virtual const char getType() const = 0;
+    virtual char getType() const = 0;
+    int getOutDegree() const;
+    void setOutDegree(int outDegree);
+    int getInDegree() const;
+    void setInDegree(int inDegree);
+    bool isVisited() const;
+    void setVisited();
+    bool addEdge(Vertex* t,int capacity);
+    bool addIncoming(Edge* e);
+    vector<Edge*> getIncoming();
+    vector<Edge*> getAdj();
+    // TODO: Delete Edge and SetPath
+    // TODO: Destructors
 };
 
 // Derived class representing a City
 class City : public Vertex {
 public:
-    City(const string& name,const string& code,const int demand,const int population,const int id)
+    City(const string& name,const int id,const string& code,const int demand,const int population)
         : name(name), code(code), demand(demand), population(population), id(id) {}
 
-    const char getType() const override;
+    char getType() const override;
 
     // Getters
     string getName() const;
@@ -67,10 +79,8 @@ private:
 // Derived class representing a Station
 class Station : public Vertex {
 public:
-    Station(const string& code,const int id) : code(code),id(id){}
-
-    const char getType() const override;
-
+    Station(const int id,const string& code) : code(code),id(id){}
+    char getType() const override;
     // Getters
     string getCode() const;
     int getId() const;
@@ -84,10 +94,10 @@ private:
 // Derived class representing a Reservoir
 class Reservoir : public Vertex {
 public:
-    Reservoir(const string& name,const string& municipality,const string& code,const int maxDelivery,const int id)
+    Reservoir(const string& name,const string& municipality,const int id, const string& code,const int maxDelivery)
         : name(name), code(code), municipality(municipality), maxDelivery(maxDelivery), id(id) {}
 
-    const char getType() const override;
+    char getType() const override;
     // Getters
     string getName() const;
     string getMunicipality() const;
@@ -102,47 +112,25 @@ private:
     string code;
     int maxDelivery;
     int id;
+
 };
 
 
+
 ////GRAPH
-    class Graph{
-
-        private:
-
-            //int elementCount = -1;
-
-            unordered_map<string, class Vertex*> vertexSet;
-            int vertexCount = 0;
-
-            unordered_map<string, class Edge*> edgeSet;
-            int edgeCount = 0;
-
-        public:
-
-            Graph();
-
-            unordered_map<string, class Vertex*> get_vertexSet(){
-                return vertexSet;
-            };
-
-            unordered_map<string, class Edge*> get_edgeSet(){
-                return edgeSet;
-            };
-
-            int getVertexCount(){
-                return vertexCount;
-            }
-
-            int getEdgeCount(){
-                return edgeCount;
-            }
-
-            /*int getElementCount(){
-                elementCount += 1;
-                return elementCount;
-            }*/
-    };
+class Graph{
+public:
+    vector<Vertex*> getVertexSet() const;
+    int getNumberOfVertexes() const;
+    bool addVertex(Vertex* v);
+    bool removeVertex(Vertex* v);
+    static bool addEdge(Vertex* orig, Vertex* dest,int capacity);
+    static string getCode(Vertex* v);
+    // TODO: Destructors and main functions;
+protected:
+    vector<Vertex*> vertexSet;
+    int n = 0; // Size of vertexSet dynamic.
+};
 
 
 

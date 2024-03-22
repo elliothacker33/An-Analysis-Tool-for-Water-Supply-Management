@@ -1,0 +1,7 @@
+# ninja log v5
+616	673	1711130616951603244	projectDA	36f67019b46e45f4
+1	465	1711130534119540693	CMakeFiles/projectDA.dir/model/Graph/graph.cpp.o	540f87d8f814e208
+0	616	1711130616891603198	CMakeFiles/projectDA.dir/controller/manager.cpp.o	291f6c333b7a9a86
+1	452	1711130534107540684	CMakeFiles/projectDA.dir/main.cpp.o	779bc9157347d9a7
+0	624	1711130633147615817	CMakeFiles/projectDA.dir/controller/manager.cpp.o	291f6c333b7a9a86
+624	683	1711130633207615864	projectDA	36f67019b46e45f4
