@@ -91,6 +91,15 @@ bool Vertex::addEdge(Vertex *t, const int capacity) {
     return true;
 }
 
+vector<Edge *> Vertex::getAdj() {
+    return adj;
+}
+
+vector<Edge *> Vertex::getIncoming() {
+    return incoming;
+}
+
+
 char City::getType() const{
     return 'C';
 }
@@ -146,15 +155,13 @@ int Reservoir::getMaxDelivery() const{
 // Methods For Graph
 
 bool Graph::addVertex(Vertex *v) {
-    if (const string code = getCode(v); code == "") {
-        // Change this later
-        vertexSet.push_back(v);
-        n++;
-        return true;
-    }
-    return false;
-
+    vertexSet.push_back(v);
+    n++;
+    return true;
 }
+
+
+
 vector<Vertex *> Graph::getVertexSet() const {
     return vertexSet;
 }

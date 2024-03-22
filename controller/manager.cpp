@@ -91,6 +91,7 @@ void Manager::importCities(const string& pathCities){
             graph->addVertex(city);
         }
     }
+
     fin.close();
 }
 
@@ -170,12 +171,13 @@ void Manager::importStations(const string& pathStations) {
         if (auto [_, success] = stations.insert({row[1],station});success) {
             graph->addVertex(station);
         }
+
     }
     fin.close();
 }
-// Differet from the others (maybe)
 
-void Manager::importPipes(const string& pathPipes){
+
+void Manager::importPipes(const string& pathPipes) const {
     fstream fin;
     fin.open(pathPipes,ios::in);
     // Check if the file is open
@@ -209,12 +211,11 @@ void Manager::importPipes(const string& pathPipes){
         if (stoi(row[3]) == 0) {
             graph->addEdge(orig,dest,stoi(row[2]));
         }
-        else if (stoi(row[4]) == 1) {
+        else if (stoi(row[3]) == 1) {
             graph->addEdge(orig,dest,stoi(row[2]));
             graph->addEdge(dest,orig,stoi(row[3]));
         }
         // TODO : Other else case???
     }
-
     fin.close();
 }

@@ -21,7 +21,7 @@ class Manager{
     void importCities(const string& pathCities); // Import cities csv
     void importReservoirs(const string& pathReservoirs); // Import reservoirs csv
     void importStations(const string& pathStations); // Import stations csv
-    void importPipes(const string& pathPipes); // Import pipes csv
+    void importPipes(const string& pathPipes) const; // Import pipes csv
     unordered_map<string,Vertex*> stations; // Identifier that maps a string to a Station on the graph
     unordered_map<string,Vertex*> reservoirs; // Identifier that maps a string to a Reservoir on the graph
     unordered_map<string,Vertex*> cities; // Identifier that maps a string to a City on the graph

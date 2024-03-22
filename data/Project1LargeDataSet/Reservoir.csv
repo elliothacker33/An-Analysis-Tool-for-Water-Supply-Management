@@ -1,0 +1,25 @@
+﻿Reservoir,Municipality,Id,Code,Maximum Delivery (m3/sec)
+Ermida,Aveiro,1,R_1,2750
+Aguieira,Coimbra,2,R_2,2080
+Fonte Longa,Bragança,3,R_3,40
+Alto Rabagão,Vila real,4,R_4,250
+Touvedo,Viana do Castelo,5,R_5,2000
+Carrapatelo,Porto,6,R_6,8500
+Penide,Braga,7,R_7,500
+Vilar Tabuaço,Viseu,8,R_8,500
+Caldeirão,Guarda,9,R_9,242
+Pretarouca,Viseu,10,R_10,280
+Cova Do Viriato,Castelo Branco,11,R_11,100
+Capinha,Castelo Branco,12,R_12,30
+Castelo De Bode,Santarém,13,R_13,10000
+Magos,Santarém,14,R_14,110
+Caia,Portalegre,15,R_15,430
+Maranhão,Portalegre,16,R_16,3000
+Montargil,Portalegre,17,R_17,3000
+Pêgo Do Altar,Setúbal,18,R_18,2500
+Do Alvito,Beja,19,R_19,56
+Enxoé,Beja,20,R_20,35
+Santa Clara,Beja,21,R_21,208
+Beliche,Faro,22,R_22,267
+Monte Da Rocha,Beja,23,R_23,260
+Roxo,Beja,24,R_24,64
