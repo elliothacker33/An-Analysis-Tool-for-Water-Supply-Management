@@ -26,6 +26,10 @@ class Manager{
     unordered_map<string,Vertex*> getCities() const; // get unordered map of cities
     static int parseInt(const string& text);
     Vertex* findVertexInMap(const string& identifier) const;
+    Vertex* addSuperSink();
+    Vertex* addSuperSource();
+    vector<Edge*> bfs_flow(Vertex* superSource,Vertex* superSink);
+    int findMinEdge(vector<Edge*> path);
 
 
 public:
@@ -33,6 +37,7 @@ public:
     ~Manager();
     Graph* getGraph() const;
     void importFiles(const string& pathCities,const string& pathReservoirs,const string& pathStations,const string& pathPipes);
+    void maxFlowEdmondsKarp();
 };
 
 

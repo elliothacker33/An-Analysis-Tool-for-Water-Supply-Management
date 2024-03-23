@@ -38,6 +38,7 @@ protected:
     int inDegree = 0;
     vector<Edge*> adj;
     vector<Edge*> incoming;
+    Edge* path = nullptr;
 public:
     virtual char getType() const = 0;
     ~Vertex();
@@ -46,14 +47,16 @@ public:
     int getInDegree() const;
     void setInDegree(int inDegree);
     bool isVisited() const;
-    void setVisited();
-    bool addEdge(Vertex* t,int capacity);
+    void setVisited(bool isVisited);
+    Edge* addEdge(Vertex* t,int capacity);
     void removeEdge(const Edge* e);
+    void setPath(Edge* e);
+    Edge* getPath() const;
     void removeEdgeIncoming(const Edge* e);
     bool addIncoming(Edge* e);
     vector<Edge*> getIncoming();
     vector<Edge*> getAdj();
-    // TODO: SetPath
+
 };
 
 // Derived class representing a City
@@ -131,7 +134,7 @@ public:
     bool addVertex(Vertex* v);
     void removeVertex(Vertex* v);
     void removeEdge(const Edge* e);
-    bool addEdge(Vertex* orig, Vertex* dest,int capacity);
+    Edge* addEdge(Vertex* orig, Vertex* dest,int capacity);
     static string getCode(Vertex* v);
 protected:
     vector<Vertex*> vertexSet;

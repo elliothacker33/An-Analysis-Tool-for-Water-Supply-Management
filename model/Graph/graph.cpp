@@ -1,5 +1,7 @@
 
 #include "graph.h"
+
+#include <limits.h>
 using namespace std;
 
 // Constructors for Edges of the graph
@@ -46,9 +48,17 @@ double Edge::getFlow() const{
 bool Vertex::isVisited() const {
     return visited;
 }
-void Vertex::setVisited() {
-    this->visited = true;
+void Vertex::setVisited(bool isVisited) {
+    this->visited = isVisited;
 }
+
+void Vertex::setPath(Edge *e) {
+    path = e;
+}
+Edge *Vertex::getPath() const {
+    return path;
+}
+
 // Tested
 int Vertex::getOutDegree() const {
     return outDegree;
@@ -84,12 +94,12 @@ bool Vertex::addIncoming(Edge* e) {
 }
 
 // Tested
-bool Vertex::addEdge(Vertex *t, const int capacity) {
+Edge* Vertex::addEdge(Vertex *t, const int capacity) {
     // If already has return false and dont Increase outDegree;
     const string code = Graph::getCode(t);
     for (const auto e : this->adj) {
         if (Vertex* dest = e->getDest();Graph::getCode(dest) == code) {
-            return false;
+            return nullptr;
         }
     }
 
@@ -97,7 +107,7 @@ bool Vertex::addEdge(Vertex *t, const int capacity) {
     this->adj.push_back(edge);
     outDegree++;
     t->addIncoming(edge); // Add edge to incoming of dest
-    return true;
+    return edge;
 }
 void Vertex::removeEdge(const Edge* e) {
     for (auto it = adj.begin(); it != adj.end(); ++it) {
@@ -203,6 +213,12 @@ bool Graph::addVertex(Vertex *v) {
     return true;
 }
 
+
+
+
+
+
+
 void Graph::removeVertex(Vertex* v) {
     for (auto it = vertexSet.begin(); it != vertexSet.end(); ++it) {
         if (getCode(*it) == getCode(v)) {
@@ -228,8 +244,8 @@ int Graph::getNumberOfVertexes() const {
     return n;
 }
 // Tested
-bool Graph::addEdge(Vertex *orig, Vertex *dest, const int capacity) {
-    const bool result =orig->addEdge(dest,capacity);
+Edge* Graph::addEdge(Vertex *orig, Vertex *dest, const int capacity) {
+    Edge* result =orig->addEdge(dest,capacity);
     return result;
 }
 // Tested
