@@ -73,8 +73,8 @@ bool Vertex::addIncoming(Edge* e) {
     const string codeOrig = Graph::getCode(e->getOrigin());
     const string codeDest = Graph::getCode(e->getDest());
 
-    for (const auto e : this->incoming) {
-        if (codeOrig == Graph::getCode(e->getOrigin()) && codeDest == Graph::getCode(e->getDest())) {
+    for (const auto edg : this->incoming) {
+        if (codeOrig == Graph::getCode(edg->getOrigin()) && codeDest == Graph::getCode(edg->getDest())) {
             return false;
         }
     }
@@ -99,7 +99,7 @@ bool Vertex::addEdge(Vertex *t, const int capacity) {
     t->addIncoming(edge); // Add edge to incoming of dest
     return true;
 }
-void Vertex::removeEdge(Edge* e) {
+void Vertex::removeEdge(const Edge* e) {
     for (auto it = adj.begin(); it != adj.end(); ++it) {
         if ((*it)->getOrigin() == e->getOrigin() && (*it)->getDest() == e->getDest()) {
             adj.erase(it);
@@ -111,7 +111,7 @@ void Vertex::removeEdge(Edge* e) {
 
 }
 
-void Vertex::removeEdgeIncoming(Edge* e) {
+void Vertex::removeEdgeIncoming(const Edge* e) {
     for (auto it = incoming.begin(); it != incoming.end(); ++it) {
         if ((*it)->getOrigin() == e->getOrigin() && (*it)->getDest() == e->getDest()) {
             incoming.erase(it);
@@ -214,7 +214,7 @@ void Graph::removeVertex(Vertex* v) {
     }
 }
 
-void Graph::removeEdge(Edge *e) {
+void Graph::removeEdge(const Edge *e) {
     e->getOrigin()->removeEdge(e);
     delete e;
 }
@@ -245,7 +245,7 @@ string Graph::getCode(Vertex *v) {
         return station->getCode();
     }
     cerr << "Error: Vertex class not defined" << endl;
-    exit(-1);
+    exit(EXIT_FAILURE);
 }
 
 Graph::~Graph() {

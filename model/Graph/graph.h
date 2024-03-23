@@ -1,8 +1,7 @@
 
 #ifndef PROJECTDA_GRAPH_H
 #define PROJECTDA_GRAPH_H
-#include <memory>
-#include <variant>
+
 
 class Vertex;
 class Edge;
@@ -49,8 +48,8 @@ public:
     bool isVisited() const;
     void setVisited();
     bool addEdge(Vertex* t,int capacity);
-    void removeEdge(Edge* e);
-    void removeEdgeIncoming(Edge* e);
+    void removeEdge(const Edge* e);
+    void removeEdgeIncoming(const Edge* e);
     bool addIncoming(Edge* e);
     vector<Edge*> getIncoming();
     vector<Edge*> getAdj();
@@ -98,6 +97,7 @@ private:
 
 // Derived class representing a Reservoir
 class Reservoir : public Vertex {
+    // TODO: cout for the derived classes and add to Vertex common functions as virtual
 public:
     Reservoir(const string& name,const string& municipality,const int id, const string& code,const int maxDelivery)
         : name(name), code(code), municipality(municipality), maxDelivery(maxDelivery), id(id) {}
@@ -130,7 +130,7 @@ public:
     int getNumberOfVertexes() const;
     bool addVertex(Vertex* v);
     void removeVertex(Vertex* v);
-    void removeEdge(Edge* e);
+    void removeEdge(const Edge* e);
     bool addEdge(Vertex* orig, Vertex* dest,int capacity);
     static string getCode(Vertex* v);
 protected:

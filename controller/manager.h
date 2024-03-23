@@ -4,10 +4,6 @@
 
 #ifndef PROJECTDA_MANAGER_H
 #define PROJECTDA_MANAGER_H
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <vector>
 #include <string>
 #include <unordered_map>
 #include "../model/Graph/graph.h"

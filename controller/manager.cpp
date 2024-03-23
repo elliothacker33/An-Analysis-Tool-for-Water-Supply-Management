@@ -1,4 +1,8 @@
 #include "manager.h"
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <vector>
 
 Manager::Manager() {
     graph = new Graph();
@@ -63,8 +67,7 @@ void Manager::importCities(const string& pathCities){
         cerr << "Error: Unable to open file." << endl;
         exit(EXIT_FAILURE);
     }
-    // Read the Data from the file
-    // as String Vector
+
     vector<string> row;
     string line;
     string word;
@@ -81,10 +84,11 @@ void Manager::importCities(const string& pathCities){
                 row.push_back(trimmedWord);
             }
         }
-        if (row.size() <= 0) {
+        if (row.empty()) {
             continue;
         }
         string populationStr = row[4] + row[5];
+        cout << row[0] << " " << row[1] << " " <<  row[2] << " " << row[3] << " " << populationStr << endl;
         int population = parseInt(populationStr);
         Vertex* city = new City(row[0],stoi(row[1]),row[2],stoi(row[3]),population);
         if (auto [_, success] = cities.insert({row[2],city});success) {
@@ -103,8 +107,7 @@ void Manager::importReservoirs(const string& pathReservoirs)  {
         cerr << "Error: Unable to open file." << endl;
         exit(EXIT_FAILURE); // Exit the program with a custom error message
     }
-    // Read the Data from the file
-    // as String Vector
+
     vector<string> row;
     string line;
     string word;
@@ -112,8 +115,6 @@ void Manager::importReservoirs(const string& pathReservoirs)  {
     while (getline(fin,line)) {
         row.clear(); // Empty last line
         stringstream ss(line);
-        // read every column data of a row and
-        // store it in a string variable, 'word'
         while(getline(ss,word,',')){
             stringstream wordStream(word);
             string trimmedWord;
@@ -123,7 +124,7 @@ void Manager::importReservoirs(const string& pathReservoirs)  {
                 row.push_back(trimmedWord);
             }
         }
-        if (row.size() <= 0) {
+        if (row.empty()) {
             continue;
         }
         Vertex* reservoir = new Reservoir(row[0],row[1],stoi(row[2]),row[3],stoi(row[4]));
@@ -138,13 +139,10 @@ void Manager::importReservoirs(const string& pathReservoirs)  {
 void Manager::importStations(const string& pathStations) {
     fstream fin;
     fin.open(pathStations,ios::in);
-    // Check if the file is open
     if (!fin.is_open()) {
         cerr << "Error: Unable to open file." << endl;
-        exit(EXIT_FAILURE); // Exit the program with a custom error message
+        exit(EXIT_FAILURE);
     }
-    // Read the Data from the file
-    // as String Vector
     vector<string> row;
     string line;
     string word;
@@ -152,8 +150,6 @@ void Manager::importStations(const string& pathStations) {
     while (getline(fin,line)) {
         row.clear(); // Empty last line
         stringstream ss(line);
-        // read every column data of a row and
-        // store it in a string variable, 'word'
         while(getline(ss,word,',')){
             stringstream wordStream(word);
             string trimmedWord;
@@ -163,7 +159,7 @@ void Manager::importStations(const string& pathStations) {
                 row.push_back(trimmedWord);
             }
         }
-        if (row.size() <= 0) {
+        if (row.empty()) {
             continue;
         }
         Vertex* station = new Station(stoi(row[0]),row[1]);
@@ -180,22 +176,17 @@ void Manager::importStations(const string& pathStations) {
 void Manager::importPipes(const string& pathPipes) const {
     fstream fin;
     fin.open(pathPipes,ios::in);
-    // Check if the file is open
     if (!fin.is_open()) {
         cerr << "Error: Unable to open file." << endl;
-        exit(EXIT_FAILURE); // Exit the program with a custom error message
+        exit(EXIT_FAILURE);
     }
-    // Read the Data from the file
-    // as String Vector
     vector<string> row;
     string line;
     string word;
     getline(fin,line);
     while (getline(fin,line)) {
-        row.clear(); // Empty last line
+        row.clear();
         stringstream ss(line);
-        // read every column data of a row and
-        // store it in a string variable, 'word'
         while(getline(ss,word,',')){
             stringstream wordStream(word);
             string trimmedWord;
@@ -215,7 +206,11 @@ void Manager::importPipes(const string& pathPipes) const {
             graph->addEdge(orig,dest,stoi(row[2]));
             graph->addEdge(dest,orig,stoi(row[3]));
         }
-        // TODO : Other else case???
+        else {
+            cerr << "This value is not accepted for direction of edges" << endl;
+            exit(EXIT_FAILURE);
+        }
+
     }
     fin.close();
 }
