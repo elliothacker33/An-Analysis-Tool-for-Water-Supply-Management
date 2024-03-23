@@ -103,6 +103,7 @@ void Vertex::removeEdge(Edge* e) {
     for (auto it = adj.begin(); it != adj.end(); ++it) {
         if ((*it)->getOrigin() == e->getOrigin() && (*it)->getDest() == e->getDest()) {
             adj.erase(it);
+            break;
         }
     }
     this->outDegree--;
@@ -114,6 +115,7 @@ void Vertex::removeEdgeIncoming(Edge* e) {
     for (auto it = incoming.begin(); it != incoming.end(); ++it) {
         if ((*it)->getOrigin() == e->getOrigin() && (*it)->getDest() == e->getDest()) {
             incoming.erase(it);
+            break;
         }
     }
     this->inDegree--;
@@ -214,7 +216,6 @@ void Graph::removeVertex(Vertex* v) {
 
 void Graph::removeEdge(Edge *e) {
     e->getOrigin()->removeEdge(e);
-    e->getDest()->removeEdge(e);
     delete e;
 }
 

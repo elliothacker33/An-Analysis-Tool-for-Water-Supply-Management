@@ -219,3 +219,5 @@ void Manager::importPipes(const string& pathPipes) const {
     }
     fin.close();
 }
+
+
