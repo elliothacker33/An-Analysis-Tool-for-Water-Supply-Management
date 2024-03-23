@@ -12,6 +12,10 @@ Edge::Edge(Vertex* orig, Vertex* dest,const int capacity) {
     this->capacity = capacity;
 }
 
+Edge::~Edge() {
+    delete residual;
+}
+
 int Edge::getCapacity() const{
     return this->capacity;
 }
@@ -45,21 +49,26 @@ bool Vertex::isVisited() const {
 void Vertex::setVisited() {
     this->visited = true;
 }
+// Tested
 int Vertex::getOutDegree() const {
     return outDegree;
 }
+// Tested
 void Vertex::setOutDegree(const int outDegree) {
     this->outDegree = outDegree;
 }
 
+// Tested
 int Vertex::getInDegree() const {
     return inDegree;
 }
 
+// Tested
 void Vertex::setInDegree(const int inDegree) {
     this->inDegree = inDegree;
 }
 
+// Tested
 bool Vertex::addIncoming(Edge* e) {
     const string codeOrig = Graph::getCode(e->getOrigin());
     const string codeDest = Graph::getCode(e->getDest());
@@ -74,7 +83,7 @@ bool Vertex::addIncoming(Edge* e) {
     return true;
 }
 
-
+// Tested
 bool Vertex::addEdge(Vertex *t, const int capacity) {
     // If already has return false and dont Increase outDegree;
     const string code = Graph::getCode(t);
@@ -87,8 +96,27 @@ bool Vertex::addEdge(Vertex *t, const int capacity) {
     auto* edge = new Edge(this,t,capacity);
     this->adj.push_back(edge);
     outDegree++;
-    t->addIncoming(edge);
+    t->addIncoming(edge); // Add edge to incoming of dest
     return true;
+}
+void Vertex::removeEdge(Edge* e) {
+    for (auto it = adj.begin(); it != adj.end(); ++it) {
+        if ((*it)->getOrigin() == e->getOrigin() && (*it)->getDest() == e->getDest()) {
+            adj.erase(it);
+        }
+    }
+    this->outDegree--;
+    e->getDest()->removeEdgeIncoming(e);
+
+}
+
+void Vertex::removeEdgeIncoming(Edge* e) {
+    for (auto it = incoming.begin(); it != incoming.end(); ++it) {
+        if ((*it)->getOrigin() == e->getOrigin() && (*it)->getDest() == e->getDest()) {
+            incoming.erase(it);
+        }
+    }
+    this->inDegree--;
 }
 
 vector<Edge *> Vertex::getAdj() {
@@ -99,7 +127,19 @@ vector<Edge *> Vertex::getIncoming() {
     return incoming;
 }
 
+Vertex::~Vertex() {
+    // Delete adjacent edges connected to the vertex
+    for (const Edge* edge : adj) {
+        delete edge;
+    }
+    adj.clear();
 
+    // Delete incoming edges connected to the vertex
+    for (const Edge* edge : incoming) {
+        delete edge;
+    }
+    incoming.clear();
+}
 char City::getType() const{
     return 'C';
 }
@@ -154,24 +194,49 @@ int Reservoir::getMaxDelivery() const{
 
 // Methods For Graph
 
+// Tested
 bool Graph::addVertex(Vertex *v) {
+    for (const auto ve : vertexSet) {
+        if (getCode(ve) == getCode(v)) {
+            return false;
+        }
+    }
     vertexSet.push_back(v);
     n++;
     return true;
 }
 
+void Graph::removeVertex(Vertex* v) {
+    for (auto it = vertexSet.begin(); it != vertexSet.end(); ++it) {
+        if (getCode(*it) == getCode(*it)) {
+            vertexSet.erase(it);
+            n--;
+            delete v;
+            return;
+        }
+    }
+}
 
+void Graph::removeEdge(Edge *e) {
+    e->getOrigin()->removeEdge(e);
+    e->getDest()->removeEdge(e);
+    delete e;
+}
 
+// Tested
 vector<Vertex *> Graph::getVertexSet() const {
     return vertexSet;
 }
+// Tested
 int Graph::getNumberOfVertexes() const {
     return n;
 }
+// Tested
 bool Graph::addEdge(Vertex *orig, Vertex *dest, const int capacity) {
     const bool result =orig->addEdge(dest,capacity);
     return result;
 }
+// Tested
 string Graph::getCode(Vertex *v) {
     if(const auto city = dynamic_cast<City*>(v)) {
         return city->getCode();
@@ -186,51 +251,10 @@ string Graph::getCode(Vertex *v) {
     exit(-1);
 }
 
-bool Graph::removeVertex(Vertex *v) {
-    if (const auto city = dynamic_cast<City*>(v)) {
-        const string code = city->getCode();
-        for (auto it = vertexSet.begin(); it != vertexSet.end(); ) {
-            if (const auto cityInSet = dynamic_cast<City*>(*it)) {
-                if (cityInSet->getCode() == code) {
-                    it = vertexSet.erase(it);
-                    return true;
-                } else {
-                    ++it;
-                }
-            } else {
-                ++it;
-            }
-        }
-    } else if (const auto reservoir = dynamic_cast<Reservoir*>(v)) {
-        const string code = reservoir->getCode();
-        for (auto it = vertexSet.begin(); it != vertexSet.end(); ) {
-            if (const auto reservoirInSet = dynamic_cast<Reservoir*>(*it)) {
-                if (reservoirInSet->getCode() == code) {
-                    it = vertexSet.erase(it);
-                    return true;
-                } else {
-                    ++it;
-                }
-            } else {
-                ++it;
-            }
-        }
-    } else if (const auto station = dynamic_cast<Station*>(v)) {
-        const string code = station->getCode();
-        for (auto it = vertexSet.begin(); it != vertexSet.end(); ) {
-            if (const auto stationInSet = dynamic_cast<Station*>(*it)) {
-                if (stationInSet->getCode() == code) {
-                    it = vertexSet.erase(it);
-                    return true;
-                } else {
-                    ++it;
-                }
-            } else {
-                ++it;
-            }
-        }
+Graph::~Graph() {
+    for (const auto v : vertexSet) {
+        removeVertex(v);
     }
-
-    delete v;
-    return false;
 }
+
+

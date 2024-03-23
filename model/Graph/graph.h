@@ -1,6 +1,8 @@
 
 #ifndef PROJECTDA_GRAPH_H
 #define PROJECTDA_GRAPH_H
+#include <memory>
+#include <variant>
 
 class Vertex;
 class Edge;
@@ -12,6 +14,7 @@ class Edge{
 
 public:
     Edge(Vertex* orig, Vertex* dest, int capacity);
+    ~Edge();
     void setResidualEdge(Edge* e);
     void setFlow(int flow);
     double getFlow() const;
@@ -38,6 +41,7 @@ protected:
     vector<Edge*> incoming;
 public:
     virtual char getType() const = 0;
+    ~Vertex();
     int getOutDegree() const;
     void setOutDegree(int outDegree);
     int getInDegree() const;
@@ -45,6 +49,8 @@ public:
     bool isVisited() const;
     void setVisited();
     bool addEdge(Vertex* t,int capacity);
+    void removeEdge(Edge* e);
+    void removeEdgeIncoming(Edge* e);
     bool addIncoming(Edge* e);
     vector<Edge*> getIncoming();
     vector<Edge*> getAdj();
@@ -120,11 +126,13 @@ private:
 ////GRAPH
 class Graph{
 public:
+    ~Graph();
     vector<Vertex*> getVertexSet() const;
     int getNumberOfVertexes() const;
     bool addVertex(Vertex* v);
-    bool removeVertex(Vertex* v);
-    static bool addEdge(Vertex* orig, Vertex* dest,int capacity);
+    void removeVertex(Vertex* v);
+    void removeEdge(Edge* e);
+    bool addEdge(Vertex* orig, Vertex* dest,int capacity);
     static string getCode(Vertex* v);
     // TODO: Destructors and main functions;
 protected:
