@@ -133,11 +133,6 @@ Vertex::~Vertex() {
         delete edge;
     }
     adj.clear();
-
-    // Delete incoming edges connected to the vertex
-    for (const Edge* edge : incoming) {
-        delete edge;
-    }
     incoming.clear();
 }
 char City::getType() const{
@@ -208,7 +203,7 @@ bool Graph::addVertex(Vertex *v) {
 
 void Graph::removeVertex(Vertex* v) {
     for (auto it = vertexSet.begin(); it != vertexSet.end(); ++it) {
-        if (getCode(*it) == getCode(*it)) {
+        if (getCode(*it) == getCode(v)) {
             vertexSet.erase(it);
             n--;
             delete v;
@@ -238,6 +233,7 @@ bool Graph::addEdge(Vertex *orig, Vertex *dest, const int capacity) {
 }
 // Tested
 string Graph::getCode(Vertex *v) {
+
     if(const auto city = dynamic_cast<City*>(v)) {
         return city->getCode();
     }
@@ -253,7 +249,7 @@ string Graph::getCode(Vertex *v) {
 
 Graph::~Graph() {
     for (const auto v : vertexSet) {
-        removeVertex(v);
+        delete v;
     }
 }
 

@@ -27,7 +27,7 @@ protected:
     Vertex* orig;
     Vertex* dest;
     int capacity;
-    Edge* residual = nullptr;
+    Edge* residual = nullptr; // Resiudal is a new Edge, not a reference or copy.
     double flow = 0;
 };
 
@@ -54,8 +54,7 @@ public:
     bool addIncoming(Edge* e);
     vector<Edge*> getIncoming();
     vector<Edge*> getAdj();
-    // TODO: Delete Edge and SetPath
-    // TODO: Destructors
+    // TODO: SetPath
 };
 
 // Derived class representing a City
@@ -134,7 +133,6 @@ public:
     void removeEdge(Edge* e);
     bool addEdge(Vertex* orig, Vertex* dest,int capacity);
     static string getCode(Vertex* v);
-    // TODO: Destructors and main functions;
 protected:
     vector<Vertex*> vertexSet;
     int n = 0; // Size of vertexSet dynamic.
