@@ -12,13 +12,14 @@ using namespace std;
 class Edge{
 
 public:
-    Edge(Vertex* orig, Vertex* dest, int capacity);
-    ~Edge();
-    void setResidualEdge(Edge* e);
+    Edge(Vertex* orig, Vertex* dest, int capacity,const string& type);
+    void setReverseEdge(Edge* e);
     void setFlow(int flow);
     double getFlow() const;
-    Edge* getResidualEdge() const;
+    Edge* getReverseEdge() const;
     int getCapacity() const;
+    const string& getType() const;
+    void setType(const string& type);
     Vertex* getDest() const;
     Vertex* getOrigin() const;
 
@@ -26,7 +27,8 @@ protected:
     Vertex* orig;
     Vertex* dest;
     int capacity;
-    Edge* residual = nullptr; // Resiudal is a new Edge, not a reference or copy.
+    string type;
+    Edge* reverse = nullptr; // Reverse is a new Edge, not a reference or copy.
     double flow = 0;
 };
 
@@ -48,7 +50,7 @@ public:
     void setInDegree(int inDegree);
     bool isVisited() const;
     void setVisited(bool isVisited);
-    Edge* addEdge(Vertex* t,int capacity);
+    Edge* addEdge(Vertex* t,int capacity,const string& type);
     void removeEdge(const Edge* e);
     void setPath(Edge* e);
     Edge* getPath() const;
@@ -134,7 +136,7 @@ public:
     bool addVertex(Vertex* v);
     void removeVertex(Vertex* v);
     void removeEdge(const Edge* e);
-    Edge* addEdge(Vertex* orig, Vertex* dest,int capacity);
+    Edge* addEdge(Vertex* orig, Vertex* dest,int capacity,const string& type);
     static string getCode(Vertex* v);
 protected:
     vector<Vertex*> vertexSet;

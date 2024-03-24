@@ -8,19 +8,20 @@ using namespace std;
 
 // Super Source and Super Sink infinity edges
 
-Edge::Edge(Vertex* orig, Vertex* dest,const int capacity) {
+Edge::Edge(Vertex* orig, Vertex* dest,const int capacity,const string& type) {
     this->orig = orig;
     this->dest = dest;
     this->capacity = capacity;
-}
-
-Edge::~Edge() {
-    delete residual;
+    this->type = type;
 }
 
 int Edge::getCapacity() const{
     return this->capacity;
 }
+const string& Edge::getType() const {
+    return type;
+}
+
 
 Vertex* Edge::getDest() const{
     return this->dest;
@@ -30,12 +31,12 @@ Vertex* Edge::getOrigin() const{
     return this->orig;
 }
 
-void Edge::setResidualEdge(Edge* e){
-    this->residual = e;
+void Edge::setReverseEdge(Edge* e){
+    this->reverse = e;
 }
 
-Edge* Edge::getResidualEdge() const{
-    return this->residual;
+Edge* Edge::getReverseEdge() const{
+    return this->reverse;
 }
 void Edge::setFlow(const int flow){
     this->flow = flow;
@@ -94,7 +95,7 @@ bool Vertex::addIncoming(Edge* e) {
 }
 
 // Tested
-Edge* Vertex::addEdge(Vertex *t, const int capacity) {
+Edge* Vertex::addEdge(Vertex *t, const int capacity,const string& type) {
     // If already has return false and dont Increase outDegree;
     const string code = Graph::getCode(t);
     for (const auto e : this->adj) {
@@ -103,7 +104,7 @@ Edge* Vertex::addEdge(Vertex *t, const int capacity) {
         }
     }
 
-    auto* edge = new Edge(this,t,capacity);
+    auto* edge = new Edge(this,t,capacity,type);
     this->adj.push_back(edge);
     outDegree++;
     t->addIncoming(edge); // Add edge to incoming of dest
@@ -244,8 +245,8 @@ int Graph::getNumberOfVertexes() const {
     return n;
 }
 // Tested
-Edge* Graph::addEdge(Vertex *orig, Vertex *dest, const int capacity) {
-    Edge* result =orig->addEdge(dest,capacity);
+Edge* Graph::addEdge(Vertex *orig, Vertex *dest, const int capacity,const string& type) {
+    Edge* result =orig->addEdge(dest,capacity,type);
     return result;
 }
 // Tested

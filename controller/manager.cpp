@@ -91,7 +91,6 @@ void Manager::importCities(const string& pathCities){
             continue;
         }
         string populationStr = row[4] + row[5];
-        cout << row[0] << " " << row[1] << " " <<  row[2] << " " << row[3] << " " << populationStr << endl;
         int population = parseInt(populationStr);
         Vertex* city = new City(row[0],stoi(row[1]),row[2],stoi(row[3]),population);
         if (auto [_, success] = cities.insert({row[2],city});success) {
@@ -175,7 +174,7 @@ void Manager::importStations(const string& pathStations) {
     fin.close();
 }
 
-
+//TODO: Correct error in names of Vertexes
 void Manager::importPipes(const string& pathPipes) const {
     fstream fin;
     fin.open(pathPipes,ios::in);
@@ -203,11 +202,11 @@ void Manager::importPipes(const string& pathPipes) const {
         Vertex* dest = findVertexInMap(row[1]);
 
         if (stoi(row[3]) == 0) {
-            graph->addEdge(orig,dest,stoi(row[2]));
+            graph->addEdge(orig,dest,stoi(row[2]),"normal");
         }
         else if (stoi(row[3]) == 1) {
-            graph->addEdge(orig,dest,stoi(row[2]));
-            graph->addEdge(dest,orig,stoi(row[3]));
+            graph->addEdge(orig,dest,stoi(row[2]),"normal");
+            graph->addEdge(dest,orig,stoi(row[2]),"normal");
         }
         else {
             cerr << "This value is not accepted for direction of edges" << endl;
@@ -222,9 +221,9 @@ Vertex* Manager::addSuperSource() {
     graph->addVertex(superSource);
     reservoirs.insert({"SR",superSource});
     for (const auto v : graph->getVertexSet()) {
-        if (v->getType() == 'R') {
+        if (v->getType() == 'R' && dynamic_cast<Reservoir*>(v)->getCode() != "SR") {
             const auto reservoir = dynamic_cast<Reservoir*>(v);
-            graph->addEdge(superSource,v,reservoir->getMaxDelivery());
+            graph->addEdge(superSource,v,reservoir->getMaxDelivery(),"tmp");
         }
     }
     return superSource;
@@ -234,13 +233,49 @@ Vertex* Manager::addSuperSink() {
     Vertex* superSink = new City("Super Sink",-1,"SS",INT_MAX,-1);
     graph->addVertex(superSink);
     cities.insert({"SS",superSink});
+
     for (const auto v : graph->getVertexSet()) {
-        if (v->getType() == 'C') {
+        if (v->getType() == 'C'  && dynamic_cast<City*>(v)->getCode() != "SS") {
             const auto city = dynamic_cast<City*>(v);
-            graph->addEdge(v,superSink,city->getDemand());
+            graph->addEdge(v,superSink,city->getDemand(),"tmp");
         }
     }
     return superSink;
+}
+vector<Edge*> Manager::dfs_flow(Vertex *superSource, Vertex *superSink) {
+    if (superSource == nullptr || superSink == nullptr) {
+        cerr << "Super Source or/and Super Sink not found";
+        exit(EXIT_FAILURE);
+    }
+
+    for (const auto v : graph->getVertexSet()) {
+        v->setVisited(false);
+    }
+
+    vector<Edge*> path;
+    dfs_helper(superSource, superSink, path);
+    return path;
+}
+
+bool Manager::dfs_helper(Vertex *currentVertex, Vertex *superSink, vector<Edge*> &path) {
+    currentVertex->setVisited(true);
+
+    if (currentVertex == superSink) {
+        return true;
+    }
+
+    for (const auto e : currentVertex->getAdj()) {
+        if (Vertex* dest = e->getDest(); !dest->isVisited() && e->getFlow() > 0) {
+            dest->setPath(e);
+            if (dfs_helper(dest, superSink, path)) {
+                path.push_back(e);
+                return true;
+            }
+            dest->setPath(nullptr);
+        }
+    }
+    currentVertex->setVisited(false);
+    return false;
 }
 vector<Edge*> Manager::bfs_flow(Vertex* superSource, Vertex* superSink) {
     vector<Edge*> path;
@@ -264,7 +299,7 @@ vector<Edge*> Manager::bfs_flow(Vertex* superSource, Vertex* superSink) {
                 q.push(dest);
                 dest->setVisited(true);
                 dest->setPath(e);
-                if (dynamic_cast<City*>(dest)->getCode() == "SS") {
+                if (Graph::getCode(dest) == "SS") {
                     Vertex* vpath = dest;
                     while(vpath->getPath() != nullptr) {
                         path.push_back(vpath->getPath());
@@ -272,13 +307,14 @@ vector<Edge*> Manager::bfs_flow(Vertex* superSource, Vertex* superSink) {
                     }
                     return path;
                 }
+
             }
         }
     }
     return path;
 }
 
-int findMinEdge(vector<Edge*> path) {
+int Manager::findMinEdge(const vector<Edge*>& path) {
     int flow = numeric_limits<int>::max();
     for (auto e: path) {
         if(e->getFlow() < flow) {
@@ -287,44 +323,127 @@ int findMinEdge(vector<Edge*> path) {
     }
     return flow;
 }
-void Manager::maxFlowEdmondsKarp() {
-    // Add super source and  super sink
+void Manager::maxFlowFordFulkerson() {
     Vertex* superSource = addSuperSource();
     Vertex* superSink = addSuperSink();
 
-    // Initialize graph
     for (const auto v: graph->getVertexSet()) {
         for (const auto e : v->getAdj()) {
             e->setFlow(e->getCapacity());
         }
     }
 
-    // Find Paths
     vector<Edge*> path;
-    while(!(path = bfs_flow(superSource, superSink)).empty()) {
-            const int newFlow = findMinEdge(path);
-            for (const auto e : path) {
-                if(e->getResidualEdge() == nullptr) {
-                    const auto edg = graph->addEdge(e->getDest(),e->getOrigin(),e->getCapacity());
-                    edg->setFlow(0);
-                    e->setResidualEdge(edg);
-                    edg->setResidualEdge(e);
+    while(!(path = dfs_flow(superSource, superSink)).empty()) {
+        const int newFlow = findMinEdge(path);
+        for (const auto e : path) {
+            if(e->getReverseEdge() == nullptr) {
+                // Residual (BI)
+                const auto dest = findVertexInMap(Graph::getCode(e->getDest()));
+                bool value = false;
+                for (const auto i : dest->getAdj()) {
+                    if (Graph::getCode(i->getDest()) == Graph::getCode(e->getOrigin())) {
+                        i->setReverseEdge(e);
+                        e->setReverseEdge(i);
+                        value = true;
+                        break;
+                    }
                 }
-                e->setFlow(e->getFlow()-newFlow);
-                e->getResidualEdge()->setFlow(e->getResidualEdge()->getFlow() + newFlow);
-            }
-            path.clear();
-    }
+                if (!value) {
+                    const auto edg = graph->addEdge(e->getDest(),e->getOrigin(),e->getCapacity(),"residual");
+                    edg->setFlow(0);
+                    edg->setReverseEdge(e);
+                    e->setReverseEdge(edg);
 
-    for (const auto n : graph->getVertexSet()) {
-        for (const auto e : n->getAdj()) {
-            e->setFlow(e->getCapacity() - e->getFlow());
-            if (e->getResidualEdge() != nullptr) {
-                //  TODO: Remove Residual Edges
+                }
             }
+            e->setFlow(e->getFlow()-newFlow);
+            e->getReverseEdge()->setFlow(e->getReverseEdge()->getFlow() + newFlow);
+
+        }
+        path.clear();
+    }
+    // Final Calculation of paths
+    int totalFlow = 0;
+    for (const auto n : graph->getVertexSet()) {
+        if (n->getType() == 'C' && Graph::getCode(n) != "SS") {
+            cout << Graph::getCode(n) << endl;
+            int sumFlow = 0;
+            for (const auto e : n->getIncoming()) {
+                if (e->getType() == "residual")
+                    sumFlow+= e->getFlow();
+            }
+            if (sumFlow >= dynamic_cast<City*>(n)->getDemand())
+                cout << "True" << endl;
+            else {
+                cout << "False" << endl;
+            }
+            cout << sumFlow << endl;
+            totalFlow += sumFlow;
+        }
+    }
+    cout << "Total: " << totalFlow << endl;
+}
+
+void Manager::maxFlowEdmondsKarp() {
+    Vertex* superSource = addSuperSource();
+    Vertex* superSink = addSuperSink();
+
+
+    for (const auto v: graph->getVertexSet()) {
+        for (const auto e : v->getAdj()) {
+            e->setFlow(e->getCapacity());
         }
     }
 
+    vector<Edge*> path;
+    while(!(path = bfs_flow(superSource, superSink)).empty()) {
+        const int newFlow = findMinEdge(path);
+        for (const auto e : path) {
+            if(e->getReverseEdge() == nullptr) {
+                // Residual (BI)
+                const auto dest = findVertexInMap(Graph::getCode(e->getDest()));
+                bool value = false;
+                for (const auto i : dest->getAdj()) {
+                    if (Graph::getCode(i->getDest()) == Graph::getCode(e->getOrigin())) {
+                        i->setReverseEdge(e);
+                        e->setReverseEdge(i);
+                        value = true;
+                        break;
+                    }
+                }
+                if (!value) {
+                    const auto edg = graph->addEdge(e->getDest(),e->getOrigin(),e->getCapacity(),"residual");
+                    edg->setFlow(0);
+                    edg->setReverseEdge(e);
+                    e->setReverseEdge(edg);
 
-}
+                }
+            }
+            e->setFlow(e->getFlow()-newFlow);
+            e->getReverseEdge()->setFlow(e->getReverseEdge()->getFlow() + newFlow);
 
+        }
+        path.clear();
+    }
+    // Final Calculation of paths
+    int totalFlow = 0;
+    for (const auto n : graph->getVertexSet()) {
+        if (n->getType() == 'C' && Graph::getCode(n) != "SS") {
+            cout << Graph::getCode(n) << endl;
+            int sumFlow = 0;
+            for (const auto e : n->getIncoming()) {
+                if (e->getType() == "residual")
+                    sumFlow+= e->getFlow();
+            }
+                if (sumFlow >= dynamic_cast<City*>(n)->getDemand())
+                    cout << "True" << endl;
+                else {
+                    cout << "False" << endl;
+                }
+                cout << sumFlow << endl;
+                totalFlow += sumFlow;
+            }
+        }
+    cout << "Total: " << totalFlow << endl;
+    }

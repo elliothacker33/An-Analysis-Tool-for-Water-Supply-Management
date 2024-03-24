@@ -29,7 +29,9 @@ class Manager{
     Vertex* addSuperSink();
     Vertex* addSuperSource();
     vector<Edge*> bfs_flow(Vertex* superSource,Vertex* superSink);
-    int findMinEdge(vector<Edge*> path);
+    vector<Edge*> dfs_flow(Vertex* superSource,Vertex* superSink);
+    bool dfs_helper(Vertex *currentVertex, Vertex *superSink,vector<Edge*>& path);
+    int findMinEdge(const vector<Edge*>& path);
 
 
 public:
@@ -38,6 +40,7 @@ public:
     Graph* getGraph() const;
     void importFiles(const string& pathCities,const string& pathReservoirs,const string& pathStations,const string& pathPipes);
     void maxFlowEdmondsKarp();
+    void maxFlowFordFulkerson();
 };
 
 
