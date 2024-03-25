@@ -138,6 +138,7 @@ public:
     void removeEdge(const Edge* e);
     Edge* addEdge(Vertex* orig, Vertex* dest,int capacity,const string& type);
     static string getCode(Vertex* v);
+    static string getName(Vertex* v);
 protected:
     vector<Vertex*> vertexSet;
     int n = 0; // Size of vertexSet dynamic.

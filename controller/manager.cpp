@@ -7,6 +7,8 @@
 #include <sstream>
 #include <vector>
 #include <limits>
+#include <ctime>
+
 Manager::Manager() {
     graph = new Graph();
 }
@@ -47,7 +49,6 @@ Vertex* Manager::findVertexInMap(const string& identifier) const {
     if (const auto stationIt = stations.find(identifier); stationIt!= stations.end()) {
         return stationIt->second;
     }
-
     return nullptr;
 }
 
@@ -78,10 +79,10 @@ void Manager::createCsvFileFlows(const string &path,vector<pair<string,int>>& fl
         exit(EXIT_FAILURE); // Exit the program with a custom error message
     }
 
-    outputCSV << "Code,Flow" << endl;
+    outputCSV << "Name,Code,Flow" << endl;
 
     for (const auto flow : flows) {
-        outputCSV << flow.first << "," << flow.second << endl;
+        outputCSV << Graph::getName(findVertexInMap(flow.first)) << "," << flow.first << "," << flow.second << endl;
     }
 
     outputCSV.close();
@@ -101,22 +102,28 @@ void Manager::importCities(const string& pathCities){
     getline(fin,line);
     while (getline(fin,line)) {
         row.clear(); // Empty last line
+        if (line.at(line.size()-1) == '\r') {
+            line = line.substr(0,line.size()-1);
+        }
         stringstream ss(line);
         while(getline(ss,word,',')){
-            stringstream wordStream(word);
-            string trimmedWord;
-            wordStream >> ws >> trimmedWord;
 
-            if (!trimmedWord.empty()) {
-                row.push_back(trimmedWord);
+            if (!word.empty()) {
+                row.push_back(word);
             }
         }
         if (row.empty()) {
             continue;
         }
-        cout << row[0] << endl;
-        string populationStr = row[4] + row[5];
-        int population = parseInt(populationStr);
+        int population;
+        if (row[4].at(0) == '\"') {
+            string populationStr = row[4] + row[5];
+            population = parseInt(populationStr);
+        }
+        else {
+            population = stoi(row[4]);
+        }
+
         Vertex* city = new City(row[0],stoi(row[1]),row[2],stoi(row[3]),population);
         if (auto [_, success] = cities.insert({row[2],city});success) {
             graph->addVertex(city);
@@ -141,19 +148,20 @@ void Manager::importReservoirs(const string& pathReservoirs)  {
     getline(fin,line);
     while (getline(fin,line)) {
         row.clear(); // Empty last line
+        if (line.at(line.size()-1) == '\r') {
+            line = line.substr(0,line.size()-1);
+        }
         stringstream ss(line);
         while(getline(ss,word,',')){
-            stringstream wordStream(word);
-            string trimmedWord;
-            wordStream >> ws >> trimmedWord;
 
-            if (!trimmedWord.empty()) {
-                row.push_back(trimmedWord);
+            if (!word.empty()) {
+                row.push_back(word);
             }
         }
         if (row.empty()) {
             continue;
         }
+
         Vertex* reservoir = new Reservoir(row[0],row[1],stoi(row[2]),row[3],stoi(row[4]));
         if (auto [_, success] = reservoirs.insert({row[3], reservoir});success) {
             graph->addVertex(reservoir);
@@ -176,30 +184,30 @@ void Manager::importStations(const string& pathStations) {
     getline(fin,line);
     while (getline(fin,line)) {
         row.clear(); // Empty last line
+        if (line.at(line.size()-1) == '\r') {
+            line = line.substr(0,line.size()-1);
+        }
         stringstream ss(line);
-        while(getline(ss,word,',')){
-            stringstream wordStream(word);
-            string trimmedWord;
-            wordStream >> ws >> trimmedWord;
 
-            if (!trimmedWord.empty()) {
-                row.push_back(trimmedWord);
+        while(getline(ss,word,',')){
+
+            if (!word.empty()) {
+                row.push_back(word);
             }
         }
         if (row.empty()) {
             continue;
         }
         Vertex* station = new Station(stoi(row[0]),row[1]);
-
         if (auto [_, success] = stations.insert({row[1],station});success) {
             graph->addVertex(station);
         }
+
 
     }
     fin.close();
 }
 
-//TODO: Correct error in names of Vertexes
 void Manager::importPipes(const string& pathPipes) const {
     fstream fin;
     fin.open(pathPipes,ios::in);
@@ -213,18 +221,20 @@ void Manager::importPipes(const string& pathPipes) const {
     getline(fin,line);
     while (getline(fin,line)) {
         row.clear();
+        if (line.at(line.size()-1) == '\r') {
+            line = line.substr(0,line.size()-1);
+        }
         stringstream ss(line);
         while(getline(ss,word,',')){
-            stringstream wordStream(word);
-            string trimmedWord;
-            wordStream >> ws >> trimmedWord;
-
-            if (!trimmedWord.empty()) {
-                row.push_back(trimmedWord);
+            if (!word.empty()) {
+                row.push_back(word);
             }
         }
+
         Vertex* orig = findVertexInMap(row[0]);
         Vertex* dest = findVertexInMap(row[1]);
+
+
 
         if (stoi(row[3]) == 0) {
             graph->addEdge(orig,dest,stoi(row[2]),"normal");
@@ -248,7 +258,7 @@ Vertex* Manager::addSuperSource() {
     for (const auto v : graph->getVertexSet()) {
         if (v->getType() == 'R' && dynamic_cast<Reservoir*>(v)->getCode() != "SR") {
             const auto reservoir = dynamic_cast<Reservoir*>(v);
-            graph->addEdge(superSource,v,reservoir->getMaxDelivery(),"tmp");
+            graph->addEdge(superSource,v,reservoir->getMaxDelivery(),"residual");
         }
     }
     return superSource;
@@ -262,7 +272,7 @@ Vertex* Manager::addSuperSink() {
     for (const auto v : graph->getVertexSet()) {
         if (v->getType() == 'C'  && dynamic_cast<City*>(v)->getCode() != "SS") {
             const auto city = dynamic_cast<City*>(v);
-            graph->addEdge(v,superSink,city->getDemand(),"tmp");
+            graph->addEdge(v,superSink,city->getDemand(),"residual");
         }
     }
     return superSink;
@@ -463,13 +473,6 @@ void Manager::resetGraph() {
     Vertex* superSource= findVertexInMap("SR");
     Vertex* superSink = findVertexInMap("SS");
 
-
-    graph->removeVertex(superSource);
-    graph->removeVertex(superSink);
-
-    reservoirs.erase("SR");
-    reservoirs.erase("SS");
-
     vector<Edge*> deleteEdges; // Delete Residual Edges
 
     for (const auto v : graph->getVertexSet()) {
@@ -487,10 +490,33 @@ void Manager::resetGraph() {
         graph->removeEdge(e);
     }
 
+    graph->removeVertex(superSource);
+    graph->removeVertex(superSink);
+
+    reservoirs.erase("SR");
+    reservoirs.erase("SS");
+
 }
 
 void Manager::getEdmondsKarpOneCity(string& code) {
+    timespec start_real, end_real;
+    timespec start_cpu, end_cpu;
+
+    clock_gettime(CLOCK_REALTIME, &start_real);
+    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &start_cpu);
+
     auto flows = maxFlowEdmondsKarp();
+
+    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end_cpu);
+    clock_gettime(CLOCK_REALTIME, &end_real);
+
+    double elapsed_real = (end_real.tv_sec - start_real.tv_sec) +
+                          (end_real.tv_nsec - start_real.tv_nsec) / 1e9;
+
+
+    double elapsed_cpu = (end_cpu.tv_sec - start_cpu.tv_sec) +
+                         (end_cpu.tv_nsec - start_cpu.tv_nsec) / 1e9;
+
     auto it = find_if(flows.begin(), flows.end(), [&](const auto& flow) {
         return flow.first == code;
     });
@@ -502,22 +528,68 @@ void Manager::getEdmondsKarpOneCity(string& code) {
         cerr << "Error calculating max flow" << endl;
         exit(EXIT_FAILURE);
     }
+
+    cout << "Elapsed real time: " << elapsed_real << " seconds" << endl;
+    cout << "Elapsed CPU time: " << elapsed_cpu << " seconds" << endl;
+
     resetGraph();
 }
+
+#include <ctime>
 
 void Manager::getEdmondsKarpAllCities() {
+    timespec start_real, end_real;
+    timespec start_cpu, end_cpu;
+
+    clock_gettime(CLOCK_REALTIME, &start_real);
+    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &start_cpu);
+
     auto flows = maxFlowEdmondsKarp();
-    for (const auto flow : flows) {
+
+    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end_cpu);
+    clock_gettime(CLOCK_REALTIME, &end_real);
+
+
+    double elapsed_real = (end_real.tv_sec - start_real.tv_sec) +
+                          (end_real.tv_nsec - start_real.tv_nsec) / 1e9;
+
+
+    double elapsed_cpu = (end_cpu.tv_sec - start_cpu.tv_sec) +
+                         (end_cpu.tv_nsec - start_cpu.tv_nsec) / 1e9;
+
+    for (const auto& flow : flows) {
         cout << "Flow for city with code " << flow.first << ": " << flow.second << endl;
     }
-    string filename = "../data/results/results_21_EK.csv";
-    createCsvFileFlows(filename,flows);
-    resetGraph();
 
+    cout << "Elapsed real time: " << elapsed_real << " seconds" << endl;
+    cout << "Elapsed CPU time: " << elapsed_cpu << " seconds" << endl;
+
+    string filename = "../data/results/results_21_EK.csv";
+    createCsvFileFlows(filename, flows);
+
+    resetGraph();
 }
 
+
 void Manager::getFordFulkersonOneCity(string& code) {
+    timespec start_real, end_real;
+    timespec start_cpu, end_cpu;
+
+    clock_gettime(CLOCK_REALTIME, &start_real);
+    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &start_cpu);
+
     auto flows = maxFlowFordFulkerson();
+
+    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end_cpu);
+    clock_gettime(CLOCK_REALTIME, &end_real);
+
+    double elapsed_real = (end_real.tv_sec - start_real.tv_sec) +
+                          (end_real.tv_nsec - start_real.tv_nsec) / 1e9;
+
+
+    double elapsed_cpu = (end_cpu.tv_sec - start_cpu.tv_sec) +
+                         (end_cpu.tv_nsec - start_cpu.tv_nsec) / 1e9;
+
     auto it = find_if(flows.begin(), flows.end(), [&](const auto& flow) {
         return flow.first == code;
     });
@@ -529,17 +601,44 @@ void Manager::getFordFulkersonOneCity(string& code) {
         cerr << "Error calculating max flow" << endl;
         exit(EXIT_FAILURE);
     }
+
+    cout << "Elapsed real time: " << elapsed_real << " seconds" << endl;
+    cout << "Elapsed CPU time: " << elapsed_cpu << " seconds" << endl;
+
     resetGraph();
 }
 
 
 void Manager::getFordFulkersonAllCities() {
-    auto flows = maxFlowEdmondsKarp();
-    for (const auto flow : flows) {
+    timespec start_real, end_real;
+    timespec start_cpu, end_cpu;
+
+    clock_gettime(CLOCK_REALTIME, &start_real);
+    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &start_cpu);
+
+    auto flows = maxFlowFordFulkerson();
+
+    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end_cpu);
+    clock_gettime(CLOCK_REALTIME, &end_real);
+
+
+    double elapsed_real = (end_real.tv_sec - start_real.tv_sec) +
+                          (end_real.tv_nsec - start_real.tv_nsec) / 1e9;
+
+
+    double elapsed_cpu = (end_cpu.tv_sec - start_cpu.tv_sec) +
+                         (end_cpu.tv_nsec - start_cpu.tv_nsec) / 1e9;
+
+    for (const auto& flow : flows) {
         cout << "Flow for city with code " << flow.first << ": " << flow.second << endl;
     }
+
+    cout << "Elapsed real time: " << elapsed_real << " seconds" << endl;
+    cout << "Elapsed CPU time: " << elapsed_cpu << " seconds" << endl;
+
     string filename = "../data/results/results_21_FF.csv";
-    createCsvFileFlows(filename,flows);
+    createCsvFileFlows(filename, flows);
+
     resetGraph();
 }
 

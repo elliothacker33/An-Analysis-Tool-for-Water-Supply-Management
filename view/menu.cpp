@@ -60,6 +60,11 @@ bool Menu::getCity(string *city) {
     getCityExamples();
     cout << "Enter a valid city code: ";
     cin >> input;
+    cout << endl;
+
+    for(char& c : input) {
+        c = toupper(c);
+    }
 
     if (validCity(input)) {
         *city = input;
@@ -167,6 +172,7 @@ void Menu::exercise21() {
         case 1:
             code.clear();
             do {
+
                 validResult = getCity(&code);
             }
             while(!validResult);

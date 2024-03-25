@@ -1,4 +1,3 @@
-#include <iostream>
 #include "controller/manager.h"
 #include "view/menu.h"
 

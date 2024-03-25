@@ -217,12 +217,6 @@ bool Graph::addVertex(Vertex *v) {
     return true;
 }
 
-
-
-
-
-
-
 void Graph::removeVertex(Vertex* v) {
     auto it = vertexSet.begin();
     while (it != vertexSet.end()) {
@@ -266,6 +260,19 @@ string Graph::getCode(Vertex *v) {
     if(const auto station = dynamic_cast<Station*>(v)) {
         return station->getCode();
     }
+    cerr << "Error: Vertex class not defined" << endl;
+    exit(EXIT_FAILURE);
+}
+
+string Graph::getName(Vertex *v) {
+
+    if(const auto city = dynamic_cast<City*>(v)) {
+        return city->getName();
+    }
+    if (const auto reservoir = dynamic_cast<Reservoir*>(v)) {
+        return reservoir->getName();
+    }
+
     cerr << "Error: Vertex class not defined" << endl;
     exit(EXIT_FAILURE);
 }
