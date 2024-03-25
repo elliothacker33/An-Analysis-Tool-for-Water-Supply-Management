@@ -90,6 +90,7 @@ void Manager::importCities(const string& pathCities){
         if (row.empty()) {
             continue;
         }
+        cout << row[0] << endl;
         string populationStr = row[4] + row[5];
         int population = parseInt(populationStr);
         Vertex* city = new City(row[0],stoi(row[1]),row[2],stoi(row[3]),population);
@@ -446,4 +447,40 @@ void Manager::maxFlowEdmondsKarp() {
             }
         }
     cout << "Total: " << totalFlow << endl;
+}
+
+void Manager::resetGraph() {
+    Vertex* superSource= findVertexInMap("SR");
+    Vertex* superSink = findVertexInMap("SS");
+    graph->removeVertex(superSource);
+    graph->removeVertex(superSink);
+
+    vector<Edge*> deleteEdges; // Delete Residual Edges
+
+    for (const auto v : graph->getVertexSet()) {
+        v->setPath(nullptr);
+        v->setVisited(false);
+        for (auto e : v->getAdj()) {
+            e->setFlow(0);
+            e->setReverseEdge(nullptr);
+            if (e->getType() == "residual")
+                deleteEdges.push_back(e);
+        }
     }
+
+    for (const auto v : graph->getVertexSet()) {
+        v->setPath(nullptr);
+        v->setVisited(false);
+        for (auto e : v->getIncoming()) {
+            e->setFlow(0);
+            e->setReverseEdge(nullptr);
+            if (e->getType() == "residual")
+                deleteEdges.push_back(e);
+        }
+    }
+
+    for(const auto e : deleteEdges) {
+        graph->removeEdge(e);
+    }
+
+}

@@ -15,7 +15,7 @@ public:
     Edge(Vertex* orig, Vertex* dest, int capacity,const string& type);
     void setReverseEdge(Edge* e);
     void setFlow(int flow);
-    double getFlow() const;
+    int getFlow() const;
     Edge* getReverseEdge() const;
     int getCapacity() const;
     const string& getType() const;
@@ -29,7 +29,7 @@ protected:
     int capacity;
     string type;
     Edge* reverse = nullptr; // Reverse is a new Edge, not a reference or copy.
-    double flow = 0;
+    int flow = 0;
 };
 
 

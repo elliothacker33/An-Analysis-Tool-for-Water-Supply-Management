@@ -41,7 +41,7 @@ Edge* Edge::getReverseEdge() const{
 void Edge::setFlow(const int flow){
     this->flow = flow;
 }
-double Edge::getFlow() const{
+int Edge::getFlow() const{
     return this->flow;
 }
 

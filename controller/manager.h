@@ -34,6 +34,7 @@ class Manager{
     int findMinEdge(const vector<Edge*>& path);
 
 
+
 public:
     Manager();
     ~Manager();
@@ -41,6 +42,7 @@ public:
     void importFiles(const string& pathCities,const string& pathReservoirs,const string& pathStations,const string& pathPipes);
     void maxFlowEdmondsKarp();
     void maxFlowFordFulkerson();
+    void resetGraph();
 };
 
 
