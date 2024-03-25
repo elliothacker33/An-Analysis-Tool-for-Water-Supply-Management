@@ -67,6 +67,12 @@ build CMakeFiles/projectDA.dir/model/Graph/graph.cpp.o: CXX_COMPILER__projectDA_
   OBJECT_DIR = CMakeFiles/projectDA.dir
   OBJECT_FILE_DIR = CMakeFiles/projectDA.dir/model/Graph
 
+build CMakeFiles/projectDA.dir/view/menu.cpp.o: CXX_COMPILER__projectDA_unscanned_Debug /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/view/menu.cpp || cmake_object_order_depends_target_projectDA
+  DEP_FILE = CMakeFiles/projectDA.dir/view/menu.cpp.o.d
+  FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/projectDA.dir
+  OBJECT_FILE_DIR = CMakeFiles/projectDA.dir/view
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target projectDA
@@ -75,7 +81,7 @@ build CMakeFiles/projectDA.dir/model/Graph/graph.cpp.o: CXX_COMPILER__projectDA_
 #############################################
 # Link the executable projectDA
 
-build projectDA: CXX_EXECUTABLE_LINKER__projectDA_Debug CMakeFiles/projectDA.dir/main.cpp.o CMakeFiles/projectDA.dir/controller/manager.cpp.o CMakeFiles/projectDA.dir/model/Graph/graph.cpp.o
+build projectDA: CXX_EXECUTABLE_LINKER__projectDA_Debug CMakeFiles/projectDA.dir/main.cpp.o CMakeFiles/projectDA.dir/controller/manager.cpp.o CMakeFiles/projectDA.dir/model/Graph/graph.cpp.o CMakeFiles/projectDA.dir/view/menu.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/projectDA.dir
   POST_BUILD = :

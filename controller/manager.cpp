@@ -1,5 +1,5 @@
 #include "manager.h"
-
+#include <algorithm>
 #include <climits>
 #include <iostream>
 #include <fstream>
@@ -70,6 +70,22 @@ int Manager::parseInt(const string& text) {
     return number_integer;
 }
 
+void Manager::createCsvFileFlows(const string &path,vector<pair<string,int>>& flows) {
+    ofstream outputCSV(path);
+
+    if (!outputCSV.is_open()) {
+        cerr << "Error: Unable to open file." << endl;
+        exit(EXIT_FAILURE); // Exit the program with a custom error message
+    }
+
+    outputCSV << "Code,Flow" << endl;
+
+    for (const auto flow : flows) {
+        outputCSV << flow.first << "," << flow.second << endl;
+    }
+
+    outputCSV.close();
+}
 void Manager::importCities(const string& pathCities){
     fstream fin;
     fin.open(pathCities,ios::in);
@@ -201,7 +217,7 @@ void Manager::importPipes(const string& pathPipes) const {
         while(getline(ss,word,',')){
             stringstream wordStream(word);
             string trimmedWord;
-            wordStream >> std::ws >> trimmedWord;
+            wordStream >> ws >> trimmedWord;
 
             if (!trimmedWord.empty()) {
                 row.push_back(trimmedWord);
@@ -332,7 +348,7 @@ int Manager::findMinEdge(const vector<Edge*>& path) {
     }
     return flow;
 }
-void Manager::maxFlowFordFulkerson() {
+vector<pair<string,int>> Manager::maxFlowFordFulkerson() {
     Vertex* superSource = addSuperSource();
     Vertex* superSink = addSuperSink();
 
@@ -373,28 +389,21 @@ void Manager::maxFlowFordFulkerson() {
         path.clear();
     }
     // Final Calculation of paths
-    int totalFlow = 0;
+    vector<pair<string,int>> result;
     for (const auto n : graph->getVertexSet()) {
         if (n->getType() == 'C' && Graph::getCode(n) != "SS") {
-            cout << Graph::getCode(n) << endl;
             int sumFlow = 0;
             for (const auto e : n->getIncoming()) {
                 if (e->getType() == "residual")
                     sumFlow+= e->getFlow();
             }
-            if (sumFlow >= dynamic_cast<City*>(n)->getDemand())
-                cout << "True" << endl;
-            else {
-                cout << "False" << endl;
-            }
-            cout << sumFlow << endl;
-            totalFlow += sumFlow;
+            result.push_back(make_pair(Graph::getCode(n), sumFlow));
         }
     }
-    cout << "Total: " << totalFlow << endl;
+    return result;
 }
 
-void Manager::maxFlowEdmondsKarp() {
+vector<pair<string,int>> Manager::maxFlowEdmondsKarp() {
     Vertex* superSource = addSuperSource();
     Vertex* superSink = addSuperSink();
 
@@ -436,32 +445,30 @@ void Manager::maxFlowEdmondsKarp() {
         path.clear();
     }
     // Final Calculation of paths
-    int totalFlow = 0;
+    vector<pair<string,int>> result;
     for (const auto n : graph->getVertexSet()) {
         if (n->getType() == 'C' && Graph::getCode(n) != "SS") {
-            cout << Graph::getCode(n) << endl;
             int sumFlow = 0;
             for (const auto e : n->getIncoming()) {
                 if (e->getType() == "residual")
                     sumFlow+= e->getFlow();
             }
-                if (sumFlow >= dynamic_cast<City*>(n)->getDemand())
-                    cout << "True" << endl;
-                else {
-                    cout << "False" << endl;
-                }
-                cout << sumFlow << endl;
-                totalFlow += sumFlow;
-            }
+            result.push_back(make_pair(Graph::getCode(n), sumFlow));
         }
-    cout << "Total: " << totalFlow << endl;
+    }
+    return result;
 }
 
 void Manager::resetGraph() {
     Vertex* superSource= findVertexInMap("SR");
     Vertex* superSink = findVertexInMap("SS");
+
+
     graph->removeVertex(superSource);
     graph->removeVertex(superSink);
+
+    reservoirs.erase("SR");
+    reservoirs.erase("SS");
 
     vector<Edge*> deleteEdges; // Delete Residual Edges
 
@@ -476,19 +483,64 @@ void Manager::resetGraph() {
         }
     }
 
-    for (const auto v : graph->getVertexSet()) {
-        v->setPath(nullptr);
-        v->setVisited(false);
-        for (auto e : v->getIncoming()) {
-            e->setFlow(0);
-            e->setReverseEdge(nullptr);
-            if (e->getType() == "residual")
-                deleteEdges.push_back(e);
-        }
-    }
-
     for(const auto e : deleteEdges) {
         graph->removeEdge(e);
     }
 
 }
+
+void Manager::getEdmondsKarpOneCity(string& code) {
+    auto flows = maxFlowEdmondsKarp();
+    auto it = find_if(flows.begin(), flows.end(), [&](const auto& flow) {
+        return flow.first == code;
+    });
+
+    if (it != flows.end()) {
+        cout << "Flow for city with code " << code << ": " << it->second << endl;
+    }
+    else {
+        cerr << "Error calculating max flow" << endl;
+        exit(EXIT_FAILURE);
+    }
+    resetGraph();
+}
+
+void Manager::getEdmondsKarpAllCities() {
+    auto flows = maxFlowEdmondsKarp();
+    for (const auto flow : flows) {
+        cout << "Flow for city with code " << flow.first << ": " << flow.second << endl;
+    }
+    string filename = "../data/results/results_21_EK.csv";
+    createCsvFileFlows(filename,flows);
+    resetGraph();
+
+}
+
+void Manager::getFordFulkersonOneCity(string& code) {
+    auto flows = maxFlowFordFulkerson();
+    auto it = find_if(flows.begin(), flows.end(), [&](const auto& flow) {
+        return flow.first == code;
+    });
+
+    if (it != flows.end()) {
+        cout << "Flow for city with code " << code << ": " << it->second << endl;
+    }
+    else {
+        cerr << "Error calculating max flow" << endl;
+        exit(EXIT_FAILURE);
+    }
+    resetGraph();
+}
+
+
+void Manager::getFordFulkersonAllCities() {
+    auto flows = maxFlowEdmondsKarp();
+    for (const auto flow : flows) {
+        cout << "Flow for city with code " << flow.first << ": " << flow.second << endl;
+    }
+    string filename = "../data/results/results_21_FF.csv";
+    createCsvFileFlows(filename,flows);
+    resetGraph();
+}
+
+

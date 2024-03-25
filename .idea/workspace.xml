@@ -22,9 +22,16 @@
   <component name="ChangeListManager">
     <list default="true" id="a9e6c8e8-41a3-405a-b780-9cdc615cf2a9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/projectDA" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/projectDA" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/manager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/controller/manager.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/manager.h" beforeDir="false" afterPath="$PROJECT_DIR$/controller/manager.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/Graph/graph.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/model/Graph/graph.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/menu.h" beforeDir="false" afterPath="$PROJECT_DIR$/view/menu.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +51,7 @@
     <setting file="file://$PROJECT_DIR$/controller/manager.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/main.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/model/Graph/graph.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/view/menu.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file:///usr/include/c++/9/bits/stl_vector.h" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectApplicationVersion">
@@ -84,6 +92,11 @@
   }
 }</component>
   <component name="RunManager" selected="CMake Application.projectDA">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="projectDA" type="CMakeListConfigurationType" factoryName="CMakeListConfigurationFactory" temporary="true">
       <method v="2" />
     </configuration>
@@ -122,7 +135,8 @@
       <workItem from="1711186701271" duration="71000" />
       <workItem from="1711186913042" duration="25872000" />
       <workItem from="1711280749158" duration="24975000" />
-      <workItem from="1711319048047" duration="3731000" />
+      <workItem from="1711319048047" duration="4020000" />
+      <workItem from="1711361145636" duration="13134000" />
     </task>
     <servers />
   </component>

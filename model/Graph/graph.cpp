@@ -1,6 +1,7 @@
 
 #include "graph.h"
 
+#include <algorithm>
 #include <limits.h>
 using namespace std;
 
@@ -111,24 +112,26 @@ Edge* Vertex::addEdge(Vertex *t, const int capacity,const string& type) {
     return edge;
 }
 void Vertex::removeEdge(const Edge* e) {
-    for (auto it = adj.begin(); it != adj.end(); ++it) {
-        if ((*it)->getOrigin() == e->getOrigin() && (*it)->getDest() == e->getDest()) {
-            adj.erase(it);
-            break;
+    adj.erase(remove_if(adj.begin(), adj.end(), [&](const Edge* edge) {
+        if (edge->getOrigin() == e->getOrigin() && edge->getDest() == e->getDest()) {
+            e->getDest()->removeEdgeIncoming(e);
+            return true;
         }
-    }
+        return false;
+    }), adj.end());
+
     this->outDegree--;
     e->getDest()->removeEdgeIncoming(e);
 
 }
 
 void Vertex::removeEdgeIncoming(const Edge* e) {
-    for (auto it = incoming.begin(); it != incoming.end(); ++it) {
-        if ((*it)->getOrigin() == e->getOrigin() && (*it)->getDest() == e->getDest()) {
-            incoming.erase(it);
-            break;
+    incoming.erase(remove_if(incoming.begin(), incoming.end(), [&](const Edge* edge) {
+        if (edge->getOrigin() == e->getOrigin() && edge->getDest() == e->getDest()) {
+            return true;
         }
-    }
+        return false;
+    }), incoming.end());
     this->inDegree--;
 }
 
@@ -139,7 +142,7 @@ vector<Edge *> Vertex::getAdj() {
 vector<Edge *> Vertex::getIncoming() {
     return incoming;
 }
-
+// Good
 Vertex::~Vertex() {
     // Delete adjacent edges connected to the vertex
     for (const Edge* edge : adj) {
@@ -221,13 +224,15 @@ bool Graph::addVertex(Vertex *v) {
 
 
 void Graph::removeVertex(Vertex* v) {
-    for (auto it = vertexSet.begin(); it != vertexSet.end(); ++it) {
+    auto it = vertexSet.begin();
+    while (it != vertexSet.end()) {
         if (getCode(*it) == getCode(v)) {
             vertexSet.erase(it);
             n--;
             delete v;
             return;
         }
+        ++it;
     }
 }
 
@@ -264,7 +269,7 @@ string Graph::getCode(Vertex *v) {
     cerr << "Error: Vertex class not defined" << endl;
     exit(EXIT_FAILURE);
 }
-
+// Good
 Graph::~Graph() {
     for (const auto v : vertexSet) {
         delete v;

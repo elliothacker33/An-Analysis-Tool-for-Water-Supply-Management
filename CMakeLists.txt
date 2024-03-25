@@ -13,4 +13,5 @@ add_executable(projectDA main.cpp
         controller/manager.h
         controller/manager.cpp
         model/Graph/graph.cpp
-        view/menu.h)
+        view/menu.h
+        view/menu.cpp)

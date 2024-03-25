@@ -4,24 +4,25 @@
 
 #ifndef PROJECTDA_MENU_H
 #define PROJECTDA_MENU_H
-
-#include <iostream>
-#include <vector>
-#include <unordered_map>
-#include "manager.h"
+#include <stack>
+#include "../controller/manager.h"
 using namespace std;
 
 class Menu{
-
-    private:
-        Manager mainManager;
-
-    public:
-
-        Manager getMainManager(){
-            return mainManager;
-        }
-
+    stack<void(Menu::*)()> menuStack;
+    Manager* manager;
+    bool getNumberInput(int minInput, int maxInput, int* option);
+    bool getCity(string* city);
+    bool validCity(string& code);
+    void getCityExamples();
+public:
+    ~Menu();
+    Menu(Manager* manager);
+    void mainMenu();
+    void exitMenu();
+    void goBack();
+    void algorithmMenu();
+    void exercise21();
 };
 
 #endif //PROJECTDA_MENU_H
