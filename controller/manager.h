@@ -32,7 +32,11 @@ class Manager{
     vector<pair<string,int>> maxFlowEdmondsKarp();
     vector<pair<string,int>> maxFlowFordFulkerson();
     void createCsvFileFlows(const string& path,vector<pair<string,int>>& flows);
-
+    void createCsvFileRates(const string& path,vector<pair<string,double>>& rates);
+    void calculateFlowRates(const vector<pair<string, int>>& flows, const string& outputFile);
+    void printTopKFlows(vector<pair<string, int>>& flows, int k, const string& outputFile);
+    void printFlowMetrics(vector<pair<string, int>>& flows, const string& outputFile);
+    void printFlowMetricsOneCity(vector<pair<string, int>>& flows, const string& code, const string& outputFile);
 public:
     Manager();
     ~Manager();
@@ -47,6 +51,11 @@ public:
     void getEdmondsKarpAllCities();
     void getFordFulkersonOneCity(string& code);
     void getFordFulkersonAllCities();
+    void topKFlowEdmondsKarpCities(const int k);
+    void topKFlowFordFulkersonCities(const int k);
+    void flowRatePerCityEdmondsKarp();
+    void flowRatePerCityFordFulkerson();
+
 };
 
 

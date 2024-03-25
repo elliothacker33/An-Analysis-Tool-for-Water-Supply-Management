@@ -87,6 +87,24 @@ void Manager::createCsvFileFlows(const string &path,vector<pair<string,int>>& fl
 
     outputCSV.close();
 }
+
+void Manager::createCsvFileRates(const string &path, vector<pair<string, double> > &rates) {
+    ofstream outputCSV(path);
+
+    if (!outputCSV.is_open()) {
+        cerr << "Error: Unable to open file." << endl;
+        exit(EXIT_FAILURE); // Exit the program with a custom error message
+    }
+
+    outputCSV << "Name,Code,Rate" << endl;
+
+    for (const auto rate : rates) {
+        outputCSV << Graph::getName(findVertexInMap(rate.first)) << "," << rate.first << "," << rate.second << endl;
+    }
+
+    outputCSV.close();
+}
+
 void Manager::importCities(const string& pathCities){
     fstream fin;
     fin.open(pathCities,ios::in);
@@ -498,30 +516,20 @@ void Manager::resetGraph() {
 
 }
 
-void Manager::getEdmondsKarpOneCity(string& code) {
+void Manager::printFlowMetricsOneCity(vector<pair<string, int>>& flows, const string& code, const string& outputFile) {
     timespec start_real, end_real;
     timespec start_cpu, end_cpu;
 
     clock_gettime(CLOCK_REALTIME, &start_real);
     clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &start_cpu);
 
-    auto flows = maxFlowEdmondsKarp();
-
-    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end_cpu);
-    clock_gettime(CLOCK_REALTIME, &end_real);
-
-    double elapsed_real = (end_real.tv_sec - start_real.tv_sec) +
-                          (end_real.tv_nsec - start_real.tv_nsec) / 1e9;
-
-
-    double elapsed_cpu = (end_cpu.tv_sec - start_cpu.tv_sec) +
-                         (end_cpu.tv_nsec - start_cpu.tv_nsec) / 1e9;
-
     auto it = find_if(flows.begin(), flows.end(), [&](const auto& flow) {
         return flow.first == code;
     });
+    vector<pair<string,int>> results;
 
     if (it != flows.end()) {
+        results.push_back(make_pair(it->first,it->second));
         cout << "Flow for city with code " << code << ": " << it->second << endl;
     }
     else {
@@ -529,117 +537,134 @@ void Manager::getEdmondsKarpOneCity(string& code) {
         exit(EXIT_FAILURE);
     }
 
-    cout << "Elapsed real time: " << elapsed_real << " seconds" << endl;
-    cout << "Elapsed CPU time: " << elapsed_cpu << " seconds" << endl;
-
-    resetGraph();
-}
-
-#include <ctime>
-
-void Manager::getEdmondsKarpAllCities() {
-    timespec start_real, end_real;
-    timespec start_cpu, end_cpu;
-
-    clock_gettime(CLOCK_REALTIME, &start_real);
-    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &start_cpu);
-
-    auto flows = maxFlowEdmondsKarp();
-
     clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end_cpu);
     clock_gettime(CLOCK_REALTIME, &end_real);
-
 
     double elapsed_real = (end_real.tv_sec - start_real.tv_sec) +
                           (end_real.tv_nsec - start_real.tv_nsec) / 1e9;
 
-
     double elapsed_cpu = (end_cpu.tv_sec - start_cpu.tv_sec) +
                          (end_cpu.tv_nsec - start_cpu.tv_nsec) / 1e9;
-
-    for (const auto& flow : flows) {
-        cout << "Flow for city with code " << flow.first << ": " << flow.second << endl;
-    }
 
     cout << "Elapsed real time: " << elapsed_real << " seconds" << endl;
     cout << "Elapsed CPU time: " << elapsed_cpu << " seconds" << endl;
 
-    string filename = "../data/results/results_21_EK.csv";
-    createCsvFileFlows(filename, flows);
-
-    resetGraph();
+    string filename = outputFile;
+    createCsvFileFlows(filename,results);
 }
 
+void Manager::getEdmondsKarpOneCity(string& code) {
+    auto flows = maxFlowEdmondsKarp();
+    printFlowMetricsOneCity(flows, code, "../data/results/results_21_EK.csv");
+    resetGraph();
+}
 
 void Manager::getFordFulkersonOneCity(string& code) {
-    timespec start_real, end_real;
-    timespec start_cpu, end_cpu;
-
-    clock_gettime(CLOCK_REALTIME, &start_real);
-    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &start_cpu);
-
     auto flows = maxFlowFordFulkerson();
-
-    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end_cpu);
-    clock_gettime(CLOCK_REALTIME, &end_real);
-
-    double elapsed_real = (end_real.tv_sec - start_real.tv_sec) +
-                          (end_real.tv_nsec - start_real.tv_nsec) / 1e9;
-
-
-    double elapsed_cpu = (end_cpu.tv_sec - start_cpu.tv_sec) +
-                         (end_cpu.tv_nsec - start_cpu.tv_nsec) / 1e9;
-
-    auto it = find_if(flows.begin(), flows.end(), [&](const auto& flow) {
-        return flow.first == code;
-    });
-
-    if (it != flows.end()) {
-        cout << "Flow for city with code " << code << ": " << it->second << endl;
-    }
-    else {
-        cerr << "Error calculating max flow" << endl;
-        exit(EXIT_FAILURE);
-    }
-
-    cout << "Elapsed real time: " << elapsed_real << " seconds" << endl;
-    cout << "Elapsed CPU time: " << elapsed_cpu << " seconds" << endl;
-
+    printFlowMetricsOneCity(flows, code, "../data/results/results_21_FF.csv");
     resetGraph();
 }
 
 
-void Manager::getFordFulkersonAllCities() {
+
+void Manager::printFlowMetrics(vector<pair<string, int>>& flows, const string& outputFile) {
     timespec start_real, end_real;
     timespec start_cpu, end_cpu;
 
     clock_gettime(CLOCK_REALTIME, &start_real);
     clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &start_cpu);
-
-    auto flows = maxFlowFordFulkerson();
-
-    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end_cpu);
-    clock_gettime(CLOCK_REALTIME, &end_real);
-
-
-    double elapsed_real = (end_real.tv_sec - start_real.tv_sec) +
-                          (end_real.tv_nsec - start_real.tv_nsec) / 1e9;
-
-
-    double elapsed_cpu = (end_cpu.tv_sec - start_cpu.tv_sec) +
-                         (end_cpu.tv_nsec - start_cpu.tv_nsec) / 1e9;
 
     for (const auto& flow : flows) {
         cout << "Flow for city with code " << flow.first << ": " << flow.second << endl;
     }
 
+    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end_cpu);
+    clock_gettime(CLOCK_REALTIME, &end_real);
+
+    double elapsed_real = (end_real.tv_sec - start_real.tv_sec) +
+                          (end_real.tv_nsec - start_real.tv_nsec) / 1e9;
+
+    double elapsed_cpu = (end_cpu.tv_sec - start_cpu.tv_sec) +
+                         (end_cpu.tv_nsec - start_cpu.tv_nsec) / 1e9;
+
     cout << "Elapsed real time: " << elapsed_real << " seconds" << endl;
     cout << "Elapsed CPU time: " << elapsed_cpu << " seconds" << endl;
 
-    string filename = "../data/results/results_21_FF.csv";
+    string filename = outputFile;
     createCsvFileFlows(filename, flows);
+}
 
+void Manager::getEdmondsKarpAllCities() {
+    auto flows = maxFlowEdmondsKarp();
+    printFlowMetrics(flows, "../data/results/results_21_EK.csv");
     resetGraph();
 }
+
+void Manager::getFordFulkersonAllCities() {
+    auto flows = maxFlowFordFulkerson();
+    printFlowMetrics(flows, "../data/results/results_21_FF.csv");
+    resetGraph();
+}
+
+
+
+bool cmpFlows(const pair<string, int>& a, const pair<string, int>& b) {
+    return a.second > b.second;
+}
+
+void Manager::printTopKFlows(vector<pair<string, int>>& flows, int k, const string& outputFile) {
+    sort(flows.begin(), flows.end(), cmpFlows);
+
+    vector<pair<string, int>> topK;
+    for (int i = 0; i < k && i < flows.size(); ++i) {
+        topK.push_back(flows[i]);
+        cout << "Top " << i + 1 << " : code -> " << flows[i].first << " flow -> " << flows[i].second << endl;
+    }
+
+    createCsvFileFlows(outputFile, topK);
+}
+
+void Manager::topKFlowEdmondsKarpCities(const int k) {
+    auto flows = maxFlowEdmondsKarp();
+    printTopKFlows(flows, k, "../data/results/results_TopK_EK.csv");
+    resetGraph();
+}
+
+void Manager::topKFlowFordFulkersonCities(const int k) {
+    auto flows = maxFlowFordFulkerson();
+    printTopKFlows(flows, k, "../data/results/results_TopK_FF.csv");
+    resetGraph();
+}
+
+void Manager::calculateFlowRates(const vector<pair<string, int>>& flows, const string& outputFile) {
+    double totalFlow = 0;
+    for (const auto& flow : flows) {
+        totalFlow += static_cast<double>(flow.second);
+    }
+
+    vector<pair<string, double>> rates;
+    for (const auto& flow : flows) {
+        double rate = static_cast<double>(flow.second) / totalFlow * 100;
+        rates.push_back({flow.first, rate});
+        cout << "City code: " << flow.first << " receives " << rate << "% of all the flow" << endl;
+    }
+
+    createCsvFileRates(outputFile, rates);
+}
+
+void Manager::flowRatePerCityEdmondsKarp() {
+    auto flows = maxFlowEdmondsKarp();
+    calculateFlowRates(flows, "../data/results/results_rateFlows_EK.csv");
+    resetGraph();
+}
+
+void Manager::flowRatePerCityFordFulkerson() {
+    auto flows = maxFlowFordFulkerson();
+    calculateFlowRates(flows, "../data/results/results_rateFlows_FF.csv");
+    resetGraph();
+}
+
+
+
 
 

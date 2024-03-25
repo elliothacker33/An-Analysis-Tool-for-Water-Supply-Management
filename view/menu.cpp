@@ -143,6 +143,10 @@ void Menu::algorithmMenu() {
             menuStack.push(&Menu::algorithmMenu);
             exercise21();
             break;
+        case 7:
+            menuStack.push(&Menu::algorithmMenu);
+            extraMenu();
+            break;
     }
 }
 
@@ -201,6 +205,60 @@ void Menu::exercise21() {
     }
 }
 
+void Menu::extraMenu() {
+    int option = 0;
+    do {
+        cout << "------------------------------------------------" << endl;
+        cout << "                Menu -> Extra                   " << endl;
+        cout << "                                                " << endl;
+        cout << "             0. Go back                         " << endl;
+        cout << "             1. TopK cities with max-flow (EK)  " << endl;
+        cout << "             2. TopK cities with max-flow (FF)  " << endl;
+        cout << "             3. Average Flow rate per city (EK) " << endl;
+        cout << "             4. Average Flow rate per city (FF) " << endl;
+        cout << "                                                " << endl;
+        cout << "------------------------------------------------" << endl;
+    }
+    while(!getNumberInput(0,4,&option));
+    int k;
+    bool validResult;
+    int maxK;
+    switch(option) {
+        case 0:
+            goBack();
+            break;
+
+        case 1:
+            maxK =manager->getCities().size();
+            do {
+                validResult = getNumberInput(1,maxK,&k);
+            }
+            while(!validResult);
+            manager->topKFlowEdmondsKarpCities(k);
+            extraMenu();
+            break;
+        case 2:
+            maxK =manager->getCities().size();
+            do {
+                validResult = getNumberInput(1,maxK,&k);
+            }
+            while(!validResult);
+            manager->topKFlowFordFulkersonCities(k);
+            extraMenu();
+            break;
+
+        case 3:
+            manager->flowRatePerCityEdmondsKarp();
+            extraMenu();
+            break;
+        case 4:
+            manager->flowRatePerCityFordFulkerson();
+            extraMenu();
+            break;
+
+
+    }
+}
 
 
 void Menu::exitMenu() {

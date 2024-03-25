@@ -23,6 +23,7 @@ public:
     void goBack();
     void algorithmMenu();
     void exercise21();
+    void extraMenu();
 };
 
 #endif //PROJECTDA_MENU_H

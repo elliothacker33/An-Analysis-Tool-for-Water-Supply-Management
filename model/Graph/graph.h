@@ -102,7 +102,6 @@ private:
 
 // Derived class representing a Reservoir
 class Reservoir : public Vertex {
-    // TODO: cout for the derived classes and add to Vertex common functions as virtual
 public:
     Reservoir(const string& name,const string& municipality,const int id, const string& code,const int maxDelivery)
         : name(name), code(code), municipality(municipality), maxDelivery(maxDelivery), id(id) {}
