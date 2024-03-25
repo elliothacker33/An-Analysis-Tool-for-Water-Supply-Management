@@ -27,6 +27,8 @@
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/projectDA" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/projectDA" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/manager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/controller/manager.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/manager.h" beforeDir="false" afterPath="$PROJECT_DIR$/controller/manager.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/results/results_21_EK.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/results/results_21_EK.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/Graph/graph.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/model/Graph/graph.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/Graph/graph.h" beforeDir="false" afterPath="$PROJECT_DIR$/model/Graph/graph.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/menu.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/view/menu.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/menu.h" beforeDir="false" afterPath="$PROJECT_DIR$/view/menu.h" afterDir="false" />
@@ -135,7 +137,7 @@
       <workItem from="1711280749158" duration="24975000" />
       <workItem from="1711319048047" duration="4020000" />
       <workItem from="1711361145636" duration="25114000" />
-      <workItem from="1711390415035" duration="7532000" />
+      <workItem from="1711390415035" duration="14403000" />
     </task>
     <servers />
   </component>

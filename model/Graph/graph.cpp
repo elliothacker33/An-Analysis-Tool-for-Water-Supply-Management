@@ -53,6 +53,13 @@ bool Vertex::isVisited() const {
 void Vertex::setVisited(bool isVisited) {
     this->visited = isVisited;
 }
+bool Vertex::isEnabled() const {
+    return enabled;
+}
+void Vertex::setEnabled(bool isEnabled) {
+    this->enabled = isEnabled;
+}
+
 
 void Vertex::setPath(Edge *e) {
     path = e;

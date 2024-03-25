@@ -8,6 +8,7 @@
 #include <vector>
 #include <limits>
 #include <ctime>
+// TODO: 4 leaks in memory
 
 Manager::Manager() {
     graph = new Graph();
@@ -87,6 +88,26 @@ void Manager::createCsvFileFlows(const string &path,vector<pair<string,int>>& fl
 
     outputCSV.close();
 }
+
+void Manager::createCsvFileDisable(const string &path, vector<pair<string, bool> > &disable) {
+    ofstream outputCSV(path);
+
+    if (!outputCSV.is_open()) {
+        cerr << "Error: Unable to open file." << endl;
+        exit(EXIT_FAILURE); // Exit the program with a custom error message
+    }
+
+    outputCSV << "Code,CanBeDisabled" << endl;
+
+    for (const auto station : disable) {
+        if (station.second)
+            outputCSV << station.first << "," << "yes" << endl;
+        else outputCSV << station.first << "," << "no" << endl;
+    }
+
+    outputCSV.close();
+}
+
 
 void Manager::createCsvFileRates(const string &path, vector<pair<string, double> > &rates) {
     ofstream outputCSV(path);
@@ -318,7 +339,7 @@ bool Manager::dfs_helper(Vertex *currentVertex, Vertex *superSink, vector<Edge*>
     }
 
     for (const auto e : currentVertex->getAdj()) {
-        if (Vertex* dest = e->getDest(); !dest->isVisited() && e->getFlow() > 0) {
+        if (Vertex* dest = e->getDest(); !dest->isVisited() && dest->isEnabled() && e->getFlow() > 0) {
             dest->setPath(e);
             if (dfs_helper(dest, superSink, path)) {
                 path.push_back(e);
@@ -348,7 +369,7 @@ vector<Edge*> Manager::bfs_flow(Vertex* superSource, Vertex* superSink) {
         const auto v = q.front();
         q.pop();
         for (const auto e : v->getAdj()) {
-            if(const auto dest = e->getDest();!dest->isVisited() && e->getFlow() > 0) {
+            if(const auto dest = e->getDest();!dest->isVisited() && dest->isEnabled() && e->getFlow() > 0) {
                 q.push(dest);
                 dest->setVisited(true);
                 dest->setPath(e);
@@ -488,7 +509,7 @@ vector<pair<string,int>> Manager::maxFlowEdmondsKarp() {
 }
 
 void Manager::resetGraph() {
-    Vertex* superSource= findVertexInMap("SR");
+    Vertex* superSource = findVertexInMap("SR");
     Vertex* superSink = findVertexInMap("SS");
 
     vector<Edge*> deleteEdges; // Delete Residual Edges
@@ -496,6 +517,7 @@ void Manager::resetGraph() {
     for (const auto v : graph->getVertexSet()) {
         v->setPath(nullptr);
         v->setVisited(false);
+        v->setEnabled(true);
         for (auto e : v->getAdj()) {
             e->setFlow(0);
             e->setReverseEdge(nullptr);
@@ -507,12 +529,15 @@ void Manager::resetGraph() {
     for(const auto e : deleteEdges) {
         graph->removeEdge(e);
     }
+    if (superSource != nullptr) {
+        graph->removeVertex(superSource);
+        reservoirs.erase("SR");
+    }
+    if(superSink != nullptr) {
+        graph->removeVertex(superSink);
+        cities.erase("SS");
+    }
 
-    graph->removeVertex(superSource);
-    graph->removeVertex(superSink);
-
-    reservoirs.erase("SR");
-    reservoirs.erase("SS");
 
 }
 
@@ -564,8 +589,6 @@ void Manager::getFordFulkersonOneCity(string& code) {
     printFlowMetricsOneCity(flows, code, "../data/results/results_21_FF.csv");
     resetGraph();
 }
-
-
 
 void Manager::printFlowMetrics(vector<pair<string, int>>& flows, const string& outputFile) {
     timespec start_real, end_real;
@@ -663,6 +686,88 @@ void Manager::flowRatePerCityFordFulkerson() {
     calculateFlowRates(flows, "../data/results/results_rateFlows_FF.csv");
     resetGraph();
 }
+
+void Manager::disableStations(vector<string>& stations) {
+    for(string code : stations) {
+        findVertexInMap(code)->setEnabled(false);
+    }
+}
+
+bool Manager::shutdownStations(vector<string>& codes) {
+    // Calculate total flow before removing the stations
+    auto beforeFlows = maxFlowEdmondsKarp();
+    int beforeTotalFlow = 0;
+    for (const auto& flow : beforeFlows)
+        beforeTotalFlow += flow.second;
+
+    // Reset graph and disable stations
+    resetGraph();
+    disableStations(codes);
+
+    // Calculate total flow after removing the stations
+    auto afterFlows = maxFlowEdmondsKarp();
+    int afterTotalFlow = 0;
+    for (const auto& flow : afterFlows)
+        afterTotalFlow += flow.second;
+
+    // Check if the network was affected
+    if (afterTotalFlow == beforeTotalFlow) {
+        cout << "The network was not affected after removing: ";
+        for (const string& code : codes) {
+            cout << code << ", ";
+        }
+        cout << endl;
+        resetGraph();
+        return true;
+    }
+
+    // Calculate the percentage decline for each city
+    vector<pair<string, double>> percentageDecline;
+    for (const auto& beforeFlow : beforeFlows) {
+        string cityCode = beforeFlow.first;
+        int beforeFlowAmount = beforeFlow.second;
+        double afterFlowAmount = 0;
+
+        // Find the flow amount after removing the stations
+        for (const auto& afterFlow : afterFlows) {
+            if (afterFlow.first == cityCode) {
+                afterFlowAmount = afterFlow.second;
+                break;
+            }
+        }
+
+        // Calculate the percentage decline in flow
+        double declinePercentage = (beforeFlowAmount - afterFlowAmount) / beforeFlowAmount * 100;
+        percentageDecline.push_back(make_pair(cityCode, declinePercentage));
+    }
+
+    cout << "Percentage decline in flow for each city after removing stations:" << endl;
+    for (const auto& entry : percentageDecline) {
+        if(entry.second == 0.0) {
+            cout << "City code: " << entry.first << ", Percentage Decline: " << entry.second << "%" << endl;
+        }
+        else {
+            cout << "City code: " << entry.first << ", Percentage Decline: -" << entry.second << "%" << endl;
+        }
+    }
+    resetGraph();
+
+    return false;
+}
+
+void Manager::disableEachOneEdmondsKarp() {
+    vector<pair<string,bool>> can_be_disabled;
+    auto it = stations.begin();
+    for (; it != stations.end(); ++it) {
+        vector<string> codes;
+        codes.push_back(it->first);
+        can_be_disabled.push_back(make_pair(it->first, shutdownStations(codes)));
+    }
+    string path = "../data/results/results_disabled_stations.csv";
+    createCsvFileDisable(path,can_be_disabled);
+
+}
+
 
 
 

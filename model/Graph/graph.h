@@ -36,6 +36,7 @@ protected:
 class Vertex {
 protected:
     bool visited = false;
+    bool enabled = true;
     int outDegree = 0;
     int inDegree = 0;
     vector<Edge*> adj;
@@ -50,6 +51,8 @@ public:
     void setInDegree(int inDegree);
     bool isVisited() const;
     void setVisited(bool isVisited);
+    bool isEnabled() const;
+    void setEnabled(bool isEnabled);
     Edge* addEdge(Vertex* t,int capacity,const string& type);
     void removeEdge(const Edge* e);
     void setPath(Edge* e);

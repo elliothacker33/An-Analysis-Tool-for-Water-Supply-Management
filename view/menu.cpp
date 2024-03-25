@@ -143,6 +143,10 @@ void Menu::algorithmMenu() {
             menuStack.push(&Menu::algorithmMenu);
             exercise21();
             break;
+        case 5:
+            menuStack.push(&Menu::algorithmMenu);
+            exercise32();
+            break;
         case 7:
             menuStack.push(&Menu::algorithmMenu);
             extraMenu();
@@ -201,6 +205,36 @@ void Menu::exercise21() {
         case 4:
             manager->getFordFulkersonAllCities();
             exercise21();
+            break;
+    }
+}
+
+void Menu::exercise32() {
+    int option = 0;
+    do {
+        cout << "------------------------------------------------" << endl;
+        cout << "              Menu -> Exercice 3.2              " << endl;
+        cout << "                                                " << endl;
+        cout << "             0. Go back                         " << endl;
+        cout << "             1. Disable each one (EK)           " << endl;
+        cout << "             2. Disable each one (FF)           " << endl;
+        cout << "             3. Disable selected ones (EK)      " << endl;
+        cout << "             4. Disable selected ones (FF)      " << endl;
+        cout << "                                                " << endl;
+        cout << "------------------------------------------------" << endl;
+    }
+    while(!getNumberInput(0,4,&option));
+    string code;
+    bool validResult;
+
+    switch(option) {
+        case 0:
+            goBack();
+            break;
+
+        case 1:
+            manager->disableEachOneEdmondsKarp();
+            exercise32();
             break;
     }
 }
