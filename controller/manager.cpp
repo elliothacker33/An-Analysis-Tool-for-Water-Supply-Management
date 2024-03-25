@@ -13,6 +13,13 @@ Manager::Manager() {
 Manager::~Manager() {
     delete graph;
 }
+void Manager::resetManager() {
+    delete this->graph;
+    this->graph = new Graph();
+    cities.clear();
+    reservoirs.clear();
+    stations.clear();
+}
 Graph* Manager::getGraph() const {
     return graph;
 }
@@ -46,6 +53,7 @@ Vertex* Manager::findVertexInMap(const string& identifier) const {
 
 
 void Manager::importFiles(const string& pathCities,const string& pathReservoirs,const string& pathStations,const string& pathPipes) {
+    resetManager();
     importCities(pathCities);
     importStations(pathStations);
     importReservoirs(pathReservoirs);

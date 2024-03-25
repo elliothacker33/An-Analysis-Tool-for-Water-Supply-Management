@@ -43,6 +43,7 @@ public:
     void maxFlowEdmondsKarp();
     void maxFlowFordFulkerson();
     void resetGraph();
+    void resetManager();
 };
 
 
