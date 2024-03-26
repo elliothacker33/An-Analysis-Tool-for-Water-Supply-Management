@@ -8,8 +8,7 @@
 #include <vector>
 #include <limits>
 #include <ctime>
-// TODO: 4 leaks in memory
-
+// TODO: Template func time measure
 Manager::Manager() {
     graph = new Graph();
 }
@@ -167,6 +166,7 @@ void Manager::importCities(const string& pathCities){
         if (auto [_, success] = cities.insert({row[2],city});success) {
             graph->addVertex(city);
         }
+
     }
 
     fin.close();
@@ -203,7 +203,7 @@ void Manager::importReservoirs(const string& pathReservoirs)  {
 
         Vertex* reservoir = new Reservoir(row[0],row[1],stoi(row[2]),row[3],stoi(row[4]));
         if (auto [_, success] = reservoirs.insert({row[3], reservoir});success) {
-            graph->addVertex(reservoir);
+           graph->addVertex(reservoir);
         }
     }
     fin.close();

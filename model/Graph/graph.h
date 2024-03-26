@@ -44,7 +44,7 @@ protected:
     Edge* path = nullptr;
 public:
     virtual char getType() const = 0;
-    ~Vertex();
+    virtual ~Vertex();
     int getOutDegree() const;
     void setOutDegree(int outDegree);
     int getInDegree() const;

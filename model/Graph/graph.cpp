@@ -285,8 +285,9 @@ string Graph::getName(Vertex *v) {
 }
 // Good
 Graph::~Graph() {
-    for (const auto v : vertexSet) {
-        delete v;
+    while (!vertexSet.empty()) {
+        auto it = vertexSet.begin();
+        removeVertex(*it);
     }
 }
 

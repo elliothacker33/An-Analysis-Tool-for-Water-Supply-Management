@@ -26,12 +26,7 @@
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/projectDA" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/projectDA" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/manager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/controller/manager.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/manager.h" beforeDir="false" afterPath="$PROJECT_DIR$/controller/manager.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/results/results_21_EK.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/results/results_21_EK.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/Graph/graph.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/model/Graph/graph.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/Graph/graph.h" beforeDir="false" afterPath="$PROJECT_DIR$/model/Graph/graph.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/menu.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/view/menu.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/menu.h" beforeDir="false" afterPath="$PROJECT_DIR$/view/menu.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,11 +95,6 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="projectDA" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="projectDA" TARGET_NAME="projectDA" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="projectDA" RUN_TARGET_NAME="projectDA">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -137,7 +127,8 @@
       <workItem from="1711280749158" duration="24975000" />
       <workItem from="1711319048047" duration="4020000" />
       <workItem from="1711361145636" duration="25114000" />
-      <workItem from="1711390415035" duration="14403000" />
+      <workItem from="1711390415035" duration="17273000" />
+      <workItem from="1711450934432" duration="6193000" />
     </task>
     <servers />
   </component>
