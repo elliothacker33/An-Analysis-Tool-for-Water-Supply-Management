@@ -119,7 +119,12 @@ void Manager::createCsvFileRates(const string &path, vector<pair<string, double>
     outputCSV << "Name,Code,Rate" << endl;
 
     for (const auto rate : rates) {
-        outputCSV << Graph::getName(findVertexInMap(rate.first)) << "," << rate.first << "," << rate.second << endl;
+        if (rate.second < 0) {
+            outputCSV << Graph::getName(findVertexInMap(rate.first)) << "," << rate.first << "," << rate.second << "%" << endl;
+        }
+        else {
+            outputCSV << Graph::getName(findVertexInMap(rate.first)) << "," << rate.first << "," << rate.second << "%" << endl;
+        }
     }
 
     outputCSV.close();
@@ -768,7 +773,77 @@ void Manager::disableEachOneEdmondsKarp() {
 
 }
 
+vector<pair<string, double>> Manager::shutdownStationsGettingDecreaseFlows(vector<string>& codes) {
 
+    vector<pair<string, double>> percentageDecline;
+    // Calculate total flow before removing the stations
+    auto beforeFlows = maxFlowEdmondsKarp();
+    int beforeTotalFlow = 0;
+    for (const auto& flow : beforeFlows)
+        beforeTotalFlow += flow.second;
+
+    // Reset graph and disable stations
+    resetGraph();
+    disableStations(codes);
+
+    // Calculate total flow after removing the stations
+    auto afterFlows = maxFlowEdmondsKarp();
+    int afterTotalFlow = 0;
+    for (const auto& flow : afterFlows)
+        afterTotalFlow += flow.second;
+
+    // Check if the network was affected
+    if (afterTotalFlow == beforeTotalFlow) {
+        cout << "The network was not affected after removing: ";
+        for (const string& code : codes) {
+            percentageDecline.push_back(make_pair(code,0.0));
+            cout << code << ", ";
+        }
+        cout << endl;
+        resetGraph();
+    }
+
+    // Calculate the percentage decline for each city
+
+    for (const auto& beforeFlow : beforeFlows) {
+        string cityCode = beforeFlow.first;
+        int beforeFlowAmount = beforeFlow.second;
+        double afterFlowAmount = 0;
+
+        // Find the flow amount after removing the stations
+        for (const auto& afterFlow : afterFlows) {
+            if (afterFlow.first == cityCode) {
+                afterFlowAmount = afterFlow.second;
+                break;
+            }
+        }
+
+        // Calculate the percentage decline in flow
+        double declinePercentage = -(beforeFlowAmount - afterFlowAmount) / beforeFlowAmount * 100;
+        percentageDecline.push_back(make_pair(cityCode, declinePercentage));
+    }
+
+    cout << "Percentage decline in flow for each city after removing stations:" << endl;
+    for (const auto& entry : percentageDecline) {
+        if(entry.second == 0.0) {
+            cout << "City code: " << entry.first << ", Percentage Decline: " << entry.second << "%" << endl;
+        }
+        else {
+            cout << "City code: " << entry.first << ", Percentage Decline: " << entry.second << "%" << endl;
+        }
+    }
+    resetGraph();
+
+    return percentageDecline;
+}
+
+
+
+void Manager::disableSelectedOnes(vector<string>& stations) {
+    vector<pair<string,double>> decreased = shutdownStationsGettingDecreaseFlows(stations);
+    string path = "../data/results/results_decrease_after_disabled_stations.csv";
+    createCsvFileRates(path,decreased);
+}
 
 
 

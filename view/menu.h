@@ -13,7 +13,9 @@ class Menu{
     Manager* manager;
     bool getNumberInput(int minInput, int maxInput, int* option);
     bool getCity(string* city);
+    vector<string> getStations();
     bool validCity(string& code);
+    bool validStation(string& code);
     void getCityExamples();
 public:
     ~Menu();

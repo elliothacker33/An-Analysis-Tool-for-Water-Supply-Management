@@ -59,6 +59,8 @@ public:
     void flowRatePerCityEdmondsKarp();
     void flowRatePerCityFordFulkerson();
     void disableEachOneEdmondsKarp();
+    void disableSelectedOnes(vector<string>& stations);
+    vector<pair<string,double>> shutdownStationsGettingDecreaseFlows(vector<string>& stations);
 
 
 };

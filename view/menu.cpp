@@ -55,6 +55,18 @@ bool Menu::validCity(string &code) {
     return cities.find(trimmedInput) != cities.end();
 }
 
+bool Menu::validStation(string& code) {
+    auto stations = manager->getStations();
+    const auto start = code.find_first_not_of(" \t");
+    const auto end = code.find_last_not_of(" \t");
+    string trimmedInput;
+    if (start != string::npos && end != string::npos)
+        trimmedInput = code.substr(start, end - start + 1);
+    else
+        trimmedInput = "";
+    return stations.find(trimmedInput) != stations.end();
+}
+
 bool Menu::getCity(string *city) {
     string input;
     getCityExamples();
@@ -74,6 +86,38 @@ bool Menu::getCity(string *city) {
     cout << "Invalid input. Please enter a valid city" << endl;
     return false;
 
+}
+
+vector<string> Menu::getStations() {
+    vector<string> stations;
+    string input;
+    while(stations.size() != manager->getStations().size()) {
+        cout << "Enter a valid city code or press 'STOP' to stop inserting: ";
+        cin >> input;
+        cout << endl;
+        for(char& c : input) {
+            c = toupper(c);
+        }
+        if (validStation(input)) {
+            bool alreadyExists = false;
+            for (const string& station : stations) {
+                if (station == input) {
+                    alreadyExists = true;
+                    break;
+                }
+            }
+            if (!alreadyExists) {
+                stations.push_back(input); // Add the city code to stations if not already present
+            }
+        }
+        else if(input == "STOP") {
+            break;
+        }
+        else {
+            cout << "Invalid input. Please enter a valid station" << endl;
+        }
+    }
+    return stations;
 }
 
 
@@ -234,6 +278,16 @@ void Menu::exercise32() {
 
         case 1:
             manager->disableEachOneEdmondsKarp();
+            exercise32();
+            break;
+        case 3:
+            vector<string> stations = getStations();
+            if (stations.empty()) {
+                cout << "No stations were selected" << endl;
+            }
+            else {
+                manager->disableSelectedOnes(stations);
+            }
             exercise32();
             break;
     }

@@ -26,7 +26,9 @@
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/projectDA" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/projectDA" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/manager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/controller/manager.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/Graph/graph.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/model/Graph/graph.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/manager.h" beforeDir="false" afterPath="$PROJECT_DIR$/controller/manager.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/menu.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/view/menu.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/menu.h" beforeDir="false" afterPath="$PROJECT_DIR$/view/menu.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +130,7 @@
       <workItem from="1711319048047" duration="4020000" />
       <workItem from="1711361145636" duration="25114000" />
       <workItem from="1711390415035" duration="17273000" />
-      <workItem from="1711450934432" duration="6193000" />
+      <workItem from="1711450934432" duration="11776000" />
     </task>
     <servers />
   </component>
