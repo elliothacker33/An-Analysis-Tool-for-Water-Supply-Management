@@ -1,5 +1,8 @@
 #include "menu.h"
+
+#include <algorithm>
 #include <cmath>
+#include <sstream>
 #include <bits/random.h>
 
 Menu::~Menu() {
@@ -10,12 +13,104 @@ Menu::Menu(Manager* manager) {
     this->manager = manager;
 }
 
-bool Menu::getNumberInput(int minInput, int maxInput, int *option) {
-    int input;
-    cout << "Enter your choice ("<< minInput <<"-" << maxInput <<"): ";
-    cin >> input;
+/* Auxiliary functions */
+string Menu::removeLeadingTrailingSpaces(const string& input) {
+    const auto start = input.find_first_not_of(" \n\r\t");
+    const auto end = input.find_last_not_of(" \n\r\t");
 
-    if (input >= minInput && input <= maxInput) {
+    return (start != string::npos && end != string::npos) ? input.substr(start, end - start + 1) : "";
+}
+
+/* Valid input check for codes */
+bool Menu::validCity(string &code) {
+    auto cities = manager->getCities();
+    const string trimmedInput = removeLeadingTrailingSpaces(code);
+    return cities.find(trimmedInput) != cities.end();
+}
+
+bool Menu::validStation(string& code) {
+    auto stations = manager->getStations();
+    const string trimmedInput = removeLeadingTrailingSpaces(code);
+    return stations.find(trimmedInput) != stations.end();
+}
+
+bool Menu::validReservoir(string& code) {
+    auto reservoirs = manager->getReservoirs();
+    const string trimmedInput = removeLeadingTrailingSpaces(code);
+    return reservoirs.find(trimmedInput) != reservoirs.end();
+}
+
+bool Menu::isValidInterface(const string& type,string& code) {
+    if (type == "city") {
+        return validCity(code);
+    }
+
+    if (type == "station") {
+        return validStation(code);
+    }
+
+    if (type == "reservoir") {
+        return validReservoir(code);
+    }
+    return false;
+}
+
+/* Get Input functions */
+
+vector<string> Menu::getItems(const unordered_map<string,Vertex*>& existingItems, const string& itemType) {
+    vector<string> items;
+    string input;
+    while (items.size() != existingItems.size()) {
+        getExamplesInterface(itemType);
+        cout << "Enter a valid " << itemType << " code or press 'STOP' to stop inserting: ";
+        getline(cin, input);
+        cout << endl;
+        transform(input.begin(), input.end(), input.begin(), ::toupper); // Convert input to uppercase
+        if (isValidInterface(itemType, input)) {
+            bool alreadyExists = false;
+            for (const string& item : items) {
+                if (item == input) {
+                    alreadyExists = true;
+                    break;
+                }
+            }
+            if (!alreadyExists) {
+                items.push_back(input);
+            }
+        }
+        else if (input == "STOP") {
+            break;
+        }
+        else {
+            cout << "Invalid input. Please enter a valid " << itemType << endl;
+        }
+    }
+    return items;
+}
+
+vector<string> Menu::getStations() {
+    return getItems(manager->getStations(), "station");
+}
+
+vector<string> Menu::getCities() {
+    return getItems(manager->getCities(), "city");
+}
+
+vector<string> Menu::getReservoirs() {
+    return getItems(manager->getReservoirs(),"reservoir");
+}
+
+bool Menu::getNumberInput(int minInput, int maxInput, int *option) {
+    cout << "Enter your choice ("<< minInput <<"-" << maxInput <<"): ";
+    string sinput;
+    getline(cin, sinput);
+    stringstream ss(sinput);
+    int input;
+    ss >> input;
+
+    string trimmedInput = removeLeadingTrailingSpaces(sinput);
+
+    if (trimmedInput.size() == 1 && input >= minInput && input <= maxInput) {
         *option = input;
         return true;
     }
@@ -24,17 +119,18 @@ bool Menu::getNumberInput(int minInput, int maxInput, int *option) {
     return false;
 }
 
-void Menu::getCityExamples() {
-    auto cities = manager->getCities();
-    if (cities.size() < 3) {
-        cerr << "There are less than 3 cities in the map." << endl;
+/* Get input examples */
+
+void Menu::getItemExamples(const unordered_map<string, Vertex*>& items, const string& label) {
+    if (items.size() < 3) {
+        cerr << "There are less than 3 " << label << " in the map." << endl;
         return;
     }
 
-    cout << "Example city codes:" << endl;
+    cout << "Example " << label << " codes:" << endl;
     int count = 0;
-    for (const auto city : cities) {
-        cout << city.first << endl;
+    for (const auto& item : items) {
+        cout << item.first << endl;
         count++;
         if (count >= 3) {
             break;
@@ -42,85 +138,37 @@ void Menu::getCityExamples() {
     }
 }
 
-bool Menu::validCity(string &code) {
-    auto cities = manager->getCities();
-    const auto start = code.find_first_not_of(" \t");
-    const auto end = code.find_last_not_of(" \t");
-    string trimmedInput;
-    if (start != string::npos && end != string::npos)
-        trimmedInput = code.substr(start, end - start + 1);
-    else
-        trimmedInput = "";
-
-    return cities.find(trimmedInput) != cities.end();
+void Menu::getCityExamples() {
+    getItemExamples(manager->getCities(), "city");
 }
 
-bool Menu::validStation(string& code) {
-    auto stations = manager->getStations();
-    const auto start = code.find_first_not_of(" \t");
-    const auto end = code.find_last_not_of(" \t");
-    string trimmedInput;
-    if (start != string::npos && end != string::npos)
-        trimmedInput = code.substr(start, end - start + 1);
-    else
-        trimmedInput = "";
-    return stations.find(trimmedInput) != stations.end();
+void Menu::getStationExamples() {
+    getItemExamples(manager->getStations(), "station");
 }
 
-bool Menu::getCity(string *city) {
-    string input;
-    getCityExamples();
-    cout << "Enter a valid city code: ";
-    cin >> input;
-    cout << endl;
+void Menu::getReservoirExamples() {
+    getItemExamples(manager->getReservoirs(), "reservoir");
+}
 
-    for(char& c : input) {
-        c = toupper(c);
+
+void Menu::getExamplesInterface(const string& type) {
+    if (type == "city") {
+        getCityExamples();
+    }
+    if (type == "station") {
+        getStationExamples();
     }
 
-    if (validCity(input)) {
-        *city = input;
-        return true;
+    if (type == "reservoir") {
+        getReservoirExamples();
     }
-
-    cout << "Invalid input. Please enter a valid city" << endl;
-    return false;
-
-}
-
-vector<string> Menu::getStations() {
-    vector<string> stations;
-    string input;
-    while(stations.size() != manager->getStations().size()) {
-        cout << "Enter a valid city code or press 'STOP' to stop inserting: ";
-        cin >> input;
-        cout << endl;
-        for(char& c : input) {
-            c = toupper(c);
-        }
-        if (validStation(input)) {
-            bool alreadyExists = false;
-            for (const string& station : stations) {
-                if (station == input) {
-                    alreadyExists = true;
-                    break;
-                }
-            }
-            if (!alreadyExists) {
-                stations.push_back(input); // Add the city code to stations if not already present
-            }
-        }
-        else if(input == "STOP") {
-            break;
-        }
-        else {
-            cout << "Invalid input. Please enter a valid station" << endl;
-        }
-    }
-    return stations;
 }
 
 
+
+
+
+/* Menus */
 void Menu::mainMenu() {
     // Display mainMenu
     int option = 0;
@@ -187,6 +235,10 @@ void Menu::algorithmMenu() {
             menuStack.push(&Menu::algorithmMenu);
             exercise21();
             break;
+        case 2:
+            menuStack.push(&Menu::algorithmMenu);
+            exercise22();
+            break;
         case 5:
             menuStack.push(&Menu::algorithmMenu);
             exercise32();
@@ -213,22 +265,21 @@ void Menu::exercise21() {
         cout << "------------------------------------------------" << endl;
     }
     while(!getNumberInput(0,4,&option));
-    string code;
-    bool validResult;
 
+    vector<string> cities;
     switch(option) {
         case 0:
             goBack();
             break;
 
         case 1:
-            code.clear();
-            do {
-
-                validResult = getCity(&code);
+            cities = getCities();
+            if (cities.empty()) {
+                cout << "No cities were selected" << endl;
             }
-            while(!validResult);
-            manager->getEdmondsKarpOneCity(code);
+            else {
+                manager->getEdmondsKarpXCity(cities);
+            }
             exercise21();
             break;
         case 2:
@@ -237,18 +288,75 @@ void Menu::exercise21() {
             break;
 
         case 3:
-            code.clear();
-            do {
-                validResult = getCity(&code);
+            cities = getCities();
+            if (cities.empty()) {
+                cout << "No cities were selected" << endl;
             }
-            while(!validResult);
-            manager->getEdmondsKarpOneCity(code);
+            else {
+                manager->getFordFulkersonXCity(cities);
+            }
             exercise21();
             break;
 
         case 4:
             manager->getFordFulkersonAllCities();
             exercise21();
+            break;
+    }
+}
+
+void Menu::exercise22() {
+    vector<string> cities;
+    int option = 0;
+    do {
+        cout << "------------------------------------------------" << endl;
+        cout << "              Menu -> Exercice 2.2              " << endl;
+        cout << "                                                " << endl;
+        cout << "           0. Go back                           " << endl;
+        cout << "           1. Can city x get enough water? (EK) " << endl;
+        cout << "           2. Can city x get enough water? (FF) " << endl;
+        cout << "           3. Can all cities get enough water? (EK) " << endl;
+        cout << "           4. Can all cities get enough water? (FF) " << endl;
+        cout << "                                                " << endl;
+        cout << "------------------------------------------------" << endl;
+    }
+    while(!getNumberInput(0,4,&option));
+
+
+    switch(option) {
+        case 0:
+            goBack();
+            break;
+
+        case 1:
+            cities = getCities();
+            if (cities.empty()) {
+                cout << "No cities were selected" << endl;
+            }
+            else {
+                manager->canCityXGetEnoughWaterEK(cities);
+            }
+            exercise22();
+            break;
+        case 2:
+            cities = getCities();
+            if (cities.empty()) {
+                cout << "No cities were selected" << endl;
+            }
+            else {
+                manager->canCityXGetEnoughWaterFF(cities);
+            }
+            exercise22();
+            break;
+
+        case 3:
+            manager->canAllCitiesGetEnoughWaterEK();
+            exercise22();
+            break;
+
+        case 4:
+            manager->canAllCitiesGetEnoughWaterFF();
+            exercise22();
             break;
     }
 }

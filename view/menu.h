@@ -11,20 +11,40 @@ using namespace std;
 class Menu{
     stack<void(Menu::*)()> menuStack;
     Manager* manager;
-    bool getNumberInput(int minInput, int maxInput, int* option);
-    bool getCity(string* city);
-    vector<string> getStations();
+
+    /* Auxiliary functions */
+    string removeLeadingTrailingSpaces(const string& input);
+
+    /* Validity of input */
     bool validCity(string& code);
     bool validStation(string& code);
+    bool validReservoir(string& code);
+    bool isValidInterface(const string& type,string& code);
+
+    /* Get input */
+    vector<string> getItems(const unordered_map<string,Vertex*>&, const string& itemType);
+    vector<string> getCities();
+    vector<string> getStations();
+    vector<string> getReservoirs();
+    bool getNumberInput(int minInput, int maxInput, int* option);
+
+    /* Get examples of input */
+    void getItemExamples(const unordered_map<string, Vertex*>& items, const string& label);
     void getCityExamples();
+    void getStationExamples();
+    void getReservoirExamples();
+    void getExamplesInterface(const string& type);
+
+
 public:
     ~Menu();
-    Menu(Manager* manager);
+    explicit Menu(Manager* manager);
     void mainMenu();
     void exitMenu();
     void goBack();
     void algorithmMenu();
     void exercise21();
+    void exercise22();
     void exercise32();
     void extraMenu();
 };

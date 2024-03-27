@@ -8,7 +8,13 @@
 #include <vector>
 #include <limits>
 #include <ctime>
-// TODO: Template func time measure
+
+
+#define ANSI_COLOR_RED "\x1b[31m"
+#define ANSI_COLOR_RESET "\x1b[0m"
+
+/* ----- Auxiliary functions and constructors/destructors ---- */
+
 Manager::Manager() {
     graph = new Graph();
 }
@@ -22,6 +28,39 @@ void Manager::resetManager() {
     reservoirs.clear();
     stations.clear();
 }
+
+void Manager::resetGraph() {
+    Vertex* superSource = findVertexInMap("SR");
+    Vertex* superSink = findVertexInMap("SS");
+
+    vector<Edge*> deleteEdges; // Delete Residual Edges
+
+    for (const auto v : graph->getVertexSet()) {
+        v->setPath(nullptr);
+        v->setVisited(false);
+        v->setEnabled(true);
+        for (auto e : v->getAdj()) {
+            e->setFlow(0);
+            e->setReverseEdge(nullptr);
+            if (e->getType() == "residual")
+                deleteEdges.push_back(e);
+        }
+    }
+
+    for(const auto e : deleteEdges) {
+        graph->removeEdge(e);
+    }
+    if (superSource != nullptr) {
+        graph->removeVertex(superSource);
+        reservoirs.erase("SR");
+    }
+    if(superSink != nullptr) {
+        graph->removeVertex(superSink);
+        cities.erase("SS");
+    }
+
+}
+
 Graph* Manager::getGraph() const {
     return graph;
 }
@@ -37,39 +76,18 @@ unordered_map<string, Vertex*> Manager::getStations() const {
 }
 
 Vertex* Manager::findVertexInMap(const string& identifier) const {
-
     if (const auto cityIt = cities.find(identifier); cityIt != cities.end()) {
         return cityIt->second;
     }
-
     if (const auto reservoirIt = reservoirs.find(identifier); reservoirIt!= reservoirs.end()) {
         return reservoirIt->second;
     }
-
     if (const auto stationIt = stations.find(identifier); stationIt!= stations.end()) {
         return stationIt->second;
     }
     return nullptr;
 }
-
-
-void Manager::importFiles(const string& pathCities,const string& pathReservoirs,const string& pathStations,const string& pathPipes) {
-    resetManager();
-    importCities(pathCities);
-    importStations(pathStations);
-    importReservoirs(pathReservoirs);
-    importPipes(pathPipes);
-}
-
-int Manager::parseInt(const string& text) {
-    string number_string;
-    for (const auto i : text) {
-        if (i != '\"' && i != ',')
-            number_string.push_back(i);
-    }
-    const int number_integer=stoi(number_string);
-    return number_integer;
-}
+/*------------- Csv methods -----------------------------*/
 
 void Manager::createCsvFileFlows(const string &path,vector<pair<string,int>>& flows) {
     ofstream outputCSV(path);
@@ -107,6 +125,25 @@ void Manager::createCsvFileDisable(const string &path, vector<pair<string, bool>
     outputCSV.close();
 }
 
+void Manager::createCsvFileEnoughWater(const string &path, vector<pair<string, bool>>& enoughWater) {
+    ofstream outputCSV(path);
+
+    if (!outputCSV.is_open()) {
+        cerr << "Error: Unable to open file." << endl;
+        exit(EXIT_FAILURE);
+    }
+
+    outputCSV << "Code,EnoughWater" << endl;
+
+    for (const auto city : enoughWater) {
+        if (city.second)
+            outputCSV << city.first << "," << "yes" << endl;
+        else outputCSV << city.first << "," << "no" << endl;
+    }
+
+    outputCSV.close();
+}
+
 
 void Manager::createCsvFileRates(const string &path, vector<pair<string, double> > &rates) {
     ofstream outputCSV(path);
@@ -128,6 +165,26 @@ void Manager::createCsvFileRates(const string &path, vector<pair<string, double>
     }
 
     outputCSV.close();
+}
+
+/*------------- Parsing methods ------------------------ */
+
+void Manager::importFiles(const string& pathCities,const string& pathReservoirs,const string& pathStations,const string& pathPipes) {
+    resetManager();
+    importCities(pathCities);
+    importStations(pathStations);
+    importReservoirs(pathReservoirs);
+    importPipes(pathPipes);
+}
+
+int Manager::parseInt(const string& text) {
+    string number_string;
+    for (const auto i : text) {
+        if (i != '\"' && i != ',')
+            number_string.push_back(i);
+    }
+    const int number_integer=stoi(number_string);
+    return number_integer;
 }
 
 void Manager::importCities(const string& pathCities){
@@ -278,8 +335,6 @@ void Manager::importPipes(const string& pathPipes) const {
         Vertex* orig = findVertexInMap(row[0]);
         Vertex* dest = findVertexInMap(row[1]);
 
-
-
         if (stoi(row[3]) == 0) {
             graph->addEdge(orig,dest,stoi(row[2]),"normal");
         }
@@ -295,6 +350,8 @@ void Manager::importPipes(const string& pathPipes) const {
     }
     fin.close();
 }
+/*-----------------Max Flow Algorithms---------------------- */
+
 Vertex* Manager::addSuperSource() {
     Vertex* superSource = new Reservoir("Super Reservoir","_",-1,"SR",-1);
     graph->addVertex(superSource);
@@ -321,6 +378,17 @@ Vertex* Manager::addSuperSink() {
     }
     return superSink;
 }
+
+int Manager::findMinEdge(const vector<Edge*>& path) {
+    int flow = numeric_limits<int>::max();
+    for (auto e: path) {
+        if(e->getFlow() < flow) {
+            flow = e->getFlow();
+        }
+    }
+    return flow;
+}
+
 vector<Edge*> Manager::dfs_flow(Vertex *superSource, Vertex *superSink) {
     if (superSource == nullptr || superSink == nullptr) {
         cerr << "Super Source or/and Super Sink not found";
@@ -393,16 +461,7 @@ vector<Edge*> Manager::bfs_flow(Vertex* superSource, Vertex* superSink) {
     return path;
 }
 
-int Manager::findMinEdge(const vector<Edge*>& path) {
-    int flow = numeric_limits<int>::max();
-    for (auto e: path) {
-        if(e->getFlow() < flow) {
-            flow = e->getFlow();
-        }
-    }
-    return flow;
-}
-vector<pair<string,int>> Manager::maxFlowFordFulkerson() {
+vector<pair<string,int>> Manager::maxFlow(vector<Edge*> (Manager::*explore_paths)(Vertex*,Vertex*)) {
     Vertex* superSource = addSuperSource();
     Vertex* superSink = addSuperSink();
 
@@ -413,7 +472,7 @@ vector<pair<string,int>> Manager::maxFlowFordFulkerson() {
     }
 
     vector<Edge*> path;
-    while(!(path = dfs_flow(superSource, superSink)).empty()) {
+    while(!(path = (this->*explore_paths)(superSource, superSink)).empty()) {
         const int newFlow = findMinEdge(path);
         for (const auto e : path) {
             if(e->getReverseEdge() == nullptr) {
@@ -456,154 +515,27 @@ vector<pair<string,int>> Manager::maxFlowFordFulkerson() {
     }
     return result;
 }
-
 vector<pair<string,int>> Manager::maxFlowEdmondsKarp() {
-    Vertex* superSource = addSuperSource();
-    Vertex* superSink = addSuperSink();
-
-
-    for (const auto v: graph->getVertexSet()) {
-        for (const auto e : v->getAdj()) {
-            e->setFlow(e->getCapacity());
-        }
-    }
-
-    vector<Edge*> path;
-    while(!(path = bfs_flow(superSource, superSink)).empty()) {
-        const int newFlow = findMinEdge(path);
-        for (const auto e : path) {
-            if(e->getReverseEdge() == nullptr) {
-                // Residual (BI)
-                const auto dest = findVertexInMap(Graph::getCode(e->getDest()));
-                bool value = false;
-                for (const auto i : dest->getAdj()) {
-                    if (Graph::getCode(i->getDest()) == Graph::getCode(e->getOrigin())) {
-                        i->setReverseEdge(e);
-                        e->setReverseEdge(i);
-                        value = true;
-                        break;
-                    }
-                }
-                if (!value) {
-                    const auto edg = graph->addEdge(e->getDest(),e->getOrigin(),e->getCapacity(),"residual");
-                    edg->setFlow(0);
-                    edg->setReverseEdge(e);
-                    e->setReverseEdge(edg);
-
-                }
-            }
-            e->setFlow(e->getFlow()-newFlow);
-            e->getReverseEdge()->setFlow(e->getReverseEdge()->getFlow() + newFlow);
-
-        }
-        path.clear();
-    }
-    // Final Calculation of paths
-    vector<pair<string,int>> result;
-    for (const auto n : graph->getVertexSet()) {
-        if (n->getType() == 'C' && Graph::getCode(n) != "SS") {
-            int sumFlow = 0;
-            for (const auto e : n->getIncoming()) {
-                if (e->getType() == "residual")
-                    sumFlow+= e->getFlow();
-            }
-            result.push_back(make_pair(Graph::getCode(n), sumFlow));
-        }
-    }
-    return result;
+    return maxFlow(&Manager::bfs_flow);
 }
 
-void Manager::resetGraph() {
-    Vertex* superSource = findVertexInMap("SR");
-    Vertex* superSink = findVertexInMap("SS");
-
-    vector<Edge*> deleteEdges; // Delete Residual Edges
-
-    for (const auto v : graph->getVertexSet()) {
-        v->setPath(nullptr);
-        v->setVisited(false);
-        v->setEnabled(true);
-        for (auto e : v->getAdj()) {
-            e->setFlow(0);
-            e->setReverseEdge(nullptr);
-            if (e->getType() == "residual")
-                deleteEdges.push_back(e);
-        }
-    }
-
-    for(const auto e : deleteEdges) {
-        graph->removeEdge(e);
-    }
-    if (superSource != nullptr) {
-        graph->removeVertex(superSource);
-        reservoirs.erase("SR");
-    }
-    if(superSink != nullptr) {
-        graph->removeVertex(superSink);
-        cities.erase("SS");
-    }
-
-
+vector<pair<string,int>> Manager::maxFlowFordFulkerson() {
+    return maxFlow(&Manager::dfs_flow);
 }
+/*---------------------Exercise 2.1 -----------------------*/
 
-void Manager::printFlowMetricsOneCity(vector<pair<string, int>>& flows, const string& code, const string& outputFile) {
+void Manager::printFlowMetrics(vector<pair<string, int>>& flows,vector<string>& chosenCities, const string& outputFile) {
     timespec start_real, end_real;
     timespec start_cpu, end_cpu;
 
     clock_gettime(CLOCK_REALTIME, &start_real);
     clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &start_cpu);
-
-    auto it = find_if(flows.begin(), flows.end(), [&](const auto& flow) {
-        return flow.first == code;
-    });
-    vector<pair<string,int>> results;
-
-    if (it != flows.end()) {
-        results.push_back(make_pair(it->first,it->second));
-        cout << "Flow for city with code " << code << ": " << it->second << endl;
-    }
-    else {
-        cerr << "Error calculating max flow" << endl;
-        exit(EXIT_FAILURE);
-    }
-
-    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end_cpu);
-    clock_gettime(CLOCK_REALTIME, &end_real);
-
-    double elapsed_real = (end_real.tv_sec - start_real.tv_sec) +
-                          (end_real.tv_nsec - start_real.tv_nsec) / 1e9;
-
-    double elapsed_cpu = (end_cpu.tv_sec - start_cpu.tv_sec) +
-                         (end_cpu.tv_nsec - start_cpu.tv_nsec) / 1e9;
-
-    cout << "Elapsed real time: " << elapsed_real << " seconds" << endl;
-    cout << "Elapsed CPU time: " << elapsed_cpu << " seconds" << endl;
-
-    string filename = outputFile;
-    createCsvFileFlows(filename,results);
-}
-
-void Manager::getEdmondsKarpOneCity(string& code) {
-    auto flows = maxFlowEdmondsKarp();
-    printFlowMetricsOneCity(flows, code, "../data/results/results_21_EK.csv");
-    resetGraph();
-}
-
-void Manager::getFordFulkersonOneCity(string& code) {
-    auto flows = maxFlowFordFulkerson();
-    printFlowMetricsOneCity(flows, code, "../data/results/results_21_FF.csv");
-    resetGraph();
-}
-
-void Manager::printFlowMetrics(vector<pair<string, int>>& flows, const string& outputFile) {
-    timespec start_real, end_real;
-    timespec start_cpu, end_cpu;
-
-    clock_gettime(CLOCK_REALTIME, &start_real);
-    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &start_cpu);
-
+    vector<pair<string, int>> results;
     for (const auto& flow : flows) {
-        cout << "Flow for city with code " << flow.first << ": " << flow.second << endl;
+        if (find(chosenCities.begin(),chosenCities.end(),flow.first) != chosenCities.end()) {
+            cout << "Flow for city with code " << flow.first << ": " << flow.second << endl;
+            results.push_back(make_pair(flow.first,flow.second));
+        }
     }
 
     clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end_cpu);
@@ -619,78 +551,105 @@ void Manager::printFlowMetrics(vector<pair<string, int>>& flows, const string& o
     cout << "Elapsed CPU time: " << elapsed_cpu << " seconds" << endl;
 
     string filename = outputFile;
-    createCsvFileFlows(filename, flows);
+    createCsvFileFlows(filename, results);
 }
+
+void Manager::getEdmondsKarpXCity(vector<string>& cities) {
+    auto flows = maxFlowEdmondsKarp();
+    printFlowMetrics(flows, cities, "../data/results/results_21_EK.csv");
+    resetGraph();
+}
+
+void Manager::getFordFulkersonXCity(vector<string>& cities) {
+    auto flows = maxFlowFordFulkerson();
+    printFlowMetrics(flows, cities, "../data/results/results_21_FF.csv");
+    resetGraph();
+}
+
 
 void Manager::getEdmondsKarpAllCities() {
     auto flows = maxFlowEdmondsKarp();
-    printFlowMetrics(flows, "../data/results/results_21_EK.csv");
+    vector<string> cities;
+    for (auto flow: flows) {
+        cities.push_back(flow.first);
+    }
+    printFlowMetrics(flows,cities, "../data/results/results_21_EK.csv");
     resetGraph();
 }
 
 void Manager::getFordFulkersonAllCities() {
     auto flows = maxFlowFordFulkerson();
-    printFlowMetrics(flows, "../data/results/results_21_FF.csv");
-    resetGraph();
-}
-
-
-
-bool cmpFlows(const pair<string, int>& a, const pair<string, int>& b) {
-    return a.second > b.second;
-}
-
-void Manager::printTopKFlows(vector<pair<string, int>>& flows, int k, const string& outputFile) {
-    sort(flows.begin(), flows.end(), cmpFlows);
-
-    vector<pair<string, int>> topK;
-    for (int i = 0; i < k && i < flows.size(); ++i) {
-        topK.push_back(flows[i]);
-        cout << "Top " << i + 1 << " : code -> " << flows[i].first << " flow -> " << flows[i].second << endl;
+    vector<string> cities;
+    for (auto flow: flows) {
+        cities.push_back(flow.first);
     }
-
-    createCsvFileFlows(outputFile, topK);
-}
-
-void Manager::topKFlowEdmondsKarpCities(const int k) {
-    auto flows = maxFlowEdmondsKarp();
-    printTopKFlows(flows, k, "../data/results/results_TopK_EK.csv");
+    printFlowMetrics(flows,cities,"../data/results/results_21_FF.csv");
     resetGraph();
 }
 
-void Manager::topKFlowFordFulkersonCities(const int k) {
-    auto flows = maxFlowFordFulkerson();
-    printTopKFlows(flows, k, "../data/results/results_TopK_FF.csv");
-    resetGraph();
-}
 
-void Manager::calculateFlowRates(const vector<pair<string, int>>& flows, const string& outputFile) {
-    double totalFlow = 0;
+/*---------------------Exercise 2.2 -----------------------*/
+
+vector<pair<string,bool>> Manager::canCityGetEnoughWater(vector<string>& codes,vector<pair<string,int>>& flows) {
+    vector<pair<string,bool>> results;
     for (const auto& flow : flows) {
-        totalFlow += static_cast<double>(flow.second);
+        if (find(codes.begin(),codes.end(),flow.first) != codes.end()) {
+            int demand = dynamic_cast<City*>(findVertexInMap(flow.first))->getDemand();
+            if (demand > flow.second) {
+                cout << ANSI_COLOR_RED << "The city with code " << flow.first << " can't get enough flow. flow : " << flow.second << " demand: " << demand << ANSI_COLOR_RESET << endl;
+                results.push_back(make_pair(flow.first,false));
+            }
+            else {
+                cout << "The city with code " << flow.first << " can get enough flow. flow : " << flow.second << " demand: " << demand << endl;
+                results.push_back(make_pair(flow.first,true));
+            }
+        }
     }
-
-    vector<pair<string, double>> rates;
-    for (const auto& flow : flows) {
-        double rate = static_cast<double>(flow.second) / totalFlow * 100;
-        rates.push_back({flow.first, rate});
-        cout << "City code: " << flow.first << " receives " << rate << "% of all the flow" << endl;
-    }
-
-    createCsvFileRates(outputFile, rates);
+    return results;
 }
 
-void Manager::flowRatePerCityEdmondsKarp() {
+void Manager::canCityXGetEnoughWaterEK(vector<string>& cities) {
     auto flows = maxFlowEdmondsKarp();
-    calculateFlowRates(flows, "../data/results/results_rateFlows_EK.csv");
+    auto results = canCityGetEnoughWater(cities,flows);
+    string path = "../data/results/results_cityXEnoughWaterEK.csv";
+    createCsvFileEnoughWater(path,results);
     resetGraph();
 }
 
-void Manager::flowRatePerCityFordFulkerson() {
+void Manager::canCityXGetEnoughWaterFF(vector<string>& cities) {
     auto flows = maxFlowFordFulkerson();
-    calculateFlowRates(flows, "../data/results/results_rateFlows_FF.csv");
+    auto results = canCityGetEnoughWater(cities,flows);
+    string path = "../data/results/results_cityXEnoughWaterFF.csv";
+    createCsvFileEnoughWater(path,results);
     resetGraph();
 }
+
+void Manager::canAllCitiesGetEnoughWaterEK() {
+    auto flows = maxFlowEdmondsKarp();
+    vector<string> cities;
+    for (auto n : getCities()) {
+        cities.push_back(n.first);
+    }
+    auto results = canCityGetEnoughWater(cities,flows);
+    string path = "../data/results/results_allCitiesEnoughWaterEK.csv";
+    createCsvFileEnoughWater(path,results);
+    resetGraph();
+}
+
+void Manager::canAllCitiesGetEnoughWaterFF() {
+    auto flows = maxFlowFordFulkerson();
+    vector<string> cities;
+    for (auto n : getCities()) {
+        cities.push_back(n.first);
+    }
+    auto results = canCityGetEnoughWater(cities,flows);
+    string path = "../data/results/results_allCitiesEnoughWaterFF.csv";
+    createCsvFileEnoughWater(path,results);
+    resetGraph();
+}
+
+
+/* -------------------Exercise 3.2----------------------------- */
 
 void Manager::disableStations(vector<string>& stations) {
     for(string code : stations) {
@@ -774,7 +733,6 @@ void Manager::disableEachOneEdmondsKarp() {
 }
 
 vector<pair<string, double>> Manager::shutdownStationsGettingDecreaseFlows(vector<string>& codes) {
-
     vector<pair<string, double>> percentageDecline;
     // Calculate total flow before removing the stations
     auto beforeFlows = maxFlowEdmondsKarp();
@@ -837,13 +795,71 @@ vector<pair<string, double>> Manager::shutdownStationsGettingDecreaseFlows(vecto
     return percentageDecline;
 }
 
-
-
 void Manager::disableSelectedOnes(vector<string>& stations) {
     vector<pair<string,double>> decreased = shutdownStationsGettingDecreaseFlows(stations);
     string path = "../data/results/results_decrease_after_disabled_stations.csv";
     createCsvFileRates(path,decreased);
 }
+
+/* -------------------Extras----------------------------- */
+
+bool cmpFlows(const pair<string, int>& a, const pair<string, int>& b) {
+    return a.second > b.second;
+}
+
+void Manager::printTopKFlows(vector<pair<string, int>>& flows, int k, const string& outputFile) {
+    sort(flows.begin(), flows.end(), cmpFlows);
+
+    vector<pair<string, int>> topK;
+    for (int i = 0; i < k && i < flows.size(); ++i) {
+        topK.push_back(flows[i]);
+        cout << "Top " << i + 1 << " : code -> " << flows[i].first << " flow -> " << flows[i].second << endl;
+    }
+
+    createCsvFileFlows(outputFile, topK);
+}
+
+void Manager::topKFlowEdmondsKarpCities(const int k) {
+    auto flows = maxFlowEdmondsKarp();
+    printTopKFlows(flows, k, "../data/results/results_TopK_EK.csv");
+    resetGraph();
+}
+
+void Manager::topKFlowFordFulkersonCities(const int k) {
+    auto flows = maxFlowFordFulkerson();
+    printTopKFlows(flows, k, "../data/results/results_TopK_FF.csv");
+    resetGraph();
+}
+
+void Manager::calculateFlowRates(const vector<pair<string, int>>& flows, const string& outputFile) {
+    double totalFlow = 0;
+    for (const auto& flow : flows) {
+        totalFlow += static_cast<double>(flow.second);
+    }
+
+    vector<pair<string, double>> rates;
+    for (const auto& flow : flows) {
+        double rate = static_cast<double>(flow.second) / totalFlow * 100;
+        rates.push_back({flow.first, rate});
+        cout << "City code: " << flow.first << " receives " << rate << "% of all the flow" << endl;
+    }
+
+    createCsvFileRates(outputFile, rates);
+}
+
+void Manager::flowRatePerCityEdmondsKarp() {
+    auto flows = maxFlowEdmondsKarp();
+    calculateFlowRates(flows, "../data/results/results_rateFlows_EK.csv");
+    resetGraph();
+}
+
+void Manager::flowRatePerCityFordFulkerson() {
+    auto flows = maxFlowFordFulkerson();
+    calculateFlowRates(flows, "../data/results/results_rateFlows_FF.csv");
+    resetGraph();
+}
+
+
 
 
 
