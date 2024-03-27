@@ -22,7 +22,6 @@ class Manager{
     unordered_map<string,Vertex*> reservoirs; // Identifier that maps a string to a Reservoir on the graph
     unordered_map<string,Vertex*> cities; // Identifier that maps a string to a City on the graph
     static int parseInt(const string& text);
-    Vertex* findVertexInMap(const string& identifier) const;
     Vertex* addSuperSink();
     Vertex* addSuperSource();
     vector<Edge*> bfs_flow(Vertex* superSource,Vertex* superSink);
@@ -34,13 +33,17 @@ class Manager{
     vector<pair<string,int>> maxFlowFordFulkerson();
     void createCsvFileFlows(const string& path,vector<pair<string,int>>& flows);
     void createCsvFileDisable(const string& path, vector<pair<string,bool>>& disable);
+    void createCsvFilePipesDisable(const string &path, vector<pair<Edge*, bool> > &disable);
     void createCsvFileEnoughWater(const string &path, vector<pair<string, bool>> &enoughWater);
     void createCsvFileRates(const string& path,vector<pair<string,double>>& rates);
     void calculateFlowRates(const vector<pair<string, int>>& flows, const string& outputFile);
     void printTopKFlows(vector<pair<string, int>>& flows, int k, const string& outputFile);
     void printFlowMetrics(vector<pair<string, int>>& flows,vector<string>& chosenCities, const string& outputFile);
     void disableStations(vector<string>& stations);
+    void disablePipes(vector<Edge*>& pipes);
+    bool shutdownPipes(vector<Edge*>& pipes);
     bool shutdownStations(vector<string>& codes);
+    vector<pair<string,double>> shutdownPipesWithDecrease(vector<Edge*>& pipes);
     vector<pair<string,bool>> canCityGetEnoughWater(vector<string>& codes,vector<pair<string,int>>& flows);
 public:
     Manager();
@@ -52,6 +55,8 @@ public:
     unordered_map<string,Vertex*> getStations() const; // get unordered map of stations
     unordered_map<string,Vertex*> getReservoirs() const; // get unordered map of reservoir
     unordered_map<string,Vertex*> getCities() const; // get unordered map of cities
+    Vertex* findVertexInMap(const string& identifier) const;
+    int getHowManyEdges() const;
 
     /* Exercise 2.1 */
     void getEdmondsKarpXCity(vector<string>& cities);
@@ -66,10 +71,16 @@ public:
     void canAllCitiesGetEnoughWaterFF();
 
 
-    /* Exercise 3.2 */
-    void disableEachOneEdmondsKarp();
-    void disableSelectedOnes(vector<string>& stations);
+    /* Exercise 3.2 */ // TODO : Ford fulkerson
+    void disableEachStationEdmondsKarp();
+    void disableSelectedStations(vector<string>& stations);
     vector<pair<string,double>> shutdownStationsGettingDecreaseFlows(vector<string>& stations);
+
+    /* Exercise 3.3 */
+
+    void disableEachPipeEdmondsKarp();
+    void disableSelectedPipesEdmondsKarp(vector<Edge*> &pipes);
+
 
     /* Extras */
     void topKFlowEdmondsKarpCities(int k);

@@ -16,6 +16,8 @@ public:
     void setReverseEdge(Edge* e);
     void setFlow(int flow);
     int getFlow() const;
+    void setEnabled(bool isEnabled);
+    bool isEnabled() const;
     Edge* getReverseEdge() const;
     int getCapacity() const;
     const string& getType() const;
@@ -28,6 +30,7 @@ protected:
     Vertex* dest;
     int capacity;
     string type;
+    bool enabled = true;
     Edge* reverse = nullptr; // Reverse is a new Edge, not a reference or copy.
     int flow = 0;
 };

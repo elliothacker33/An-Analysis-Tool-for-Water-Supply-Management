@@ -23,6 +23,12 @@ const string& Edge::getType() const {
     return type;
 }
 
+bool Edge::isEnabled() const {
+    return enabled;
+}
+void Edge::setEnabled(bool isEnabled) {
+    this->enabled = isEnabled;
+}
 
 Vertex* Edge::getDest() const{
     return this->dest;

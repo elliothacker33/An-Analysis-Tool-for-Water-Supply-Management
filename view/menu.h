@@ -16,16 +16,18 @@ class Menu{
     string removeLeadingTrailingSpaces(const string& input);
 
     /* Validity of input */
+    Edge* validPipe(string& code1, string& code2);
     bool validCity(string& code);
     bool validStation(string& code);
     bool validReservoir(string& code);
     bool isValidInterface(const string& type,string& code);
 
     /* Get input */
-    vector<string> getItems(const unordered_map<string,Vertex*>&, const string& itemType);
+    vector<string> getVertex(const unordered_map<string,Vertex*>&, const string& itemType);
     vector<string> getCities();
     vector<string> getStations();
     vector<string> getReservoirs();
+    vector<Edge*> getPipes();
     bool getNumberInput(int minInput, int maxInput, int* option);
 
     /* Get examples of input */
@@ -39,13 +41,20 @@ class Menu{
 public:
     ~Menu();
     explicit Menu(Manager* manager);
+
+    /* Generic Menus */
     void mainMenu();
     void exitMenu();
     void goBack();
+
+    /* Project menus */
     void algorithmMenu();
     void exercise21();
     void exercise22();
     void exercise32();
+    void exercise33();
+
+    /* Extra menu with other algorithms */
     void extraMenu();
 };
 

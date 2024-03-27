@@ -28,6 +28,13 @@ void Manager::resetManager() {
     reservoirs.clear();
     stations.clear();
 }
+int Manager::getHowManyEdges() const {
+    int sum = 0;
+    for (auto v : graph->getVertexSet()) {
+        sum+= v->getAdj().size();
+    }
+    return sum;
+}
 
 void Manager::resetGraph() {
     Vertex* superSource = findVertexInMap("SR");
@@ -41,6 +48,7 @@ void Manager::resetGraph() {
         v->setEnabled(true);
         for (auto e : v->getAdj()) {
             e->setFlow(0);
+            e->setEnabled(true);
             e->setReverseEdge(nullptr);
             if (e->getType() == "residual")
                 deleteEdges.push_back(e);
@@ -124,6 +132,27 @@ void Manager::createCsvFileDisable(const string &path, vector<pair<string, bool>
 
     outputCSV.close();
 }
+
+void Manager::createCsvFilePipesDisable(const string &path, vector<pair<Edge*, bool>> &disable) {
+    ofstream outputCSV(path);
+
+    if (!outputCSV.is_open()) {
+        cerr << "Error: Unable to open file." << endl;
+        exit(EXIT_FAILURE); // Exit the program with a custom error message
+    }
+
+    outputCSV << "Origin,Destination,CanBeDisabled" << endl;
+
+    for (const auto pipe : disable) {
+        if (pipe.second)
+            outputCSV << Graph::getCode(pipe.first->getOrigin()) << "," << Graph::getCode(pipe.first->getDest()) << "," << "yes" << endl;
+        else outputCSV << Graph::getCode(pipe.first->getOrigin()) << "," << Graph::getCode(pipe.first->getDest()) << "," << "no" << endl;
+    }
+
+    outputCSV.close();
+}
+
+
 
 void Manager::createCsvFileEnoughWater(const string &path, vector<pair<string, bool>>& enoughWater) {
     ofstream outputCSV(path);
@@ -412,7 +441,7 @@ bool Manager::dfs_helper(Vertex *currentVertex, Vertex *superSink, vector<Edge*>
     }
 
     for (const auto e : currentVertex->getAdj()) {
-        if (Vertex* dest = e->getDest(); !dest->isVisited() && dest->isEnabled() && e->getFlow() > 0) {
+        if (Vertex* dest = e->getDest(); !dest->isVisited() && dest->isEnabled() && e->isEnabled() && e->getFlow() > 0) {
             dest->setPath(e);
             if (dfs_helper(dest, superSink, path)) {
                 path.push_back(e);
@@ -442,7 +471,7 @@ vector<Edge*> Manager::bfs_flow(Vertex* superSource, Vertex* superSink) {
         const auto v = q.front();
         q.pop();
         for (const auto e : v->getAdj()) {
-            if(const auto dest = e->getDest();!dest->isVisited() && dest->isEnabled() && e->getFlow() > 0) {
+            if(const auto dest = e->getDest();!dest->isVisited() && dest->isEnabled() && e->isEnabled()  && e->getFlow() > 0) {
                 q.push(dest);
                 dest->setVisited(true);
                 dest->setPath(e);
@@ -719,7 +748,7 @@ bool Manager::shutdownStations(vector<string>& codes) {
     return false;
 }
 
-void Manager::disableEachOneEdmondsKarp() {
+void Manager::disableEachStationEdmondsKarp() {
     vector<pair<string,bool>> can_be_disabled;
     auto it = stations.begin();
     for (; it != stations.end(); ++it) {
@@ -795,13 +824,174 @@ vector<pair<string, double>> Manager::shutdownStationsGettingDecreaseFlows(vecto
     return percentageDecline;
 }
 
-void Manager::disableSelectedOnes(vector<string>& stations) {
+void Manager::disableSelectedStations(vector<string>& stations) {
     vector<pair<string,double>> decreased = shutdownStationsGettingDecreaseFlows(stations);
     string path = "../data/results/results_decrease_after_disabled_stations.csv";
     createCsvFileRates(path,decreased);
 }
+/* ------------------- Exercise 3.3 ----------------------------- */
 
-/* -------------------Extras----------------------------- */
+void Manager::disablePipes(vector<Edge*>& pipes) {
+    for(auto p: pipes) {
+        p->setEnabled(false);
+    }
+}
+
+bool Manager::shutdownPipes(vector<Edge*> &pipes) {
+      // Calculate total flow before removing the stations
+    auto beforeFlows = maxFlowEdmondsKarp();
+    int beforeTotalFlow = 0;
+    for (const auto& flow : beforeFlows)
+        beforeTotalFlow += flow.second;
+
+    // Reset graph and disable stations
+    resetGraph();
+    disablePipes(pipes);
+
+    // Calculate total flow after removing the stations
+    auto afterFlows = maxFlowEdmondsKarp();
+    int afterTotalFlow = 0;
+    for (const auto& flow : afterFlows)
+        afterTotalFlow += flow.second;
+
+    // Check if the network was affected
+    if (afterTotalFlow == beforeTotalFlow) {
+        cout << "The network was not affected after removing pipes: " << endl;
+        for (const auto pipe : pipes) {
+            cout << "Origin: " <<  Graph::getCode(pipe->getOrigin()) << " Destination: " << Graph::getCode(pipe->getDest()) << endl;
+        }
+        cout << endl;
+        resetGraph();
+        return true;
+    }
+
+    // Calculate the percentage decline for each city
+    vector<pair<string, double>> percentageDecline;
+    for (const auto& beforeFlow : beforeFlows) {
+        string cityCode = beforeFlow.first;
+        int beforeFlowAmount = beforeFlow.second;
+        double afterFlowAmount = 0;
+
+        // Find the flow amount after removing the stations
+        for (const auto& afterFlow : afterFlows) {
+            if (afterFlow.first == cityCode) {
+                afterFlowAmount = afterFlow.second;
+                break;
+            }
+        }
+
+        // Calculate the percentage decline in flow
+        double declinePercentage = (beforeFlowAmount - afterFlowAmount) / beforeFlowAmount * 100;
+        percentageDecline.push_back(make_pair(cityCode, declinePercentage));
+    }
+
+    cout << "Percentage decline in flow for each city after removing pipes: " << endl;
+    for (const auto pipe : pipes) {
+        cout << "Origin: " <<  Graph::getCode(pipe->getOrigin()) << " Destination: " << Graph::getCode(pipe->getDest()) << endl;
+
+    }
+    for (const auto& entry : percentageDecline) {
+        if(entry.second == 0.0) {
+            cout << "City code: " << entry.first << ", Percentage Decline: " << entry.second << "%" << endl;
+        }
+        else {
+            cout << "City code: " << entry.first << ", Percentage Decline: -" << entry.second << "%" << endl;
+        }
+    }
+    cout << endl;
+    resetGraph();
+
+    return false;
+}
+
+void Manager::disableEachPipeEdmondsKarp() {
+    vector<pair<Edge*,bool>> can_be_disabled;
+    for (auto v : graph->getVertexSet()) {
+        for (auto e : v->getAdj()) {
+            vector<Edge*> pipes;
+            pipes.push_back(e);
+            can_be_disabled.push_back(make_pair(e, shutdownPipes(pipes)));
+        }
+    }
+    string path = "../data/results/results_can_pipe_be_disabled.csv";
+    createCsvFilePipesDisable(path,can_be_disabled);
+}
+
+vector<pair<string,double>> Manager::shutdownPipesWithDecrease(vector<Edge*>& pipes) {
+
+    vector<pair<string, double>> percentageDecline;
+    // Calculate total flow before removing the stations
+    auto beforeFlows = maxFlowEdmondsKarp();
+    int beforeTotalFlow = 0;
+    for (const auto& flow : beforeFlows)
+        beforeTotalFlow += flow.second;
+
+    // Reset graph and disable stations
+    resetGraph();
+    disablePipes(pipes);
+
+    // Calculate total flow after removing the stations
+    auto afterFlows = maxFlowEdmondsKarp();
+    int afterTotalFlow = 0;
+    for (const auto& flow : afterFlows)
+        afterTotalFlow += flow.second;
+
+    // Check if the network was affected
+    if (afterTotalFlow == beforeTotalFlow) {
+        cout << "The network was not affected after removing pipes: " << endl;
+        for (auto pipe:pipes) {
+            cout << "Origin: " <<  Graph::getCode(pipe->getOrigin()) << " Destination: " << Graph::getCode(pipe->getDest()) << endl;
+        }
+        for (auto flow : afterFlows) {
+            percentageDecline.push_back(make_pair(flow.first,0.0));
+        }
+        cout << endl;
+        resetGraph();
+        return percentageDecline;
+    }
+
+    // Calculate the percentage decline for each city
+
+    for (const auto& beforeFlow : beforeFlows) {
+        string cityCode = beforeFlow.first;
+        int beforeFlowAmount = beforeFlow.second;
+        double afterFlowAmount = 0;
+
+        // Find the flow amount after removing the stations
+        for (const auto& afterFlow : afterFlows) {
+            if (afterFlow.first == cityCode) {
+                afterFlowAmount = afterFlow.second;
+                break;
+            }
+        }
+
+        // Calculate the percentage decline in flow
+        double declinePercentage = -(beforeFlowAmount - afterFlowAmount) / beforeFlowAmount * 100;
+        percentageDecline.push_back(make_pair(cityCode, declinePercentage));
+    }
+
+    cout << "Percentage decline in flow for each city after removing stations:" << endl;
+    for (const auto& entry : percentageDecline) {
+        if(entry.second == 0.0) {
+            cout << "City code: " << entry.first << ", Percentage Decline: " << entry.second << "%" << endl;
+        }
+        else {
+            cout << "City code: " << entry.first << ", Percentage Decline: " << entry.second << "%" << endl;
+        }
+    }
+    resetGraph();
+
+    return percentageDecline;
+}
+void Manager::disableSelectedPipesEdmondsKarp(vector<Edge*> &pipes) {
+    vector<pair<string,double>> decreased = shutdownPipesWithDecrease(pipes);
+    string path = "../data/results/results_decrease_rate_pipe_disabled.csv";
+    createCsvFileRates(path,decreased);
+
+}
+
+
+/* ------------------- Extras ----------------------------- */
 
 bool cmpFlows(const pair<string, int>& a, const pair<string, int>& b) {
     return a.second > b.second;

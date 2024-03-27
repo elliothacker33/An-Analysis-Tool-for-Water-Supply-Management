@@ -5,6 +5,7 @@
 #include <sstream>
 #include <bits/random.h>
 
+
 Menu::~Menu() {
     delete manager;
 }
@@ -22,6 +23,15 @@ string Menu::removeLeadingTrailingSpaces(const string& input) {
 }
 
 /* Valid input check for codes */
+Edge* Menu::validPipe(string& code1, string& code2) {
+    Vertex* v = manager->findVertexInMap(code1);
+    for(auto e : v->getAdj()) {
+        if (Graph::getCode(e->getDest()) == code2) {
+            return e;
+        }
+    }
+    return nullptr;
+}
 bool Menu::validCity(string &code) {
     auto cities = manager->getCities();
     const string trimmedInput = removeLeadingTrailingSpaces(code);
@@ -57,7 +67,7 @@ bool Menu::isValidInterface(const string& type,string& code) {
 
 /* Get Input functions */
 
-vector<string> Menu::getItems(const unordered_map<string,Vertex*>& existingItems, const string& itemType) {
+vector<string> Menu::getVertex(const unordered_map<string,Vertex*>& existingItems, const string& itemType) {
     vector<string> items;
     string input;
     while (items.size() != existingItems.size()) {
@@ -89,16 +99,74 @@ vector<string> Menu::getItems(const unordered_map<string,Vertex*>& existingItems
 }
 
 vector<string> Menu::getStations() {
-    return getItems(manager->getStations(), "station");
+    return getVertex(manager->getStations(), "station");
 }
 
 vector<string> Menu::getCities() {
-    return getItems(manager->getCities(), "city");
+    return getVertex(manager->getCities(), "city");
 }
 
 vector<string> Menu::getReservoirs() {
-    return getItems(manager->getReservoirs(),"reservoir");
+    return getVertex(manager->getReservoirs(),"reservoir");
 }
+
+vector<Edge *> Menu::getPipes() {
+    vector <Edge*> items;
+    vector<string> pipes;
+    string input;
+    string input2;
+    int size_of_edges = manager->getHowManyEdges();
+    while (items.size() != size_of_edges ) {
+
+        cout << "Enter a valid pipe code or press 'STOP' to stop inserting" << endl;
+        getExamplesInterface("city");
+        getExamplesInterface("station");
+        getExamplesInterface("reservoir");
+        cout << "Enter a valid origin vertex code: " << endl;
+        getline(cin, input);
+        transform(input.begin(), input.end(), input.begin(), ::toupper); // Convert input to uppercase
+
+        if (validCity(input) || validStation(input) || validReservoir(input)) {
+            getExamplesInterface("city");
+            getExamplesInterface("station");
+            getExamplesInterface("reservoir");
+            cout << "Enter a valid destination vertex code: " << endl;
+            getline(cin, input2);
+            transform(input2.begin(), input2.end(), input2.begin(), ::toupper); // Convert input to uppercase
+            if (validCity(input2) || validStation(input2) || validReservoir(input2)) {
+                if (Edge* edge =validPipe(input,input2); edge != nullptr) {
+                    bool alreadyExists = false;
+                    for (auto item : items) {
+                        if (edge == item) {
+                            alreadyExists = true;
+                            break;
+                        }
+                    }
+                    if (!alreadyExists) {
+                        items.push_back(edge);
+                    }
+                }
+                else {
+                    cout << "Invalid input. Please enter a valid pipe" << endl;
+                }
+            }
+            else if (input == "STOP") {
+                break;
+            }
+            else {
+                cout << "Invalid input. Please enter a valid vertex" << endl;
+            }
+        }
+        else if (input == "STOP") {
+            break;
+        }
+        else {
+            cout << "Invalid input. Please enter a valid vertex" << endl;
+        }
+    }
+    return items;
+}
+
 
 bool Menu::getNumberInput(int minInput, int maxInput, int *option) {
     cout << "Enter your choice ("<< minInput <<"-" << maxInput <<"): ";
@@ -172,6 +240,7 @@ void Menu::getExamplesInterface(const string& type) {
 void Menu::mainMenu() {
     // Display mainMenu
     int option = 0;
+
     do {
         cout << "------------------------------------------------" << endl;
         cout << "                Menu -> Main menu               " << endl;
@@ -242,6 +311,10 @@ void Menu::algorithmMenu() {
         case 5:
             menuStack.push(&Menu::algorithmMenu);
             exercise32();
+            break;
+        case 6:
+            menuStack.push(&Menu::algorithmMenu);
+            exercise33();
             break;
         case 7:
             menuStack.push(&Menu::algorithmMenu);
@@ -368,16 +441,15 @@ void Menu::exercise32() {
         cout << "              Menu -> Exercice 3.2              " << endl;
         cout << "                                                " << endl;
         cout << "             0. Go back                         " << endl;
-        cout << "             1. Disable each one (EK)           " << endl;
-        cout << "             2. Disable each one (FF)           " << endl;
-        cout << "             3. Disable selected ones (EK)      " << endl;
-        cout << "             4. Disable selected ones (FF)      " << endl;
+        cout << "             1. Disable each station (EK)       " << endl;
+        cout << "             2. Disable each station (FF)       " << endl;
+        cout << "             3. Disable selected stations (EK)  " << endl;
+        cout << "             4. Disable selected stations (FF)  " << endl;
         cout << "                                                " << endl;
         cout << "------------------------------------------------" << endl;
     }
     while(!getNumberInput(0,4,&option));
     string code;
-    bool validResult;
 
     switch(option) {
         case 0:
@@ -385,7 +457,7 @@ void Menu::exercise32() {
             break;
 
         case 1:
-            manager->disableEachOneEdmondsKarp();
+            manager->disableEachStationEdmondsKarp();
             exercise32();
             break;
         case 3:
@@ -394,9 +466,50 @@ void Menu::exercise32() {
                 cout << "No stations were selected" << endl;
             }
             else {
-                manager->disableSelectedOnes(stations);
+                manager->disableSelectedStations(stations);
             }
             exercise32();
+            break;
+    }
+}
+
+void Menu::exercise33() {
+    int option = 0;
+    do {
+        cout << "------------------------------------------------" << endl;
+        cout << "              Menu -> Exercice 3.2              " << endl;
+        cout << "                                                " << endl;
+        cout << "             0. Go back                         " << endl;
+        cout << "             1. Disable each pipe (EK)          " << endl;
+        cout << "             2. Disable each pipe (FF)          " << endl;
+        cout << "             3. Disable selected pipes (EK)     " << endl;
+        cout << "             4. Disable selected pipes (FF)     " << endl;
+        cout << "                                                " << endl;
+        cout << "------------------------------------------------" << endl;
+    }
+    while(!getNumberInput(0,4,&option));
+    string code;
+
+    switch(option) {
+        case 0:
+            goBack();
+        break;
+        case 1:
+            manager->disableEachPipeEdmondsKarp();
+            exercise33();
+            break;
+
+        case 3:
+
+            vector<Edge*> pipes = getPipes();
+            if (pipes.empty()) {
+                cout << "No pipes were selected" << endl;
+            }
+            else {
+                manager->disableSelectedPipesEdmondsKarp(pipes);
+            }
+
+            exercise33();
             break;
     }
 }
