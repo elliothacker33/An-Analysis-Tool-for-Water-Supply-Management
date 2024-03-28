@@ -1,0 +1,302 @@
+\hypertarget{classGraph}{}\doxysection{Graph Class Reference}
+\label{classGraph}\index{Graph@{Graph}}
+
+
+Represents a graph data structure.  
+
+
+
+
+{\ttfamily \#include $<$graph.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGraph_a902c5b3eacb66d60752525ab23297a95}{$\sim$\+Graph}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \mbox{\hyperlink{classGraph}{Graph}} class. This destructor cleans up the memory allocated for the graph\textquotesingle{}s vertices and edges. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ $>$ \mbox{\hyperlink{classGraph_a56576f9c2ee0afadc4b77dcbe3acb704}{get\+Vertex\+Set}} () const
+\begin{DoxyCompactList}\small\item\em Gets the vector of vertices in the graph. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classGraph_a395a8c42a2e8b8a1270118345a1bb7af}{get\+Number\+Of\+Vertexes}} () const
+\begin{DoxyCompactList}\small\item\em Gets the number of vertices in the graph. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classGraph_a59a5e666d2b7dc025704d7e6bce95c01}{add\+Vertex}} (\mbox{\hyperlink{classVertex}{Vertex}} $\ast$v)
+\begin{DoxyCompactList}\small\item\em Adds a vertex to the graph. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGraph_aa9bf892a442aa0f2922c36d861951cb6}{remove\+Vertex}} (\mbox{\hyperlink{classVertex}{Vertex}} $\ast$v)
+\begin{DoxyCompactList}\small\item\em Removes a vertex from the graph. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGraph_a36ddcc53ec9724d20e3d96880a07fee1}{remove\+Edge}} (const \mbox{\hyperlink{classEdge}{Edge}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Removes an edge from the graph. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classEdge}{Edge}} $\ast$ \mbox{\hyperlink{classGraph_a48d852ab742b4ed48dbe0ebdd4d83fc7}{add\+Edge}} (\mbox{\hyperlink{classVertex}{Vertex}} $\ast$orig, \mbox{\hyperlink{classVertex}{Vertex}} $\ast$dest, int capacity, const string \&type)
+\begin{DoxyCompactList}\small\item\em Adds an edge between two vertices in the graph. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static string \mbox{\hyperlink{classGraph_aad119988b83b9db7aa736a735fc60dab}{get\+Code}} (\mbox{\hyperlink{classVertex}{Vertex}} $\ast$v)
+\begin{DoxyCompactList}\small\item\em Gets the code associated with the specified vertex. \end{DoxyCompactList}\item 
+static string \mbox{\hyperlink{classGraph_a9ffed4966d89087cd2f98b32ad9527b4}{get\+Name}} (\mbox{\hyperlink{classVertex}{Vertex}} $\ast$v)
+\begin{DoxyCompactList}\small\item\em Gets the name associated with the specified vertex. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ $>$ \mbox{\hyperlink{classGraph_aca6d42fd8f616f20a7ac2d4bf5ff9645}{vertex\+Set}}
+\item 
+int \mbox{\hyperlink{classGraph_a81a76a428e630453ef019a15b9092967}{n}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a graph data structure. 
+
+This class represents a graph data structure consisting of vertices and edges. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classGraph_a902c5b3eacb66d60752525ab23297a95}\label{classGraph_a902c5b3eacb66d60752525ab23297a95}} 
+\index{Graph@{Graph}!````~Graph@{$\sim$Graph}}
+\index{````~Graph@{$\sim$Graph}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{$\sim$Graph()}{~Graph()}}
+{\footnotesize\ttfamily Graph\+::$\sim$\+Graph (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor for the \mbox{\hyperlink{classGraph}{Graph}} class. This destructor cleans up the memory allocated for the graph\textquotesingle{}s vertices and edges. 
+
+Destructor for the \mbox{\hyperlink{classGraph}{Graph}} class.
+
+This destructor cleans up the memory allocated for the vertices in the graph. It removes all vertices from the vertex set and deletes them. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classGraph_a48d852ab742b4ed48dbe0ebdd4d83fc7}\label{classGraph_a48d852ab742b4ed48dbe0ebdd4d83fc7}} 
+\index{Graph@{Graph}!addEdge@{addEdge}}
+\index{addEdge@{addEdge}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{addEdge()}{addEdge()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEdge}{Edge}} $\ast$ Graph\+::add\+Edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}} $\ast$}]{orig,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}} $\ast$}]{dest,  }\item[{int}]{capacity,  }\item[{const string \&}]{type }\end{DoxyParamCaption})}
+
+
+
+Adds an edge between two vertices in the graph. 
+
+Add edge to a vertex on the graph.
+
+Time Complexity -\/ O(\+E)
+
+
+\begin{DoxyParams}{Parameters}
+{\em orig} & Pointer to the origin vertex of the edge. \\
+\hline
+{\em dest} & Pointer to the destination vertex of the edge. \\
+\hline
+{\em capacity} & Capacity of the edge. \\
+\hline
+{\em type} & Type of the edge. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the added edge.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em orig} & Origin vertex \\
+\hline
+{\em dest} & Dest vertex \\
+\hline
+{\em capacity} & Capacity of edge \\
+\hline
+{\em type} & \char`\"{}normal\char`\"{} or \char`\"{}residual\char`\"{} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\mbox{\hyperlink{classEdge}{Edge}} pointer 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGraph_a59a5e666d2b7dc025704d7e6bce95c01}\label{classGraph_a59a5e666d2b7dc025704d7e6bce95c01}} 
+\index{Graph@{Graph}!addVertex@{addVertex}}
+\index{addVertex@{addVertex}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{addVertex()}{addVertex()}}
+{\footnotesize\ttfamily bool Graph\+::add\+Vertex (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}} $\ast$}]{v }\end{DoxyParamCaption})}
+
+
+
+Adds a vertex to the graph. 
+
+Add vertex This function adds a vertex to the graph.
+
+Time Complexity -\/ O(\+V)
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & Pointer to the vertex to be added. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the vertex was successfully added, false otherwise.
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Parameters}
+{\em v} & \mbox{\hyperlink{classVertex}{Vertex}} pointer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+If vertex was added returns true else false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGraph_aad119988b83b9db7aa736a735fc60dab}\label{classGraph_aad119988b83b9db7aa736a735fc60dab}} 
+\index{Graph@{Graph}!getCode@{getCode}}
+\index{getCode@{getCode}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{getCode()}{getCode()}}
+{\footnotesize\ttfamily string Graph\+::get\+Code (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}} $\ast$}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Gets the code associated with the specified vertex. 
+
+Gets the code associated with the given vertex.
+
+Time Complexity -\/ O(1)
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & Pointer to the vertex. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The code associated with the vertex.
+\end{DoxyReturn}
+This function retrieves the code associated with the given vertex. If the vertex is of type \mbox{\hyperlink{classCity}{City}}, \mbox{\hyperlink{classReservoir}{Reservoir}}, or \mbox{\hyperlink{classStation}{Station}}, it returns the respective code. Otherwise, it prints an error message and exits the program.
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & Pointer to the vertex. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The code associated with the vertex. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGraph_a9ffed4966d89087cd2f98b32ad9527b4}\label{classGraph_a9ffed4966d89087cd2f98b32ad9527b4}} 
+\index{Graph@{Graph}!getName@{getName}}
+\index{getName@{getName}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily string Graph\+::get\+Name (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}} $\ast$}]{v }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Gets the name associated with the specified vertex. 
+
+Gets the name associated with the given vertex.
+
+Time Complexity -\/ O(1)
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & Pointer to the vertex. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The name associated with the vertex.
+\end{DoxyReturn}
+This function retrieves the name associated with the given vertex. If the vertex is of type \mbox{\hyperlink{classCity}{City}} or \mbox{\hyperlink{classReservoir}{Reservoir}}, it returns the respective name. Otherwise, it prints an error message and exits the program.
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & Pointer to the vertex. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The name associated with the vertex. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGraph_a395a8c42a2e8b8a1270118345a1bb7af}\label{classGraph_a395a8c42a2e8b8a1270118345a1bb7af}} 
+\index{Graph@{Graph}!getNumberOfVertexes@{getNumberOfVertexes}}
+\index{getNumberOfVertexes@{getNumberOfVertexes}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{getNumberOfVertexes()}{getNumberOfVertexes()}}
+{\footnotesize\ttfamily int Graph\+::get\+Number\+Of\+Vertexes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the number of vertices in the graph. 
+
+Returns the number of vertexes.
+
+Time Complexity -\/ O(1)
+
+\begin{DoxyReturn}{Returns}
+The number of vertices in the graph.
+
+number of vertexes 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGraph_a56576f9c2ee0afadc4b77dcbe3acb704}\label{classGraph_a56576f9c2ee0afadc4b77dcbe3acb704}} 
+\index{Graph@{Graph}!getVertexSet@{getVertexSet}}
+\index{getVertexSet@{getVertexSet}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{getVertexSet()}{getVertexSet()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ $>$ Graph\+::get\+Vertex\+Set (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the vector of vertices in the graph. 
+
+Returns the set of vertexes.
+
+Time Complexity -\/ O(1)
+
+\begin{DoxyReturn}{Returns}
+Vector containing pointers to the vertices in the graph.
+
+vector of vertex pointers 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classGraph_a36ddcc53ec9724d20e3d96880a07fee1}\label{classGraph_a36ddcc53ec9724d20e3d96880a07fee1}} 
+\index{Graph@{Graph}!removeEdge@{removeEdge}}
+\index{removeEdge@{removeEdge}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{removeEdge()}{removeEdge()}}
+{\footnotesize\ttfamily void Graph\+::remove\+Edge (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classEdge}{Edge}} $\ast$}]{edge }\end{DoxyParamCaption})}
+
+
+
+Removes an edge from the graph. 
+
+Remove edge interface This functions removes a edge of the graph.
+
+Time Complexity -\/ O(\+E)
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Pointer to the edge to be removed.\\
+\hline
+{\em edge} & \mbox{\hyperlink{classEdge}{Edge}} pointer \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classGraph_aa9bf892a442aa0f2922c36d861951cb6}\label{classGraph_aa9bf892a442aa0f2922c36d861951cb6}} 
+\index{Graph@{Graph}!removeVertex@{removeVertex}}
+\index{removeVertex@{removeVertex}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{removeVertex()}{removeVertex()}}
+{\footnotesize\ttfamily void Graph\+::remove\+Vertex (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}} $\ast$}]{v }\end{DoxyParamCaption})}
+
+
+
+Removes a vertex from the graph. 
+
+Remove vertex This functions removes a vertex of the graph.
+
+Time Complexity -\/ O(\+V\+E)
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & Pointer to the vertex to be removed.\\
+\hline
+{\em v} & \mbox{\hyperlink{classVertex}{Vertex}} pointer \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classGraph_a81a76a428e630453ef019a15b9092967}\label{classGraph_a81a76a428e630453ef019a15b9092967}} 
+\index{Graph@{Graph}!n@{n}}
+\index{n@{n}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{n}{n}}
+{\footnotesize\ttfamily int Graph\+::n = 0\hspace{0.3cm}{\ttfamily [protected]}}
+
+The number of vertices in the graph. \mbox{\Hypertarget{classGraph_aca6d42fd8f616f20a7ac2d4bf5ff9645}\label{classGraph_aca6d42fd8f616f20a7ac2d4bf5ff9645}} 
+\index{Graph@{Graph}!vertexSet@{vertexSet}}
+\index{vertexSet@{vertexSet}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{vertexSet}{vertexSet}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{classVertex}{Vertex}}$\ast$$>$ Graph\+::vertex\+Set\hspace{0.3cm}{\ttfamily [protected]}}
+
+Vector containing pointers to the vertices of the graph. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+model/\+Graph/graph.\+h\item 
+model/\+Graph/\mbox{\hyperlink{graph_8cpp}{graph.\+cpp}}\end{DoxyCompactItemize}

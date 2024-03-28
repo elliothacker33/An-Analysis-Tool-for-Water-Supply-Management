@@ -111,6 +111,7 @@ void Manager::createCsvFileFlows(const string &path,vector<pair<string,int>>& fl
         outputCSV << Graph::getName(findVertexInMap(flow.first)) << "," << flow.first << "," << flow.second << endl;
     }
 
+    outputCSV.flush();
     outputCSV.close();
 }
 
@@ -130,6 +131,7 @@ void Manager::createCsvFileDisable(const string &path, vector<pair<string, bool>
         else outputCSV << station.first << "," << "no" << endl;
     }
 
+    outputCSV.flush();
     outputCSV.close();
 }
 
@@ -149,6 +151,7 @@ void Manager::createCsvFilePipesDisable(const string &path, vector<pair<Edge*, b
         else outputCSV << Graph::getCode(pipe.first->getOrigin()) << "," << Graph::getCode(pipe.first->getDest()) << "," << "no" << endl;
     }
 
+    outputCSV.flush();
     outputCSV.close();
 }
 
@@ -170,6 +173,7 @@ void Manager::createCsvFileEnoughWater(const string &path, vector<pair<string, b
         else outputCSV << city.first << "," << "no" << endl;
     }
 
+    outputCSV.flush();
     outputCSV.close();
 }
 
@@ -193,6 +197,7 @@ void Manager::createCsvFileRates(const string &path, vector<pair<string, double>
         }
     }
 
+    outputCSV.flush();
     outputCSV.close();
 }
 

@@ -1,0 +1,4 @@
+<map id="Vertex" name="Vertex">
+<area shape="rect" id="node1" title="Represents an abstract class that represents a Vertex." alt="" coords="10,5,74,32"/>
+<area shape="rect" id="node2" href="$classEdge.html" title="Represents a edge that connects two vertexes in a graph." alt="" coords="15,109,70,136"/>
+</map>
