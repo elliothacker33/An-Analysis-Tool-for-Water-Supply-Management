@@ -42,7 +42,7 @@ class Manager{
     void disableStations(vector<string>& stations);
     void disablePipes(vector<Edge*>& pipes);
     bool shutdownPipes(vector<Edge*>& pipes);
-    bool shutdownStations(vector<string>& codes);
+    bool shutdownStations(vector<pair<string,int>> (Manager::*function)(),vector<string>& codes);
     vector<pair<string,double>> shutdownPipesWithDecrease(vector<Edge*>& pipes);
     vector<pair<string,bool>> canCityGetEnoughWater(vector<string>& codes,vector<pair<string,int>>& flows);
 public:
@@ -73,8 +73,10 @@ public:
 
     /* Exercise 3.2 */ // TODO : Ford fulkerson
     void disableEachStationEdmondsKarp();
-    void disableSelectedStations(vector<string>& stations);
-    vector<pair<string,double>> shutdownStationsGettingDecreaseFlows(vector<string>& stations);
+    void disableEachStationFordFulkerson();
+    void disableSelectedStationsEdmondsKarp(vector<string>& stations);
+    void disableSelectedStationsFordFulkerson(vector<string>& stations);
+    vector<pair<string,double>> shutdownStationsGettingDecreaseFlows(vector<pair<string,int>> (Manager::*function)(),vector<string>& stations);
 
     /* Exercise 3.3 */
 

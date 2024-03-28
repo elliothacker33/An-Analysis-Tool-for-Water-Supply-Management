@@ -31,3 +31,11 @@
 1285	1366	1711567663260174212	projectDA	f3d829c74da7ebbd
 1	1084	1711567970392510857	CMakeFiles/projectDA.dir/view/menu.cpp.o	a3033cfc45b1c2f2
 1084	1172	1711567970480510941	projectDA	f3d829c74da7ebbd
+1	447	1711581318157611979	CMakeFiles/projectDA.dir/main.cpp.o	779bc9157347d9a7
+2	827	1711581318537612021	CMakeFiles/projectDA.dir/view/menu.cpp.o	a3033cfc45b1c2f2
+3	3671	1711581372709618535	CMakeFiles/projectDA.dir/controller/manager.cpp.o	291f6c333b7a9a86
+3672	3952	1711581372993618572	projectDA	f3d829c74da7ebbd
+2	440	1711582035741756074	CMakeFiles/projectDA.dir/main.cpp.o	779bc9157347d9a7
+2	847	1711582036145756178	CMakeFiles/projectDA.dir/view/menu.cpp.o	a3033cfc45b1c2f2
+2	1194	1711582036493756267	CMakeFiles/projectDA.dir/controller/manager.cpp.o	291f6c333b7a9a86
+1194	1267	1711582036565756286	projectDA	f3d829c74da7ebbd

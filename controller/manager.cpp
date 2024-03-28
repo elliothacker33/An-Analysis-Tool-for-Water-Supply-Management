@@ -686,9 +686,9 @@ void Manager::disableStations(vector<string>& stations) {
     }
 }
 
-bool Manager::shutdownStations(vector<string>& codes) {
+bool Manager::shutdownStations(vector<pair<string,int>> (Manager::*flowfunction)(),vector<string>& codes) {
     // Calculate total flow before removing the stations
-    auto beforeFlows = maxFlowEdmondsKarp();
+    auto beforeFlows = (this->*flowfunction)();
     int beforeTotalFlow = 0;
     for (const auto& flow : beforeFlows)
         beforeTotalFlow += flow.second;
@@ -698,7 +698,7 @@ bool Manager::shutdownStations(vector<string>& codes) {
     disableStations(codes);
 
     // Calculate total flow after removing the stations
-    auto afterFlows = maxFlowEdmondsKarp();
+    auto afterFlows = (this->*flowfunction)();
     int afterTotalFlow = 0;
     for (const auto& flow : afterFlows)
         afterTotalFlow += flow.second;
@@ -754,17 +754,28 @@ void Manager::disableEachStationEdmondsKarp() {
     for (; it != stations.end(); ++it) {
         vector<string> codes;
         codes.push_back(it->first);
-        can_be_disabled.push_back(make_pair(it->first, shutdownStations(codes)));
+        can_be_disabled.push_back(make_pair(it->first, shutdownStations(&Manager::maxFlowEdmondsKarp,codes)));
     }
     string path = "../data/results/results_disabled_stations.csv";
     createCsvFileDisable(path,can_be_disabled);
 
 }
+void Manager::disableEachStationFordFulkerson() {
+    vector<pair<string,bool>> can_be_disabled;
+    auto it = stations.begin();
+    for (; it != stations.end(); ++it) {
+        vector<string> codes;
+        codes.push_back(it->first);
+        can_be_disabled.push_back(make_pair(it->first, shutdownStations(&Manager::maxFlowFordFulkerson,codes)));
+    }
+    string path = "../data/results/results_disabled_stations.csv";
+    createCsvFileDisable(path,can_be_disabled);
+}
 
-vector<pair<string, double>> Manager::shutdownStationsGettingDecreaseFlows(vector<string>& codes) {
+vector<pair<string, double>> Manager::shutdownStationsGettingDecreaseFlows(vector<pair<string,int>> (Manager::*flowfunction)(),vector<string>& codes) {
     vector<pair<string, double>> percentageDecline;
     // Calculate total flow before removing the stations
-    auto beforeFlows = maxFlowEdmondsKarp();
+    auto beforeFlows = (this->*flowfunction)();
     int beforeTotalFlow = 0;
     for (const auto& flow : beforeFlows)
         beforeTotalFlow += flow.second;
@@ -774,7 +785,7 @@ vector<pair<string, double>> Manager::shutdownStationsGettingDecreaseFlows(vecto
     disableStations(codes);
 
     // Calculate total flow after removing the stations
-    auto afterFlows = maxFlowEdmondsKarp();
+    auto afterFlows = (this->*flowfunction)();
     int afterTotalFlow = 0;
     for (const auto& flow : afterFlows)
         afterTotalFlow += flow.second;
@@ -824,11 +835,18 @@ vector<pair<string, double>> Manager::shutdownStationsGettingDecreaseFlows(vecto
     return percentageDecline;
 }
 
-void Manager::disableSelectedStations(vector<string>& stations) {
-    vector<pair<string,double>> decreased = shutdownStationsGettingDecreaseFlows(stations);
-    string path = "../data/results/results_decrease_after_disabled_stations.csv";
+void Manager::disableSelectedStationsEdmondsKarp(vector<string>& stations) {
+    vector<pair<string,double>> decreased = shutdownStationsGettingDecreaseFlows(&Manager::maxFlowEdmondsKarp,stations);
+    string path = "../data/results/results_decrease_after_disabled_stationsEK.csv";
     createCsvFileRates(path,decreased);
 }
+
+void Manager::disableSelectedStationsFordFulkerson(vector<string> &stations) {
+    vector<pair<string,double>> decreased = shutdownStationsGettingDecreaseFlows(&Manager::maxFlowFordFulkerson,stations);
+    string path = "../data/results/results_decrease_after_disabled_stationsFF.csv";
+    createCsvFileRates(path,decreased);
+}
+
 /* ------------------- Exercise 3.3 ----------------------------- */
 
 void Manager::disablePipes(vector<Edge*>& pipes) {

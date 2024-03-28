@@ -450,26 +450,41 @@ void Menu::exercise32() {
     }
     while(!getNumberInput(0,4,&option));
     string code;
+    vector<string> stations;
 
     switch(option) {
         case 0:
             goBack();
             break;
-
         case 1:
             manager->disableEachStationEdmondsKarp();
             exercise32();
             break;
+        case 2:
+            manager->disableEachStationFordFulkerson();
+            exercise32();
+            break;
         case 3:
-            vector<string> stations = getStations();
+            stations = getStations();
             if (stations.empty()) {
                 cout << "No stations were selected" << endl;
             }
             else {
-                manager->disableSelectedStations(stations);
+                manager->disableSelectedStationsEdmondsKarp(stations);
             }
             exercise32();
             break;
+        case 4:
+            stations = getStations();
+            if (stations.empty()) {
+                cout << "No stations were selected" << endl;
+            }
+            else {
+                manager->disableSelectedStationsFordFulkerson(stations);
+            }
+            exercise32();
+            break;
+
     }
 }
 
