@@ -1,3 +1,9 @@
+/**
+* @file Edge.cpp
+* @brief This file contains the implementation of Edge.
+ */
+
+// Project headers
 #include "Edge.h"
 #include "Vertex.h"
 

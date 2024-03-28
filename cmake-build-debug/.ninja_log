@@ -1,13 +1,18 @@
 # ninja log v5
-1473	1550	1711659938496925917	projectDA	864bc617370f6337
+330	407	1711659974184944246	projectDA	53461e82da0df463
 1	766	1711563814161298681	CMakeFiles/projectDA.dir/model/Graph/graph.cpp.o	540f87d8f814e208
-1	16	1711659973776944038	build.ninja	ec26b53a37800274
+0	14	1711660248385080441	build.ninja	ec26b53a37800274
 2	660	1711659937608925458	CMakeFiles/projectDA.dir/model/Vertex.cpp.o	28a5cdb908b0c60d
 2	1009	1711659937956925638	CMakeFiles/projectDA.dir/view/menu.cpp.o	a3033cfc45b1c2f2
 1	1473	1711659938420925877	CMakeFiles/projectDA.dir/controller/manager.cpp.o	291f6c333b7a9a86
+1	330	1711659974108944207	CMakeFiles/projectDA.dir/model/Graph.cpp.o	651645e007b7daa5
 2	348	1711659937296925298	CMakeFiles/projectDA.dir/model/Edge.cpp.o	3544c47210ddf4af
 1	550	1711659937496925401	CMakeFiles/projectDA.dir/model/graph.cpp.o	ad50ad170aa4496d
 1	671	1711659937620925464	CMakeFiles/projectDA.dir/main.cpp.o	779bc9157347d9a7
-0	14	1711659973776944038	build.ninja	ec26b53a37800274
-1	330	1711659974108944207	CMakeFiles/projectDA.dir/model/Graph.cpp.o	651645e007b7daa5
-330	407	1711659974184944246	projectDA	53461e82da0df463
+1	379	1711661817529142443	CMakeFiles/projectDA.dir/model/Edge.cpp.o	3544c47210ddf4af
+1	427	1711661817577142453	CMakeFiles/projectDA.dir/model/Graph.cpp.o	651645e007b7daa5
+1	625	1711661817777142498	CMakeFiles/projectDA.dir/main.cpp.o	779bc9157347d9a7
+2	678	1711661817829142509	CMakeFiles/projectDA.dir/model/Vertex.cpp.o	28a5cdb908b0c60d
+1	1110	1711661818261142605	CMakeFiles/projectDA.dir/view/menu.cpp.o	a3033cfc45b1c2f2
+1	1277	1711661818425142642	CMakeFiles/projectDA.dir/controller/manager.cpp.o	291f6c333b7a9a86
+1277	1361	1711661818509142660	projectDA	53461e82da0df463

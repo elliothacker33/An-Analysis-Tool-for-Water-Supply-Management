@@ -3,6 +3,11 @@
 #define PROJECTDA_VERTEX_H
 
 using namespace std;
+/**
+* @file Vertex.h
+* @brief This file contains the Vertex header.
+ */
+
 // Standard Library Headers
 #include <string>    // Include for string manipulation functionalities
 #include <vector>    // Include for vector container functionalities

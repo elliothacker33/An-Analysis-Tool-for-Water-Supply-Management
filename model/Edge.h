@@ -1,6 +1,10 @@
 #ifndef PROJECTDA_EDGE_H
 #define PROJECTDA_EDGE_H
 
+/**
+* @file Edge.h
+* @brief This file contains the Edge header.
+ */
 
 using namespace std;
 // Standard Library Headers

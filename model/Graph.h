@@ -1,8 +1,13 @@
 #ifndef PROJECTDA_GRAPH_H
 #define PROJECTDA_GRAPH_H
 
-using namespace std;
+/**
+* @file Graph.h
+* @brief This file contains the Graph header.
+ */
 
+using namespace std;
+// Project headers
 #include "Edge.h" // Inculde edges
 #include "Vertex.h" // Include vertexes
 // Standard Library Headers

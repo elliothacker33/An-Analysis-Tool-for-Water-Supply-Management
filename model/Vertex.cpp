@@ -1,3 +1,9 @@
+/**
+* @file Vertex.cpp
+* @brief This file contains the implementation of Vertex.
+ */
+
+// Project headers
 #include "Vertex.h"
 #include "Edge.h"
 #include "Graph.h"

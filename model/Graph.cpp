@@ -1,7 +1,6 @@
-
 /**
- * @file graph.cpp
- * @brief This file contains the graph functions for the application.
+* @file Graph.cpp
+* @brief This file contains the implementation of Graph.
  */
 
 // Include the graph.h header file for graph-related functionality.
