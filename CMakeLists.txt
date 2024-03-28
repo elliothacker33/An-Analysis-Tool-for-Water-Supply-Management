@@ -4,14 +4,13 @@ project(projectDA)
 set(CMAKE_CXX_STANDARD 17)
 
 add_executable(projectDA main.cpp
-        "model/Custom Classes/Vertexes/reservoir.h"
-        model/Graph/graph.h
-        "model/Custom Classes/Vertexes/station.h"
-        "model/Custom Classes/Vertexes/city.h"
-        "model/Custom Classes/vertexParent.h"
-        "model/Custom Classes/element.h"
+        model/Graph.h
         controller/manager.h
         controller/manager.cpp
-        model/Graph/graph.cpp
+        model/Graph.cpp
         view/menu.h
-        view/menu.cpp)
+        view/menu.cpp
+        model/Edge.cpp
+        model/Edge.h
+        model/Vertex.cpp
+        model/Vertex.h)

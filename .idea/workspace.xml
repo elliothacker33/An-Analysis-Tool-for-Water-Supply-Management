@@ -21,27 +21,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a9e6c8e8-41a3-405a-b780-9cdc615cf2a9" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/model/Graph.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-7b0897563c9849f54ff7.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2024-03-25T10-16-06-0664.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-projectDA-Debug-249e33454cd891c6325a.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/projectDA.dir/controller/manager.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/projectDA.dir/controller/manager.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/projectDA.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/projectDA.dir/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/projectDA.dir/view/menu.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/projectDA.dir/view/menu.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/projectDA" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/projectDA" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controller/manager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/controller/manager.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/results/results_21_EK.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/results/results_21_FF.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/results/results_TopK_EK.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/results/results_TopK_FF.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/results/results_allCitiesEnoughWaterEK.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/results/results_allCitiesEnoughWaterFF.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/results/results_can_pipe_be_disabled.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/results/results_cityXEnoughWaterEK.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/results/results_decrease_after_disabled_stations.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/results/results_decrease_rate_pipe_disabled.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/results/results_disabled_stations.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/results/results_rateFlows_FF.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/Graph/graph.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/model/Graph/graph.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/Graph/graph.h" beforeDir="false" afterPath="$PROJECT_DIR$/model/Graph/graph.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/manager.h" beforeDir="false" afterPath="$PROJECT_DIR$/controller/manager.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/Graph/graph.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/model/graph.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/Graph/graph.h" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +56,12 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/controller/manager.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/main.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/model/Graph/graph.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/model/Edge.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/model/Edge.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/model/Graph.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/model/Vertex.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/model/Vertex.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/model/graph.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/view/menu.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file:///usr/include/c++/9/bits/stl_vector.h" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -102,7 +103,17 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="JavaScript Debug.index.html">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/model" />
+    </key>
+  </component>
+  <component name="RunManager" selected="CMake Application.projectDA">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="projectDA" type="CMakeListConfigurationType" factoryName="CMakeListConfigurationFactory" temporary="true">
       <method v="2" />
     </configuration>
@@ -127,8 +138,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JavaScript Debug.index.html" />
         <item itemvalue="CMake Debug.projectDA" />
+        <item itemvalue="JavaScript Debug.index.html" />
       </list>
     </recent_temporary>
   </component>
@@ -151,7 +162,7 @@
       <workItem from="1711390415035" duration="17273000" />
       <workItem from="1711450934432" duration="45572000" />
       <workItem from="1711623065132" duration="152000" />
-      <workItem from="1711647569495" duration="9737000" />
+      <workItem from="1711647569495" duration="11819000" />
     </task>
     <servers />
   </component>

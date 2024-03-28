@@ -1,15 +1,12 @@
-//
-// Created by up202205140 on 06/03/2024.
-//
 
 #ifndef PROJECTDA_MANAGER_H
 #define PROJECTDA_MANAGER_H
 #include <string>
 #include <unordered_map>
-#include "../model/Graph/graph.h"
+#include "../model/Graph.h"
 
 using namespace std;
-using FlowFunction = vector<Edge*> (*)(Vertex*, Vertex*);
+
 // For complexity Work -> unorderd map complexity is O(1) to access and O(n) to build. Improving factor by 1/n
 class Manager{
 

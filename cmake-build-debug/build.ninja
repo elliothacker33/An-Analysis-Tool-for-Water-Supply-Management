@@ -61,17 +61,29 @@ build CMakeFiles/projectDA.dir/controller/manager.cpp.o: CXX_COMPILER__projectDA
   OBJECT_DIR = CMakeFiles/projectDA.dir
   OBJECT_FILE_DIR = CMakeFiles/projectDA.dir/controller
 
-build CMakeFiles/projectDA.dir/model/Graph/graph.cpp.o: CXX_COMPILER__projectDA_unscanned_Debug /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/model/Graph/graph.cpp || cmake_object_order_depends_target_projectDA
-  DEP_FILE = CMakeFiles/projectDA.dir/model/Graph/graph.cpp.o.d
+build CMakeFiles/projectDA.dir/model/Graph.cpp.o: CXX_COMPILER__projectDA_unscanned_Debug /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/model/Graph.cpp || cmake_object_order_depends_target_projectDA
+  DEP_FILE = CMakeFiles/projectDA.dir/model/Graph.cpp.o.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles/projectDA.dir
-  OBJECT_FILE_DIR = CMakeFiles/projectDA.dir/model/Graph
+  OBJECT_FILE_DIR = CMakeFiles/projectDA.dir/model
 
 build CMakeFiles/projectDA.dir/view/menu.cpp.o: CXX_COMPILER__projectDA_unscanned_Debug /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/view/menu.cpp || cmake_object_order_depends_target_projectDA
   DEP_FILE = CMakeFiles/projectDA.dir/view/menu.cpp.o.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles/projectDA.dir
   OBJECT_FILE_DIR = CMakeFiles/projectDA.dir/view
+
+build CMakeFiles/projectDA.dir/model/Edge.cpp.o: CXX_COMPILER__projectDA_unscanned_Debug /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/model/Edge.cpp || cmake_object_order_depends_target_projectDA
+  DEP_FILE = CMakeFiles/projectDA.dir/model/Edge.cpp.o.d
+  FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/projectDA.dir
+  OBJECT_FILE_DIR = CMakeFiles/projectDA.dir/model
+
+build CMakeFiles/projectDA.dir/model/Vertex.cpp.o: CXX_COMPILER__projectDA_unscanned_Debug /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/model/Vertex.cpp || cmake_object_order_depends_target_projectDA
+  DEP_FILE = CMakeFiles/projectDA.dir/model/Vertex.cpp.o.d
+  FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/projectDA.dir
+  OBJECT_FILE_DIR = CMakeFiles/projectDA.dir/model
 
 
 # =============================================================================
@@ -81,7 +93,7 @@ build CMakeFiles/projectDA.dir/view/menu.cpp.o: CXX_COMPILER__projectDA_unscanne
 #############################################
 # Link the executable projectDA
 
-build projectDA: CXX_EXECUTABLE_LINKER__projectDA_Debug CMakeFiles/projectDA.dir/main.cpp.o CMakeFiles/projectDA.dir/controller/manager.cpp.o CMakeFiles/projectDA.dir/model/Graph/graph.cpp.o CMakeFiles/projectDA.dir/view/menu.cpp.o
+build projectDA: CXX_EXECUTABLE_LINKER__projectDA_Debug CMakeFiles/projectDA.dir/main.cpp.o CMakeFiles/projectDA.dir/controller/manager.cpp.o CMakeFiles/projectDA.dir/model/Graph.cpp.o CMakeFiles/projectDA.dir/view/menu.cpp.o CMakeFiles/projectDA.dir/model/Edge.cpp.o CMakeFiles/projectDA.dir/model/Vertex.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/projectDA.dir
   POST_BUILD = :
