@@ -38,9 +38,9 @@ class Manager{
     void printFlowMetrics(vector<pair<string, int>>& flows,vector<string>& chosenCities, const string& outputFile);
     void disableStations(vector<string>& stations);
     void disablePipes(vector<Edge*>& pipes);
-    bool shutdownPipes(vector<Edge*>& pipes);
+    bool shutdownPipes(vector<pair<string,int>> (Manager::*flowfunction)(),vector<Edge*>& pipes);
     bool shutdownStations(vector<pair<string,int>> (Manager::*function)(),vector<string>& codes);
-    vector<pair<string,double>> shutdownPipesWithDecrease(vector<Edge*>& pipes);
+    vector<pair<string,double>> shutdownPipesWithDecrease(vector<pair<string,int>> (Manager::*flowfunction)(),vector<Edge*>& pipes);
     vector<pair<string,bool>> canCityGetEnoughWater(vector<string>& codes,vector<pair<string,int>>& flows);
 public:
     Manager();
@@ -68,7 +68,7 @@ public:
     void canAllCitiesGetEnoughWaterFF();
 
 
-    /* Exercise 3.2 */ // TODO : Ford fulkerson
+    /* Exercise 3.2 */
     void disableEachStationEdmondsKarp();
     void disableEachStationFordFulkerson();
     void disableSelectedStationsEdmondsKarp(vector<string>& stations);
@@ -76,9 +76,10 @@ public:
     vector<pair<string,double>> shutdownStationsGettingDecreaseFlows(vector<pair<string,int>> (Manager::*function)(),vector<string>& stations);
 
     /* Exercise 3.3 */
-
     void disableEachPipeEdmondsKarp();
+    void disableEachPipeFordFulkerson();
     void disableSelectedPipesEdmondsKarp(vector<Edge*> &pipes);
+    void disableSelectedPipesFordFulkerson(vector<Edge*> &pipes);
 
 
     /* Extras */

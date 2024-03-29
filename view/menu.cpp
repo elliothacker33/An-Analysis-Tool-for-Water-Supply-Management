@@ -504,26 +504,39 @@ void Menu::exercise33() {
     }
     while(!getNumberInput(0,4,&option));
     string code;
-
+    vector<Edge*> pipes;
     switch(option) {
         case 0:
             goBack();
         break;
+
         case 1:
             manager->disableEachPipeEdmondsKarp();
             exercise33();
             break;
 
+        case 2:
+            manager->disableEachPipeFordFulkerson();
+            exercise33();
+            break;
         case 3:
-
-            vector<Edge*> pipes = getPipes();
+            pipes = getPipes();
             if (pipes.empty()) {
                 cout << "No pipes were selected" << endl;
             }
             else {
                 manager->disableSelectedPipesEdmondsKarp(pipes);
             }
-
+            exercise33();
+            break;
+        case 4:
+            pipes = getPipes();
+            if (pipes.empty()) {
+                cout << "No pipes were selected" << endl;
+            }
+            else {
+                manager->disableSelectedPipesFordFulkerson(pipes);
+            }
             exercise33();
             break;
     }

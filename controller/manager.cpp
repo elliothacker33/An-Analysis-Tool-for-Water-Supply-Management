@@ -860,9 +860,9 @@ void Manager::disablePipes(vector<Edge*>& pipes) {
     }
 }
 
-bool Manager::shutdownPipes(vector<Edge*> &pipes) {
+bool Manager::shutdownPipes(vector<pair<string,int>> (Manager::*flowfunction)(),vector<Edge*> &pipes) {
       // Calculate total flow before removing the stations
-    auto beforeFlows = maxFlowEdmondsKarp();
+    auto beforeFlows = (this->*flowfunction)();
     int beforeTotalFlow = 0;
     for (const auto& flow : beforeFlows)
         beforeTotalFlow += flow.second;
@@ -872,7 +872,7 @@ bool Manager::shutdownPipes(vector<Edge*> &pipes) {
     disablePipes(pipes);
 
     // Calculate total flow after removing the stations
-    auto afterFlows = maxFlowEdmondsKarp();
+    auto afterFlows = (this->*flowfunction)();
     int afterTotalFlow = 0;
     for (const auto& flow : afterFlows)
         afterTotalFlow += flow.second;
@@ -933,18 +933,32 @@ void Manager::disableEachPipeEdmondsKarp() {
         for (auto e : v->getAdj()) {
             vector<Edge*> pipes;
             pipes.push_back(e);
-            can_be_disabled.push_back(make_pair(e, shutdownPipes(pipes)));
+            can_be_disabled.push_back(make_pair(e, shutdownPipes(&Manager::maxFlowEdmondsKarp,pipes)));
         }
     }
-    string path = "../data/results/results_can_pipe_be_disabled.csv";
+    string path = "../data/results/results_can_pipe_be_disabled_EK.csv";
     createCsvFilePipesDisable(path,can_be_disabled);
 }
 
-vector<pair<string,double>> Manager::shutdownPipesWithDecrease(vector<Edge*>& pipes) {
+void Manager::disableEachPipeFordFulkerson() {
+    vector<pair<Edge*,bool>> can_be_disabled;
+    for (auto v : graph->getVertexSet()) {
+        for (auto e : v->getAdj()) {
+            vector<Edge*> pipes;
+            pipes.push_back(e);
+            can_be_disabled.push_back(make_pair(e, shutdownPipes(&Manager::maxFlowFordFulkerson,pipes)));
+        }
+    }
+    string path = "../data/results/results_can_pipe_be_disabled_FF.csv";
+    createCsvFilePipesDisable(path,can_be_disabled);
+}
+
+
+vector<pair<string,double>> Manager::shutdownPipesWithDecrease(vector<pair<string,int>> (Manager::*flowfunction)(),vector<Edge*>& pipes) {
 
     vector<pair<string, double>> percentageDecline;
     // Calculate total flow before removing the stations
-    auto beforeFlows = maxFlowEdmondsKarp();
+    auto beforeFlows = (this->*flowfunction)();
     int beforeTotalFlow = 0;
     for (const auto& flow : beforeFlows)
         beforeTotalFlow += flow.second;
@@ -954,7 +968,7 @@ vector<pair<string,double>> Manager::shutdownPipesWithDecrease(vector<Edge*>& pi
     disablePipes(pipes);
 
     // Calculate total flow after removing the stations
-    auto afterFlows = maxFlowEdmondsKarp();
+    auto afterFlows = (this->*flowfunction)();
     int afterTotalFlow = 0;
     for (const auto& flow : afterFlows)
         afterTotalFlow += flow.second;
@@ -1007,11 +1021,18 @@ vector<pair<string,double>> Manager::shutdownPipesWithDecrease(vector<Edge*>& pi
     return percentageDecline;
 }
 void Manager::disableSelectedPipesEdmondsKarp(vector<Edge*> &pipes) {
-    vector<pair<string,double>> decreased = shutdownPipesWithDecrease(pipes);
-    string path = "../data/results/results_decrease_rate_pipe_disabled.csv";
+    vector<pair<string,double>> decreased = shutdownPipesWithDecrease(&Manager::maxFlowEdmondsKarp,pipes);
+    string path = "../data/results/results_decrease_rate_pipe_disabled_EK.csv";
     createCsvFileRates(path,decreased);
 
 }
+
+void Manager::disableSelectedPipesFordFulkerson(vector<Edge *> &pipes) {
+    vector<pair<string,double>> decreased = shutdownPipesWithDecrease(&Manager::maxFlowFordFulkerson,pipes);
+    string path = "../data/results/results_decrease_rate_pipe_disabled_FF.csv";
+    createCsvFileRates(path,decreased);
+}
+
 
 
 /* ------------------- Extras ----------------------------- */
