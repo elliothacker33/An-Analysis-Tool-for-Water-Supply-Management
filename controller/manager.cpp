@@ -682,6 +682,124 @@ void Manager::canAllCitiesGetEnoughWaterFF() {
     resetGraph();
 }
 
+/* -------------------Exercise 3.1----------------------------- */
+
+void Manager::disableReservoirs(vector<string> &reservoirs) {
+    for(string code : reservoirs) {
+        findVertexInMap(code)->setEnabled(false);
+    }
+}
+
+void Manager::dfs_disable(Vertex* reservoir) {
+    reservoir->setVisited(true);
+    for (auto e : reservoir->getAdj()) {
+        if (Vertex* dest = e->getDest(); !dest->isVisited() && e->getFlow() > 0) {
+            e->setFlow(0);
+        }
+    }
+}
+
+
+vector<pair<string,int>> Manager::graphChangeFlowsAfterReservoirsDisabled(vector<string> &reservoirs) {
+
+    for (auto v : graph->getVertexSet()) {
+        v->setVisited(false);
+    }
+
+    // Change graph doing a dfs visit
+    for (auto r : reservoirs) {
+        Vertex* v = findVertexInMap(r);
+        dfs_disable(v);
+    }
+
+    // Calculate Results of flow.
+}
+
+bool Manager::shutdownReservoirs(vector<pair<string, int>> (Manager::*flowfunction)(), vector<string> &reservoirs) {
+    auto beforeFlows = (this->*flowfunction)();
+
+    // Calculate flow before disable
+    int beforeTotalFlow = 0;
+    for (const auto& flow : beforeFlows)
+        beforeTotalFlow += flow.second;
+
+    // Calculate total demand
+    int totalDemand = 0;
+    for (const auto& v: getCities()) {
+        totalDemand+=dynamic_cast<City*>(v.second)->getDemand();
+    }
+    vector<pair<string,int>> afterFlows;
+    if (beforeTotalFlow <= totalDemand) {
+        afterFlows = graphChangeFlowsAfterReservoirsDisabled(reservoirs);
+    }
+    else {
+        resetGraph();
+        disableReservoirs(reservoirs);
+        afterFlows = (this->*flowfunction)();
+    }
+
+    // Calculate flow after disable
+    int afterTotalFlow = 0;
+    for (const auto& flow : afterFlows)
+        afterTotalFlow += flow.second;
+
+    // Check if the network was affected
+    if (afterTotalFlow == beforeTotalFlow) {
+        cout << "The network was not affected after removing: ";
+        for (const string& code : reservoirs) {
+            cout << code << ", ";
+        }
+        cout << endl;
+        resetGraph();
+        return true;
+    }
+
+    // Calculate the percentage decline for each city
+    vector<pair<string, double>> percentageDecline;
+    for (const auto& beforeFlow : beforeFlows) {
+        string cityCode = beforeFlow.first;
+        int beforeFlowAmount = beforeFlow.second;
+        double afterFlowAmount = 0;
+
+        // Find the flow amount after removing the stations
+        for (const auto& afterFlow : afterFlows) {
+            if (afterFlow.first == cityCode) {
+                afterFlowAmount = afterFlow.second;
+                break;
+            }
+        }
+
+        // Calculate the percentage decline in flow
+        double declinePercentage = (beforeFlowAmount - afterFlowAmount) / beforeFlowAmount * 100;
+        percentageDecline.push_back(make_pair(cityCode, declinePercentage));
+    }
+
+    cout << "Percentage decline in flow for each city after removing stations:" << endl;
+    for (const auto& entry : percentageDecline) {
+        if(entry.second == 0.0) {
+            cout << "City code: " << entry.first << ", Percentage Decline: " << entry.second << "%" << endl;
+        }
+        else {
+            cout << "City code: " << entry.first << ", Percentage Decline: -" << entry.second << "%" << endl;
+        }
+    }
+    resetGraph();
+    return false;
+
+}
+
+void Manager::disableEachReservoirEdmondsKarp() {
+    vector<pair<string,bool>> can_be_disabled;
+    auto it = reservoirs.begin();
+    for (; it != reservoirs.end(); ++it) {
+        vector<string> codes;
+        codes.push_back(it->first);
+        can_be_disabled.push_back(make_pair(it->first, shutdownReservoirs(&Manager::maxFlowEdmondsKarp,codes)));
+    }
+    string path = "../data/results/results_disabled_reservoirs_EK.csv";
+    createCsvFileDisable(path,can_be_disabled);
+}
+
 
 /* -------------------Exercise 3.2----------------------------- */
 
@@ -761,7 +879,7 @@ void Manager::disableEachStationEdmondsKarp() {
         codes.push_back(it->first);
         can_be_disabled.push_back(make_pair(it->first, shutdownStations(&Manager::maxFlowEdmondsKarp,codes)));
     }
-    string path = "../data/results/results_disabled_stations.csv";
+    string path = "../data/results/results_disabled_stations_EK.csv";
     createCsvFileDisable(path,can_be_disabled);
 
 }
@@ -773,7 +891,7 @@ void Manager::disableEachStationFordFulkerson() {
         codes.push_back(it->first);
         can_be_disabled.push_back(make_pair(it->first, shutdownStations(&Manager::maxFlowFordFulkerson,codes)));
     }
-    string path = "../data/results/results_disabled_stations.csv";
+    string path = "../data/results/results_disabled_stations_FF.csv";
     createCsvFileDisable(path,can_be_disabled);
 }
 

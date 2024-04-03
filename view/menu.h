@@ -51,6 +51,8 @@ public:
     void algorithmMenu();
     void exercise21();
     void exercise22();
+    void exercise23();
+    void exercise31();
     void exercise32();
     void exercise33();
 

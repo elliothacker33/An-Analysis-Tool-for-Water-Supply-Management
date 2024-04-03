@@ -433,7 +433,74 @@ void Menu::exercise22() {
             break;
     }
 }
+void Menu::exercise23(){
+    int option = 0;
+    do {
+        cout << "------------------------------------------------" << endl;
+        cout << "              Menu -> Exercice 2.3              " << endl;
+        cout << "                                                " << endl;
+        cout << "          0. Go back                            " << endl;
+        cout << "          1. Better distribution of water (EK)  " << endl;
+        cout << "          2. Better distribution of water (FF)  " << endl;
+        cout << "------------------------------------------------" << endl;
+    }
+    while(0,2,&option);
 
+    switch()
+}
+void Menu::exercise31() {
+    int option = 0;
+    do {
+        cout << "------------------------------------------------" << endl;
+        cout << "              Menu -> Exercice 3.1              " << endl;
+        cout << "                                                " << endl;
+        cout << "             0. Go back                         " << endl;
+        cout << "             1. Disable each resevoir (EK)       " << endl;
+        cout << "             2. Disable each resevoir (FF)       " << endl;
+        cout << "             3. Disable selected reservoirs (EK)  " << endl;
+        cout << "             4. Disable selected reservoirs (FF)  " << endl;
+        cout << "                                                " << endl;
+        cout << "------------------------------------------------" << endl;
+    }
+    while(!getNumberInput(0,4,&option));
+    string code;
+    vector<string> reservoirs;
+
+    switch(option) {
+        case 0:
+            goBack();
+            break;
+        case 1:
+            manager->disableEachReservoirEdmondsKarp();
+            exercise31();
+        break;
+        case 2:
+            manager->disableEachStationFordFulkerson();
+            exercise31();
+        break;
+        case 3:
+            reservoirs = getReservoirs();
+            if (reservoirs.empty()) {
+                cout << "No reservoirs were selected" << endl;
+            }
+            else {
+                manager->disableSelectedStationsEdmondsKarp(reservoirs);
+            }
+            exercise31();
+            break;
+        case 4:
+            reservoirs = getReservoirs();
+            if (reservoirs.empty()) {
+                cout << "No reservoirs were selected" << endl;
+            }
+            else {
+                manager->disableSelectedStationsFordFulkerson(reservoirs);
+            }
+            exercise31();
+            break;
+
+    }
+}
 void Menu::exercise32() {
     int option = 0;
     do {

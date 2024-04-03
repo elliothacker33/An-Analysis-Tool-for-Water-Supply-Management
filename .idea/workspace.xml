@@ -22,6 +22,46 @@
   <component name="ChangeListManager">
     <list default="true" id="a9e6c8e8-41a3-405a-b780-9cdc615cf2a9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cache-v2-1982ef1fbbe5aa5ecae7.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-49dc6db2be13df940ebb.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2024-03-28T21-10-48-0394.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.28.1/CMakeCCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.28.1/CMakeCXXCompiler.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.28.1/CMakeDetermineCompilerABI_C.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.28.1/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.28.1/CMakeSystem.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.28.1/CompilerIdC/CMakeCCompilerId.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.28.1/CompilerIdC/a.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.28.1/CompilerIdCXX/CMakeCXXCompilerId.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/3.28.1/CompilerIdCXX/a.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeConfigureLog.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeConfigureLog.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/projectDA.dir/controller/manager.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/projectDA.dir/controller/manager.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/projectDA.dir/main.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/projectDA.dir/main.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/projectDA.dir/model/Graph/graph.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/projectDA.dir/model/graph.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/projectDA.dir/view/menu.cpp.o" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rules.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/rules.ninja" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/manager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/controller/manager.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controller/manager.h" beforeDir="false" afterPath="$PROJECT_DIR$/controller/manager.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classManager-members.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classManager-members.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/classManager.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/classManager.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/manager_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/manager_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/Edge_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/Edge_8cpp.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/Edge_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/Edge_8h.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/Graph_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/Graph_8cpp.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/Graph_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/Graph_8h.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/Vertex_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/Vertex_8cpp.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/Vertex_8h.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/Vertex_8h.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/classManager.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/classManager.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/menu.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/view/menu.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/menu.h" beforeDir="false" afterPath="$PROJECT_DIR$/view/menu.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +89,9 @@
     <setting file="file://$PROJECT_DIR$/view/menu.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file:///usr/include/c++/9/bits/stl_vector.h" root0="FORCE_HIGHLIGHTING" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
     <option name="majorVersion" value="2024" />
@@ -68,6 +111,7 @@
     &quot;CMake Application.projectDA.executor&quot;: &quot;Run&quot;,
     &quot;CMake Debug.projectDA.executor&quot;: &quot;Debug&quot;,
     &quot;JavaScript Debug.index.html.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
@@ -75,7 +119,7 @@
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;Tomas&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/tomas/Documentos/3_2semestre/algoritmos/praticas/da2324_p03_student&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -110,15 +154,15 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="CMake Debug.projectDA" />
       <item itemvalue="CMake Application.Unnamed" />
       <item itemvalue="CMake Application.projectDA" />
+      <item itemvalue="CMake Debug.projectDA" />
       <item itemvalue="JavaScript Debug.index.html" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="CMake Debug.projectDA" />
         <item itemvalue="JavaScript Debug.index.html" />
+        <item itemvalue="CMake Debug.projectDA" />
       </list>
     </recent_temporary>
   </component>
@@ -143,7 +187,11 @@
       <workItem from="1711623065132" duration="152000" />
       <workItem from="1711647569495" duration="12265000" />
       <workItem from="1711661489230" duration="569000" />
-      <workItem from="1711713654038" duration="2000" />
+      <workItem from="1711713654038" duration="8551000" />
+      <workItem from="1712081309032" duration="8000" />
+      <workItem from="1712081391131" duration="32000" />
+      <workItem from="1712130988958" duration="136000" />
+      <workItem from="1712131133039" duration="346000" />
     </task>
     <servers />
   </component>

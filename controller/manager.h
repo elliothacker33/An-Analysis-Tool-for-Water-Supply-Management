@@ -38,8 +38,12 @@ class Manager{
     void printFlowMetrics(vector<pair<string, int>>& flows,vector<string>& chosenCities, const string& outputFile);
     void disableStations(vector<string>& stations);
     void disablePipes(vector<Edge*>& pipes);
+    void disableReservoirs(vector<string>& reservoirs);
+    void dfs_disable(Vertex* reservoir);
+    bool shutdownReservoirs(vector<pair<string,int>> (Manager::*flowfunction)(),vector<string>& reservoirs);
     bool shutdownPipes(vector<pair<string,int>> (Manager::*flowfunction)(),vector<Edge*>& pipes);
-    bool shutdownStations(vector<pair<string,int>> (Manager::*function)(),vector<string>& codes);
+    bool shutdownStations(vector<pair<string,int>> (Manager::*function)(),vector<string>& stations);
+    vector<pair<string,int>> graphChangeFlowsAfterReservoirsDisabled(vector<string>& reservoirs);
     vector<pair<string,double>> shutdownPipesWithDecrease(vector<pair<string,int>> (Manager::*flowfunction)(),vector<Edge*>& pipes);
     vector<pair<string,bool>> canCityGetEnoughWater(vector<string>& codes,vector<pair<string,int>>& flows);
 public:
@@ -67,6 +71,8 @@ public:
     void canAllCitiesGetEnoughWaterEK();
     void canAllCitiesGetEnoughWaterFF();
 
+    /* Exercise 3.1 */
+    void disableEachReservoirEdmondsKarp();
 
     /* Exercise 3.2 */
     void disableEachStationEdmondsKarp();

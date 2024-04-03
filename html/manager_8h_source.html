@@ -109,9 +109,9 @@ $(function() {
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">void</span> printFlowMetrics(vector&lt;pair&lt;string, int&gt;&gt;&amp; flows,vector&lt;string&gt;&amp; chosenCities, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; outputFile);</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> disableStations(vector&lt;string&gt;&amp; stations);</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">void</span> disablePipes(vector&lt;Edge*&gt;&amp; pipes);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">bool</span> shutdownPipes(vector&lt;Edge*&gt;&amp; pipes);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">bool</span> shutdownPipes(vector&lt;pair&lt;string,int&gt;&gt; (<a class="code" href="classManager.html">Manager</a>::*flowfunction)(),vector&lt;Edge*&gt;&amp; pipes);</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">bool</span> shutdownStations(vector&lt;pair&lt;string,int&gt;&gt; (<a class="code" href="classManager.html">Manager</a>::*<span class="keyword">function</span>)(),vector&lt;string&gt;&amp; codes);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    vector&lt;pair&lt;string,double&gt;&gt; shutdownPipesWithDecrease(vector&lt;Edge*&gt;&amp; pipes);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    vector&lt;pair&lt;string,double&gt;&gt; shutdownPipesWithDecrease(vector&lt;pair&lt;string,int&gt;&gt; (<a class="code" href="classManager.html">Manager</a>::*flowfunction)(),vector&lt;Edge*&gt;&amp; pipes);</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    vector&lt;pair&lt;string,bool&gt;&gt; canCityGetEnoughWater(vector&lt;string&gt;&amp; codes,vector&lt;pair&lt;string,int&gt;&gt;&amp; flows);</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <a class="code" href="classManager.html">Manager</a>();</div>
@@ -139,7 +139,7 @@ $(function() {
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">void</span> canAllCitiesGetEnoughWaterFF();</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="comment">/* Exercise 3.2 */</span> <span class="comment">// TODO : Ford fulkerson</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="comment">/* Exercise 3.2 */</span></div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keywordtype">void</span> disableEachStationEdmondsKarp();</div>
 <div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keywordtype">void</span> disableEachStationFordFulkerson();</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">void</span> disableSelectedStationsEdmondsKarp(vector&lt;string&gt;&amp; stations);</div>
@@ -147,21 +147,22 @@ $(function() {
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    vector&lt;pair&lt;string,double&gt;&gt; shutdownStationsGettingDecreaseFlows(vector&lt;pair&lt;string,int&gt;&gt; (<a class="code" href="classManager.html">Manager</a>::*<span class="keyword">function</span>)(),vector&lt;string&gt;&amp; stations);</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="comment">/* Exercise 3.3 */</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">void</span> disableEachPipeEdmondsKarp();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordtype">void</span> disableEachPipeEdmondsKarp();</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">void</span> disableEachPipeFordFulkerson();</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">void</span> disableSelectedPipesEdmondsKarp(vector&lt;Edge*&gt; &amp;pipes);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">void</span> disableSelectedPipesFordFulkerson(vector&lt;Edge*&gt; &amp;pipes);</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="comment">/* Extras */</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keywordtype">void</span> topKFlowEdmondsKarpCities(<span class="keywordtype">int</span> k);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">void</span> topKFlowFordFulkersonCities(<span class="keywordtype">int</span> k);</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">void</span> flowRatePerCityEdmondsKarp();</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">void</span> flowRatePerCityFordFulkerson();</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;};</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="comment">/* Extras */</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">void</span> topKFlowEdmondsKarpCities(<span class="keywordtype">int</span> k);</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">void</span> topKFlowFordFulkersonCities(<span class="keywordtype">int</span> k);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordtype">void</span> flowRatePerCityEdmondsKarp();</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">void</span> flowRatePerCityFordFulkerson();</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;};</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">#endif //PROJECTDA_MANAGER_H</span></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor">#endif //PROJECTDA_MANAGER_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassManager_html"><div class="ttname"><a href="classManager.html">Manager</a></div><div class="ttdef"><b>Definition:</b> manager.h:11</div></div>
 <div class="ttc" id="aclassGraph_html"><div class="ttname"><a href="classGraph.html">Graph</a></div><div class="ttdoc">Represents a graph data structure.</div><div class="ttdef"><b>Definition:</b> Graph.h:25</div></div>

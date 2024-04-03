@@ -79,7 +79,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "28"
+			"value" : "27"
 		},
 		{
 			"name" : "CMAKE_CACHE_PATCH_VERSION",
@@ -91,7 +91,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "1"
+			"value" : "8"
 		},
 		{
 			"name" : "CMAKE_COLOR_DIAGNOSTICS",
@@ -115,7 +115,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/tomas/.local/share/JetBrains/Toolbox/apps/CLion-Nova/ch-0/241.14024.27/bin/cmake/linux/x64/bin/cmake"
+			"value" : "/home/tomas/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/233.14475.31/bin/cmake/linux/x64/bin/cmake"
 		},
 		{
 			"name" : "CMAKE_CPACK_COMMAND",
@@ -127,7 +127,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/tomas/.local/share/JetBrains/Toolbox/apps/CLion-Nova/ch-0/241.14024.27/bin/cmake/linux/x64/bin/cpack"
+			"value" : "/home/tomas/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/233.14475.31/bin/cmake/linux/x64/bin/cpack"
 		},
 		{
 			"name" : "CMAKE_CTEST_COMMAND",
@@ -139,7 +139,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/tomas/.local/share/JetBrains/Toolbox/apps/CLion-Nova/ch-0/241.14024.27/bin/cmake/linux/x64/bin/ctest"
+			"value" : "/home/tomas/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/233.14475.31/bin/cmake/linux/x64/bin/ctest"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER",
@@ -655,7 +655,7 @@
 				}
 			],
 			"type" : "UNINITIALIZED",
-			"value" : "/home/tomas/.local/share/JetBrains/Toolbox/apps/CLion-Nova/ch-0/241.14024.27/bin/ninja/linux/x64/ninja"
+			"value" : "/home/tomas/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/233.14475.31/bin/ninja/linux/x64/ninja"
 		},
 		{
 			"name" : "CMAKE_MODULE_LINKER_FLAGS",
@@ -887,7 +887,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/tomas/.local/share/JetBrains/Toolbox/apps/CLion-Nova/ch-0/241.14024.27/bin/cmake/linux/x64/share/cmake-3.28"
+			"value" : "/home/tomas/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/233.14475.31/bin/cmake/linux/x64/share/cmake-3.27"
 		},
 		{
 			"name" : "CMAKE_SHARED_LINKER_FLAGS",
