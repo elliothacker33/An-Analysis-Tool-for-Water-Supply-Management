@@ -1,9 +1,9 @@
-cmake_minimum_required(VERSION 3.26)
-project(projectDA)
+cmake_minimum_required(VERSION 3.27)
+project(watersupply)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(projectDA main.cpp
+add_executable(watersupply main.cpp
         model/Graph.h
         controller/manager.h
         controller/manager.cpp
@@ -14,3 +14,4 @@ add_executable(projectDA main.cpp
         model/Edge.h
         model/Vertex.cpp
         model/Vertex.h)
+

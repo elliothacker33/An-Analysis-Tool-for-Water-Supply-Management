@@ -3,7 +3,6 @@
 #include <algorithm>
 #include <cmath>
 #include <sstream>
-#include <bits/random.h>
 
 
 Menu::~Menu() {
@@ -308,6 +307,10 @@ void Menu::algorithmMenu() {
             menuStack.push(&Menu::algorithmMenu);
             exercise22();
             break;
+        case 3:
+            menuStack.push(&Menu::algorithmMenu);
+            exercise23();
+            break;
         case 5:
             menuStack.push(&Menu::algorithmMenu);
             exercise32();
@@ -434,25 +437,26 @@ void Menu::exercise22() {
     }
 }
 void Menu::exercise23(){
+
     int option = 0;
+
     do {
         cout << "------------------------------------------------" << endl;
         cout << "              Menu -> Exercice 2.3              " << endl;
         cout << "                                                " << endl;
         cout << "          0. Go back                            " << endl;
-        cout << "          1. Better distribution of water (EK)  " << endl;
-        cout << "          2. Better distribution of water (FF)  " << endl;
+        cout << "          1. Better distribution of water       " << endl;
         cout << "------------------------------------------------" << endl;
     }
-    while(0,2,&option);
+    while(!getNumberInput(0,1,&option));
 
-    switch(option){
+    switch(option) {
         case 0:
             goBack();
             break;
+
         case 1:
-            break;
-        case 2:
+            manager->improvePipesHeuristic();
             break;
 
     }

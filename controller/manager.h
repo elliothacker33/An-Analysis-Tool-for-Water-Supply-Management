@@ -72,6 +72,7 @@ public:
     void canAllCitiesGetEnoughWaterFF();
 
     /* Exercise 2.3 */
+    void improvePipesHeuristic();
     void improvePipesHeuristicEK();
     void improvePipesHeuristicFF();
 

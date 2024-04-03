@@ -765,6 +765,108 @@ void Manager::canAllCitiesGetEnoughWaterFF() {
 
 /* -------------------Exercise 2.3----------------------------- */
 
+void Manager::improvePipesHeuristic() {
+
+    int mn = -1;
+    int n_mn = -1;
+    int n_mx = -1;
+
+    int sum = 0;
+
+    for(auto a: graph->getVertexSet()){
+
+        if(a->isVisited())continue;
+        a->setVisited(true);
+
+        if(a->getType() == 'R'){
+            sum += dynamic_cast<Reservoir*>(a)->getMaxDelivery();
+        }
+
+        for(auto b: a->getAdj()){
+
+            int val = b->getCapacity();
+
+            if(mn == -1){
+                mn = val;
+            }else if(mn > val){
+                mn = val;
+            }
+        }
+    }
+    graph->resetVisited();
+    n_mn = mn;
+    n_mx = mn;
+
+    for(auto a: graph->getVertexSet()) {
+
+        if (a->isVisited())continue;
+        a->setVisited(true);
+        for(auto b: a->getAdj()){
+
+            int cap = b->getCapacity();
+
+            if(cap < mn){
+
+                if(sum < cap){
+                    b->setFlow(sum);
+                    if(n_mn > sum){n_mn = sum;}
+                    sum = 0;
+                    break;
+                }else{
+                    b->setFlow(cap);
+                    if(n_mn > cap){n_mn = cap;}
+                    sum -= cap;
+                }
+
+            }
+            else {
+                if(sum < mn){
+                    b->setFlow(sum);
+                    n_mn = sum;
+                    sum = 0;
+                    break;
+                }else{
+                    b->setFlow(mn);
+                    sum -= mn;
+                }
+            }
+
+        }
+
+        if(sum == 0)break;
+    }
+
+    while(sum != 0) {
+
+        graph->resetVisited();
+        n_mx += 1;
+
+        for (auto a: graph->getVertexSet()) {
+
+            if (a->isVisited())continue;
+            a->setVisited(true);
+            for (auto b: a->getAdj()) {
+
+                b->setFlow(b->getFlow() + 1);
+                sum -= 1;
+                if(sum == 0)break;
+            }
+            if(sum == 0)break;
+        }
+    }
+
+    cout << "min: " << n_mn << endl;
+    cout << "max: " << n_mx << endl;
+
+    int option = 0;
+    do {
+        cin >> option;
+    }
+    while(option != 0);
+
+    return;
+}
+
 void Manager::improvePipesHeuristicEK() {
     return;
 }
