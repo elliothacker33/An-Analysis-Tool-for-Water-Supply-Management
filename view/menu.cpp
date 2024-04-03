@@ -446,7 +446,16 @@ void Menu::exercise23(){
     }
     while(0,2,&option);
 
-    switch()
+    switch(option){
+        case 0:
+            goBack();
+            break;
+        case 1:
+            break;
+        case 2:
+            break;
+
+    }
 }
 void Menu::exercise31() {
     int option = 0;

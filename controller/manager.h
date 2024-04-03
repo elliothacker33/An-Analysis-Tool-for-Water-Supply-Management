@@ -71,6 +71,10 @@ public:
     void canAllCitiesGetEnoughWaterEK();
     void canAllCitiesGetEnoughWaterFF();
 
+    /* Exercise 2.3 */
+    void improvePipesHeuristicEK();
+    void improvePipesHeuristicFF();
+
     /* Exercise 3.1 */
     void disableEachReservoirEdmondsKarp();
 
