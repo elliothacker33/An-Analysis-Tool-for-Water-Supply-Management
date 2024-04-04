@@ -62,8 +62,8 @@ public:
     /* Exercise 2.1 */
     void getEdmondsKarpXCity(vector<string>& cities);
     void getFordFulkersonXCity(vector<string>& cities);
-    void getEdmondsKarpAllCities();
-    void getFordFulkersonAllCities();
+    void getEdmondsKarpAllCities(bool reset = true);
+    void getFordFulkersonAllCities(bool reset = true);
 
     /* Exercise 2.2 */
     void canCityXGetEnoughWaterEK(vector<string>& cities);
@@ -99,6 +99,7 @@ public:
     void flowRatePerCityEdmondsKarp();
     void flowRatePerCityFordFulkerson();
 
+    vector<int> getMetrics();
 };
 
 

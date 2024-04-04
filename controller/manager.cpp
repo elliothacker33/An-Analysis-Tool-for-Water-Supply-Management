@@ -604,24 +604,24 @@ void Manager::getFordFulkersonXCity(vector<string>& cities) {
 }
 
 
-void Manager::getEdmondsKarpAllCities() {
+void Manager::getEdmondsKarpAllCities(bool reset) {
     auto flows = maxFlowEdmondsKarp();
     vector<string> cities;
     for (auto flow: flows) {
         cities.push_back(flow.first);
     }
     printFlowMetrics(flows,cities, "../data/results/results_21_EK.csv");
-    resetGraph();
+    if(reset)resetGraph();
 }
 
-void Manager::getFordFulkersonAllCities() {
+void Manager::getFordFulkersonAllCities(bool reset) {
     auto flows = maxFlowFordFulkerson();
     vector<string> cities;
     for (auto flow: flows) {
         cities.push_back(flow.first);
     }
     printFlowMetrics(flows,cities,"../data/results/results_21_FF.csv");
-    resetGraph();
+    if(reset)resetGraph();
 }
 
 
@@ -771,6 +771,8 @@ void Manager::improvePipesHeuristic() {
     int n_mn = -1;
     int n_mx = -1;
 
+    vector<int> control_metrics = getMetrics();
+
     int sum = 0;
 
     for(auto a: graph->getVertexSet()){
@@ -847,16 +849,35 @@ void Manager::improvePipesHeuristic() {
             a->setVisited(true);
             for (auto b: a->getAdj()) {
 
-                b->setFlow(b->getFlow() + 1);
-                sum -= 1;
+                if(b->getCapacity() > b->getFlow()) {
+                    b->setFlow(b->getFlow() + 1);
+                    sum -= 1;
+                }
                 if(sum == 0)break;
             }
             if(sum == 0)break;
         }
     }
 
-    cout << "min: " << n_mn << endl;
-    cout << "max: " << n_mx << endl;
+    vector<int> new_metrics = getMetrics();
+
+    cout << endl;
+    cout << "Control Metrics:" << endl;
+    cout << "Min Flow: " << control_metrics.at(0) << endl;
+    cout << "Max Flow: " << control_metrics.at(1) << endl;
+    cout << "Average Flow: " << control_metrics.at(2) << endl;
+    cout << "Max Difference between Flow and Capacity: " << control_metrics.at(3) << endl;
+    cout << "Average Difference between Flow and Capacity: " << control_metrics.at(4) << endl;
+    cout << "Variance of the difference between Flow and Capacity : " << control_metrics.at(5) << endl;
+
+    cout << endl;
+    cout << "New Metrics:" << endl;
+    cout << "Min Flow: " << new_metrics.at(0) << endl;
+    cout << "Max Flow: " << new_metrics.at(1) << endl;
+    cout << "Average Flow: " << new_metrics.at(2) << endl;
+    cout << "Max Difference between Flow and Capacity: " << new_metrics.at(3) << endl;
+    cout << "Average Difference between Flow and Capacity: " << new_metrics.at(4) << endl;
+    cout << "Variance of the difference between Flow and Capacity : " << new_metrics.at(5) << endl;
 
     int option = 0;
     do {
@@ -1400,6 +1421,75 @@ void Manager::flowRatePerCityFordFulkerson() {
     auto flows = maxFlowFordFulkerson();
     calculateFlowRates(flows, "../data/results/results_rateFlows_FF.csv");
     resetGraph();
+}
+
+vector<int> Manager::getMetrics() {
+
+    vector<int> metrics;
+
+    graph->resetVisited();
+
+    int mn = -1;
+    int mx = 0;
+    int mx_dif = 0;
+    int sum = 0;
+    int sum_dif = 0;
+    int n = 0;
+
+    for(auto a : graph->getVertexSet()){
+
+        if(a->isVisited())continue;
+        a->setVisited(true);
+
+        for(auto b: a->getAdj()){
+
+            int f = b->getFlow();
+            int c = b->getCapacity();
+            int dif = c - f;
+
+            sum += f;
+            sum_dif += dif;
+            if(mn == -1 or mn > f)mn = f;
+            if(mx == -1 or mx < f)mx = f;
+            if(dif > mx_dif)mx_dif = dif;
+
+            n += 1;
+        }
+
+    }
+
+    graph->resetVisited();
+
+    int mean = sum_dif/n;
+    int variance = 0;
+
+    for(auto a : graph->getVertexSet()){
+
+        if(a->isVisited())continue;
+        a->setVisited(true);
+
+        for(auto b: a->getAdj()){
+
+            int f = b->getFlow();
+            int c = b->getCapacity();
+            int dif = c - f;
+            int d = dif - mean;
+
+            variance += (d * d);
+        }
+
+    }
+
+    metrics.emplace_back(mn);
+    metrics.emplace_back(mx);
+    metrics.emplace_back(sum/n);
+    metrics.emplace_back(mx_dif);
+    metrics.emplace_back(mean);
+    metrics.emplace_back(variance/n);
+
+    resetGraph();
+
+    return metrics;
 }
 
 

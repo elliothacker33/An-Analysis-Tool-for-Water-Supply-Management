@@ -444,11 +444,12 @@ void Menu::exercise23(){
         cout << "------------------------------------------------" << endl;
         cout << "              Menu -> Exercice 2.3              " << endl;
         cout << "                                                " << endl;
-        cout << "          0. Go back                            " << endl;
-        cout << "          1. Better distribution of water       " << endl;
+        cout << "     0. Go back                                 " << endl;
+        cout << "     1. First Use Edmonds Karp Algorithm for the Control case " << endl;
+        cout << "     2. First Use Ford Fulkerson Algorithm for the Control case " << endl;
         cout << "------------------------------------------------" << endl;
     }
-    while(!getNumberInput(0,1,&option));
+    while(!getNumberInput(0,2,&option));
 
     switch(option) {
         case 0:
@@ -456,10 +457,15 @@ void Menu::exercise23(){
             break;
 
         case 1:
-            manager->improvePipesHeuristic();
+            manager->getEdmondsKarpAllCities(false);
+            break;
+        case 2:
+            manager->getFordFulkersonAllCities(false);
             break;
 
     }
+
+    manager->improvePipesHeuristic();
 }
 void Menu::exercise31() {
     int option = 0;
