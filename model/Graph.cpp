@@ -41,6 +41,14 @@ void Graph::removeVertex(Vertex* v) {
     }
 }
 
+void Graph::resetVisited(){
+
+    for(auto a: getVertexSet()){
+        a->setVisited(false);
+    }
+
+}
+
 /**
  * @brief Remove edge interface
  * This functions removes a edge of the graph
@@ -76,7 +84,7 @@ int Graph::getNumberOfVertexes() const {
  * @return Edge pointer
  */
 Edge* Graph::addEdge(Vertex *orig, Vertex *dest, const int capacity,const string& type) {
-    Edge* result =orig->addEdge(dest,capacity,type);
+    Edge* result = orig->addEdge(dest,capacity,type);
     return result;
 }
 

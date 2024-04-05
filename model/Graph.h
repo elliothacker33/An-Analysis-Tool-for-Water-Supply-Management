@@ -58,6 +58,8 @@ public:
      */
     bool addVertex(Vertex* v);
 
+    void resetVisited();
+
     /**
      * @brief Removes a vertex from the graph.
      *

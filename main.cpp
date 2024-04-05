@@ -7,4 +7,3 @@ int main(){
     menu->mainMenu();
     return 0;
 }
-

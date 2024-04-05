@@ -2,7 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "projectDA"
+			"path" : "watersupply.exe"
+		},
+		{
+			"path" : "watersupply.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -35,7 +38,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -std=gnu++17 -fdiagnostics-color=always"
+					"fragment" : "-g -fdiagnostics-color=always"
 				}
 			],
 			"language" : "CXX",
@@ -58,7 +61,7 @@
 			]
 		}
 	],
-	"id" : "projectDA::@6890427a1f51a3e7e1df",
+	"id" : "watersupply::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -70,12 +73,16 @@
 			{
 				"fragment" : "",
 				"role" : "flags"
+			},
+			{
+				"fragment" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
+				"role" : "libraries"
 			}
 		],
 		"language" : "CXX"
 	},
-	"name" : "projectDA",
-	"nameOnDisk" : "projectDA",
+	"name" : "watersupply",
+	"nameOnDisk" : "watersupply.exe",
 	"paths" : 
 	{
 		"build" : ".",

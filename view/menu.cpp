@@ -328,7 +328,10 @@ void Menu::algorithmMenu() {
             menuStack.push(&Menu::algorithmMenu);
             exercise22();
             break;
-
+        case 3:
+            menuStack.push(&Menu::algorithmMenu);
+            exercise23();
+            break;
         case 4:
             menuStack.push(&Menu::algorithmMenu);
             exercise31();
@@ -482,28 +485,44 @@ void Menu::exercise22() {
     }
 }
 void Menu::exercise23(){
+
     int option = 0;
+
     do {
         cout << "------------------------------------------------" << endl;
         cout << "              Menu -> Exercice 2.3              " << endl;
         cout << "                                                " << endl;
-        cout << "          0. Go back                            " << endl;
-        cout << "          1. Better distribution of water (EK)  " << endl;
-        cout << "          2. Better distribution of water (FF)  " << endl;
+        cout << "     0. Go back                                 " << endl;
+        cout << "     1. First Use Edmonds Karp Algorithm for the Control case " << endl;
+        cout << "     2. First Use Ford Fulkerson Algorithm for the Control case " << endl;
         cout << "------------------------------------------------" << endl;
     }
-    while(0,2,&option);
+    while(!getNumberInput(0,2,&option));
 
-    switch(option){
+    timespec start_real;
+    timespec start_cpu;
+    double elapsed_real, elapsed_cpu;
+
+    switch(option) {
         case 0:
             goBack();
             break;
+
         case 1:
+            menuStack.push(&Menu::exercise23);
+            manager->getEdmondsKarpAllCities(false);
             break;
         case 2:
+            menuStack.push(&Menu::exercise23);
+            manager->getFordFulkersonAllCities(false);
             break;
 
     }
+    startTimer(start_real,start_cpu);
+    manager->improvePipesHeuristic();
+    stopTimer(start_real,start_cpu,elapsed_real,elapsed_cpu);
+    exercise23();
+
 }
 void Menu::exercise31() {
     int option = 0;

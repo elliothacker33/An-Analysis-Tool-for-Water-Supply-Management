@@ -6,10 +6,10 @@
 			[
 				{
 					"build" : ".",
-					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
 					"minimumCMakeVersion" : 
 					{
-						"string" : "3.26"
+						"string" : "3.27"
 					},
 					"projectIndex" : 0,
 					"source" : ".",
@@ -27,7 +27,7 @@
 					[
 						0
 					],
-					"name" : "projectDA",
+					"name" : "watersupply",
 					"targetIndexes" : 
 					[
 						0
@@ -38,9 +38,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "projectDA::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-projectDA-Debug-08c1654882c8eec6c1b1.json",
-					"name" : "projectDA",
+					"id" : "watersupply::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-watersupply-Debug-01fdac87525d17688ec0.json",
+					"name" : "watersupply",
 					"projectIndex" : 0
 				}
 			]
@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/cmake-build-debug",
-		"source" : "/home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management"
+		"build" : "C:/Users/Utilizador/CLionProjects/watersupply/cmake-build-debug",
+		"source" : "C:/Users/Utilizador/CLionProjects/watersupply"
 	},
 	"version" : 
 	{
