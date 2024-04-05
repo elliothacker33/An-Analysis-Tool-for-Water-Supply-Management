@@ -610,8 +610,10 @@ void Manager::getEdmondsKarpAllCities(bool reset) {
     for (auto flow: flows) {
         cities.push_back(flow.first);
     }
-    printFlowMetrics(flows,cities, "../data/results/results_21_EK.csv");
-    if(reset)resetGraph();
+    if(reset) {
+        printFlowMetrics(flows, cities, "../data/results/results_21_EK.csv");
+        resetGraph();
+    }
 }
 
 void Manager::getFordFulkersonAllCities(bool reset) {
@@ -620,8 +622,10 @@ void Manager::getFordFulkersonAllCities(bool reset) {
     for (auto flow: flows) {
         cities.push_back(flow.first);
     }
-    printFlowMetrics(flows,cities,"../data/results/results_21_FF.csv");
-    if(reset)resetGraph();
+    if(reset) {
+        printFlowMetrics(flows, cities, "../data/results/results_21_FF.csv");
+        resetGraph();
+    }
 }
 
 
@@ -878,12 +882,6 @@ void Manager::improvePipesHeuristic() {
     cout << "Max Difference between Flow and Capacity: " << new_metrics.at(3) << endl;
     cout << "Average Difference between Flow and Capacity: " << new_metrics.at(4) << endl;
     cout << "Variance of the difference between Flow and Capacity : " << new_metrics.at(5) << endl;
-
-    int option = 0;
-    do {
-        cin >> option;
-    }
-    while(option != 0);
 
     return;
 }

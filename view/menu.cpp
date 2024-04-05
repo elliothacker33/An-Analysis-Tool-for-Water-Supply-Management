@@ -451,21 +451,44 @@ void Menu::exercise23(){
     }
     while(!getNumberInput(0,2,&option));
 
+    timespec start_real, end_real;
+    timespec start_cpu, end_cpu;
+
+    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &start_cpu);
+    clock_gettime(CLOCK_REALTIME, &start_real);
+
     switch(option) {
         case 0:
             goBack();
             break;
 
         case 1:
+            menuStack.push(&Menu::exercise23);
             manager->getEdmondsKarpAllCities(false);
             break;
         case 2:
+            menuStack.push(&Menu::exercise23);
             manager->getFordFulkersonAllCities(false);
             break;
 
     }
 
     manager->improvePipesHeuristic();
+
+    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end_cpu);
+    clock_gettime(CLOCK_REALTIME, &end_real);
+
+    double elapsed_real = (end_real.tv_sec - start_real.tv_sec) +
+                          (end_real.tv_nsec - start_real.tv_nsec) / 1e9;
+
+    double elapsed_cpu = (end_cpu.tv_sec - start_cpu.tv_sec) +
+                         (end_cpu.tv_nsec - start_cpu.tv_nsec) / 1e9;
+
+    cout << endl;
+    cout << "Elapsed real time: " << elapsed_real << " seconds" << endl;
+    cout << "Elapsed CPU time: " << elapsed_cpu << " seconds" << endl;
+
+    goBack();
 }
 void Menu::exercise31() {
     int option = 0;
