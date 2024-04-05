@@ -77,6 +77,9 @@ public:
 
     /* Exercise 3.1 */
     void disableEachReservoirEdmondsKarp();
+    void disableEachReservoirFordFulkerson();
+    void disableSelectedReservoirsEdmondsKarp(vector<string>& reservoirs);
+    void disableSelectedReservoirsFordFulkerson(vector<string>& reservoirs);
 
     /* Exercise 3.2 */
     void disableEachStationEdmondsKarp();

@@ -6,21 +6,31 @@
 #include <queue>
 #include <sstream>
 #include <vector>
-#include <limits>
-#include <ctime>
+
+
 
 
 #define ANSI_COLOR_RED "\x1b[31m"
 #define ANSI_COLOR_RESET "\x1b[0m"
 
 /* ----- Auxiliary functions and constructors/destructors ---- */
-
+/**
+ * @brief Manager constructor
+ */
 Manager::Manager() {
     graph = new Graph();
 }
+
+/**
+ * @brief Manager destructor
+ * Deletes graph associated with manager
+ */
 Manager::~Manager() {
     delete graph;
 }
+/**
+ * @brief Deletes graph, and creates a new one, to reset manager in Menu.
+ */
 void Manager::resetManager() {
     delete this->graph;
     this->graph = new Graph();
@@ -28,6 +38,10 @@ void Manager::resetManager() {
     reservoirs.clear();
     stations.clear();
 }
+
+/**
+ * @brief Gets the number of edges in the graph
+ */
 int Manager::getHowManyEdges() const {
     int sum = 0;
     for (auto v : graph->getVertexSet()) {
@@ -36,12 +50,16 @@ int Manager::getHowManyEdges() const {
     return sum;
 }
 
+/**
+ * @brief Resets the graph to it's initial state
+ */
 void Manager::resetGraph() {
     Vertex* superSource = findVertexInMap("SR");
     Vertex* superSink = findVertexInMap("SS");
 
-    vector<Edge*> deleteEdges; // Delete Residual Edges
+    vector<Edge*> deleteEdges;
 
+    // Reset normal edges
     for (const auto v : graph->getVertexSet()) {
         v->setPath(nullptr);
         v->setVisited(false);
@@ -55,34 +73,56 @@ void Manager::resetGraph() {
         }
     }
 
+    // Delete residual edges in the graph
     for(const auto e : deleteEdges) {
         graph->removeEdge(e);
     }
+    // Delete superSource
     if (superSource != nullptr) {
         graph->removeVertex(superSource);
         reservoirs.erase("SR");
     }
+    // Delete superSink
     if(superSink != nullptr) {
         graph->removeVertex(superSink);
         cities.erase("SS");
     }
 
 }
-
+/**
+ * @brief Getter function to access graph outside of manager
+ */
 Graph* Manager::getGraph() const {
     return graph;
 }
 
+/**
+ * @brief Get access to cities faster in O(1) time.
+ * @return unordered_map with (city,vertex pointer)
+ */
 unordered_map<string,Vertex*> Manager::getCities() const{
     return cities;
 }
+/**
+ * @brief Get access to reservoirs faster in O(1) time.
+ * @return unordered_map with (reservoir,vertex pointer)
+ */
 unordered_map<string, Vertex *> Manager::getReservoirs() const {
     return reservoirs;
 }
+/**
+ * @brief Get access to stations faster in O(1) time.
+ * @return unordered_map with (stations,vertex pointer)
+ */
 unordered_map<string, Vertex*> Manager::getStations() const {
     return stations;
 }
 
+/**
+ * @brief Retrieve the Vertex* associated with code of vertex.
+ * @param identifier is a code of a Vertex that can be of 3 types (city,reservoir,station)
+ * @return (Vertex*) pointer to vertex in the graph.
+ */
 Vertex* Manager::findVertexInMap(const string& identifier) const {
     if (const auto cityIt = cities.find(identifier); cityIt != cities.end()) {
         return cityIt->second;
@@ -97,12 +137,17 @@ Vertex* Manager::findVertexInMap(const string& identifier) const {
 }
 /*------------- Csv methods -----------------------------*/
 
+/**
+ * Get the
+ * @param path
+ * @param flows
+ */
 void Manager::createCsvFileFlows(const string &path,vector<pair<string,int>>& flows) {
     ofstream outputCSV(path);
 
     if (!outputCSV.is_open()) {
         cerr << "Error: Unable to open file." << endl;
-        exit(EXIT_FAILURE); // Exit the program with a custom error message
+        exit(EXIT_FAILURE);
     }
 
     outputCSV << "Name,Code,Flow" << endl;
@@ -120,7 +165,7 @@ void Manager::createCsvFileDisable(const string &path, vector<pair<string, bool>
 
     if (!outputCSV.is_open()) {
         cerr << "Error: Unable to open file." << endl;
-        exit(EXIT_FAILURE); // Exit the program with a custom error message
+        exit(EXIT_FAILURE);
     }
 
     outputCSV << "Code,CanBeDisabled" << endl;
@@ -140,7 +185,7 @@ void Manager::createCsvFilePipesDisable(const string &path, vector<pair<Edge*, b
 
     if (!outputCSV.is_open()) {
         cerr << "Error: Unable to open file." << endl;
-        exit(EXIT_FAILURE); // Exit the program with a custom error message
+        exit(EXIT_FAILURE);
     }
 
     outputCSV << "Origin,Destination,CanBeDisabled" << endl;
@@ -183,7 +228,7 @@ void Manager::createCsvFileRates(const string &path, vector<pair<string, double>
 
     if (!outputCSV.is_open()) {
         cerr << "Error: Unable to open file." << endl;
-        exit(EXIT_FAILURE); // Exit the program with a custom error message
+        exit(EXIT_FAILURE);
     }
 
     outputCSV << "Name,Code,Rate" << endl;
@@ -274,7 +319,7 @@ void Manager::importReservoirs(const string& pathReservoirs)  {
     // Check if the file is open
     if (!fin.is_open()) {
         cerr << "Error: Unable to open file." << endl;
-        exit(EXIT_FAILURE); // Exit the program with a custom error message
+        exit(EXIT_FAILURE);
     }
 
     vector<string> row;
@@ -458,6 +503,7 @@ bool Manager::dfs_helper(Vertex *currentVertex, Vertex *superSink, vector<Edge*>
     currentVertex->setVisited(false);
     return false;
 }
+
 vector<Edge*> Manager::bfs_flow(Vertex* superSource, Vertex* superSink) {
     vector<Edge*> path;
     if (superSource == nullptr || superSink == nullptr) {
@@ -476,7 +522,7 @@ vector<Edge*> Manager::bfs_flow(Vertex* superSource, Vertex* superSink) {
         const auto v = q.front();
         q.pop();
         for (const auto e : v->getAdj()) {
-            if(const auto dest = e->getDest();!dest->isVisited() && dest->isEnabled() && e->isEnabled()  && e->getFlow() > 0) {
+            if(const auto dest = e->getDest();e->getOrigin()->isEnabled() && !dest->isVisited() && dest->isEnabled() && e->isEnabled()  && (e->getFlow() > 0)) {
                 q.push(dest);
                 dest->setVisited(true);
                 dest->setPath(e);
@@ -559,11 +605,7 @@ vector<pair<string,int>> Manager::maxFlowFordFulkerson() {
 /*---------------------Exercise 2.1 -----------------------*/
 
 void Manager::printFlowMetrics(vector<pair<string, int>>& flows,vector<string>& chosenCities, const string& outputFile) {
-    timespec start_real, end_real;
-    timespec start_cpu, end_cpu;
 
-    clock_gettime(CLOCK_REALTIME, &start_real);
-    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &start_cpu);
     vector<pair<string, int>> results;
     int total_flow = 0;
     for (const auto& flow : flows) {
@@ -574,18 +616,6 @@ void Manager::printFlowMetrics(vector<pair<string, int>>& flows,vector<string>& 
         }
     }
     cout << "The total flow is: " << total_flow << endl;
-
-    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end_cpu);
-    clock_gettime(CLOCK_REALTIME, &end_real);
-
-    double elapsed_real = (end_real.tv_sec - start_real.tv_sec) +
-                          (end_real.tv_nsec - start_real.tv_nsec) / 1e9;
-
-    double elapsed_cpu = (end_cpu.tv_sec - start_cpu.tv_sec) +
-                         (end_cpu.tv_nsec - start_cpu.tv_nsec) / 1e9;
-
-    cout << "Elapsed real time: " << elapsed_real << " seconds" << endl;
-    cout << "Elapsed CPU time: " << elapsed_cpu << " seconds" << endl;
 
     string filename = outputFile;
     createCsvFileFlows(filename, results);
@@ -780,22 +810,26 @@ void Manager::disableReservoirs(vector<string> &reservoirs) {
     }
 }
 // TODO: Under Construction
-/*
-void Manager::dfs_disable(Vertex* reservoir) {
+
+void Manager::dfs_disable_helper(Vertex* reservoir) {
     reservoir->setVisited(true);
     for (auto e : reservoir->getAdj()) {
-        if (Vertex* dest = e->getDest(); !dest->isVisited() && e->getFlow() > 0) {
-            e->setFlow(0);
+        if (Vertex* dest = e->getDest(); !dest->isVisited() && e->getFlow() < e->getCapacity()) {
+            e->getReverseEdge()->setFlow(e->getReverseEdge()->getFlow() - e->getCapacity());
+            e->setFlow(e->getFlow() + e->getCapacity());
+            dfs_disable(dest);
         }
     }
 }
-*/
-/*
-vector<pair<string,int>> Manager::graphChangeFlowsAfterReservoirsDisabled(vector<string> &reservoirs) {
-
+void Manager::dfs_disable(Vertex *reservoir) {
     for (auto v : graph->getVertexSet()) {
         v->setVisited(false);
     }
+
+    dfs_disable_helper(reservoir);
+}
+
+vector<pair<string,int>> Manager::graphChangeFlowsAfterReservoirsDisabled(vector<string> &reservoirs) {
 
     // Change graph doing a dfs visit
     for (auto r : reservoirs) {
@@ -804,8 +838,20 @@ vector<pair<string,int>> Manager::graphChangeFlowsAfterReservoirsDisabled(vector
     }
 
     // Calculate Results of flow.
+    vector<pair<string,int>> result;
+    for (const auto n : graph->getVertexSet()) {
+        if (n->getType() == 'C' && Graph::getCode(n) != "SS") {
+            int sumFlow = 0;
+            for (const auto e : n->getIncoming()) {
+                if (e->getType() == "residual")
+                    sumFlow+= e->getFlow();
+            }
+            result.push_back(make_pair(Graph::getCode(n), sumFlow));
+        }
+    }
+    return result;
 }
- */
+
 
 bool Manager::shutdownReservoirs(vector<pair<string, int>> (Manager::*flowfunction)(), vector<string> &reservoirs) {
     auto beforeFlows = (this->*flowfunction)();
@@ -821,10 +867,15 @@ bool Manager::shutdownReservoirs(vector<pair<string, int>> (Manager::*flowfuncti
         totalDemand+=dynamic_cast<City*>(v.second)->getDemand();
     }
     vector<pair<string,int>> afterFlows;
-
+    if (totalDemand <= beforeTotalFlow){
+        // Just a need a dfs to deacrease values
+        afterFlows = graphChangeFlowsAfterReservoirsDisabled(reservoirs);
+    }
+    else {
         resetGraph();
         disableReservoirs(reservoirs);
         afterFlows = (this->*flowfunction)();
+    }
 
 
     // Calculate flow after disable
@@ -834,7 +885,7 @@ bool Manager::shutdownReservoirs(vector<pair<string, int>> (Manager::*flowfuncti
 
     // Check if the network was affected
     if (afterTotalFlow == beforeTotalFlow) {
-        cout << "The network was not affected after removing: ";
+        cout << "The network was not affected after removing reservoirs: ";
         for (const string& code : reservoirs) {
             cout << code << ", ";
         }
@@ -856,6 +907,7 @@ bool Manager::shutdownReservoirs(vector<pair<string, int>> (Manager::*flowfuncti
                 afterFlowAmount = afterFlow.second;
                 break;
             }
+
         }
 
         // Calculate the percentage decline in flow
@@ -863,7 +915,7 @@ bool Manager::shutdownReservoirs(vector<pair<string, int>> (Manager::*flowfuncti
         percentageDecline.push_back(make_pair(cityCode, declinePercentage));
     }
 
-    cout << "Percentage decline in flow for each city after removing stations:" << endl;
+    cout << "Percentage decline in flow for each city after removing reservoirs:" << endl;
     for (const auto& entry : percentageDecline) {
         if(entry.second == 0.0) {
             cout << "City code: " << entry.first << ", Percentage Decline: " << entry.second << "%" << endl;
@@ -889,12 +941,24 @@ void Manager::disableEachReservoirEdmondsKarp() {
     createCsvFileDisable(path,can_be_disabled);
 }
 
+void Manager::disableEachReservoirFordFulkerson() {
+    return;
+}
+
+void Manager::disableSelectedReservoirsEdmondsKarp(vector<std::string> &reservoirs) {
+    return;
+}
+void Manager::disableSelectedReservoirsFordFulkerson(vector<std::string> &reservoirs) {
+    return;
+}
+
 
 /* -------------------Exercise 3.2----------------------------- */
 
 void Manager::disableStations(vector<string>& stations) {
     for(string code : stations) {
-        findVertexInMap(code)->setEnabled(false);
+        Vertex* v = findVertexInMap(code);
+        v->setEnabled(false);
     }
 }
 
@@ -904,6 +968,7 @@ bool Manager::shutdownStations(vector<pair<string,int>> (Manager::*flowfunction)
     int beforeTotalFlow = 0;
     for (const auto& flow : beforeFlows)
         beforeTotalFlow += flow.second;
+    cout << "Total flow before removing stations: " <<  beforeTotalFlow << endl;
 
     // Reset graph and disable stations
     resetGraph();
@@ -914,6 +979,7 @@ bool Manager::shutdownStations(vector<pair<string,int>> (Manager::*flowfunction)
     int afterTotalFlow = 0;
     for (const auto& flow : afterFlows)
         afterTotalFlow += flow.second;
+    cout << "Total flow after removing stations: " << afterTotalFlow << endl;
 
     // Check if the network was affected
     if (afterTotalFlow == beforeTotalFlow) {
@@ -925,6 +991,8 @@ bool Manager::shutdownStations(vector<pair<string,int>> (Manager::*flowfunction)
         resetGraph();
         return true;
     }
+
+    cout << "Percentage decline in flow for each city after removing stations:" << endl;
 
     // Calculate the percentage decline for each city
     vector<pair<string, double>> percentageDecline;
@@ -944,19 +1012,10 @@ bool Manager::shutdownStations(vector<pair<string,int>> (Manager::*flowfunction)
         // Calculate the percentage decline in flow
         double declinePercentage = (beforeFlowAmount - afterFlowAmount) / beforeFlowAmount * 100;
         percentageDecline.push_back(make_pair(cityCode, declinePercentage));
-    }
+        cout << "City code: " << cityCode << "Before flow : " << beforeFlowAmount << ", After flow : " << afterFlowAmount << ", Decline percentage : -" << declinePercentage << "%" << endl;
 
-    cout << "Percentage decline in flow for each city after removing stations:" << endl;
-    for (const auto& entry : percentageDecline) {
-        if(entry.second == 0.0) {
-            cout << "City code: " << entry.first << ", Percentage Decline: " << entry.second << "%" << endl;
-        }
-        else {
-            cout << "City code: " << entry.first << ", Percentage Decline: -" << entry.second << "%" << endl;
-        }
     }
     resetGraph();
-
     return false;
 }
 
@@ -991,6 +1050,7 @@ vector<pair<string, double>> Manager::shutdownStationsGettingDecreaseFlows(vecto
     int beforeTotalFlow = 0;
     for (const auto& flow : beforeFlows)
         beforeTotalFlow += flow.second;
+    cout << "Total flow before removing stations: " <<  beforeTotalFlow << endl;
 
     // Reset graph and disable stations
     resetGraph();
@@ -1001,6 +1061,7 @@ vector<pair<string, double>> Manager::shutdownStationsGettingDecreaseFlows(vecto
     int afterTotalFlow = 0;
     for (const auto& flow : afterFlows)
         afterTotalFlow += flow.second;
+    cout << "Total flow after removing stations: " << afterTotalFlow << endl;
 
     // Check if the network was affected
     if (afterTotalFlow == beforeTotalFlow) {
@@ -1014,6 +1075,7 @@ vector<pair<string, double>> Manager::shutdownStationsGettingDecreaseFlows(vecto
     }
 
     // Calculate the percentage decline for each city
+    cout << "Percentage decline in flow for each city after removing stations:" << endl;
 
     for (const auto& beforeFlow : beforeFlows) {
         string cityCode = beforeFlow.first;
@@ -1031,17 +1093,10 @@ vector<pair<string, double>> Manager::shutdownStationsGettingDecreaseFlows(vecto
         // Calculate the percentage decline in flow
         double declinePercentage = -(beforeFlowAmount - afterFlowAmount) / beforeFlowAmount * 100;
         percentageDecline.push_back(make_pair(cityCode, declinePercentage));
+        cout << "City code: " << cityCode << "Before flow : " << beforeFlowAmount << ", After flow : " << afterFlowAmount << ", Decline percentage : -" << declinePercentage << "%" << endl;
+
     }
 
-    cout << "Percentage decline in flow for each city after removing stations:" << endl;
-    for (const auto& entry : percentageDecline) {
-        if(entry.second == 0.0) {
-            cout << "City code: " << entry.first << ", Percentage Decline: " << entry.second << "%" << endl;
-        }
-        else {
-            cout << "City code: " << entry.first << ", Percentage Decline: " << entry.second << "%" << endl;
-        }
-    }
     resetGraph();
 
     return percentageDecline;
@@ -1064,6 +1119,9 @@ void Manager::disableSelectedStationsFordFulkerson(vector<string> &stations) {
 void Manager::disablePipes(vector<Edge*>& pipes) {
     for(auto p: pipes) {
         p->setEnabled(false);
+        if (p->getReverseEdge() != nullptr){
+            p->getReverseEdge()->setEnabled(false);
+        }
     }
 }
 
@@ -1171,7 +1229,7 @@ vector<pair<string,double>> Manager::shutdownPipesWithDecrease(vector<pair<strin
         beforeTotalFlow += flow.second;
 
     // Reset graph and disable stations
-    resetGraph();
+
     disablePipes(pipes);
 
     // Calculate total flow after removing the stations
@@ -1228,7 +1286,11 @@ vector<pair<string,double>> Manager::shutdownPipesWithDecrease(vector<pair<strin
     return percentageDecline;
 }
 void Manager::disableSelectedPipesEdmondsKarp(vector<Edge*> &pipes) {
+    for (auto e : pipes){
+        cout << Graph::getCode(e->getOrigin()) << Graph::getCode(e->getDest());
+    }
     vector<pair<string,double>> decreased = shutdownPipesWithDecrease(&Manager::maxFlowEdmondsKarp,pipes);
+
     string path = "../data/results/results_decrease_rate_pipe_disabled_EK.csv";
     createCsvFileRates(path,decreased);
 

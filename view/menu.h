@@ -15,6 +15,10 @@ class Menu{
     /* Auxiliary functions */
     string removeLeadingTrailingSpaces(const string& input);
 
+    /* Timer functions */
+    void startTimer(timespec& start_real, timespec& start_cpu) const;
+    void stopTimer(timespec& start_real, timespec& start_cpu, double& elapsed_real, double& elapsed_cpu) const;
+
     /* Validity of input */
     Edge* validPipe(string& code1, string& code2);
     bool validCity(string& code);

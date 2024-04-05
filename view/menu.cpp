@@ -1,9 +1,8 @@
 #include "menu.h"
-
 #include <algorithm>
 #include <cmath>
 #include <sstream>
-#include <bits/random.h>
+#include <ctime>
 
 
 Menu::~Menu() {
@@ -20,6 +19,27 @@ string Menu::removeLeadingTrailingSpaces(const string& input) {
     const auto end = input.find_last_not_of(" \n\r\t");
 
     return (start != string::npos && end != string::npos) ? input.substr(start, end - start + 1) : "";
+}
+/* Timer functions */
+void Menu::startTimer(timespec& start_real, timespec& start_cpu) const {
+    clock_gettime(CLOCK_REALTIME, &start_real);
+    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &start_cpu);
+}
+
+void Menu::stopTimer(timespec& start_real, timespec& start_cpu, double& elapsed_real, double& elapsed_cpu) const {
+    timespec end_real, end_cpu;
+
+    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end_cpu);
+    clock_gettime(CLOCK_REALTIME, &end_real);
+
+    elapsed_real = (end_real.tv_sec - start_real.tv_sec) +
+                   (end_real.tv_nsec - start_real.tv_nsec) / 1e9;
+
+    elapsed_cpu = (end_cpu.tv_sec - start_cpu.tv_sec) +
+                  (end_cpu.tv_nsec - start_cpu.tv_nsec) / 1e9;
+
+    cout << "Elapsed real time: " << elapsed_real << " seconds" << endl;
+    cout << "Elapsed CPU time: " << elapsed_cpu << " seconds" << endl;
 }
 
 /* Valid input check for codes */
@@ -308,6 +328,11 @@ void Menu::algorithmMenu() {
             menuStack.push(&Menu::algorithmMenu);
             exercise22();
             break;
+
+        case 4:
+            menuStack.push(&Menu::algorithmMenu);
+            exercise31();
+            break;
         case 5:
             menuStack.push(&Menu::algorithmMenu);
             exercise32();
@@ -340,6 +365,10 @@ void Menu::exercise21() {
     while(!getNumberInput(0,4,&option));
 
     vector<string> cities;
+    timespec start_real;
+    timespec start_cpu;
+    double elapsed_real, elapsed_cpu;
+
     switch(option) {
         case 0:
             goBack();
@@ -351,12 +380,16 @@ void Menu::exercise21() {
                 cout << "No cities were selected" << endl;
             }
             else {
+                startTimer(start_real,start_cpu);
                 manager->getEdmondsKarpXCity(cities);
+                stopTimer(start_real,start_cpu,elapsed_real,elapsed_cpu);
             }
             exercise21();
             break;
         case 2:
+            startTimer(start_real,start_cpu);
             manager->getEdmondsKarpAllCities();
+            stopTimer(start_real,start_cpu,elapsed_real,elapsed_cpu);
             exercise21();
             break;
 
@@ -366,13 +399,17 @@ void Menu::exercise21() {
                 cout << "No cities were selected" << endl;
             }
             else {
+                startTimer(start_real,start_cpu);
                 manager->getFordFulkersonXCity(cities);
+                stopTimer(start_real,start_cpu,elapsed_real,elapsed_cpu);
             }
             exercise21();
             break;
 
         case 4:
+            startTimer(start_real,start_cpu);
             manager->getFordFulkersonAllCities();
+            stopTimer(start_real,start_cpu,elapsed_real,elapsed_cpu);
             exercise21();
             break;
     }
@@ -395,6 +432,9 @@ void Menu::exercise22() {
     }
     while(!getNumberInput(0,4,&option));
 
+    timespec start_real;
+    timespec start_cpu;
+    double elapsed_real, elapsed_cpu;
 
     switch(option) {
         case 0:
@@ -407,7 +447,9 @@ void Menu::exercise22() {
                 cout << "No cities were selected" << endl;
             }
             else {
+                startTimer(start_real,start_cpu);
                 manager->canCityXGetEnoughWaterEK(cities);
+                stopTimer(start_real,start_cpu,elapsed_real,elapsed_cpu);
             }
             exercise22();
             break;
@@ -417,18 +459,24 @@ void Menu::exercise22() {
                 cout << "No cities were selected" << endl;
             }
             else {
+                startTimer(start_real,start_cpu);
                 manager->canCityXGetEnoughWaterFF(cities);
+                stopTimer(start_real,start_cpu,elapsed_real,elapsed_cpu);
             }
             exercise22();
             break;
 
         case 3:
+            startTimer(start_real,start_cpu);
             manager->canAllCitiesGetEnoughWaterEK();
+            stopTimer(start_real,start_cpu,elapsed_real,elapsed_cpu);
             exercise22();
             break;
 
         case 4:
+            startTimer(start_real,start_cpu);
             manager->canAllCitiesGetEnoughWaterFF();
+            stopTimer(start_real,start_cpu,elapsed_real,elapsed_cpu);
             exercise22();
             break;
     }
@@ -474,26 +522,35 @@ void Menu::exercise31() {
     while(!getNumberInput(0,4,&option));
     string code;
     vector<string> reservoirs;
+    timespec start_real;
+    timespec start_cpu;
+    double elapsed_real, elapsed_cpu;
 
     switch(option) {
         case 0:
             goBack();
             break;
         case 1:
+            startTimer(start_real,start_cpu);
             manager->disableEachReservoirEdmondsKarp();
+            stopTimer(start_real,start_cpu,elapsed_real,elapsed_cpu);
             exercise31();
-        break;
+            break;
         case 2:
-            manager->disableEachStationFordFulkerson();
+            startTimer(start_real,start_cpu);
+            manager->disableEachReservoirFordFulkerson();
+            stopTimer(start_real,start_cpu,elapsed_real,elapsed_cpu);
             exercise31();
-        break;
+            break;
         case 3:
             reservoirs = getReservoirs();
             if (reservoirs.empty()) {
                 cout << "No reservoirs were selected" << endl;
             }
             else {
-                manager->disableSelectedStationsEdmondsKarp(reservoirs);
+                startTimer(start_real,start_cpu);
+                manager->disableSelectedReservoirsEdmondsKarp(reservoirs);
+                stopTimer(start_real,start_cpu,elapsed_real,elapsed_cpu);
             }
             exercise31();
             break;
@@ -503,7 +560,9 @@ void Menu::exercise31() {
                 cout << "No reservoirs were selected" << endl;
             }
             else {
-                manager->disableSelectedStationsFordFulkerson(reservoirs);
+                startTimer(start_real,start_cpu);
+                manager->disableSelectedReservoirsFordFulkerson(reservoirs);
+                stopTimer(start_real,start_cpu,elapsed_real,elapsed_cpu);
             }
             exercise31();
             break;
@@ -527,17 +586,24 @@ void Menu::exercise32() {
     while(!getNumberInput(0,4,&option));
     string code;
     vector<string> stations;
+    timespec start_real;
+    timespec start_cpu;
+    double elapsed_real, elapsed_cpu;
 
     switch(option) {
         case 0:
             goBack();
             break;
         case 1:
+            startTimer(start_real,start_cpu);
             manager->disableEachStationEdmondsKarp();
+            stopTimer(start_real,start_cpu,elapsed_real,elapsed_cpu);
             exercise32();
             break;
         case 2:
+            startTimer(start_real,start_cpu);
             manager->disableEachStationFordFulkerson();
+            stopTimer(start_real,start_cpu,elapsed_real,elapsed_cpu);
             exercise32();
             break;
         case 3:
@@ -546,7 +612,9 @@ void Menu::exercise32() {
                 cout << "No stations were selected" << endl;
             }
             else {
+                startTimer(start_real,start_cpu);
                 manager->disableSelectedStationsEdmondsKarp(stations);
+                stopTimer(start_real,start_cpu,elapsed_real,elapsed_cpu);
             }
             exercise32();
             break;
@@ -556,7 +624,9 @@ void Menu::exercise32() {
                 cout << "No stations were selected" << endl;
             }
             else {
+                startTimer(start_real,start_cpu);
                 manager->disableSelectedStationsFordFulkerson(stations);
+                stopTimer(start_real,start_cpu,elapsed_real,elapsed_cpu);
             }
             exercise32();
             break;
@@ -568,7 +638,7 @@ void Menu::exercise33() {
     int option = 0;
     do {
         cout << "------------------------------------------------" << endl;
-        cout << "              Menu -> Exercice 3.2              " << endl;
+        cout << "              Menu -> Exercice 3.3              " << endl;
         cout << "                                                " << endl;
         cout << "             0. Go back                         " << endl;
         cout << "             1. Disable each pipe (EK)          " << endl;
@@ -581,18 +651,24 @@ void Menu::exercise33() {
     while(!getNumberInput(0,4,&option));
     string code;
     vector<Edge*> pipes;
+    timespec start_real;
+    timespec start_cpu;
+    double elapsed_real, elapsed_cpu;
+
     switch(option) {
         case 0:
             goBack();
-        break;
-
+            break;
         case 1:
+            startTimer(start_real,start_cpu);
             manager->disableEachPipeEdmondsKarp();
+            stopTimer(start_real,start_cpu,elapsed_real,elapsed_cpu);
             exercise33();
             break;
-
         case 2:
+            startTimer(start_real,start_cpu);
             manager->disableEachPipeFordFulkerson();
+            stopTimer(start_real,start_cpu,elapsed_real,elapsed_cpu);
             exercise33();
             break;
         case 3:
@@ -601,7 +677,9 @@ void Menu::exercise33() {
                 cout << "No pipes were selected" << endl;
             }
             else {
+                startTimer(start_real,start_cpu);
                 manager->disableSelectedPipesEdmondsKarp(pipes);
+                stopTimer(start_real,start_cpu,elapsed_real,elapsed_cpu);
             }
             exercise33();
             break;
@@ -611,7 +689,9 @@ void Menu::exercise33() {
                 cout << "No pipes were selected" << endl;
             }
             else {
+                startTimer(start_real,start_cpu);
                 manager->disableSelectedPipesFordFulkerson(pipes);
+                stopTimer(start_real,start_cpu,elapsed_real,elapsed_cpu);
             }
             exercise33();
             break;
@@ -636,18 +716,24 @@ void Menu::extraMenu() {
     int k;
     bool validResult;
     int maxK;
+    timespec start_real;
+    timespec start_cpu;
+    double elapsed_real, elapsed_cpu;
+
     switch(option) {
         case 0:
             goBack();
             break;
 
         case 1:
-            maxK =manager->getCities().size();
+            maxK = manager->getCities().size();
             do {
                 validResult = getNumberInput(1,maxK,&k);
             }
             while(!validResult);
+            startTimer(start_real,start_cpu);
             manager->topKFlowEdmondsKarpCities(k);
+            stopTimer(start_real,start_cpu,elapsed_real,elapsed_cpu);
             extraMenu();
             break;
         case 2:
@@ -656,16 +742,22 @@ void Menu::extraMenu() {
                 validResult = getNumberInput(1,maxK,&k);
             }
             while(!validResult);
+            startTimer(start_real,start_cpu);
             manager->topKFlowFordFulkersonCities(k);
+            stopTimer(start_real,start_cpu,elapsed_real,elapsed_cpu);
             extraMenu();
             break;
 
         case 3:
+            startTimer(start_real,start_cpu);
             manager->flowRatePerCityEdmondsKarp();
+            stopTimer(start_real,start_cpu,elapsed_real,elapsed_cpu);
             extraMenu();
             break;
         case 4:
+            startTimer(start_real,start_cpu);
             manager->flowRatePerCityFordFulkerson();
+            stopTimer(start_real,start_cpu,elapsed_real,elapsed_cpu);
             extraMenu();
             break;
 

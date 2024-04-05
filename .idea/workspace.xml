@@ -24,11 +24,16 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/projectDA.dir/controller/manager.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/projectDA.dir/controller/manager.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/projectDA.dir/view/menu.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/projectDA.dir/view/menu.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/projectDA" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/projectDA" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/manager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/controller/manager.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/manager.h" beforeDir="false" afterPath="$PROJECT_DIR$/controller/manager.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/results/results_cityXEnoughWaterEK.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/results/results_cityXEnoughWaterEK.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/results/results_21_EK.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/results/results_21_EK.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/results/results_decrease_rate_pipe_disabled_FF.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/results/results_decrease_rate_pipe_disabled_FF.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/view/menu.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/view/menu.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/view/menu.h" beforeDir="false" afterPath="$PROJECT_DIR$/view/menu.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,7 +163,12 @@
       <workItem from="1712081309032" duration="8000" />
       <workItem from="1712081391131" duration="32000" />
       <workItem from="1712130988958" duration="136000" />
-      <workItem from="1712131133039" duration="3312000" />
+      <workItem from="1712131133039" duration="5427000" />
+      <workItem from="1712137540045" duration="1242000" />
+      <workItem from="1712246215341" duration="1363000" />
+      <workItem from="1712248831497" duration="5204000" />
+      <workItem from="1712332089722" duration="221000" />
+      <workItem from="1712332401442" duration="5804000" />
     </task>
     <servers />
   </component>
