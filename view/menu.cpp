@@ -2,13 +2,12 @@
 * @file Menu.cpp
 * @brief This file contains the Menu implementation.
 */
-
+// Project headers
 #include "menu.h"
+// Standard Library Headers
 #include <algorithm>
-#include <cmath>
 #include <sstream>
 #include <ctime>
-
 
 Menu::~Menu() {
     delete manager;
