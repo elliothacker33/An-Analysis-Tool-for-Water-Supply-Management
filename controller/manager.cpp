@@ -18,9 +18,11 @@
 Manager::Manager() {
     graph = new Graph();
 }
+
 Manager::~Manager() {
     delete graph;
 }
+
 void Manager::resetManager() {
     delete this->graph;
     this->graph = new Graph();
@@ -28,6 +30,7 @@ void Manager::resetManager() {
     reservoirs.clear();
     stations.clear();
 }
+
 int Manager::getHowManyEdges() const {
     int sum = 0;
     for (auto v : graph->getVertexSet()) {
@@ -76,9 +79,11 @@ Graph* Manager::getGraph() const {
 unordered_map<string,Vertex*> Manager::getCities() const{
     return cities;
 }
+
 unordered_map<string, Vertex *> Manager::getReservoirs() const {
     return reservoirs;
 }
+
 unordered_map<string, Vertex*> Manager::getStations() const {
     return stations;
 }
@@ -458,6 +463,7 @@ bool Manager::dfs_helper(Vertex *currentVertex, Vertex *superSink, vector<Edge*>
     currentVertex->setVisited(false);
     return false;
 }
+
 vector<Edge*> Manager::bfs_flow(Vertex* superSource, Vertex* superSink) {
     vector<Edge*> path;
     if (superSource == nullptr || superSink == nullptr) {
@@ -549,6 +555,7 @@ vector<pair<string,int>> Manager::maxFlow(vector<Edge*> (Manager::*explore_paths
     }
     return result;
 }
+
 vector<pair<string,int>> Manager::maxFlowEdmondsKarp() {
     return maxFlow(&Manager::bfs_flow);
 }
@@ -972,6 +979,7 @@ void Manager::disableEachStationEdmondsKarp() {
     createCsvFileDisable(path,can_be_disabled);
 
 }
+
 void Manager::disableEachStationFordFulkerson() {
     vector<pair<string,bool>> can_be_disabled;
     auto it = stations.begin();
@@ -1227,6 +1235,7 @@ vector<pair<string,double>> Manager::shutdownPipesWithDecrease(vector<pair<strin
 
     return percentageDecline;
 }
+
 void Manager::disableSelectedPipesEdmondsKarp(vector<Edge*> &pipes) {
     vector<pair<string,double>> decreased = shutdownPipesWithDecrease(&Manager::maxFlowEdmondsKarp,pipes);
     string path = "../data/results/results_decrease_rate_pipe_disabled_EK.csv";

@@ -22,13 +22,17 @@
   <component name="ChangeListManager">
     <list default="true" id="a9e6c8e8-41a3-405a-b780-9cdc615cf2a9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/projectDA" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/projectDA" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/manager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/controller/manager.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controller/manager.h" beforeDir="false" afterPath="$PROJECT_DIR$/controller/manager.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/results/results_cityXEnoughWaterEK.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/results/results_cityXEnoughWaterEK.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/view/menu.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/view/menu.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/graph_8cpp.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/graph_8cpp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/graph_8cpp__incl.map" beforeDir="false" afterPath="$PROJECT_DIR$/html/graph_8cpp__incl.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/graph_8cpp__incl.md5" beforeDir="false" afterPath="$PROJECT_DIR$/html/graph_8cpp__incl.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/graph_8cpp__incl.png" beforeDir="false" afterPath="$PROJECT_DIR$/html/graph_8cpp__incl.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/html/graph_8h_source.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/graph_8h_source.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/graph_8cpp.tex" beforeDir="false" afterPath="$PROJECT_DIR$/latex/graph_8cpp.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/graph_8cpp__incl.md5" beforeDir="false" afterPath="$PROJECT_DIR$/latex/graph_8cpp__incl.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/latex/graph_8cpp__incl.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/latex/graph_8cpp__incl.pdf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,6 +163,8 @@
       <workItem from="1712081391131" duration="32000" />
       <workItem from="1712130988958" duration="136000" />
       <workItem from="1712131133039" duration="3312000" />
+      <workItem from="1712340293061" duration="7350000" />
+      <workItem from="1712420098970" duration="7255000" />
     </task>
     <servers />
   </component>
