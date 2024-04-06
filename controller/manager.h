@@ -477,7 +477,27 @@ public:
      * @param cities A vector of strings representing the codes of cities for which the maximum flow is to be calculated.
      */
     void getFordFulkersonXCity(vector<string>& cities);
+
+    /**
+     * @brief Run the Edmonds-Karp algorithm to find maximum flow for all cities.
+     *
+     * This function runs the Edmonds-Karp algorithm to find the maximum flow for all cities in the network. It optionally resets the graph after computation and saves the results to a CSV file.
+     *
+     * Time complexity: O(V.E^2)
+     *
+     * @param reset Flag indicating whether to reset the graph after computation. Default is true.
+     */
     void getEdmondsKarpAllCities(bool reset = true);
+
+    /**
+     * @brief Run the Ford-Fulkerson algorithm to find maximum flow for all cities.
+     *
+     * This function runs the Ford-Fulkerson algorithm to find the maximum flow for all cities in the network. It optionally resets the graph after computation and saves the results to a CSV file.
+     *
+     * Time complexity: O(E⋅f).
+     *
+     * @param reset Flag indicating whether to reset the graph after computation. Default is true.
+     */
     void getFordFulkersonAllCities(bool reset = true);
 
     /* Exercise 2.2 */
@@ -529,8 +549,13 @@ public:
     void improvePipesHeuristicFF();
 
     /* Exercise 3.1 */
-
-
+    /**
+     * @brief Disable each reservoir and check if it affects the network flow using Edmonds-Karp algorithm.
+     *
+     * This function disables each reservoir in the network one by one and checks if it affects the network flow using the Edmonds-Karp algorithm. It creates a CSV file with the results indicating whether each reservoir can be disabled without affecting the flow.
+     *
+     * Time complexity: O(VE^2).
+     */
     void disableEachReservoirEdmondsKarp();
     void disableEachReservoirFordFulkerson();
     void disableSelectedReservoirsEdmondsKarp(vector<string>& reservoirs);
