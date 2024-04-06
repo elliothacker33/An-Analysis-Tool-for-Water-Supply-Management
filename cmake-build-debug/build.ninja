@@ -11,7 +11,7 @@
 # =============================================================================
 
 # =============================================================================
-# Project: projectDA
+# Project: watersupply
 # Configurations: Debug
 # =============================================================================
 
@@ -41,78 +41,78 @@ include CMakeFiles/rules.ninja
 
 cmake_ninja_workdir = /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/cmake-build-debug/
 # =============================================================================
-# Object build statements for EXECUTABLE target projectDA
+# Object build statements for EXECUTABLE target watersupply
 
 
 #############################################
-# Order-only phony target for projectDA
+# Order-only phony target for watersupply
 
-build cmake_object_order_depends_target_projectDA: phony || CMakeFiles/projectDA.dir
+build cmake_object_order_depends_target_watersupply: phony || CMakeFiles/watersupply.dir
 
-build CMakeFiles/projectDA.dir/main.cpp.o: CXX_COMPILER__projectDA_unscanned_Debug /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/main.cpp || cmake_object_order_depends_target_projectDA
-  DEP_FILE = CMakeFiles/projectDA.dir/main.cpp.o.d
+build CMakeFiles/watersupply.dir/main.cpp.o: CXX_COMPILER__watersupply_unscanned_Debug /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/main.cpp || cmake_object_order_depends_target_watersupply
+  DEP_FILE = CMakeFiles/watersupply.dir/main.cpp.o.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/projectDA.dir
-  OBJECT_FILE_DIR = CMakeFiles/projectDA.dir
-  TARGET_COMPILE_PDB = CMakeFiles/projectDA.dir/
-  TARGET_PDB = projectDA.pdb
+  OBJECT_DIR = CMakeFiles/watersupply.dir
+  OBJECT_FILE_DIR = CMakeFiles/watersupply.dir
+  TARGET_COMPILE_PDB = CMakeFiles/watersupply.dir/
+  TARGET_PDB = watersupply.pdb
 
-build CMakeFiles/projectDA.dir/controller/manager.cpp.o: CXX_COMPILER__projectDA_unscanned_Debug /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/controller/manager.cpp || cmake_object_order_depends_target_projectDA
-  DEP_FILE = CMakeFiles/projectDA.dir/controller/manager.cpp.o.d
+build CMakeFiles/watersupply.dir/controller/manager.cpp.o: CXX_COMPILER__watersupply_unscanned_Debug /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/controller/manager.cpp || cmake_object_order_depends_target_watersupply
+  DEP_FILE = CMakeFiles/watersupply.dir/controller/manager.cpp.o.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/projectDA.dir
-  OBJECT_FILE_DIR = CMakeFiles/projectDA.dir/controller
-  TARGET_COMPILE_PDB = CMakeFiles/projectDA.dir/
-  TARGET_PDB = projectDA.pdb
+  OBJECT_DIR = CMakeFiles/watersupply.dir
+  OBJECT_FILE_DIR = CMakeFiles/watersupply.dir/controller
+  TARGET_COMPILE_PDB = CMakeFiles/watersupply.dir/
+  TARGET_PDB = watersupply.pdb
 
-build CMakeFiles/projectDA.dir/model/Graph.cpp.o: CXX_COMPILER__projectDA_unscanned_Debug /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/model/Graph.cpp || cmake_object_order_depends_target_projectDA
-  DEP_FILE = CMakeFiles/projectDA.dir/model/Graph.cpp.o.d
+build CMakeFiles/watersupply.dir/model/Graph.cpp.o: CXX_COMPILER__watersupply_unscanned_Debug /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/model/Graph.cpp || cmake_object_order_depends_target_watersupply
+  DEP_FILE = CMakeFiles/watersupply.dir/model/Graph.cpp.o.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/projectDA.dir
-  OBJECT_FILE_DIR = CMakeFiles/projectDA.dir/model
-  TARGET_COMPILE_PDB = CMakeFiles/projectDA.dir/
-  TARGET_PDB = projectDA.pdb
+  OBJECT_DIR = CMakeFiles/watersupply.dir
+  OBJECT_FILE_DIR = CMakeFiles/watersupply.dir/model
+  TARGET_COMPILE_PDB = CMakeFiles/watersupply.dir/
+  TARGET_PDB = watersupply.pdb
 
-build CMakeFiles/projectDA.dir/view/menu.cpp.o: CXX_COMPILER__projectDA_unscanned_Debug /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/view/menu.cpp || cmake_object_order_depends_target_projectDA
-  DEP_FILE = CMakeFiles/projectDA.dir/view/menu.cpp.o.d
+build CMakeFiles/watersupply.dir/view/menu.cpp.o: CXX_COMPILER__watersupply_unscanned_Debug /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/view/menu.cpp || cmake_object_order_depends_target_watersupply
+  DEP_FILE = CMakeFiles/watersupply.dir/view/menu.cpp.o.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/projectDA.dir
-  OBJECT_FILE_DIR = CMakeFiles/projectDA.dir/view
-  TARGET_COMPILE_PDB = CMakeFiles/projectDA.dir/
-  TARGET_PDB = projectDA.pdb
+  OBJECT_DIR = CMakeFiles/watersupply.dir
+  OBJECT_FILE_DIR = CMakeFiles/watersupply.dir/view
+  TARGET_COMPILE_PDB = CMakeFiles/watersupply.dir/
+  TARGET_PDB = watersupply.pdb
 
-build CMakeFiles/projectDA.dir/model/Edge.cpp.o: CXX_COMPILER__projectDA_unscanned_Debug /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/model/Edge.cpp || cmake_object_order_depends_target_projectDA
-  DEP_FILE = CMakeFiles/projectDA.dir/model/Edge.cpp.o.d
+build CMakeFiles/watersupply.dir/model/Edge.cpp.o: CXX_COMPILER__watersupply_unscanned_Debug /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/model/Edge.cpp || cmake_object_order_depends_target_watersupply
+  DEP_FILE = CMakeFiles/watersupply.dir/model/Edge.cpp.o.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/projectDA.dir
-  OBJECT_FILE_DIR = CMakeFiles/projectDA.dir/model
-  TARGET_COMPILE_PDB = CMakeFiles/projectDA.dir/
-  TARGET_PDB = projectDA.pdb
+  OBJECT_DIR = CMakeFiles/watersupply.dir
+  OBJECT_FILE_DIR = CMakeFiles/watersupply.dir/model
+  TARGET_COMPILE_PDB = CMakeFiles/watersupply.dir/
+  TARGET_PDB = watersupply.pdb
 
-build CMakeFiles/projectDA.dir/model/Vertex.cpp.o: CXX_COMPILER__projectDA_unscanned_Debug /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/model/Vertex.cpp || cmake_object_order_depends_target_projectDA
-  DEP_FILE = CMakeFiles/projectDA.dir/model/Vertex.cpp.o.d
+build CMakeFiles/watersupply.dir/model/Vertex.cpp.o: CXX_COMPILER__watersupply_unscanned_Debug /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/model/Vertex.cpp || cmake_object_order_depends_target_watersupply
+  DEP_FILE = CMakeFiles/watersupply.dir/model/Vertex.cpp.o.d
   FLAGS = -g -std=gnu++17 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles/projectDA.dir
-  OBJECT_FILE_DIR = CMakeFiles/projectDA.dir/model
-  TARGET_COMPILE_PDB = CMakeFiles/projectDA.dir/
-  TARGET_PDB = projectDA.pdb
+  OBJECT_DIR = CMakeFiles/watersupply.dir
+  OBJECT_FILE_DIR = CMakeFiles/watersupply.dir/model
+  TARGET_COMPILE_PDB = CMakeFiles/watersupply.dir/
+  TARGET_PDB = watersupply.pdb
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target projectDA
+# Link build statements for EXECUTABLE target watersupply
 
 
 #############################################
-# Link the executable projectDA
+# Link the executable watersupply
 
-build projectDA: CXX_EXECUTABLE_LINKER__projectDA_Debug CMakeFiles/projectDA.dir/main.cpp.o CMakeFiles/projectDA.dir/controller/manager.cpp.o CMakeFiles/projectDA.dir/model/Graph.cpp.o CMakeFiles/projectDA.dir/view/menu.cpp.o CMakeFiles/projectDA.dir/model/Edge.cpp.o CMakeFiles/projectDA.dir/model/Vertex.cpp.o
+build watersupply: CXX_EXECUTABLE_LINKER__watersupply_Debug CMakeFiles/watersupply.dir/main.cpp.o CMakeFiles/watersupply.dir/controller/manager.cpp.o CMakeFiles/watersupply.dir/model/Graph.cpp.o CMakeFiles/watersupply.dir/view/menu.cpp.o CMakeFiles/watersupply.dir/model/Edge.cpp.o CMakeFiles/watersupply.dir/model/Vertex.cpp.o
   FLAGS = -g
-  OBJECT_DIR = CMakeFiles/projectDA.dir
+  OBJECT_DIR = CMakeFiles/watersupply.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_COMPILE_PDB = CMakeFiles/projectDA.dir/
-  TARGET_FILE = projectDA
-  TARGET_PDB = projectDA.pdb
+  TARGET_COMPILE_PDB = CMakeFiles/watersupply.dir/
+  TARGET_FILE = watersupply
+  TARGET_PDB = watersupply.pdb
 
 
 #############################################
@@ -148,7 +148,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 #############################################
 # Folder: /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/cmake-build-debug
 
-build all: phony projectDA
+build all: phony watersupply
 
 # =============================================================================
 # Built-in targets

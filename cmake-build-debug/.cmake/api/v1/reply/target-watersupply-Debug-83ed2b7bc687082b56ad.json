@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "projectDA"
+			"path" : "watersupply"
 		}
 	],
 	"backtrace" : 1,
@@ -58,7 +58,7 @@
 			]
 		}
 	],
-	"id" : "projectDA::@6890427a1f51a3e7e1df",
+	"id" : "watersupply::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
@@ -74,8 +74,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "projectDA",
-	"nameOnDisk" : "projectDA",
+	"name" : "watersupply",
+	"nameOnDisk" : "watersupply",
 	"paths" : 
 	{
 		"build" : ".",

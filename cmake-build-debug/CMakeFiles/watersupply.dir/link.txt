@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/watersupply.dir/main.cpp.o CMakeFiles/watersupply.dir/controller/manager.cpp.o CMakeFiles/watersupply.dir/model/Graph.cpp.o CMakeFiles/watersupply.dir/view/menu.cpp.o CMakeFiles/watersupply.dir/model/Edge.cpp.o CMakeFiles/watersupply.dir/model/Vertex.cpp.o -o watersupply 

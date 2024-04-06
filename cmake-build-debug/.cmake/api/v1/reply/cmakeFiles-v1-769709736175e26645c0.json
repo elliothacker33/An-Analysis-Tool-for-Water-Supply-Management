@@ -21,6 +21,11 @@
 		{
 			"isCMake" : true,
 			"isExternal" : true,
+			"path" : "/home/tomas/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/233.14475.31/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeUnixFindMake.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
 			"path" : "/home/tomas/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/233.14475.31/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeSystemSpecificInitialize.cmake"
 		},
 		{
@@ -545,6 +550,21 @@
 			"isCMake" : true,
 			"isExternal" : true,
 			"path" : "/home/tomas/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/233.14475.31/bin/cmake/linux/x64/share/cmake-3.27/Modules/Platform/UnixPaths.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/tomas/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/233.14475.31/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeFindCodeBlocks.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/tomas/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/233.14475.31/bin/cmake/linux/x64/share/cmake-3.27/Modules/CMakeExtraGeneratorDetermineCompilerMacrosAndIncludeDirs.cmake"
+		},
+		{
+			"isCMake" : true,
+			"isExternal" : true,
+			"path" : "/home/tomas/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/233.14475.31/bin/cmake/linux/x64/share/cmake-3.27/Modules/ProcessorCount.cmake"
 		},
 		{
 			"isCMake" : true,

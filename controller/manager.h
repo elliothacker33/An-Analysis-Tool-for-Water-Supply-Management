@@ -477,20 +477,8 @@ public:
      * @param cities A vector of strings representing the codes of cities for which the maximum flow is to be calculated.
      */
     void getFordFulkersonXCity(vector<string>& cities);
-
-    /**
-     * @brief Computes the maximum flow using the Edmonds-Karp algorithm for all cities.
-     *
-     * Time complexity: O(V + E)
-     */
-    void getEdmondsKarpAllCities();
-
-    /**
-     * @brief Perform the Ford-Fulkerson algorithm and print flow metrics for all cities.
-     *
-     * Time complexity: O(V + E)
-     */
-    void getFordFulkersonAllCities();
+    void getEdmondsKarpAllCities(bool reset = true);
+    void getFordFulkersonAllCities(bool reset = true);
 
     /* Exercise 2.2 */
 
@@ -534,8 +522,7 @@ public:
     void canAllCitiesGetEnoughWaterFF();
 
     /* Exercise 2.3 */
-
-
+    void improvePipesHeuristic();
     void improvePipesHeuristicEK();
 
 
@@ -545,6 +532,9 @@ public:
 
 
     void disableEachReservoirEdmondsKarp();
+    void disableEachReservoirFordFulkerson();
+    void disableSelectedReservoirsEdmondsKarp(vector<string>& reservoirs);
+    void disableSelectedReservoirsFordFulkerson(vector<string>& reservoirs);
 
     /* Exercise 3.2 */
 
@@ -686,6 +676,7 @@ public:
      */
     void flowRatePerCityFordFulkerson();
 
+    vector<int> getMetrics();
 };
 
 

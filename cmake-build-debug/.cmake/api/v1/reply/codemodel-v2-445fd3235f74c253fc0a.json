@@ -9,7 +9,7 @@
 					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
 					"minimumCMakeVersion" : 
 					{
-						"string" : "3.26"
+						"string" : "3.27"
 					},
 					"projectIndex" : 0,
 					"source" : ".",
@@ -27,7 +27,7 @@
 					[
 						0
 					],
-					"name" : "projectDA",
+					"name" : "watersupply",
 					"targetIndexes" : 
 					[
 						0
@@ -38,9 +38,9 @@
 			[
 				{
 					"directoryIndex" : 0,
-					"id" : "projectDA::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-projectDA-Debug-08c1654882c8eec6c1b1.json",
-					"name" : "projectDA",
+					"id" : "watersupply::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-watersupply-Debug-83ed2b7bc687082b56ad.json",
+					"name" : "watersupply",
 					"projectIndex" : 0
 				}
 			]
