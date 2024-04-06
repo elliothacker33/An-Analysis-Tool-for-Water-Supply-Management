@@ -681,27 +681,8 @@ vector<pair<string,bool>> Manager::canCityGetEnoughWater(vector<string>& codes,v
 }
 
 void Manager::canCityXGetEnoughWaterEK(vector<string>& cities) {
-    // Calculation of time
-    timespec start_real, end_real;
-    timespec start_cpu, end_cpu;
-
-    clock_gettime(CLOCK_REALTIME, &start_real);
-    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &start_cpu);
-
     auto flows = maxFlowEdmondsKarp();
     auto results = canCityGetEnoughWater(cities,flows);
-
-    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end_cpu);
-    clock_gettime(CLOCK_REALTIME, &end_real);
-
-    double elapsed_real = (end_real.tv_sec - start_real.tv_sec) +
-                          (end_real.tv_nsec - start_real.tv_nsec) / 1e9;
-
-    double elapsed_cpu = (end_cpu.tv_sec - start_cpu.tv_sec) +
-                         (end_cpu.tv_nsec - start_cpu.tv_nsec) / 1e9;
-
-    cout << "Elapsed real time: " << elapsed_real << " seconds" << endl;
-    cout << "Elapsed CPU time: " << elapsed_cpu << " seconds" << endl;
 
     string path = "../data/results/results_cityXEnoughWaterEK.csv";
     createCsvFileEnoughWater(path,results);
@@ -709,89 +690,32 @@ void Manager::canCityXGetEnoughWaterEK(vector<string>& cities) {
 }
 
 void Manager::canCityXGetEnoughWaterFF(vector<string>& cities) {
-    timespec start_real, end_real;
-    timespec start_cpu, end_cpu;
-
-    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &start_cpu);
-    clock_gettime(CLOCK_REALTIME, &start_real);
-
     auto flows = maxFlowFordFulkerson();
     auto results = canCityGetEnoughWater(cities,flows);
-
-    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end_cpu);
-    clock_gettime(CLOCK_REALTIME, &end_real);
-
-    double elapsed_real = (end_real.tv_sec - start_real.tv_sec) +
-                          (end_real.tv_nsec - start_real.tv_nsec) / 1e9;
-
-    double elapsed_cpu = (end_cpu.tv_sec - start_cpu.tv_sec) +
-                         (end_cpu.tv_nsec - start_cpu.tv_nsec) / 1e9;
-
-    cout << "Elapsed real time: " << elapsed_real << " seconds" << endl;
-    cout << "Elapsed CPU time: " << elapsed_cpu << " seconds" << endl;
-
     string path = "../data/results/results_cityXEnoughWaterFF.csv";
     createCsvFileEnoughWater(path,results);
     resetGraph();
 }
 
 void Manager::canAllCitiesGetEnoughWaterEK() {
-    timespec start_real, end_real;
-    timespec start_cpu, end_cpu;
-
-    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &start_cpu);
-    clock_gettime(CLOCK_REALTIME, &start_real);
-
     auto flows = maxFlowEdmondsKarp();
     vector<string> cities;
     for (auto n : getCities()) {
         cities.push_back(n.first);
     }
     auto results = canCityGetEnoughWater(cities,flows);
-
-    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end_cpu);
-    clock_gettime(CLOCK_REALTIME, &end_real);
-
-    double elapsed_real = (end_real.tv_sec - start_real.tv_sec) +
-                          (end_real.tv_nsec - start_real.tv_nsec) / 1e9;
-
-    double elapsed_cpu = (end_cpu.tv_sec - start_cpu.tv_sec) +
-                         (end_cpu.tv_nsec - start_cpu.tv_nsec) / 1e9;
-
-    cout << "Elapsed real time: " << elapsed_real << " seconds" << endl;
-    cout << "Elapsed CPU time: " << elapsed_cpu << " seconds" << endl;
-
     string path = "../data/results/results_allCitiesEnoughWaterEK.csv";
     createCsvFileEnoughWater(path,results);
     resetGraph();
 }
 
 void Manager::canAllCitiesGetEnoughWaterFF() {
-    timespec start_real, end_real;
-    timespec start_cpu, end_cpu;
-
-    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &start_cpu);
-    clock_gettime(CLOCK_REALTIME, &start_real);
-
     auto flows = maxFlowFordFulkerson();
     vector<string> cities;
     for (auto n : getCities()) {
         cities.push_back(n.first);
     }
     auto results = canCityGetEnoughWater(cities,flows);
-
-    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &end_cpu);
-    clock_gettime(CLOCK_REALTIME, &end_real);
-
-    double elapsed_real = (end_real.tv_sec - start_real.tv_sec) +
-                          (end_real.tv_nsec - start_real.tv_nsec) / 1e9;
-
-    double elapsed_cpu = (end_cpu.tv_sec - start_cpu.tv_sec) +
-                         (end_cpu.tv_nsec - start_cpu.tv_nsec) / 1e9;
-
-    cout << "Elapsed real time: " << elapsed_real << " seconds" << endl;
-    cout << "Elapsed CPU time: " << elapsed_cpu << " seconds" << endl;
-
     string path = "../data/results/results_allCitiesEnoughWaterFF.csv";
     createCsvFileEnoughWater(path,results);
     resetGraph();
@@ -931,7 +855,7 @@ void Manager::disableReservoirs(vector<string> &reservoirs) {
     }
 }
 // TODO: Under Construction
-
+/*
 void Manager::dfs_disable_helper(Vertex* reservoir) {
     reservoir->setVisited(true);
     for (auto e : reservoir->getAdj()) {
@@ -972,7 +896,7 @@ vector<pair<string,int>> Manager::graphChangeFlowsAfterReservoirsDisabled(vector
     }
     return result;
 }
-
+*/
 
 bool Manager::shutdownReservoirs(vector<pair<string, int>> (Manager::*flowfunction)(), vector<string> &reservoirs) {
     auto beforeFlows = (this->*flowfunction)();
@@ -990,7 +914,7 @@ bool Manager::shutdownReservoirs(vector<pair<string, int>> (Manager::*flowfuncti
     vector<pair<string,int>> afterFlows;
     if (totalDemand <= beforeTotalFlow){
         // Just a need a dfs to deacrease values
-        afterFlows = graphChangeFlowsAfterReservoirsDisabled(reservoirs);
+        //afterFlows = graphChangeFlowsAfterReservoirsDisabled(reservoirs);
     }
     else {
         resetGraph();

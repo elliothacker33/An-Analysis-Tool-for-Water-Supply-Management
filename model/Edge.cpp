@@ -11,7 +11,7 @@
  * @brief Constructs an Edge object with the given parameters.
  *
  * This constructor initializes an Edge object with the specified origin vertex,
- * destination vertex, capacity, and type. This serves to represnt the pipes in the model specified.
+ * destination vertex, capacity, and type. This serves to represent the pipes in the model specified.
  *
  * @param orig Pointer to the origin vertex of the edge.
  * @param dest Pointer to the destination vertex of the edge.

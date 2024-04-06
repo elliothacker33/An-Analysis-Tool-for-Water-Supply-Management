@@ -1,3 +1,8 @@
+/**
+* @file Menu.cpp
+* @brief This file contains the Menu implementation.
+*/
+
 #include "menu.h"
 #include <algorithm>
 #include <cmath>
@@ -142,7 +147,7 @@ vector<Edge *> Menu::getPipes() {
         getExamplesInterface("city");
         getExamplesInterface("station");
         getExamplesInterface("reservoir");
-        cout << "Enter a valid origin vertex code: " << endl;
+        cout << "Enter a valid origin vertex code or press 'STOP' to stop inserting: " << endl;
         getline(cin, input);
         transform(input.begin(), input.end(), input.begin(), ::toupper); // Convert input to uppercase
 
@@ -150,7 +155,7 @@ vector<Edge *> Menu::getPipes() {
             getExamplesInterface("city");
             getExamplesInterface("station");
             getExamplesInterface("reservoir");
-            cout << "Enter a valid destination vertex code: " << endl;
+            cout << "Enter a valid destination vertex code or press 'STOP' to stop inserting: " << endl;
             getline(cin, input2);
             transform(input2.begin(), input2.end(), input2.begin(), ::toupper); // Convert input to uppercase
             if (validCity(input2) || validStation(input2) || validReservoir(input2)) {
@@ -783,7 +788,6 @@ void Menu::extraMenu() {
 
     }
 }
-
 
 void Menu::exitMenu() {
     while (!menuStack.empty()) {
