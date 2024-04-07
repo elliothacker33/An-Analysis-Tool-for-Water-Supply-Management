@@ -506,26 +506,25 @@ void Menu::exercise23(){
     timespec start_real;
     timespec start_cpu;
     double elapsed_real, elapsed_cpu;
+    startTimer(start_real,start_cpu);
 
     switch(option) {
         case 0:
             goBack();
             break;
-
         case 1:
-            menuStack.push(&Menu::exercise23);
             manager->getEdmondsKarpAllCities(false);
+            manager->improvePipesHeuristic();
+            stopTimer(start_real,start_cpu,elapsed_real,elapsed_cpu);
+            exercise23();
             break;
         case 2:
-            menuStack.push(&Menu::exercise23);
             manager->getFordFulkersonAllCities(false);
+            manager->improvePipesHeuristic();
+            stopTimer(start_real,start_cpu,elapsed_real,elapsed_cpu);
+            exercise23();
             break;
-
     }
-    startTimer(start_real,start_cpu);
-    manager->improvePipesHeuristic();
-    stopTimer(start_real,start_cpu,elapsed_real,elapsed_cpu);
-    exercise23();
 
 }
 void Menu::exercise31() {

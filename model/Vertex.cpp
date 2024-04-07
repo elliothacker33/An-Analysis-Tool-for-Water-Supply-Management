@@ -85,7 +85,6 @@ Edge* Vertex::addEdge(Vertex* destination, const int capacity,const string& type
 void Vertex::removeEdge(const Edge* edge) {
     adj.erase(remove_if(adj.begin(), adj.end(), [&](const Edge* e) {
         if (e->getOrigin() == edge->getOrigin() && e->getDest() == edge->getDest()) {
-            edge->getDest()->removeEdgeIncoming(edge);
             return true;
         }
         return false;

@@ -1,5 +1,5 @@
 /**
-* @file manager.cppp
+* @file manager.cpp
 * @brief This file contains the manager implementation.
  */
 
@@ -68,12 +68,15 @@ void Manager::resetGraph() {
         v->setPath(nullptr);
         v->setVisited(false);
         v->setEnabled(true);
+
         for (auto e : v->getAdj()) {
             e->setFlow(0);
             e->setEnabled(true);
             if (e->getType() == "residual") {
                 deleteEdges.push_back(e);
-                e->setReverseEdge(nullptr);
+                if (e->getReverseEdge()!=nullptr)
+                    e->getReverseEdge()->setReverseEdge(nullptr);
+
             }
         }
     }
@@ -92,7 +95,6 @@ void Manager::resetGraph() {
         graph->removeVertex(superSink);
         cities.erase("SS");
     }
-
 }
 /**
  * @brief Getter function to access graph outside of manager
@@ -561,29 +563,17 @@ vector<pair<string,int>> Manager::maxFlow(vector<Edge*> (Manager::*explore_paths
     vector<Edge*> path;
     while(!(path = (this->*explore_paths)(superSource, superSink)).empty()) {
         const int newFlow = findMinEdge(path);
-        for (const auto e : path) {
-            if(e->getReverseEdge() == nullptr) {
-                // Residual (BI)
-                const auto dest = findVertexInMap(Graph::getCode(e->getDest()));
-                bool value = false;
-                for (const auto i : dest->getAdj()) {
-                    if (Graph::getCode(i->getDest()) == Graph::getCode(e->getOrigin())) {
-                        value = true;
-                        break;
-                    }
-                }
-                if (!value) {
-                    const auto edg = graph->addEdge(e->getDest(),e->getOrigin(),e->getCapacity(),"residual");
-                    edg->setFlow(0);
-                    edg->setReverseEdge(e);
-                    e->setReverseEdge(edg);
-
-                }
+        for (const auto e: path) {
+            if (e->getReverseEdge() == nullptr) {
+                const auto edg = graph->addEdge(e->getDest(), e->getOrigin(), e->getCapacity(), "residual");
+                edg->setFlow(0);
+                edg->setReverseEdge(e);
+                e->setReverseEdge(edg);
             }
-            e->setFlow(e->getFlow()-newFlow);
+            e->setFlow(e->getFlow() - newFlow);
             e->getReverseEdge()->setFlow(e->getReverseEdge()->getFlow() + newFlow);
-
         }
+
         path.clear();
     }
     // Final Calculation of paths
@@ -649,6 +639,13 @@ void Manager::getEdmondsKarpAllCities(bool reset) {
     if(reset) {
         printFlowMetrics(flows, cities, "../data/results/results_21_EK.csv");
         resetGraph();
+    }
+
+    for (auto n: graph->getVertexSet()){
+        cout << "vertex: " << Graph::getCode(n) << endl;
+        for (auto e : n->getAdj()){
+            cout << "Origin: " << Graph::getCode(e->getOrigin()) << " " << Graph::getCode(e->getDest()) << endl;
+        }
     }
 }
 
@@ -974,8 +971,70 @@ void Manager::disableEachReservoirFordFulkerson() {
     createCsvFileDisable(path,can_be_disabled);
 }
 vector<pair<string,double>> Manager::shutdownReservoirsWithDecrease(vector<pair<string,int>> (Manager::*flowfunction)(),vector<string>& reservoirs){
-    vector<pair<string,double>> v;
-    return v;
+    vector<pair<string, double>> percentageDecline;
+    // Calculate total flow before removing the stations
+    auto beforeFlows = (this->*flowfunction)();
+    int beforeTotalFlow = 0;
+    for (const auto& flow : beforeFlows)
+        beforeTotalFlow += flow.second;
+    cout << "Total flow before removing reservoirs: " <<  beforeTotalFlow << endl;
+
+    // Calculate total demand
+    int totalDemand = 0;
+    for (const auto& v: getCities()) {
+        totalDemand+=dynamic_cast<City*>(v.second)->getDemand();
+    }
+    vector<pair<string,int>> afterFlows;
+    if (totalDemand <= beforeTotalFlow){
+        afterFlows = graphChangeFlowsAfterReservoirsDisabled(reservoirs);
+    }
+    else {
+        resetGraph();
+        disableReservoirs(reservoirs);
+        afterFlows = (this->*flowfunction)();
+    }
+
+    int afterTotalFlow = 0;
+    for (const auto& flow : afterFlows)
+        afterTotalFlow += flow.second;
+
+
+    // Check if the network was affected
+    if (afterTotalFlow == beforeTotalFlow) {
+        cout << "The network was not affected after removing: ";
+        for (const string& reservoir : reservoirs) {
+            percentageDecline.push_back(make_pair(reservoir,0.0));
+            cout << reservoir << ", ";
+        }
+        cout << endl;
+        resetGraph();
+    }
+    // Calculate the percentage decline for each city
+    cout << "Percentage decline in flow for each city after removing stations:" << endl;
+
+    for (const auto& beforeFlow : beforeFlows) {
+        string cityCode = beforeFlow.first;
+        int beforeFlowAmount = beforeFlow.second;
+        double afterFlowAmount = 0;
+
+        // Find the flow amount after removing the stations
+        for (const auto& afterFlow : afterFlows) {
+            if (afterFlow.first == cityCode) {
+                afterFlowAmount = afterFlow.second;
+                break;
+            }
+        }
+
+        // Calculate the percentage decline in flow
+        double declinePercentage = -(beforeFlowAmount - afterFlowAmount) / beforeFlowAmount * 100;
+        percentageDecline.push_back(make_pair(cityCode, declinePercentage));
+        cout << "City code: " << cityCode << ", Before flow : " << beforeFlowAmount << ", After flow : " << afterFlowAmount << ", Decline percentage : " << declinePercentage << "%" << endl;
+
+    }
+
+    resetGraph();
+
+    return percentageDecline;
 }
 
 
@@ -1418,7 +1477,7 @@ vector<int> Manager::getMetrics() {
     for(auto a : graph->getVertexSet()){
 
         if(a->isVisited())continue;
-        a->setVisited(true);
+            a->setVisited(true);
 
         for(auto b: a->getAdj()){
 
