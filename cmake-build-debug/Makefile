@@ -129,149 +129,149 @@ watersupply/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/watersupply.dir/build.make CMakeFiles/watersupply.dir/build
 .PHONY : watersupply/fast
 
-controller/manager.o: controller/manager.cpp.o
-.PHONY : controller/manager.o
+src/controller/manager.o: src/controller/manager.cpp.o
+.PHONY : src/controller/manager.o
 
 # target to build an object file
-controller/manager.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/watersupply.dir/build.make CMakeFiles/watersupply.dir/controller/manager.cpp.o
-.PHONY : controller/manager.cpp.o
+src/controller/manager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/watersupply.dir/build.make CMakeFiles/watersupply.dir/src/controller/manager.cpp.o
+.PHONY : src/controller/manager.cpp.o
 
-controller/manager.i: controller/manager.cpp.i
-.PHONY : controller/manager.i
+src/controller/manager.i: src/controller/manager.cpp.i
+.PHONY : src/controller/manager.i
 
 # target to preprocess a source file
-controller/manager.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/watersupply.dir/build.make CMakeFiles/watersupply.dir/controller/manager.cpp.i
-.PHONY : controller/manager.cpp.i
+src/controller/manager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/watersupply.dir/build.make CMakeFiles/watersupply.dir/src/controller/manager.cpp.i
+.PHONY : src/controller/manager.cpp.i
 
-controller/manager.s: controller/manager.cpp.s
-.PHONY : controller/manager.s
+src/controller/manager.s: src/controller/manager.cpp.s
+.PHONY : src/controller/manager.s
 
 # target to generate assembly for a file
-controller/manager.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/watersupply.dir/build.make CMakeFiles/watersupply.dir/controller/manager.cpp.s
-.PHONY : controller/manager.cpp.s
+src/controller/manager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/watersupply.dir/build.make CMakeFiles/watersupply.dir/src/controller/manager.cpp.s
+.PHONY : src/controller/manager.cpp.s
 
-main.o: main.cpp.o
-.PHONY : main.o
+src/main.o: src/main.cpp.o
+.PHONY : src/main.o
 
 # target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/watersupply.dir/build.make CMakeFiles/watersupply.dir/main.cpp.o
-.PHONY : main.cpp.o
+src/main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/watersupply.dir/build.make CMakeFiles/watersupply.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
 
-main.i: main.cpp.i
-.PHONY : main.i
+src/main.i: src/main.cpp.i
+.PHONY : src/main.i
 
 # target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/watersupply.dir/build.make CMakeFiles/watersupply.dir/main.cpp.i
-.PHONY : main.cpp.i
+src/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/watersupply.dir/build.make CMakeFiles/watersupply.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
 
-main.s: main.cpp.s
-.PHONY : main.s
+src/main.s: src/main.cpp.s
+.PHONY : src/main.s
 
 # target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/watersupply.dir/build.make CMakeFiles/watersupply.dir/main.cpp.s
-.PHONY : main.cpp.s
+src/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/watersupply.dir/build.make CMakeFiles/watersupply.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
 
-model/Edge.o: model/Edge.cpp.o
-.PHONY : model/Edge.o
+src/model/Edge.o: src/model/Edge.cpp.o
+.PHONY : src/model/Edge.o
 
 # target to build an object file
-model/Edge.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/watersupply.dir/build.make CMakeFiles/watersupply.dir/model/Edge.cpp.o
-.PHONY : model/Edge.cpp.o
+src/model/Edge.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/watersupply.dir/build.make CMakeFiles/watersupply.dir/src/model/Edge.cpp.o
+.PHONY : src/model/Edge.cpp.o
 
-model/Edge.i: model/Edge.cpp.i
-.PHONY : model/Edge.i
+src/model/Edge.i: src/model/Edge.cpp.i
+.PHONY : src/model/Edge.i
 
 # target to preprocess a source file
-model/Edge.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/watersupply.dir/build.make CMakeFiles/watersupply.dir/model/Edge.cpp.i
-.PHONY : model/Edge.cpp.i
+src/model/Edge.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/watersupply.dir/build.make CMakeFiles/watersupply.dir/src/model/Edge.cpp.i
+.PHONY : src/model/Edge.cpp.i
 
-model/Edge.s: model/Edge.cpp.s
-.PHONY : model/Edge.s
+src/model/Edge.s: src/model/Edge.cpp.s
+.PHONY : src/model/Edge.s
 
 # target to generate assembly for a file
-model/Edge.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/watersupply.dir/build.make CMakeFiles/watersupply.dir/model/Edge.cpp.s
-.PHONY : model/Edge.cpp.s
+src/model/Edge.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/watersupply.dir/build.make CMakeFiles/watersupply.dir/src/model/Edge.cpp.s
+.PHONY : src/model/Edge.cpp.s
 
-model/Graph.o: model/Graph.cpp.o
-.PHONY : model/Graph.o
+src/model/Graph.o: src/model/Graph.cpp.o
+.PHONY : src/model/Graph.o
 
 # target to build an object file
-model/Graph.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/watersupply.dir/build.make CMakeFiles/watersupply.dir/model/Graph.cpp.o
-.PHONY : model/Graph.cpp.o
+src/model/Graph.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/watersupply.dir/build.make CMakeFiles/watersupply.dir/src/model/Graph.cpp.o
+.PHONY : src/model/Graph.cpp.o
 
-model/Graph.i: model/Graph.cpp.i
-.PHONY : model/Graph.i
+src/model/Graph.i: src/model/Graph.cpp.i
+.PHONY : src/model/Graph.i
 
 # target to preprocess a source file
-model/Graph.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/watersupply.dir/build.make CMakeFiles/watersupply.dir/model/Graph.cpp.i
-.PHONY : model/Graph.cpp.i
+src/model/Graph.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/watersupply.dir/build.make CMakeFiles/watersupply.dir/src/model/Graph.cpp.i
+.PHONY : src/model/Graph.cpp.i
 
-model/Graph.s: model/Graph.cpp.s
-.PHONY : model/Graph.s
+src/model/Graph.s: src/model/Graph.cpp.s
+.PHONY : src/model/Graph.s
 
 # target to generate assembly for a file
-model/Graph.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/watersupply.dir/build.make CMakeFiles/watersupply.dir/model/Graph.cpp.s
-.PHONY : model/Graph.cpp.s
+src/model/Graph.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/watersupply.dir/build.make CMakeFiles/watersupply.dir/src/model/Graph.cpp.s
+.PHONY : src/model/Graph.cpp.s
 
-model/Vertex.o: model/Vertex.cpp.o
-.PHONY : model/Vertex.o
+src/model/Vertex.o: src/model/Vertex.cpp.o
+.PHONY : src/model/Vertex.o
 
 # target to build an object file
-model/Vertex.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/watersupply.dir/build.make CMakeFiles/watersupply.dir/model/Vertex.cpp.o
-.PHONY : model/Vertex.cpp.o
+src/model/Vertex.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/watersupply.dir/build.make CMakeFiles/watersupply.dir/src/model/Vertex.cpp.o
+.PHONY : src/model/Vertex.cpp.o
 
-model/Vertex.i: model/Vertex.cpp.i
-.PHONY : model/Vertex.i
+src/model/Vertex.i: src/model/Vertex.cpp.i
+.PHONY : src/model/Vertex.i
 
 # target to preprocess a source file
-model/Vertex.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/watersupply.dir/build.make CMakeFiles/watersupply.dir/model/Vertex.cpp.i
-.PHONY : model/Vertex.cpp.i
+src/model/Vertex.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/watersupply.dir/build.make CMakeFiles/watersupply.dir/src/model/Vertex.cpp.i
+.PHONY : src/model/Vertex.cpp.i
 
-model/Vertex.s: model/Vertex.cpp.s
-.PHONY : model/Vertex.s
+src/model/Vertex.s: src/model/Vertex.cpp.s
+.PHONY : src/model/Vertex.s
 
 # target to generate assembly for a file
-model/Vertex.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/watersupply.dir/build.make CMakeFiles/watersupply.dir/model/Vertex.cpp.s
-.PHONY : model/Vertex.cpp.s
+src/model/Vertex.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/watersupply.dir/build.make CMakeFiles/watersupply.dir/src/model/Vertex.cpp.s
+.PHONY : src/model/Vertex.cpp.s
 
-view/menu.o: view/menu.cpp.o
-.PHONY : view/menu.o
+src/view/menu.o: src/view/menu.cpp.o
+.PHONY : src/view/menu.o
 
 # target to build an object file
-view/menu.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/watersupply.dir/build.make CMakeFiles/watersupply.dir/view/menu.cpp.o
-.PHONY : view/menu.cpp.o
+src/view/menu.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/watersupply.dir/build.make CMakeFiles/watersupply.dir/src/view/menu.cpp.o
+.PHONY : src/view/menu.cpp.o
 
-view/menu.i: view/menu.cpp.i
-.PHONY : view/menu.i
+src/view/menu.i: src/view/menu.cpp.i
+.PHONY : src/view/menu.i
 
 # target to preprocess a source file
-view/menu.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/watersupply.dir/build.make CMakeFiles/watersupply.dir/view/menu.cpp.i
-.PHONY : view/menu.cpp.i
+src/view/menu.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/watersupply.dir/build.make CMakeFiles/watersupply.dir/src/view/menu.cpp.i
+.PHONY : src/view/menu.cpp.i
 
-view/menu.s: view/menu.cpp.s
-.PHONY : view/menu.s
+src/view/menu.s: src/view/menu.cpp.s
+.PHONY : src/view/menu.s
 
 # target to generate assembly for a file
-view/menu.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/watersupply.dir/build.make CMakeFiles/watersupply.dir/view/menu.cpp.s
-.PHONY : view/menu.cpp.s
+src/view/menu.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/watersupply.dir/build.make CMakeFiles/watersupply.dir/src/view/menu.cpp.s
+.PHONY : src/view/menu.cpp.s
 
 # Help Target
 help:
@@ -282,24 +282,24 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... watersupply"
-	@echo "... controller/manager.o"
-	@echo "... controller/manager.i"
-	@echo "... controller/manager.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
-	@echo "... model/Edge.o"
-	@echo "... model/Edge.i"
-	@echo "... model/Edge.s"
-	@echo "... model/Graph.o"
-	@echo "... model/Graph.i"
-	@echo "... model/Graph.s"
-	@echo "... model/Vertex.o"
-	@echo "... model/Vertex.i"
-	@echo "... model/Vertex.s"
-	@echo "... view/menu.o"
-	@echo "... view/menu.i"
-	@echo "... view/menu.s"
+	@echo "... src/controller/manager.o"
+	@echo "... src/controller/manager.i"
+	@echo "... src/controller/manager.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
+	@echo "... src/model/Edge.o"
+	@echo "... src/model/Edge.i"
+	@echo "... src/model/Edge.s"
+	@echo "... src/model/Graph.o"
+	@echo "... src/model/Graph.i"
+	@echo "... src/model/Graph.s"
+	@echo "... src/model/Vertex.o"
+	@echo "... src/model/Vertex.i"
+	@echo "... src/model/Vertex.s"
+	@echo "... src/view/menu.o"
+	@echo "... src/view/menu.i"
+	@echo "... src/view/menu.s"
 .PHONY : help
 
 

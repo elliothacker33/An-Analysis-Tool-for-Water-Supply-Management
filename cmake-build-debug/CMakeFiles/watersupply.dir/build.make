@@ -69,108 +69,108 @@ include CMakeFiles/watersupply.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/watersupply.dir/flags.make
 
-CMakeFiles/watersupply.dir/main.cpp.o: CMakeFiles/watersupply.dir/flags.make
-CMakeFiles/watersupply.dir/main.cpp.o: /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/main.cpp
-CMakeFiles/watersupply.dir/main.cpp.o: CMakeFiles/watersupply.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/watersupply.dir/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/watersupply.dir/main.cpp.o -MF CMakeFiles/watersupply.dir/main.cpp.o.d -o CMakeFiles/watersupply.dir/main.cpp.o -c /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/main.cpp
+CMakeFiles/watersupply.dir/src/main.cpp.o: CMakeFiles/watersupply.dir/flags.make
+CMakeFiles/watersupply.dir/src/main.cpp.o: /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/src/main.cpp
+CMakeFiles/watersupply.dir/src/main.cpp.o: CMakeFiles/watersupply.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/watersupply.dir/src/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/watersupply.dir/src/main.cpp.o -MF CMakeFiles/watersupply.dir/src/main.cpp.o.d -o CMakeFiles/watersupply.dir/src/main.cpp.o -c /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/src/main.cpp
 
-CMakeFiles/watersupply.dir/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/watersupply.dir/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/main.cpp > CMakeFiles/watersupply.dir/main.cpp.i
+CMakeFiles/watersupply.dir/src/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/watersupply.dir/src/main.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/src/main.cpp > CMakeFiles/watersupply.dir/src/main.cpp.i
 
-CMakeFiles/watersupply.dir/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/watersupply.dir/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/main.cpp -o CMakeFiles/watersupply.dir/main.cpp.s
+CMakeFiles/watersupply.dir/src/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/watersupply.dir/src/main.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/src/main.cpp -o CMakeFiles/watersupply.dir/src/main.cpp.s
 
-CMakeFiles/watersupply.dir/controller/manager.cpp.o: CMakeFiles/watersupply.dir/flags.make
-CMakeFiles/watersupply.dir/controller/manager.cpp.o: /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/controller/manager.cpp
-CMakeFiles/watersupply.dir/controller/manager.cpp.o: CMakeFiles/watersupply.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/watersupply.dir/controller/manager.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/watersupply.dir/controller/manager.cpp.o -MF CMakeFiles/watersupply.dir/controller/manager.cpp.o.d -o CMakeFiles/watersupply.dir/controller/manager.cpp.o -c /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/controller/manager.cpp
+CMakeFiles/watersupply.dir/src/controller/manager.cpp.o: CMakeFiles/watersupply.dir/flags.make
+CMakeFiles/watersupply.dir/src/controller/manager.cpp.o: /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/src/controller/manager.cpp
+CMakeFiles/watersupply.dir/src/controller/manager.cpp.o: CMakeFiles/watersupply.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/watersupply.dir/src/controller/manager.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/watersupply.dir/src/controller/manager.cpp.o -MF CMakeFiles/watersupply.dir/src/controller/manager.cpp.o.d -o CMakeFiles/watersupply.dir/src/controller/manager.cpp.o -c /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/src/controller/manager.cpp
 
-CMakeFiles/watersupply.dir/controller/manager.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/watersupply.dir/controller/manager.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/controller/manager.cpp > CMakeFiles/watersupply.dir/controller/manager.cpp.i
+CMakeFiles/watersupply.dir/src/controller/manager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/watersupply.dir/src/controller/manager.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/src/controller/manager.cpp > CMakeFiles/watersupply.dir/src/controller/manager.cpp.i
 
-CMakeFiles/watersupply.dir/controller/manager.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/watersupply.dir/controller/manager.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/controller/manager.cpp -o CMakeFiles/watersupply.dir/controller/manager.cpp.s
+CMakeFiles/watersupply.dir/src/controller/manager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/watersupply.dir/src/controller/manager.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/src/controller/manager.cpp -o CMakeFiles/watersupply.dir/src/controller/manager.cpp.s
 
-CMakeFiles/watersupply.dir/model/Graph.cpp.o: CMakeFiles/watersupply.dir/flags.make
-CMakeFiles/watersupply.dir/model/Graph.cpp.o: /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/model/Graph.cpp
-CMakeFiles/watersupply.dir/model/Graph.cpp.o: CMakeFiles/watersupply.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/watersupply.dir/model/Graph.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/watersupply.dir/model/Graph.cpp.o -MF CMakeFiles/watersupply.dir/model/Graph.cpp.o.d -o CMakeFiles/watersupply.dir/model/Graph.cpp.o -c /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/model/Graph.cpp
+CMakeFiles/watersupply.dir/src/model/Graph.cpp.o: CMakeFiles/watersupply.dir/flags.make
+CMakeFiles/watersupply.dir/src/model/Graph.cpp.o: /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/src/model/Graph.cpp
+CMakeFiles/watersupply.dir/src/model/Graph.cpp.o: CMakeFiles/watersupply.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/watersupply.dir/src/model/Graph.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/watersupply.dir/src/model/Graph.cpp.o -MF CMakeFiles/watersupply.dir/src/model/Graph.cpp.o.d -o CMakeFiles/watersupply.dir/src/model/Graph.cpp.o -c /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/src/model/Graph.cpp
 
-CMakeFiles/watersupply.dir/model/Graph.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/watersupply.dir/model/Graph.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/model/Graph.cpp > CMakeFiles/watersupply.dir/model/Graph.cpp.i
+CMakeFiles/watersupply.dir/src/model/Graph.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/watersupply.dir/src/model/Graph.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/src/model/Graph.cpp > CMakeFiles/watersupply.dir/src/model/Graph.cpp.i
 
-CMakeFiles/watersupply.dir/model/Graph.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/watersupply.dir/model/Graph.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/model/Graph.cpp -o CMakeFiles/watersupply.dir/model/Graph.cpp.s
+CMakeFiles/watersupply.dir/src/model/Graph.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/watersupply.dir/src/model/Graph.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/src/model/Graph.cpp -o CMakeFiles/watersupply.dir/src/model/Graph.cpp.s
 
-CMakeFiles/watersupply.dir/view/menu.cpp.o: CMakeFiles/watersupply.dir/flags.make
-CMakeFiles/watersupply.dir/view/menu.cpp.o: /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/view/menu.cpp
-CMakeFiles/watersupply.dir/view/menu.cpp.o: CMakeFiles/watersupply.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/watersupply.dir/view/menu.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/watersupply.dir/view/menu.cpp.o -MF CMakeFiles/watersupply.dir/view/menu.cpp.o.d -o CMakeFiles/watersupply.dir/view/menu.cpp.o -c /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/view/menu.cpp
+CMakeFiles/watersupply.dir/src/view/menu.cpp.o: CMakeFiles/watersupply.dir/flags.make
+CMakeFiles/watersupply.dir/src/view/menu.cpp.o: /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/src/view/menu.cpp
+CMakeFiles/watersupply.dir/src/view/menu.cpp.o: CMakeFiles/watersupply.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/watersupply.dir/src/view/menu.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/watersupply.dir/src/view/menu.cpp.o -MF CMakeFiles/watersupply.dir/src/view/menu.cpp.o.d -o CMakeFiles/watersupply.dir/src/view/menu.cpp.o -c /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/src/view/menu.cpp
 
-CMakeFiles/watersupply.dir/view/menu.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/watersupply.dir/view/menu.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/view/menu.cpp > CMakeFiles/watersupply.dir/view/menu.cpp.i
+CMakeFiles/watersupply.dir/src/view/menu.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/watersupply.dir/src/view/menu.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/src/view/menu.cpp > CMakeFiles/watersupply.dir/src/view/menu.cpp.i
 
-CMakeFiles/watersupply.dir/view/menu.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/watersupply.dir/view/menu.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/view/menu.cpp -o CMakeFiles/watersupply.dir/view/menu.cpp.s
+CMakeFiles/watersupply.dir/src/view/menu.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/watersupply.dir/src/view/menu.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/src/view/menu.cpp -o CMakeFiles/watersupply.dir/src/view/menu.cpp.s
 
-CMakeFiles/watersupply.dir/model/Edge.cpp.o: CMakeFiles/watersupply.dir/flags.make
-CMakeFiles/watersupply.dir/model/Edge.cpp.o: /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/model/Edge.cpp
-CMakeFiles/watersupply.dir/model/Edge.cpp.o: CMakeFiles/watersupply.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/watersupply.dir/model/Edge.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/watersupply.dir/model/Edge.cpp.o -MF CMakeFiles/watersupply.dir/model/Edge.cpp.o.d -o CMakeFiles/watersupply.dir/model/Edge.cpp.o -c /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/model/Edge.cpp
+CMakeFiles/watersupply.dir/src/model/Edge.cpp.o: CMakeFiles/watersupply.dir/flags.make
+CMakeFiles/watersupply.dir/src/model/Edge.cpp.o: /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/src/model/Edge.cpp
+CMakeFiles/watersupply.dir/src/model/Edge.cpp.o: CMakeFiles/watersupply.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/watersupply.dir/src/model/Edge.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/watersupply.dir/src/model/Edge.cpp.o -MF CMakeFiles/watersupply.dir/src/model/Edge.cpp.o.d -o CMakeFiles/watersupply.dir/src/model/Edge.cpp.o -c /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/src/model/Edge.cpp
 
-CMakeFiles/watersupply.dir/model/Edge.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/watersupply.dir/model/Edge.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/model/Edge.cpp > CMakeFiles/watersupply.dir/model/Edge.cpp.i
+CMakeFiles/watersupply.dir/src/model/Edge.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/watersupply.dir/src/model/Edge.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/src/model/Edge.cpp > CMakeFiles/watersupply.dir/src/model/Edge.cpp.i
 
-CMakeFiles/watersupply.dir/model/Edge.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/watersupply.dir/model/Edge.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/model/Edge.cpp -o CMakeFiles/watersupply.dir/model/Edge.cpp.s
+CMakeFiles/watersupply.dir/src/model/Edge.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/watersupply.dir/src/model/Edge.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/src/model/Edge.cpp -o CMakeFiles/watersupply.dir/src/model/Edge.cpp.s
 
-CMakeFiles/watersupply.dir/model/Vertex.cpp.o: CMakeFiles/watersupply.dir/flags.make
-CMakeFiles/watersupply.dir/model/Vertex.cpp.o: /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/model/Vertex.cpp
-CMakeFiles/watersupply.dir/model/Vertex.cpp.o: CMakeFiles/watersupply.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/watersupply.dir/model/Vertex.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/watersupply.dir/model/Vertex.cpp.o -MF CMakeFiles/watersupply.dir/model/Vertex.cpp.o.d -o CMakeFiles/watersupply.dir/model/Vertex.cpp.o -c /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/model/Vertex.cpp
+CMakeFiles/watersupply.dir/src/model/Vertex.cpp.o: CMakeFiles/watersupply.dir/flags.make
+CMakeFiles/watersupply.dir/src/model/Vertex.cpp.o: /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/src/model/Vertex.cpp
+CMakeFiles/watersupply.dir/src/model/Vertex.cpp.o: CMakeFiles/watersupply.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/watersupply.dir/src/model/Vertex.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/watersupply.dir/src/model/Vertex.cpp.o -MF CMakeFiles/watersupply.dir/src/model/Vertex.cpp.o.d -o CMakeFiles/watersupply.dir/src/model/Vertex.cpp.o -c /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/src/model/Vertex.cpp
 
-CMakeFiles/watersupply.dir/model/Vertex.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/watersupply.dir/model/Vertex.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/model/Vertex.cpp > CMakeFiles/watersupply.dir/model/Vertex.cpp.i
+CMakeFiles/watersupply.dir/src/model/Vertex.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/watersupply.dir/src/model/Vertex.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/src/model/Vertex.cpp > CMakeFiles/watersupply.dir/src/model/Vertex.cpp.i
 
-CMakeFiles/watersupply.dir/model/Vertex.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/watersupply.dir/model/Vertex.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/model/Vertex.cpp -o CMakeFiles/watersupply.dir/model/Vertex.cpp.s
+CMakeFiles/watersupply.dir/src/model/Vertex.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/watersupply.dir/src/model/Vertex.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/src/model/Vertex.cpp -o CMakeFiles/watersupply.dir/src/model/Vertex.cpp.s
 
 # Object files for target watersupply
 watersupply_OBJECTS = \
-"CMakeFiles/watersupply.dir/main.cpp.o" \
-"CMakeFiles/watersupply.dir/controller/manager.cpp.o" \
-"CMakeFiles/watersupply.dir/model/Graph.cpp.o" \
-"CMakeFiles/watersupply.dir/view/menu.cpp.o" \
-"CMakeFiles/watersupply.dir/model/Edge.cpp.o" \
-"CMakeFiles/watersupply.dir/model/Vertex.cpp.o"
+"CMakeFiles/watersupply.dir/src/main.cpp.o" \
+"CMakeFiles/watersupply.dir/src/controller/manager.cpp.o" \
+"CMakeFiles/watersupply.dir/src/model/Graph.cpp.o" \
+"CMakeFiles/watersupply.dir/src/view/menu.cpp.o" \
+"CMakeFiles/watersupply.dir/src/model/Edge.cpp.o" \
+"CMakeFiles/watersupply.dir/src/model/Vertex.cpp.o"
 
 # External object files for target watersupply
 watersupply_EXTERNAL_OBJECTS =
 
-watersupply: CMakeFiles/watersupply.dir/main.cpp.o
-watersupply: CMakeFiles/watersupply.dir/controller/manager.cpp.o
-watersupply: CMakeFiles/watersupply.dir/model/Graph.cpp.o
-watersupply: CMakeFiles/watersupply.dir/view/menu.cpp.o
-watersupply: CMakeFiles/watersupply.dir/model/Edge.cpp.o
-watersupply: CMakeFiles/watersupply.dir/model/Vertex.cpp.o
+watersupply: CMakeFiles/watersupply.dir/src/main.cpp.o
+watersupply: CMakeFiles/watersupply.dir/src/controller/manager.cpp.o
+watersupply: CMakeFiles/watersupply.dir/src/model/Graph.cpp.o
+watersupply: CMakeFiles/watersupply.dir/src/view/menu.cpp.o
+watersupply: CMakeFiles/watersupply.dir/src/model/Edge.cpp.o
+watersupply: CMakeFiles/watersupply.dir/src/model/Vertex.cpp.o
 watersupply: CMakeFiles/watersupply.dir/build.make
 watersupply: CMakeFiles/watersupply.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable watersupply"

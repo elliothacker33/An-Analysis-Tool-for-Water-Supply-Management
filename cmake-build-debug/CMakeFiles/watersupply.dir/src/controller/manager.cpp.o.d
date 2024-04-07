@@ -1,5 +1,5 @@
-CMakeFiles/watersupply.dir/main.cpp.o: \
- /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/main.cpp \
+CMakeFiles/watersupply.dir/src/controller/manager.cpp.o: \
+ /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/src/controller/manager.cpp \
  /usr/include/stdc-predef.h \
  /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/src/controller/manager.h \
  /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/src/controller/../model/Graph.h \
@@ -159,9 +159,27 @@ CMakeFiles/watersupply.dir/main.cpp.o: \
  /usr/include/c++/9/optional \
  /usr/include/c++/9/bits/enable_special_members.h \
  /usr/include/c++/9/bits/unordered_map.h \
- /usr/include/c++/9/bits/erase_if.h \
- /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/src/view/menu.h \
- /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/src/view/../controller/manager.h \
- /usr/include/c++/9/stack /usr/include/c++/9/deque \
- /usr/include/c++/9/bits/stl_deque.h /usr/include/c++/9/bits/deque.tcc \
- /usr/include/c++/9/bits/stl_stack.h
+ /usr/include/c++/9/bits/erase_if.h /usr/include/c++/9/algorithm \
+ /usr/include/c++/9/bits/stl_algo.h \
+ /usr/include/c++/9/bits/algorithmfwd.h \
+ /usr/include/c++/9/bits/stl_heap.h /usr/include/c++/9/bits/stl_tempbuf.h \
+ /usr/include/c++/9/bits/uniform_int_dist.h \
+ /usr/include/c++/9/pstl/glue_algorithm_defs.h \
+ /usr/include/c++/9/functional /usr/include/c++/9/bits/refwrap.h \
+ /usr/include/c++/9/bits/std_function.h \
+ /usr/include/c++/9/pstl/execution_defs.h /usr/include/c++/9/climits \
+ /usr/lib/gcc/x86_64-linux-gnu/9/include/limits.h \
+ /usr/lib/gcc/x86_64-linux-gnu/9/include/syslimits.h \
+ /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/local_lim.h \
+ /usr/include/linux/limits.h \
+ /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/uio_lim.h /usr/include/c++/9/fstream \
+ /usr/include/c++/9/bits/codecvt.h \
+ /usr/include/x86_64-linux-gnu/c++/9/bits/basic_file.h \
+ /usr/include/x86_64-linux-gnu/c++/9/bits/c++io.h \
+ /usr/include/c++/9/bits/fstream.tcc /usr/include/c++/9/queue \
+ /usr/include/c++/9/deque /usr/include/c++/9/bits/stl_deque.h \
+ /usr/include/c++/9/bits/deque.tcc /usr/include/c++/9/bits/stl_queue.h \
+ /usr/include/c++/9/sstream /usr/include/c++/9/bits/sstream.tcc

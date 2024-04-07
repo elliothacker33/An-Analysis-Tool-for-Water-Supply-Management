@@ -1,5 +1,5 @@
-CMakeFiles/watersupply.dir/main.cpp.o: \
- /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/main.cpp \
+CMakeFiles/watersupply.dir/src/main.cpp.o: \
+ /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/src/main.cpp \
  /usr/include/stdc-predef.h \
  /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/src/controller/manager.h \
  /home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/src/controller/../model/Graph.h \
