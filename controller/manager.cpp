@@ -18,23 +18,13 @@
 #define ANSI_COLOR_RESET "\x1b[0m"
 
 /* ----- Auxiliary functions and constructors/destructors ---- */
-/**
- * @brief Manager constructor
- */
 Manager::Manager() {
     graph = new Graph();
 }
 
-/**
- * @brief Manager destructor
- * Deletes graph associated with manager
- */
 Manager::~Manager() {
     delete graph;
 }
-/**
- * @brief Deletes graph, and creates a new one, to reset manager in Menu.
- */
 void Manager::resetManager() {
     delete this->graph;
     this->graph = new Graph();
@@ -43,9 +33,6 @@ void Manager::resetManager() {
     stations.clear();
 }
 
-/**
- * @brief Gets the number of edges in the graph
- */
 int Manager::getHowManyEdges() const {
     int sum = 0;
     for (auto v : graph->getVertexSet()) {
@@ -54,9 +41,6 @@ int Manager::getHowManyEdges() const {
     return sum;
 }
 
-/**
- * @brief Resets the graph to it's initial state
- */
 void Manager::resetGraph() {
     Vertex* superSource = findVertexInMap("SR");
     Vertex* superSink = findVertexInMap("SS");
@@ -96,40 +80,23 @@ void Manager::resetGraph() {
         cities.erase("SS");
     }
 }
-/**
- * @brief Getter function to access graph outside of manager
- */
+
 Graph* Manager::getGraph() const {
     return graph;
 }
 
-/**
- * @brief Get access to cities faster in O(1) time.
- * @return unordered_map with (city,vertex pointer)
- */
 unordered_map<string,Vertex*> Manager::getCities() const{
     return cities;
 }
-/**
- * @brief Get access to reservoirs faster in O(1) time.
- * @return unordered_map with (reservoir,vertex pointer)
- */
+
 unordered_map<string, Vertex *> Manager::getReservoirs() const {
     return reservoirs;
 }
-/**
- * @brief Get access to stations faster in O(1) time.
- * @return unordered_map with (stations,vertex pointer)
- */
+
 unordered_map<string, Vertex*> Manager::getStations() const {
     return stations;
 }
 
-/**
- * @brief Retrieve the Vertex* associated with code of vertex.
- * @param identifier is a code of a Vertex that can be of 3 types (city,reservoir,station)
- * @return (Vertex*) pointer to vertex in the graph.
- */
 Vertex* Manager::findVertexInMap(const string& identifier) const {
     if (const auto cityIt = cities.find(identifier); cityIt != cities.end()) {
         return cityIt->second;
@@ -144,11 +111,6 @@ Vertex* Manager::findVertexInMap(const string& identifier) const {
 }
 /*------------- Csv methods -----------------------------*/
 
-/**
- * Get the
- * @param path
- * @param flows
- */
 void Manager::createCsvFileFlows(const string &path,vector<pair<string,int>>& flows) {
     ofstream outputCSV(path);
 
@@ -641,12 +603,6 @@ void Manager::getEdmondsKarpAllCities(bool reset) {
         resetGraph();
     }
 
-    for (auto n: graph->getVertexSet()){
-        cout << "vertex: " << Graph::getCode(n) << endl;
-        for (auto e : n->getAdj()){
-            cout << "Origin: " << Graph::getCode(e->getOrigin()) << " " << Graph::getCode(e->getDest()) << endl;
-        }
-    }
 }
 
 void Manager::getFordFulkersonAllCities(bool reset) {
@@ -939,7 +895,7 @@ bool Manager::shutdownReservoirs(vector<pair<string, int>> (Manager::*flowfuncti
         // Calculate the percentage decline in flow
         double declinePercentage = (beforeFlowAmount - afterFlowAmount) / beforeFlowAmount * 100;
         percentageDecline.push_back(make_pair(cityCode, declinePercentage));
-        cout << "City code: " << cityCode << "Before flow : " << beforeFlowAmount << ", After flow : " << afterFlowAmount << ", Decline percentage : -" << declinePercentage << "%" << endl;
+        cout << "City code: " << cityCode << ", Before flow : " << beforeFlowAmount << ", After flow : " << afterFlowAmount << ", Decline percentage : -" << declinePercentage << "%" << endl;
 
     }
     resetGraph();
@@ -1038,12 +994,12 @@ vector<pair<string,double>> Manager::shutdownReservoirsWithDecrease(vector<pair<
 }
 
 
-void Manager::disableSelectedReservoirsEdmondsKarp(vector<std::string> &reservoirs) {
+void Manager::disableSelectedReservoirsEdmondsKarp(vector<string> &reservoirs) {
     vector<pair<string,double>> decreased = shutdownReservoirsWithDecrease(&Manager::maxFlowEdmondsKarp,reservoirs);
     string path = "../data/results/results_decrease_after_disabled_reservoirs_EK.csv";
     createCsvFileRates(path,decreased);
 }
-void Manager::disableSelectedReservoirsFordFulkerson(vector<std::string> &reservoirs) {
+void Manager::disableSelectedReservoirsFordFulkerson(vector<string> &reservoirs) {
     vector<pair<string,double>> decreased = shutdownReservoirsWithDecrease(&Manager::maxFlowFordFulkerson,reservoirs);
     string path = "../data/results/results_decrease_after_disabled_reservoirs_FF.csv";
     createCsvFileRates(path,decreased);
@@ -1109,7 +1065,7 @@ bool Manager::shutdownStations(vector<pair<string,int>> (Manager::*flowfunction)
         // Calculate the percentage decline in flow
         double declinePercentage = (beforeFlowAmount - afterFlowAmount) / beforeFlowAmount * 100;
         percentageDecline.push_back(make_pair(cityCode, declinePercentage));
-        cout << "City code: " << cityCode << "Before flow : " << beforeFlowAmount << ", After flow : " << afterFlowAmount << ", Decline percentage : -" << declinePercentage << "%" << endl;
+        cout << "City code: " << cityCode << ", Before flow : " << beforeFlowAmount << ", After flow : " << afterFlowAmount << ", Decline percentage : -" << declinePercentage << "%" << endl;
 
     }
     resetGraph();
@@ -1191,7 +1147,7 @@ vector<pair<string, double>> Manager::shutdownStationsGettingDecreaseFlows(vecto
         // Calculate the percentage decline in flow
         double declinePercentage = -(beforeFlowAmount - afterFlowAmount) / beforeFlowAmount * 100;
         percentageDecline.push_back(make_pair(cityCode, declinePercentage));
-        cout << "City code: " << cityCode << "Before flow : " << beforeFlowAmount << ", After flow : " << afterFlowAmount << ", Decline percentage : -" << declinePercentage << "%" << endl;
+        cout << "City code: " << cityCode << " ,Before flow : " << beforeFlowAmount << ", After flow : " << afterFlowAmount << ", Decline percentage : -" << declinePercentage << "%" << endl;
 
     }
 
