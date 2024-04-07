@@ -1,4 +1,11 @@
+/**
+* @file manager.cppp
+* @brief This file contains the manager implementation.
+ */
+
+// Project headers
 #include "manager.h"
+// Standard Library Headers
 #include <algorithm>
 #include <climits>
 #include <iostream>
@@ -6,9 +13,6 @@
 #include <queue>
 #include <sstream>
 #include <vector>
-
-
-
 
 #define ANSI_COLOR_RED "\x1b[31m"
 #define ANSI_COLOR_RESET "\x1b[0m"
@@ -256,7 +260,7 @@ void Manager::importFiles(const string& pathCities,const string& pathReservoirs,
     importPipes(pathPipes);
 }
 
-int Manager::parseInt(const string& text) {
+int Manager::parseInt(const string& text) const {
     string number_string;
     for (const auto i : text) {
         if (i != '\"' && i != ',')
@@ -595,6 +599,7 @@ vector<pair<string,int>> Manager::maxFlow(vector<Edge*> (Manager::*explore_paths
     }
     return result;
 }
+
 vector<pair<string,int>> Manager::maxFlowEdmondsKarp() {
     return maxFlow(&Manager::bfs_flow);
 }
@@ -1076,6 +1081,7 @@ void Manager::disableEachStationEdmondsKarp() {
     createCsvFileDisable(path,can_be_disabled);
 
 }
+
 void Manager::disableEachStationFordFulkerson() {
     vector<pair<string,bool>> can_be_disabled;
     auto it = stations.begin();
@@ -1330,6 +1336,7 @@ vector<pair<string,double>> Manager::shutdownPipesWithDecrease(vector<pair<strin
 
     return percentageDecline;
 }
+
 void Manager::disableSelectedPipesEdmondsKarp(vector<Edge*> &pipes) {
     for (auto e : pipes){
         cout << Graph::getCode(e->getOrigin()) << Graph::getCode(e->getDest());

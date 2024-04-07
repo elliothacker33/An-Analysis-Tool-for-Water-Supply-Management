@@ -1,13 +1,10 @@
 # ninja log v5
-1	99	1712340036413614776	build.ninja	657e56b265788776
-600	851	7340120646351134	watersupply.exe	ee47c28dcac1a3fe
-1	243	1712340047097622447	CMakeFiles/watersupply.dir/model/Edge.cpp.o	33408bdc538bfe78
-1	551	1712340047405622666	CMakeFiles/watersupply.dir/model/Graph.cpp.o	d9776bc5eefeabfb
-1	566	1712340047417622674	CMakeFiles/watersupply.dir/model/Vertex.cpp.o	a6b11cab7c64627b
+1	99	1712427671607149275	build.ninja	657e56b265788776
 0	647	1712340047501622734	CMakeFiles/watersupply.dir/main.cpp.o	89abc11e64008eb4
-1	1033	1712340047885623007	CMakeFiles/watersupply.dir/view/menu.cpp.o	4a251a0232a14987
-0	1456	1712340119481671128	CMakeFiles/watersupply.dir/controller/manager.cpp.o	d224d149359214be
-1	1468	1712340133153679719	CMakeFiles/watersupply.dir/controller/manager.cpp.o	d224d149359214be
-1468	1580	1712340133265679789	watersupply	ccc082f797c15ba0
+600	851	7340120646351134	watersupply.exe	ee47c28dcac1a3fe
+1	551	1712340047405622666	CMakeFiles/watersupply.dir/model/Graph.cpp.o	d9776bc5eefeabfb
 1	1369	1712340495073854274	CMakeFiles/watersupply.dir/controller/manager.cpp.o	d224d149359214be
+1	566	1712340047417622674	CMakeFiles/watersupply.dir/model/Vertex.cpp.o	a6b11cab7c64627b
+1	243	1712340047097622447	CMakeFiles/watersupply.dir/model/Edge.cpp.o	33408bdc538bfe78
+1	1033	1712340047885623007	CMakeFiles/watersupply.dir/view/menu.cpp.o	4a251a0232a14987
 1369	1456	1712340495161854307	watersupply	ccc082f797c15ba0
