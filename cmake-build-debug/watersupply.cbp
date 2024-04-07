@@ -82,37 +82,37 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/controller/manager.cpp">
+		<Unit filename="/home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/src/controller/manager.cpp">
 			<Option target="watersupply"/>
 		</Unit>
-		<Unit filename="/home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/controller/manager.h">
+		<Unit filename="/home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/src/controller/manager.h">
 			<Option target="watersupply"/>
 		</Unit>
-		<Unit filename="/home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/main.cpp">
+		<Unit filename="/home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/src/main.cpp">
 			<Option target="watersupply"/>
 		</Unit>
-		<Unit filename="/home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/model/Edge.cpp">
+		<Unit filename="/home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/src/model/Edge.cpp">
 			<Option target="watersupply"/>
 		</Unit>
-		<Unit filename="/home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/model/Edge.h">
+		<Unit filename="/home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/src/model/Edge.h">
 			<Option target="watersupply"/>
 		</Unit>
-		<Unit filename="/home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/model/Graph.cpp">
+		<Unit filename="/home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/src/model/Graph.cpp">
 			<Option target="watersupply"/>
 		</Unit>
-		<Unit filename="/home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/model/Graph.h">
+		<Unit filename="/home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/src/model/Graph.h">
 			<Option target="watersupply"/>
 		</Unit>
-		<Unit filename="/home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/model/Vertex.cpp">
+		<Unit filename="/home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/src/model/Vertex.cpp">
 			<Option target="watersupply"/>
 		</Unit>
-		<Unit filename="/home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/model/Vertex.h">
+		<Unit filename="/home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/src/model/Vertex.h">
 			<Option target="watersupply"/>
 		</Unit>
-		<Unit filename="/home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/view/menu.cpp">
+		<Unit filename="/home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/src/view/menu.cpp">
 			<Option target="watersupply"/>
 		</Unit>
-		<Unit filename="/home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/view/menu.h">
+		<Unit filename="/home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/src/view/menu.h">
 			<Option target="watersupply"/>
 		</Unit>
 		<Unit filename="/home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/CMakeLists.txt">

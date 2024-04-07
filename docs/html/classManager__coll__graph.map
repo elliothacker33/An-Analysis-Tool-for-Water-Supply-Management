@@ -1,0 +1,4 @@
+<map id="Manager" name="Manager">
+<area shape="rect" id="node1" title="The Manager class manages various operations related to the network graph." alt="" coords="5,95,84,121"/>
+<area shape="rect" id="node2" href="$classGraph.html" title="Represents a graph data structure." alt="" coords="14,5,75,32"/>
+</map>

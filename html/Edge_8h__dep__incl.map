@@ -1,9 +1,0 @@
-<map id="model/Edge.h" name="model/Edge.h">
-<area shape="rect" id="node1" title="This file contains the Edge header." alt="" coords="205,5,315,32"/>
-<area shape="rect" id="node2" href="$Edge_8cpp.html" title="This file contains the implementation of Edge." alt="" coords="50,80,177,107"/>
-<area shape="rect" id="node3" href="$Graph_8h.html" title="This file contains the Graph header." alt="" coords="201,80,319,107"/>
-<area shape="rect" id="node5" href="$Vertex_8cpp.html" title="This file contains the implementation of Vertex." alt="" coords="344,155,480,181"/>
-<area shape="rect" id="node4" href="$Graph_8cpp.html" title="This file contains the implementation of Graph." alt="" coords="5,155,139,181"/>
-<area shape="rect" id="node6" href="$manager_8h_source.html" title=" " alt="" coords="163,155,320,181"/>
-<area shape="rect" id="node7" href="$menu_8h_source.html" title=" " alt="" coords="188,229,295,256"/>
-</map>

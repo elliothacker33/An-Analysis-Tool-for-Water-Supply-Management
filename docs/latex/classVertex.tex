@@ -1,0 +1,457 @@
+\hypertarget{classVertex}{}\doxysection{Vertex Class Reference}
+\label{classVertex}\index{Vertex@{Vertex}}
+
+
+Represents an abstract class that represents a \mbox{\hyperlink{classVertex}{Vertex}}.  
+
+
+
+
+{\ttfamily \#include $<$Vertex.\+h$>$}
+
+
+
+Inheritance diagram for Vertex\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=267pt]{classVertex__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Vertex\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=186pt]{classVertex__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual char \mbox{\hyperlink{classVertex_a0381c1cbf4629c638b67a2c16f81614e}{get\+Type}} () const =0
+\item 
+virtual \mbox{\hyperlink{classVertex_ad7a0ce588b7f688dc4488a0f567d9155}{$\sim$\+Vertex}} ()
+\item 
+int \mbox{\hyperlink{classVertex_a5006087dce4a5b5913fbfca22006fc95}{get\+Out\+Degree}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the number of adjacent edges. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVertex_a06a095505f1d7e99ce144301570c206a}{set\+Out\+Degree}} (int \mbox{\hyperlink{classVertex_a8528eade69923915143cfea138758ba3}{out\+Degree}})
+\begin{DoxyCompactList}\small\item\em Sets the number of adjacent edges. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classVertex_a67353c75591b01e03e2996597df6f4cd}{get\+In\+Degree}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the number of incoming edges. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVertex_a28ec2708571d3ce59b21626fdb9a4585}{set\+In\+Degree}} (int \mbox{\hyperlink{classVertex_a762fa8bb9e3c31fa91926ad9b7c6c6ef}{in\+Degree}})
+\begin{DoxyCompactList}\small\item\em Sets the number of incoming edges. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classVertex_aa4bd82105b85ee53a917391f4811cd8a}{is\+Visited}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the vertex has been visited. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVertex_ac29125ddca49e8c53f43cc03b103f0e4}{set\+Visited}} (bool \mbox{\hyperlink{classVertex_aa4bd82105b85ee53a917391f4811cd8a}{is\+Visited}})
+\begin{DoxyCompactList}\small\item\em Sets the visited state of the vertex. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classVertex_aede3d33119d4be6b9dd5d5cf5726ec27}{is\+Enabled}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the vertex is enabled. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVertex_a4deafcc665210563468a40eae3ff37f6}{set\+Enabled}} (bool \mbox{\hyperlink{classVertex_aede3d33119d4be6b9dd5d5cf5726ec27}{is\+Enabled}})
+\begin{DoxyCompactList}\small\item\em Sets the enabled state of the vertex. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classEdge}{Edge}} $\ast$ \mbox{\hyperlink{classVertex_a089b9001288f71733b14bd8b625d97cd}{add\+Edge}} (\mbox{\hyperlink{classVertex}{Vertex}} $\ast$t, int capacity, const string \&type)
+\begin{DoxyCompactList}\small\item\em Adds an edge to the vertex. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVertex_ab9a9913bf1df28fdf64970b5f338789a}{remove\+Edge}} (const \mbox{\hyperlink{classEdge}{Edge}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Removes an edge from the vertex. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVertex_a0b59a1ae0392cdf016c99bc3882a4763}{set\+Path}} (\mbox{\hyperlink{classEdge}{Edge}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Sets the path edge of the vertex. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classEdge}{Edge}} $\ast$ \mbox{\hyperlink{classVertex_a6e120e57da6af94892fae44e05868794}{get\+Path}} () const
+\begin{DoxyCompactList}\small\item\em Gets the path edge of the vertex. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classVertex_ae24b11c2ffa425dad889d9a1b51b96fa}{remove\+Edge\+Incoming}} (const \mbox{\hyperlink{classEdge}{Edge}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Removes an incoming edge from the vertex. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classVertex_a0c0d7035cc85e26cb8ee27cbb562c77d}{add\+Incoming}} (\mbox{\hyperlink{classEdge}{Edge}} $\ast$e)
+\begin{DoxyCompactList}\small\item\em Adds an incoming edge to the vertex. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{classEdge}{Edge}} $\ast$ $>$ \mbox{\hyperlink{classVertex_ad4cf82bed41b9011e0debb863d72dfc9}{get\+Incoming}} ()
+\begin{DoxyCompactList}\small\item\em Gets the vector of incoming edges. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{classEdge}{Edge}} $\ast$ $>$ \mbox{\hyperlink{classVertex_af82c54a43ccbef87e0e8d3b5e406923e}{get\+Adj}} ()
+\begin{DoxyCompactList}\small\item\em Gets the vector of adjacent edges. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classVertex_aaef9f7de91b4b8f1752d391a1aae9c2e}{visited}} = false
+\begin{DoxyCompactList}\small\item\em Indicates whether the vertex has been visited. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classVertex_a6b05a18f2c83e82802279c5679360e1e}{enabled}} = true
+\begin{DoxyCompactList}\small\item\em Indicates whether the vertex is enabled. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classVertex_a8528eade69923915143cfea138758ba3}{out\+Degree}} = 0
+\begin{DoxyCompactList}\small\item\em Stores the out-\/degree of the vertex. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classVertex_a762fa8bb9e3c31fa91926ad9b7c6c6ef}{in\+Degree}} = 0
+\begin{DoxyCompactList}\small\item\em Stores the in-\/degree of the vertex. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{classEdge}{Edge}} $\ast$ $>$ \mbox{\hyperlink{classVertex_a83d4fb2bc3737914d2427b87dad10bd8}{adj}}
+\begin{DoxyCompactList}\small\item\em Stores the adjacent edges of the vertex. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{classEdge}{Edge}} $\ast$ $>$ \mbox{\hyperlink{classVertex_ab9eee2b46ef8441e2396a19857ed9208}{incoming}}
+\begin{DoxyCompactList}\small\item\em Stores the incoming edges of the vertex. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classEdge}{Edge}} $\ast$ \mbox{\hyperlink{classVertex_a4e83821f961f6eb63ad210260ba0e1e2}{path}} = nullptr
+\begin{DoxyCompactList}\small\item\em Pointer to the path edge of the vertex. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents an abstract class that represents a \mbox{\hyperlink{classVertex}{Vertex}}. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classVertex_ad7a0ce588b7f688dc4488a0f567d9155}\label{classVertex_ad7a0ce588b7f688dc4488a0f567d9155}} 
+\index{Vertex@{Vertex}!````~Vertex@{$\sim$Vertex}}
+\index{````~Vertex@{$\sim$Vertex}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{$\sim$Vertex()}{~Vertex()}}
+{\footnotesize\ttfamily Vertex\+::$\sim$\+Vertex (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classVertex_a089b9001288f71733b14bd8b625d97cd}\label{classVertex_a089b9001288f71733b14bd8b625d97cd}} 
+\index{Vertex@{Vertex}!addEdge@{addEdge}}
+\index{addEdge@{addEdge}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{addEdge()}{addEdge()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEdge}{Edge}} $\ast$ Vertex\+::add\+Edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}} $\ast$}]{t,  }\item[{int}]{capacity,  }\item[{const string \&}]{type }\end{DoxyParamCaption})}
+
+
+
+Adds an edge to the vertex. 
+
+Time Compleity\+: O(\+E)
+
+
+\begin{DoxyParams}{Parameters}
+{\em t} & Pointer to the target vertex. \\
+\hline
+{\em capacity} & Capacity of the edge. \\
+\hline
+{\em type} & Type of the edge. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the added edge. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classVertex_a0c0d7035cc85e26cb8ee27cbb562c77d}\label{classVertex_a0c0d7035cc85e26cb8ee27cbb562c77d}} 
+\index{Vertex@{Vertex}!addIncoming@{addIncoming}}
+\index{addIncoming@{addIncoming}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{addIncoming()}{addIncoming()}}
+{\footnotesize\ttfamily bool Vertex\+::add\+Incoming (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEdge}{Edge}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Adds an incoming edge to the vertex. 
+
+Time Complexity\+: O(\+E)
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Pointer to the incoming edge to be added. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the edge was successfully added, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classVertex_af82c54a43ccbef87e0e8d3b5e406923e}\label{classVertex_af82c54a43ccbef87e0e8d3b5e406923e}} 
+\index{Vertex@{Vertex}!getAdj@{getAdj}}
+\index{getAdj@{getAdj}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{getAdj()}{getAdj()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{classEdge}{Edge}} $\ast$ $>$ Vertex\+::get\+Adj (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the vector of adjacent edges. 
+
+Time Complexity\+: O(1)
+
+\begin{DoxyReturn}{Returns}
+Vector of adjacent edges. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classVertex_ad4cf82bed41b9011e0debb863d72dfc9}\label{classVertex_ad4cf82bed41b9011e0debb863d72dfc9}} 
+\index{Vertex@{Vertex}!getIncoming@{getIncoming}}
+\index{getIncoming@{getIncoming}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{getIncoming()}{getIncoming()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{classEdge}{Edge}} $\ast$ $>$ Vertex\+::get\+Incoming (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the vector of incoming edges. 
+
+Time Complexity\+: O(1)
+
+\begin{DoxyReturn}{Returns}
+Vector of incoming edges. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classVertex_a67353c75591b01e03e2996597df6f4cd}\label{classVertex_a67353c75591b01e03e2996597df6f4cd}} 
+\index{Vertex@{Vertex}!getInDegree@{getInDegree}}
+\index{getInDegree@{getInDegree}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{getInDegree()}{getInDegree()}}
+{\footnotesize\ttfamily int Vertex\+::get\+In\+Degree (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retrieves the number of incoming edges. 
+
+Time Complexity\+: O(1)
+
+\begin{DoxyReturn}{Returns}
+Number of incoming edges. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classVertex_a5006087dce4a5b5913fbfca22006fc95}\label{classVertex_a5006087dce4a5b5913fbfca22006fc95}} 
+\index{Vertex@{Vertex}!getOutDegree@{getOutDegree}}
+\index{getOutDegree@{getOutDegree}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{getOutDegree()}{getOutDegree()}}
+{\footnotesize\ttfamily int Vertex\+::get\+Out\+Degree (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retrieves the number of adjacent edges. 
+
+Time Complexity\+: O(1)
+
+\begin{DoxyReturn}{Returns}
+Number of adjacent edges. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classVertex_a6e120e57da6af94892fae44e05868794}\label{classVertex_a6e120e57da6af94892fae44e05868794}} 
+\index{Vertex@{Vertex}!getPath@{getPath}}
+\index{getPath@{getPath}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{getPath()}{getPath()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEdge}{Edge}} $\ast$ Vertex\+::get\+Path (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Gets the path edge of the vertex. 
+
+Time Complexity\+: O(1)
+
+\begin{DoxyReturn}{Returns}
+Pointer to the path edge of the vertex. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classVertex_a0381c1cbf4629c638b67a2c16f81614e}\label{classVertex_a0381c1cbf4629c638b67a2c16f81614e}} 
+\index{Vertex@{Vertex}!getType@{getType}}
+\index{getType@{getType}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily virtual char Vertex\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classReservoir_ac60645853c9f61ede99e8e674e174747}{Reservoir}}, \mbox{\hyperlink{classStation_a1ed667b8b35b02533e7e9a68781089f9}{Station}}, and \mbox{\hyperlink{classCity_ab27bc0b7f3ab62da7dab3da58385ba6d}{City}}.
+
+\mbox{\Hypertarget{classVertex_aede3d33119d4be6b9dd5d5cf5726ec27}\label{classVertex_aede3d33119d4be6b9dd5d5cf5726ec27}} 
+\index{Vertex@{Vertex}!isEnabled@{isEnabled}}
+\index{isEnabled@{isEnabled}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{isEnabled()}{isEnabled()}}
+{\footnotesize\ttfamily bool Vertex\+::is\+Enabled (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Checks if the vertex is enabled. 
+
+Time Complexity\+: O(1)
+
+\begin{DoxyReturn}{Returns}
+True if the vertex is enabled, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classVertex_aa4bd82105b85ee53a917391f4811cd8a}\label{classVertex_aa4bd82105b85ee53a917391f4811cd8a}} 
+\index{Vertex@{Vertex}!isVisited@{isVisited}}
+\index{isVisited@{isVisited}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{isVisited()}{isVisited()}}
+{\footnotesize\ttfamily bool Vertex\+::is\+Visited (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Checks if the vertex has been visited. 
+
+Time Complexity\+: O(1)
+
+\begin{DoxyReturn}{Returns}
+True if the vertex has been visited, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classVertex_ab9a9913bf1df28fdf64970b5f338789a}\label{classVertex_ab9a9913bf1df28fdf64970b5f338789a}} 
+\index{Vertex@{Vertex}!removeEdge@{removeEdge}}
+\index{removeEdge@{removeEdge}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{removeEdge()}{removeEdge()}}
+{\footnotesize\ttfamily void Vertex\+::remove\+Edge (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classEdge}{Edge}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Removes an edge from the vertex. 
+
+Time Compleity\+: O(\+E)
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Pointer to the edge to be removed. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classVertex_ae24b11c2ffa425dad889d9a1b51b96fa}\label{classVertex_ae24b11c2ffa425dad889d9a1b51b96fa}} 
+\index{Vertex@{Vertex}!removeEdgeIncoming@{removeEdgeIncoming}}
+\index{removeEdgeIncoming@{removeEdgeIncoming}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{removeEdgeIncoming()}{removeEdgeIncoming()}}
+{\footnotesize\ttfamily void Vertex\+::remove\+Edge\+Incoming (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classEdge}{Edge}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Removes an incoming edge from the vertex. 
+
+Time Complexity\+: O(\+E)
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Pointer to the incoming edge to be removed. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classVertex_a4deafcc665210563468a40eae3ff37f6}\label{classVertex_a4deafcc665210563468a40eae3ff37f6}} 
+\index{Vertex@{Vertex}!setEnabled@{setEnabled}}
+\index{setEnabled@{setEnabled}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{setEnabled()}{setEnabled()}}
+{\footnotesize\ttfamily void Vertex\+::set\+Enabled (\begin{DoxyParamCaption}\item[{bool}]{is\+Enabled }\end{DoxyParamCaption})}
+
+
+
+Sets the enabled state of the vertex. 
+
+Time Complexity\+: O(1)
+
+
+\begin{DoxyParams}{Parameters}
+{\em is\+Enabled} & The enabled state to set. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classVertex_a28ec2708571d3ce59b21626fdb9a4585}\label{classVertex_a28ec2708571d3ce59b21626fdb9a4585}} 
+\index{Vertex@{Vertex}!setInDegree@{setInDegree}}
+\index{setInDegree@{setInDegree}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{setInDegree()}{setInDegree()}}
+{\footnotesize\ttfamily void Vertex\+::set\+In\+Degree (\begin{DoxyParamCaption}\item[{int}]{in\+Degree }\end{DoxyParamCaption})}
+
+
+
+Sets the number of incoming edges. 
+
+Time Complexity\+: O(1)
+
+
+\begin{DoxyParams}{Parameters}
+{\em out\+Degree} & Number of incoming edges. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classVertex_a06a095505f1d7e99ce144301570c206a}\label{classVertex_a06a095505f1d7e99ce144301570c206a}} 
+\index{Vertex@{Vertex}!setOutDegree@{setOutDegree}}
+\index{setOutDegree@{setOutDegree}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{setOutDegree()}{setOutDegree()}}
+{\footnotesize\ttfamily void Vertex\+::set\+Out\+Degree (\begin{DoxyParamCaption}\item[{int}]{out\+Degree }\end{DoxyParamCaption})}
+
+
+
+Sets the number of adjacent edges. 
+
+Time Complexity\+: O(1)
+
+
+\begin{DoxyParams}{Parameters}
+{\em out\+Degree} & Number of adjacent edges. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classVertex_a0b59a1ae0392cdf016c99bc3882a4763}\label{classVertex_a0b59a1ae0392cdf016c99bc3882a4763}} 
+\index{Vertex@{Vertex}!setPath@{setPath}}
+\index{setPath@{setPath}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{setPath()}{setPath()}}
+{\footnotesize\ttfamily void Vertex\+::set\+Path (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEdge}{Edge}} $\ast$}]{e }\end{DoxyParamCaption})}
+
+
+
+Sets the path edge of the vertex. 
+
+Time Complexity\+: O(1)
+
+
+\begin{DoxyParams}{Parameters}
+{\em e} & Pointer to the path edge. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classVertex_ac29125ddca49e8c53f43cc03b103f0e4}\label{classVertex_ac29125ddca49e8c53f43cc03b103f0e4}} 
+\index{Vertex@{Vertex}!setVisited@{setVisited}}
+\index{setVisited@{setVisited}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{setVisited()}{setVisited()}}
+{\footnotesize\ttfamily void Vertex\+::set\+Visited (\begin{DoxyParamCaption}\item[{bool}]{is\+Visited }\end{DoxyParamCaption})}
+
+
+
+Sets the visited state of the vertex. 
+
+Time Complexity\+: O(1)
+
+
+\begin{DoxyParams}{Parameters}
+{\em is\+Visited} & The visited state to set. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classVertex_a83d4fb2bc3737914d2427b87dad10bd8}\label{classVertex_a83d4fb2bc3737914d2427b87dad10bd8}} 
+\index{Vertex@{Vertex}!adj@{adj}}
+\index{adj@{adj}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{adj}{adj}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{classEdge}{Edge}}$\ast$$>$ Vertex\+::adj\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Stores the adjacent edges of the vertex. 
+
+This vector stores pointers to the edges that are adjacent to the vertex. It represents the edges going out from the vertex. \mbox{\Hypertarget{classVertex_a6b05a18f2c83e82802279c5679360e1e}\label{classVertex_a6b05a18f2c83e82802279c5679360e1e}} 
+\index{Vertex@{Vertex}!enabled@{enabled}}
+\index{enabled@{enabled}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{enabled}{enabled}}
+{\footnotesize\ttfamily bool Vertex\+::enabled = true\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Indicates whether the vertex is enabled. 
+
+This boolean field is used to determine whether the vertex is enabled or disabled in the graph. By default, it is initialized to true. \mbox{\Hypertarget{classVertex_ab9eee2b46ef8441e2396a19857ed9208}\label{classVertex_ab9eee2b46ef8441e2396a19857ed9208}} 
+\index{Vertex@{Vertex}!incoming@{incoming}}
+\index{incoming@{incoming}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{incoming}{incoming}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{classEdge}{Edge}}$\ast$$>$ Vertex\+::incoming\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Stores the incoming edges of the vertex. 
+
+This vector stores pointers to the edges that are incoming to the vertex. It represents the edges coming into the vertex. \mbox{\Hypertarget{classVertex_a762fa8bb9e3c31fa91926ad9b7c6c6ef}\label{classVertex_a762fa8bb9e3c31fa91926ad9b7c6c6ef}} 
+\index{Vertex@{Vertex}!inDegree@{inDegree}}
+\index{inDegree@{inDegree}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{inDegree}{inDegree}}
+{\footnotesize\ttfamily int Vertex\+::in\+Degree = 0\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Stores the in-\/degree of the vertex. 
+
+This integer field represents the number of incoming edges to the vertex. By default, it is initialized to 0. \mbox{\Hypertarget{classVertex_a8528eade69923915143cfea138758ba3}\label{classVertex_a8528eade69923915143cfea138758ba3}} 
+\index{Vertex@{Vertex}!outDegree@{outDegree}}
+\index{outDegree@{outDegree}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{outDegree}{outDegree}}
+{\footnotesize\ttfamily int Vertex\+::out\+Degree = 0\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Stores the out-\/degree of the vertex. 
+
+This integer field represents the number of outgoing edges from the vertex. By default, it is initialized to 0. \mbox{\Hypertarget{classVertex_a4e83821f961f6eb63ad210260ba0e1e2}\label{classVertex_a4e83821f961f6eb63ad210260ba0e1e2}} 
+\index{Vertex@{Vertex}!path@{path}}
+\index{path@{path}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{path}{path}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEdge}{Edge}}$\ast$ Vertex\+::path = nullptr\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Pointer to the path edge of the vertex. 
+
+This pointer stores the path edge associated with the vertex during graph traversal algorithms. It points to the edge that leads to this vertex from its predecessor in the traversal. By default, it is initialized to nullptr. \mbox{\Hypertarget{classVertex_aaef9f7de91b4b8f1752d391a1aae9c2e}\label{classVertex_aaef9f7de91b4b8f1752d391a1aae9c2e}} 
+\index{Vertex@{Vertex}!visited@{visited}}
+\index{visited@{visited}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{visited}{visited}}
+{\footnotesize\ttfamily bool Vertex\+::visited = false\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Indicates whether the vertex has been visited. 
+
+This boolean field is used to track whether the vertex has been visited during graph traversal algorithms. By default, it is initialized to false. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/model/\mbox{\hyperlink{Vertex_8h}{Vertex.\+h}}\item 
+src/model/\mbox{\hyperlink{Vertex_8cpp}{Vertex.\+cpp}}\end{DoxyCompactItemize}

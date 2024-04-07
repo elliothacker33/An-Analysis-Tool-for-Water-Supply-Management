@@ -1,0 +1,12 @@
+<map id="src/view/menu.h" name="src/view/menu.h">
+<area shape="rect" id="node1" title=" " alt="" coords="387,5,516,32"/>
+<area shape="rect" id="node2" href="$manager_8h.html" title="This file contains the manager header." alt="" coords="299,80,468,107"/>
+<area shape="rect" id="node10" title=" " alt="" coords="492,80,550,107"/>
+<area shape="rect" id="node3" href="$Graph_8h.html" title="This file contains the Graph header." alt="" coords="112,155,242,181"/>
+<area shape="rect" id="node5" title=" " alt="" coords="130,304,189,331"/>
+<area shape="rect" id="node9" title=" " alt="" coords="422,155,546,181"/>
+<area shape="rect" id="node4" href="$Edge_8h.html" title="This file contains the Edge header." alt="" coords="280,229,346,256"/>
+<area shape="rect" id="node6" href="$Vertex_8h.html" title="This file contains the Vertex header." alt="" coords="24,229,100,256"/>
+<area shape="rect" id="node7" title=" " alt="" coords="10,304,72,331"/>
+<area shape="rect" id="node8" title=" " alt="" coords="176,229,256,256"/>
+</map>
