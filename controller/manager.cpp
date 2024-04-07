@@ -264,7 +264,6 @@ void Manager::importCities(const string& pathCities){
         }
 
     }
-
     fin.close();
 }
 
@@ -771,97 +770,48 @@ void Manager::canAllCitiesGetEnoughWaterFF() {
 
 void Manager::improvePipesHeuristic() {
 
-    int mn = -1;
-    int n_mn = -1;
-    int n_mx = -1;
-
     vector<int> control_metrics = getMetrics();
 
+    int ctrl = control_metrics.at(4);
     int sum = 0;
+    bool check;
 
-    for(auto a: graph->getVertexSet()){
+    do{
+        check = true;
 
-        if(a->isVisited())continue;
-        a->setVisited(true);
+        for(auto a: graph->getVertexSet()){
 
-        if(a->getType() == 'R'){
-            sum += dynamic_cast<Reservoir*>(a)->getMaxDelivery();
-        }
+            for(auto b: a->getAdj()){
 
-        for(auto b: a->getAdj()){
+                int dif = b->getCapacity() - b->getFlow();
 
-            int val = b->getCapacity();
+                if(b->getCapacity() > ctrl) {
 
-            if(mn == -1){
-                mn = val;
-            }else if(mn > val){
-                mn = val;
-            }
-        }
-    }
-    graph->resetVisited();
-    n_mn = mn;
-    n_mx = mn;
+                    if (dif < ctrl) {
 
-    for(auto a: graph->getVertexSet()) {
+                        int val = ctrl - dif;
 
-        if (a->isVisited())continue;
-        a->setVisited(true);
-        for(auto b: a->getAdj()){
+                        sum += val;
+                        b->setFlow(b->getCapacity() - ctrl);
+                        check = false;
+                    }
+                    if (dif > ctrl) {
 
-            int cap = b->getCapacity();
+                        int val = dif - ctrl;
 
-            if(cap < mn){
+                        if(sum >= val) {
+                            b->setFlow(b->getFlow() + val);
+                            sum -= val;
+                        }
+                    }
 
-                if(sum < cap){
-                    b->setFlow(sum);
-                    if(n_mn > sum){n_mn = sum;}
-                    sum = 0;
-                    break;
-                }else{
-                    b->setFlow(cap);
-                    if(n_mn > cap){n_mn = cap;}
-                    sum -= cap;
                 }
 
             }
-            else {
-                if(sum < mn){
-                    b->setFlow(sum);
-                    n_mn = sum;
-                    sum = 0;
-                    break;
-                }else{
-                    b->setFlow(mn);
-                    sum -= mn;
-                }
-            }
 
         }
 
-        if(sum == 0)break;
-    }
-
-    while(sum != 0) {
-
-        graph->resetVisited();
-        n_mx += 1;
-
-        for (auto a: graph->getVertexSet()) {
-
-            if (a->isVisited())continue;
-            a->setVisited(true);
-            for (auto b: a->getAdj()) {
-
-                if(b->getCapacity() > b->getFlow()) {
-                    b->setFlow(b->getFlow() + 1);
-                    sum -= 1;
-                }
-                if(sum == 0)break;
-            }
-            if(sum == 0)break;
-        }
-    }
+    }while(!check);
 
     vector<int> new_metrics = getMetrics();
 
@@ -882,6 +832,8 @@ void Manager::improvePipesHeuristic() {
     cout << "Max Difference between Flow and Capacity: " << new_metrics.at(3) << endl;
     cout << "Average Difference between Flow and Capacity: " << new_metrics.at(4) << endl;
     cout << "Variance of the difference between Flow and Capacity : " << new_metrics.at(5) << endl;
+
+    resetGraph();
 
     return;
 }
@@ -1484,8 +1436,6 @@ vector<int> Manager::getMetrics() {
     metrics.emplace_back(mx_dif);
     metrics.emplace_back(mean);
     metrics.emplace_back(variance/n);
-
-    resetGraph();
 
     return metrics;
 }
