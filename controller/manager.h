@@ -295,9 +295,7 @@ class Manager{
      * @param reservoirs A vector containing the codes of the reservoirs to be disabled.
      */
     void disableReservoirs(vector<string>& reservoirs);
-
-
-    void dfs_disable(Vertex* reservoir);
+    void dfs_disable(Vertex* reservoir,int flowToRemove);
 
     /**
      * @brief Shuts down reservoirs and checks the impact on network flow.
@@ -311,6 +309,7 @@ class Manager{
      * @return True if the network flow remains unaffected after shutting down the reservoirs, false otherwise.
      */
     bool shutdownReservoirs(vector<pair<string,int>> (Manager::*flowfunction)(),vector<string>& reservoirs);
+    vector<pair<string,double>> shutdownReservoirsWithDecrease(vector<pair<string,int>> (Manager::*flowfunction)(),vector<string>& reservoirs);
 
     /**
      * @brief Shuts down pipes and checks the impact on network flow.
@@ -551,11 +550,6 @@ public:
 
     /* Exercise 2.3 */
     void improvePipesHeuristic();
-    void improvePipesHeuristicEK();
-
-
-    void improvePipesHeuristicFF();
-
     /* Exercise 3.1 */
     /**
      * @brief Disable each reservoir and check if it affects the network flow using Edmonds-Karp algorithm.
