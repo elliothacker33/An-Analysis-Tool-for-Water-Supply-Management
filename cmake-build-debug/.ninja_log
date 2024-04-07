@@ -1,4 +1,5 @@
 # ninja log v5
+<<<<<<< HEAD
 1	99	1712427671607149275	build.ninja	657e56b265788776
 0	647	1712340047501622734	CMakeFiles/watersupply.dir/main.cpp.o	89abc11e64008eb4
 600	851	7340120646351134	watersupply.exe	ee47c28dcac1a3fe
@@ -8,3 +9,51 @@
 1	243	1712340047097622447	CMakeFiles/watersupply.dir/model/Edge.cpp.o	33408bdc538bfe78
 1	1033	1712340047885623007	CMakeFiles/watersupply.dir/view/menu.cpp.o	4a251a0232a14987
 1369	1456	1712340495161854307	watersupply	ccc082f797c15ba0
+=======
+24	424	7338438086626157	CMakeFiles/watersupply.dir/model/Graph.cpp.obj	4f9a6a5218368018
+2	392	7339261063803025	CMakeFiles/watersupply.dir/main.cpp.obj	a85e780598e5815a
+2	889	7342062057888050	CMakeFiles/watersupply.dir/controller/manager.cpp.obj	42e810bba55ed9fd
+889	1154	7342062060548436	watersupply.exe	ee47c28dcac1a3fe
+1	99	7338388864630079	build.ninja	657e56b265788776
+1	234	7338388259373905	CMakeFiles/watersupply.dir/model/Edge.cpp.obj	6517a8f41d39ec0c
+27	429	7338438086686152	CMakeFiles/watersupply.dir/model/Vertex.cpp.obj	d390d6e0b652ff4f
+3	600	7340120643841142	CMakeFiles/watersupply.dir/view/menu.cpp.obj	cbe6dbac7b46e929
+2	883	7342063338951917	CMakeFiles/watersupply.dir/controller/manager.cpp.obj	42e810bba55ed9fd
+883	1140	7342063341511921	watersupply.exe	ee47c28dcac1a3fe
+2	933	7342065767431860	CMakeFiles/watersupply.dir/controller/manager.cpp.obj	42e810bba55ed9fd
+934	1208	7342065770181859	watersupply.exe	ee47c28dcac1a3fe
+2	877	7342066805609043	CMakeFiles/watersupply.dir/controller/manager.cpp.obj	42e810bba55ed9fd
+877	1134	7342066808189051	watersupply.exe	ee47c28dcac1a3fe
+2	901	7342067047939865	CMakeFiles/watersupply.dir/controller/manager.cpp.obj	42e810bba55ed9fd
+901	1160	7342067050539855	watersupply.exe	ee47c28dcac1a3fe
+2	823	7342068630530681	CMakeFiles/watersupply.dir/controller/manager.cpp.obj	42e810bba55ed9fd
+824	1048	7342068632780687	watersupply.exe	ee47c28dcac1a3fe
+2	883	7342069588079924	CMakeFiles/watersupply.dir/controller/manager.cpp.obj	42e810bba55ed9fd
+884	1129	7342069590539922	watersupply.exe	ee47c28dcac1a3fe
+2	913	7342069809603195	CMakeFiles/watersupply.dir/controller/manager.cpp.obj	42e810bba55ed9fd
+914	1175	7342069812233194	watersupply.exe	ee47c28dcac1a3fe
+2	911	7342071091669696	CMakeFiles/watersupply.dir/controller/manager.cpp.obj	42e810bba55ed9fd
+911	1170	7342071094260188	watersupply.exe	ee47c28dcac1a3fe
+2	859	7342071493278057	CMakeFiles/watersupply.dir/controller/manager.cpp.obj	42e810bba55ed9fd
+859	1082	7342071495518401	watersupply.exe	ee47c28dcac1a3fe
+2	879	7342071779242184	CMakeFiles/watersupply.dir/controller/manager.cpp.obj	42e810bba55ed9fd
+880	1137	7342071781837459	watersupply.exe	ee47c28dcac1a3fe
+2	879	7342072217283916	CMakeFiles/watersupply.dir/controller/manager.cpp.obj	42e810bba55ed9fd
+879	1132	7342072219823912	watersupply.exe	ee47c28dcac1a3fe
+1	917	7342072576254623	CMakeFiles/watersupply.dir/controller/manager.cpp.obj	42e810bba55ed9fd
+918	1166	7342072578744631	watersupply.exe	ee47c28dcac1a3fe
+2	857	7342072836746668	CMakeFiles/watersupply.dir/controller/manager.cpp.obj	42e810bba55ed9fd
+857	1081	7342072838986658	watersupply.exe	ee47c28dcac1a3fe
+2	904	7342072985738819	CMakeFiles/watersupply.dir/controller/manager.cpp.obj	42e810bba55ed9fd
+904	1151	7342072988228813	watersupply.exe	ee47c28dcac1a3fe
+2	842	7342073972576449	CMakeFiles/watersupply.dir/controller/manager.cpp.obj	42e810bba55ed9fd
+843	1069	7342073974847130	watersupply.exe	ee47c28dcac1a3fe
+1	931	7342074153509159	CMakeFiles/watersupply.dir/controller/manager.cpp.obj	42e810bba55ed9fd
+932	1175	7342074155951083	watersupply.exe	ee47c28dcac1a3fe
+2	858	7342075072446451	CMakeFiles/watersupply.dir/controller/manager.cpp.obj	42e810bba55ed9fd
+858	1078	7342075074656747	watersupply.exe	ee47c28dcac1a3fe
+2	841	7342076659821647	CMakeFiles/watersupply.dir/controller/manager.cpp.obj	42e810bba55ed9fd
+842	1069	7342076662101650	watersupply.exe	ee47c28dcac1a3fe
+2	887	7342085237997605	CMakeFiles/watersupply.dir/controller/manager.cpp.obj	42e810bba55ed9fd
+887	1151	7342085240650988	watersupply.exe	ee47c28dcac1a3fe
+>>>>>>> origin/Ex2.1
