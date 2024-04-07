@@ -1,1 +1,3 @@
-/usr/bin/c++ -g CMakeFiles/watersupply.dir/src/main.cpp.o CMakeFiles/watersupply.dir/src/controller/manager.cpp.o CMakeFiles/watersupply.dir/src/model/Graph.cpp.o CMakeFiles/watersupply.dir/src/view/menu.cpp.o CMakeFiles/watersupply.dir/src/model/Edge.cpp.o CMakeFiles/watersupply.dir/src/model/Vertex.cpp.o -o watersupply 
+"C:\Program Files\JetBrains\CLion 2023.3.4\bin\cmake\win\x64\bin\cmake.exe" -E rm -f CMakeFiles\watersupply.dir/objects.a
+C:\PROGRA~1\JETBRA~1\CLION2~1.4\bin\mingw\bin\ar.exe qc CMakeFiles\watersupply.dir/objects.a @CMakeFiles\watersupply.dir\objects1.rsp
+C:\PROGRA~1\JETBRA~1\CLION2~1.4\bin\mingw\bin\G__~1.EXE -g -Wl,--whole-archive CMakeFiles\watersupply.dir/objects.a -Wl,--no-whole-archive -o watersupply.exe -Wl,--out-implib,libwatersupply.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\watersupply.dir\linkLibs.rsp

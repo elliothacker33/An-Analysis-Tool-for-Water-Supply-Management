@@ -279,12 +279,12 @@ void Menu::mainMenu() {
 
     switch(option) {
         case 1:
-            manager->importFiles("../data/Project1DataSetSmall/Cities_Madeira.csv","../data/Project1DataSetSmall/Reservoirs_Madeira.csv","../data/Project1DataSetSmall/Stations_Madeira.csv","../data/Project1DataSetSmall/Pipes_Madeira.csv");
+            manager->importFiles("../src/data/Project1DataSetSmall/Cities_Madeira.csv","../src/data/Project1DataSetSmall/Reservoirs_Madeira.csv","../src/data/Project1DataSetSmall/Stations_Madeira.csv","../src/data/Project1DataSetSmall/Pipes_Madeira.csv");
             menuStack.push(&Menu::mainMenu);
             algorithmMenu();
             break;
         case 2:
-            manager->importFiles("../data/Project1LargeDataSet/Cities.csv","../data/Project1LargeDataSet/Reservoir.csv","../data/Project1LargeDataSet/Stations.csv","../data/Project1LargeDataSet/Pipes.csv");
+            manager->importFiles("../src/data/Project1LargeDataSet/Cities.csv","../src/data/Project1LargeDataSet/Reservoir.csv","../src/data/Project1LargeDataSet/Stations.csv","../src/data/Project1LargeDataSet/Pipes.csv");
             menuStack.push(&Menu::mainMenu);
             algorithmMenu();
             break;
