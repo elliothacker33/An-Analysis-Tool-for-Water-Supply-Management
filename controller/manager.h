@@ -7,7 +7,7 @@
 
 using namespace std;
 
-// For complexity Work -> unorderd map complexity is O(1) to access and O(n) to build. Improving factor by 1/n
+// For complexity Work -> unordered map complexity is O(1) to access and O(n) to build. Improving factor by 1/n
 class Manager{
 
     Graph* graph;
