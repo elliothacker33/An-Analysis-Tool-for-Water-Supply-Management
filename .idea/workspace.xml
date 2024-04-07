@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="CMakePresetLoader">{
+  &quot;useNewFormat&quot;: true
+}</component>
+  <component name="CMakeReloadState">
+    <option name="reloaded" value="true" />
+  </component>
+  <component name="CMakeRunConfigurationManager">
+    <generated>
+      <config projectName="watersupply" targetName="watersupply" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="a9e6c8e8-41a3-405a-b780-9cdc615cf2a9" name="Changes" comment="" />
+=======
+    <list default="true" id="708a4365-e072-4f00-b8e9-20be80cb6930" name="Changes" comment="" />
+>>>>>>> origin/Ex2.1
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="CLion" />
+    <option name="majorVersion" value="2023" />
+    <option name="minorVersion" value="3.4" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="2eaGN1rl0laQSuhM2qZXDQaaVXa" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "CMake Application.watersupply.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "last_opened_file_path": "C:/Users/Utilizador/CLionProjects/watersupply/view",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.general",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Utilizador\CLionProjects\watersupply\view" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Utilizador\CLionProjects\watersupply" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="watersupply" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="watersupply" TARGET_NAME="watersupply" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="watersupply" RUN_TARGET_NAME="watersupply">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="708a4365-e072-4f00-b8e9-20be80cb6930" name="Changes" comment="" />
+      <created>1712135231290</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+<<<<<<< HEAD
+      <updated>1711104353403</updated>
+      <workItem from="1711104354484" duration="271000" />
+      <workItem from="1711104707933" duration="9345000" />
+      <workItem from="1711117116461" duration="19138000" />
+      <workItem from="1711186701271" duration="71000" />
+      <workItem from="1711186913042" duration="25872000" />
+      <workItem from="1711280749158" duration="24975000" />
+      <workItem from="1711319048047" duration="4020000" />
+      <workItem from="1711361145636" duration="25114000" />
+      <workItem from="1711390415035" duration="17273000" />
+      <workItem from="1711450934432" duration="45572000" />
+      <workItem from="1711623065132" duration="152000" />
+      <workItem from="1711647569495" duration="12265000" />
+      <workItem from="1711661489230" duration="569000" />
+      <workItem from="1711713654038" duration="8551000" />
+      <workItem from="1712081309032" duration="8000" />
+      <workItem from="1712081391131" duration="32000" />
+      <workItem from="1712130988958" duration="136000" />
+      <workItem from="1712131133039" duration="5427000" />
+      <workItem from="1712137540045" duration="1242000" />
+      <workItem from="1712246215341" duration="1363000" />
+      <workItem from="1712248831497" duration="5204000" />
+      <workItem from="1712332089722" duration="221000" />
+      <workItem from="1712332401442" duration="6324000" />
+=======
+      <updated>1712135231290</updated>
+      <workItem from="1712135232576" duration="757000" />
+      <workItem from="1712136406847" duration="5122000" />
+      <workItem from="1712221542048" duration="2451000" />
+<<<<<<< HEAD
+      <workItem from="1712308502492" duration="504000" />
+>>>>>>> origin/Ex2.1
+=======
+      <workItem from="1712308502492" duration="621000" />
+      <workItem from="1712309698794" duration="2004000" />
+      <workItem from="1712394139837" duration="1099000" />
+      <workItem from="1712419522757" duration="1608000" />
+      <workItem from="1712481949948" duration="391000" />
+      <workItem from="1712501461099" duration="4380000" />
+>>>>>>> origin/Ex2.1
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VCPKGProject">
+    <isAutomaticCheckingOnLaunch value="false" />
+    <isAutomaticFoundErrors value="true" />
+    <isAutomaticReloadCMake value="true" />
+  </component>
+</project>

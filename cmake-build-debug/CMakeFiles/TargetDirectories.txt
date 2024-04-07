@@ -1,0 +1,3 @@
+/home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/cmake-build-debug/CMakeFiles/watersupply.dir
+/home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/tomas/Documentos/3_2semestre/algoritmos/An-Analysis-Tool-for-Water-Supply-Management/cmake-build-debug/CMakeFiles/rebuild_cache.dir
