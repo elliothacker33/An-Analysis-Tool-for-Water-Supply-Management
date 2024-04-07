@@ -1,2 +1,2 @@
 # CMAKE generated file: DO NOT EDIT!
-# Timestamp file for custom commands dependencies management for doxygen.
+# Timestamp file for custom commands dependencies management for Doxygen.
