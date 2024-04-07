@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['orig_42',['orig',['../classEdge.html#a48f1521d20ead8492fd1d184656862f5',1,'Edge']]],
-  ['outdegree_43',['outDegree',['../classVertex.html#a8528eade69923915143cfea138758ba3',1,'Vertex']]]
+  ['n_131',['n',['../classGraph.html#a81a76a428e630453ef019a15b9092967',1,'Graph']]],
+  ['name_132',['name',['../classCity.html#a38b5e8b9bd4e263434eae0344913d341',1,'City::name()'],['../classReservoir.html#ab6a86dad3942255b8c01f5367daf9c06',1,'Reservoir::name()']]]
 ];

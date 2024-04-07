@@ -1,41 +1,579 @@
 \hypertarget{classMenu}{}\doxysection{Menu Class Reference}
 \label{classMenu}\index{Menu@{Menu}}
+
+
+This is the menu interface to access funcionalities on manager.  
+
+
+
+
+{\ttfamily \#include $<$menu.\+h$>$}
+
+
+
+Collaboration diagram for Menu\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=157pt]{classMenu__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+\mbox{\hyperlink{classMenu_a831387f51358cfb88cd018e1777bc980}{$\sim$\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for \mbox{\hyperlink{classMenu}{Menu}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classMenu_ad4f7fe7a91872d6b238a8bfc32fa5ff0}{Menu}} (\mbox{\hyperlink{classManager}{Manager}} $\ast$\mbox{\hyperlink{classMenu_a8344a2b994f50b790ce312b5d229230a}{manager}})
+\begin{DoxyCompactList}\small\item\em Constructor for \mbox{\hyperlink{classMenu}{Menu}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMenu_aef9edee86d2ea460606361c92e061583}{main\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em Displays the main menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMenu_a93b7c3dac7ed3114ebe8a3573c7c837b}{exit\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em Shutdowns menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMenu_ab07d275efc3056d1de29da38a4f0e88a}{go\+Back}} ()
+\begin{DoxyCompactList}\small\item\em Returns to the previous menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMenu_a3732bcff3adb2747e12cf110b145d0da}{algorithm\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em Displays the algorithm menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMenu_ab7f3e7c91a0572385ce2079bbe2e628a}{exercise21}} ()
+\begin{DoxyCompactList}\small\item\em Executes exercise 2.\+1. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMenu_a08a672d1355410a229d8ebebf1fdca70}{exercise22}} ()
+\begin{DoxyCompactList}\small\item\em Executes exercise 2.\+2. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMenu_ababcd89d5a5f8c856338ac5c9b735017}{exercise23}} ()
+\begin{DoxyCompactList}\small\item\em Executes exercise 2.\+3. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMenu_a9b00ed2a62a7922b8b303f72c710a009}{exercise31}} ()
+\begin{DoxyCompactList}\small\item\em Executes exercise 3.\+1. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMenu_aa21816bc5fd3fde631f3bcfca224db12}{exercise32}} ()
+\begin{DoxyCompactList}\small\item\em Executes exercise 3.\+2. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMenu_a00455f21a3abc1684b6e3a603def5737}{exercise33}} ()
+\begin{DoxyCompactList}\small\item\em Executes exercise 3.\+3. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMenu_aa001593da93e2431d0e22d76fec4bd99}{extra\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em Displays the extra menu with other algorithms. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{classMenu_ac2bf13cad12ab17054e0d86db00a3cce}{remove\+Leading\+Trailing\+Spaces}} (const string \&input)
+\begin{DoxyCompactList}\small\item\em Removes leading and trailing spaces from a string. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMenu_a0b05d3c80f3270ca84efad6b45edcad6}{start\+Timer}} (timespec \&start\+\_\+real, timespec \&start\+\_\+cpu) const
+\begin{DoxyCompactList}\small\item\em Starts a timer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMenu_a19499a00ccb95787c225a8f1065b8946}{stop\+Timer}} (timespec \&start\+\_\+real, timespec \&start\+\_\+cpu, double \&elapsed\+\_\+real, double \&elapsed\+\_\+cpu) const
+\begin{DoxyCompactList}\small\item\em Stops a timer and calculates elapsed time. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classEdge}{Edge}} $\ast$ \mbox{\hyperlink{classMenu_ac3f37c5b583311606a61c75c7180f234}{valid\+Pipe}} (string \&code1, string \&code2)
+\begin{DoxyCompactList}\small\item\em Checks the validity of a pipe between two vertexes. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classMenu_afd7be08574aec81f1cb215b94a1b7bf3}{valid\+City}} (string \&code)
+\begin{DoxyCompactList}\small\item\em Checks the validity of a city code. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classMenu_aad8cb21fcb9203f365563f9c12612199}{valid\+Station}} (string \&code)
+\begin{DoxyCompactList}\small\item\em Checks the validity of a station code. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classMenu_a06067396347df06742dab6186f917bd2}{valid\+Reservoir}} (string \&code)
+\begin{DoxyCompactList}\small\item\em Checks the validity of a reservoir code. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classMenu_a075d5c82c50ce12ef23b524dee1e0e7e}{is\+Valid\+Interface}} (const string \&type, string \&code)
+\begin{DoxyCompactList}\small\item\em Calls the other validity functions by type. \end{DoxyCompactList}\item 
+vector$<$ string $>$ \mbox{\hyperlink{classMenu_a652567b5d8c550cb1d15fb1c50940a8a}{get\+Vertex}} (const unordered\+\_\+map$<$ string, \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ $>$ \&vertices, const string \&item\+Type)
+\begin{DoxyCompactList}\small\item\em Retrieves vertex codes of a specific vertex type from a given unordered map. \end{DoxyCompactList}\item 
+vector$<$ string $>$ \mbox{\hyperlink{classMenu_abbecbcf8f17491731db731829fe808a1}{get\+Cities}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves codes of all cities. \end{DoxyCompactList}\item 
+vector$<$ string $>$ \mbox{\hyperlink{classMenu_aaff3cda91e1ebe81e5aebf234880c448}{get\+Stations}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves codes of all stations. \end{DoxyCompactList}\item 
+vector$<$ string $>$ \mbox{\hyperlink{classMenu_a461b76891318ae8558c1a1c96ec70a0e}{get\+Reservoirs}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves codes of all reservoirs. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{classEdge}{Edge}} $\ast$ $>$ \mbox{\hyperlink{classMenu_a1a71dffeb6bf324abedea9a4abf9d578}{get\+Pipes}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves pointers to all pipes. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classMenu_a461b3e3f42435d42ed9fc79f9008e85a}{get\+Number\+Input}} (int min\+Input, int max\+Input, int $\ast$option)
+\begin{DoxyCompactList}\small\item\em Retrieves a number input within a specified range. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMenu_aa589c797d75c6a4a7ecb0466705443f9}{get\+Item\+Examples}} (const unordered\+\_\+map$<$ string, \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ $>$ \&items, const string \&label)
+\begin{DoxyCompactList}\small\item\em Retrieves examples of vertexes with a specific label(output) from a given map. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMenu_ae27f9202278e9c77445639fb13dbdc95}{get\+City\+Examples}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves examples of cities. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMenu_ac8a6587282630a37446c80e58e7ae731}{get\+Station\+Examples}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves examples of stations. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMenu_a4bd36b5642baa8faca7789f676d87ee6}{get\+Reservoir\+Examples}} ()
+\begin{DoxyCompactList}\small\item\em Retrieves examples of reservoirs. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classMenu_a3fe5837d57a84b0667d0beb71d9f58ef}{get\+Examples\+Interface}} (const string \&type)
+\begin{DoxyCompactList}\small\item\em Retrieves examples of vertexes depending on the type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+stack$<$ void(Menu\+::$\ast$)()$>$ \mbox{\hyperlink{classMenu_a39a7f8af2042c66d1d9e48e55cc00ed0}{menu\+Stack}}
+\begin{DoxyCompactList}\small\item\em A stack that stores pointers to visited Menus. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classManager}{Manager}} $\ast$ \mbox{\hyperlink{classMenu_a8344a2b994f50b790ce312b5d229230a}{manager}}
+\begin{DoxyCompactList}\small\item\em Pointer to a manager instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This is the menu interface to access funcionalities on manager. 
+
+This class represents a menu. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classMenu_a831387f51358cfb88cd018e1777bc980}\label{classMenu_a831387f51358cfb88cd018e1777bc980}} 
+\index{Menu@{Menu}!````~Menu@{$\sim$Menu}}
+\index{````~Menu@{$\sim$Menu}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{$\sim$Menu()}{~Menu()}}
+{\footnotesize\ttfamily Menu\+::$\sim$\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor for \mbox{\hyperlink{classMenu}{Menu}}. 
+
 \mbox{\Hypertarget{classMenu_ad4f7fe7a91872d6b238a8bfc32fa5ff0}\label{classMenu_ad4f7fe7a91872d6b238a8bfc32fa5ff0}} 
-{\bfseries Menu} (\mbox{\hyperlink{classManager}{Manager}} $\ast$manager)
-\item 
-\mbox{\Hypertarget{classMenu_aef9edee86d2ea460606361c92e061583}\label{classMenu_aef9edee86d2ea460606361c92e061583}} 
-void {\bfseries main\+Menu} ()
-\item 
-\mbox{\Hypertarget{classMenu_a93b7c3dac7ed3114ebe8a3573c7c837b}\label{classMenu_a93b7c3dac7ed3114ebe8a3573c7c837b}} 
-void {\bfseries exit\+Menu} ()
-\item 
-\mbox{\Hypertarget{classMenu_ab07d275efc3056d1de29da38a4f0e88a}\label{classMenu_ab07d275efc3056d1de29da38a4f0e88a}} 
-void {\bfseries go\+Back} ()
-\item 
+\index{Menu@{Menu}!Menu@{Menu}}
+\index{Menu@{Menu}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{Menu()}{Menu()}}
+{\footnotesize\ttfamily Menu\+::\+Menu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classManager}{Manager}} $\ast$}]{manager }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructor for \mbox{\hyperlink{classMenu}{Menu}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em manager} & Pointer to a \mbox{\hyperlink{classManager}{Manager}} instance. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classMenu_a3732bcff3adb2747e12cf110b145d0da}\label{classMenu_a3732bcff3adb2747e12cf110b145d0da}} 
-void {\bfseries algorithm\+Menu} ()
-\item 
+\index{Menu@{Menu}!algorithmMenu@{algorithmMenu}}
+\index{algorithmMenu@{algorithmMenu}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{algorithmMenu()}{algorithmMenu()}}
+{\footnotesize\ttfamily void Menu\+::algorithm\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Displays the algorithm menu. 
+
 \mbox{\Hypertarget{classMenu_ab7f3e7c91a0572385ce2079bbe2e628a}\label{classMenu_ab7f3e7c91a0572385ce2079bbe2e628a}} 
-void {\bfseries exercise21} ()
-\item 
+\index{Menu@{Menu}!exercise21@{exercise21}}
+\index{exercise21@{exercise21}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{exercise21()}{exercise21()}}
+{\footnotesize\ttfamily void Menu\+::exercise21 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Executes exercise 2.\+1. 
+
 \mbox{\Hypertarget{classMenu_a08a672d1355410a229d8ebebf1fdca70}\label{classMenu_a08a672d1355410a229d8ebebf1fdca70}} 
-void {\bfseries exercise22} ()
-\item 
+\index{Menu@{Menu}!exercise22@{exercise22}}
+\index{exercise22@{exercise22}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{exercise22()}{exercise22()}}
+{\footnotesize\ttfamily void Menu\+::exercise22 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Executes exercise 2.\+2. 
+
+\mbox{\Hypertarget{classMenu_ababcd89d5a5f8c856338ac5c9b735017}\label{classMenu_ababcd89d5a5f8c856338ac5c9b735017}} 
+\index{Menu@{Menu}!exercise23@{exercise23}}
+\index{exercise23@{exercise23}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{exercise23()}{exercise23()}}
+{\footnotesize\ttfamily void Menu\+::exercise23 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Executes exercise 2.\+3. 
+
+\mbox{\Hypertarget{classMenu_a9b00ed2a62a7922b8b303f72c710a009}\label{classMenu_a9b00ed2a62a7922b8b303f72c710a009}} 
+\index{Menu@{Menu}!exercise31@{exercise31}}
+\index{exercise31@{exercise31}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{exercise31()}{exercise31()}}
+{\footnotesize\ttfamily void Menu\+::exercise31 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Executes exercise 3.\+1. 
+
 \mbox{\Hypertarget{classMenu_aa21816bc5fd3fde631f3bcfca224db12}\label{classMenu_aa21816bc5fd3fde631f3bcfca224db12}} 
-void {\bfseries exercise32} ()
-\item 
+\index{Menu@{Menu}!exercise32@{exercise32}}
+\index{exercise32@{exercise32}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{exercise32()}{exercise32()}}
+{\footnotesize\ttfamily void Menu\+::exercise32 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Executes exercise 3.\+2. 
+
 \mbox{\Hypertarget{classMenu_a00455f21a3abc1684b6e3a603def5737}\label{classMenu_a00455f21a3abc1684b6e3a603def5737}} 
-void {\bfseries exercise33} ()
-\item 
+\index{Menu@{Menu}!exercise33@{exercise33}}
+\index{exercise33@{exercise33}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{exercise33()}{exercise33()}}
+{\footnotesize\ttfamily void Menu\+::exercise33 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Executes exercise 3.\+3. 
+
+\mbox{\Hypertarget{classMenu_a93b7c3dac7ed3114ebe8a3573c7c837b}\label{classMenu_a93b7c3dac7ed3114ebe8a3573c7c837b}} 
+\index{Menu@{Menu}!exitMenu@{exitMenu}}
+\index{exitMenu@{exitMenu}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{exitMenu()}{exitMenu()}}
+{\footnotesize\ttfamily void Menu\+::exit\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Shutdowns menu. 
+
 \mbox{\Hypertarget{classMenu_aa001593da93e2431d0e22d76fec4bd99}\label{classMenu_aa001593da93e2431d0e22d76fec4bd99}} 
-void {\bfseries extra\+Menu} ()
-\end{DoxyCompactItemize}
+\index{Menu@{Menu}!extraMenu@{extraMenu}}
+\index{extraMenu@{extraMenu}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{extraMenu()}{extraMenu()}}
+{\footnotesize\ttfamily void Menu\+::extra\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Displays the extra menu with other algorithms. 
+
+\mbox{\Hypertarget{classMenu_abbecbcf8f17491731db731829fe808a1}\label{classMenu_abbecbcf8f17491731db731829fe808a1}} 
+\index{Menu@{Menu}!getCities@{getCities}}
+\index{getCities@{getCities}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{getCities()}{getCities()}}
+{\footnotesize\ttfamily vector$<$ string $>$ Menu\+::get\+Cities (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Retrieves codes of all cities. 
+
+\begin{DoxyReturn}{Returns}
+A vector of city codes. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMenu_ae27f9202278e9c77445639fb13dbdc95}\label{classMenu_ae27f9202278e9c77445639fb13dbdc95}} 
+\index{Menu@{Menu}!getCityExamples@{getCityExamples}}
+\index{getCityExamples@{getCityExamples}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{getCityExamples()}{getCityExamples()}}
+{\footnotesize\ttfamily void Menu\+::get\+City\+Examples (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Retrieves examples of cities. 
+
+\mbox{\Hypertarget{classMenu_a3fe5837d57a84b0667d0beb71d9f58ef}\label{classMenu_a3fe5837d57a84b0667d0beb71d9f58ef}} 
+\index{Menu@{Menu}!getExamplesInterface@{getExamplesInterface}}
+\index{getExamplesInterface@{getExamplesInterface}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{getExamplesInterface()}{getExamplesInterface()}}
+{\footnotesize\ttfamily void Menu\+::get\+Examples\+Interface (\begin{DoxyParamCaption}\item[{const string \&}]{type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Retrieves examples of vertexes depending on the type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The type of vertex for which examples are retrieved. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMenu_aa589c797d75c6a4a7ecb0466705443f9}\label{classMenu_aa589c797d75c6a4a7ecb0466705443f9}} 
+\index{Menu@{Menu}!getItemExamples@{getItemExamples}}
+\index{getItemExamples@{getItemExamples}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{getItemExamples()}{getItemExamples()}}
+{\footnotesize\ttfamily void Menu\+::get\+Item\+Examples (\begin{DoxyParamCaption}\item[{const unordered\+\_\+map$<$ string, \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ $>$ \&}]{items,  }\item[{const string \&}]{label }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Retrieves examples of vertexes with a specific label(output) from a given map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em items} & The unordered map containing items. \\
+\hline
+{\em label} & Output customization. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMenu_a461b3e3f42435d42ed9fc79f9008e85a}\label{classMenu_a461b3e3f42435d42ed9fc79f9008e85a}} 
+\index{Menu@{Menu}!getNumberInput@{getNumberInput}}
+\index{getNumberInput@{getNumberInput}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{getNumberInput()}{getNumberInput()}}
+{\footnotesize\ttfamily bool Menu\+::get\+Number\+Input (\begin{DoxyParamCaption}\item[{int}]{min\+Input,  }\item[{int}]{max\+Input,  }\item[{int $\ast$}]{option }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Retrieves a number input within a specified range. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em min\+Input} & The minimum allowed input value. \\
+\hline
+{\em max\+Input} & The maximum allowed input value. \\
+\hline
+{\em option} & Pointer to store the selected option. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the input is successfully obtained, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMenu_a1a71dffeb6bf324abedea9a4abf9d578}\label{classMenu_a1a71dffeb6bf324abedea9a4abf9d578}} 
+\index{Menu@{Menu}!getPipes@{getPipes}}
+\index{getPipes@{getPipes}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{getPipes()}{getPipes()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{classEdge}{Edge}} $\ast$ $>$ Menu\+::get\+Pipes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Retrieves pointers to all pipes. 
+
+\begin{DoxyReturn}{Returns}
+A vector of pointers to \mbox{\hyperlink{classEdge}{Edge}} objects representing pipes. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMenu_a4bd36b5642baa8faca7789f676d87ee6}\label{classMenu_a4bd36b5642baa8faca7789f676d87ee6}} 
+\index{Menu@{Menu}!getReservoirExamples@{getReservoirExamples}}
+\index{getReservoirExamples@{getReservoirExamples}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{getReservoirExamples()}{getReservoirExamples()}}
+{\footnotesize\ttfamily void Menu\+::get\+Reservoir\+Examples (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Retrieves examples of reservoirs. 
+
+\mbox{\Hypertarget{classMenu_a461b76891318ae8558c1a1c96ec70a0e}\label{classMenu_a461b76891318ae8558c1a1c96ec70a0e}} 
+\index{Menu@{Menu}!getReservoirs@{getReservoirs}}
+\index{getReservoirs@{getReservoirs}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{getReservoirs()}{getReservoirs()}}
+{\footnotesize\ttfamily vector$<$ string $>$ Menu\+::get\+Reservoirs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Retrieves codes of all reservoirs. 
+
+\begin{DoxyReturn}{Returns}
+A vector of reservoir codes. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMenu_ac8a6587282630a37446c80e58e7ae731}\label{classMenu_ac8a6587282630a37446c80e58e7ae731}} 
+\index{Menu@{Menu}!getStationExamples@{getStationExamples}}
+\index{getStationExamples@{getStationExamples}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{getStationExamples()}{getStationExamples()}}
+{\footnotesize\ttfamily void Menu\+::get\+Station\+Examples (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Retrieves examples of stations. 
+
+\mbox{\Hypertarget{classMenu_aaff3cda91e1ebe81e5aebf234880c448}\label{classMenu_aaff3cda91e1ebe81e5aebf234880c448}} 
+\index{Menu@{Menu}!getStations@{getStations}}
+\index{getStations@{getStations}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{getStations()}{getStations()}}
+{\footnotesize\ttfamily vector$<$ string $>$ Menu\+::get\+Stations (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Retrieves codes of all stations. 
+
+\begin{DoxyReturn}{Returns}
+A vector of station codes. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMenu_a652567b5d8c550cb1d15fb1c50940a8a}\label{classMenu_a652567b5d8c550cb1d15fb1c50940a8a}} 
+\index{Menu@{Menu}!getVertex@{getVertex}}
+\index{getVertex@{getVertex}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{getVertex()}{getVertex()}}
+{\footnotesize\ttfamily vector$<$ string $>$ Menu\+::get\+Vertex (\begin{DoxyParamCaption}\item[{const unordered\+\_\+map$<$ string, \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ $>$ \&}]{vertices,  }\item[{const string \&}]{item\+Type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Retrieves vertex codes of a specific vertex type from a given unordered map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vertices} & The unordered map containing vertices. \\
+\hline
+{\em item\+Type} & The type of vertex for which vertices are retrieved. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of vertex codes of the specified item type. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMenu_ab07d275efc3056d1de29da38a4f0e88a}\label{classMenu_ab07d275efc3056d1de29da38a4f0e88a}} 
+\index{Menu@{Menu}!goBack@{goBack}}
+\index{goBack@{goBack}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{goBack()}{goBack()}}
+{\footnotesize\ttfamily void Menu\+::go\+Back (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Returns to the previous menu. 
+
+\mbox{\Hypertarget{classMenu_a075d5c82c50ce12ef23b524dee1e0e7e}\label{classMenu_a075d5c82c50ce12ef23b524dee1e0e7e}} 
+\index{Menu@{Menu}!isValidInterface@{isValidInterface}}
+\index{isValidInterface@{isValidInterface}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{isValidInterface()}{isValidInterface()}}
+{\footnotesize\ttfamily bool Menu\+::is\+Valid\+Interface (\begin{DoxyParamCaption}\item[{const string \&}]{type,  }\item[{string \&}]{code }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Calls the other validity functions by type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The type of the \mbox{\hyperlink{classVertex}{Vertex}}. \\
+\hline
+{\em code} & Reference to the code of the \mbox{\hyperlink{classVertex}{Vertex}}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the vertex type and code combination is valid, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMenu_aef9edee86d2ea460606361c92e061583}\label{classMenu_aef9edee86d2ea460606361c92e061583}} 
+\index{Menu@{Menu}!mainMenu@{mainMenu}}
+\index{mainMenu@{mainMenu}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{mainMenu()}{mainMenu()}}
+{\footnotesize\ttfamily void Menu\+::main\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Displays the main menu. 
+
+\mbox{\Hypertarget{classMenu_ac2bf13cad12ab17054e0d86db00a3cce}\label{classMenu_ac2bf13cad12ab17054e0d86db00a3cce}} 
+\index{Menu@{Menu}!removeLeadingTrailingSpaces@{removeLeadingTrailingSpaces}}
+\index{removeLeadingTrailingSpaces@{removeLeadingTrailingSpaces}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{removeLeadingTrailingSpaces()}{removeLeadingTrailingSpaces()}}
+{\footnotesize\ttfamily string Menu\+::remove\+Leading\+Trailing\+Spaces (\begin{DoxyParamCaption}\item[{const string \&}]{input }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Removes leading and trailing spaces from a string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & The input string to process. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A string with leading and trailing spaces removed. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMenu_a0b05d3c80f3270ca84efad6b45edcad6}\label{classMenu_a0b05d3c80f3270ca84efad6b45edcad6}} 
+\index{Menu@{Menu}!startTimer@{startTimer}}
+\index{startTimer@{startTimer}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{startTimer()}{startTimer()}}
+{\footnotesize\ttfamily void Menu\+::start\+Timer (\begin{DoxyParamCaption}\item[{timespec \&}]{start\+\_\+real,  }\item[{timespec \&}]{start\+\_\+cpu }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Starts a timer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em start\+\_\+real} & Reference to the start time in real time. \\
+\hline
+{\em start\+\_\+cpu} & Reference to the start time in C\+PU time. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMenu_a19499a00ccb95787c225a8f1065b8946}\label{classMenu_a19499a00ccb95787c225a8f1065b8946}} 
+\index{Menu@{Menu}!stopTimer@{stopTimer}}
+\index{stopTimer@{stopTimer}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{stopTimer()}{stopTimer()}}
+{\footnotesize\ttfamily void Menu\+::stop\+Timer (\begin{DoxyParamCaption}\item[{timespec \&}]{start\+\_\+real,  }\item[{timespec \&}]{start\+\_\+cpu,  }\item[{double \&}]{elapsed\+\_\+real,  }\item[{double \&}]{elapsed\+\_\+cpu }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Stops a timer and calculates elapsed time. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em start\+\_\+real} & Reference to the start time in real time. \\
+\hline
+{\em start\+\_\+cpu} & Reference to the start time in C\+PU time. \\
+\hline
+{\em elapsed\+\_\+real} & Reference to store the elapsed real time. \\
+\hline
+{\em elapsed\+\_\+cpu} & Reference to store the elapsed C\+PU time. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classMenu_afd7be08574aec81f1cb215b94a1b7bf3}\label{classMenu_afd7be08574aec81f1cb215b94a1b7bf3}} 
+\index{Menu@{Menu}!validCity@{validCity}}
+\index{validCity@{validCity}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{validCity()}{validCity()}}
+{\footnotesize\ttfamily bool Menu\+::valid\+City (\begin{DoxyParamCaption}\item[{string \&}]{code }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Checks the validity of a city code. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em code} & Reference to the city code. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the city code is valid, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMenu_ac3f37c5b583311606a61c75c7180f234}\label{classMenu_ac3f37c5b583311606a61c75c7180f234}} 
+\index{Menu@{Menu}!validPipe@{validPipe}}
+\index{validPipe@{validPipe}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{validPipe()}{validPipe()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEdge}{Edge}} $\ast$ Menu\+::valid\+Pipe (\begin{DoxyParamCaption}\item[{string \&}]{code1,  }\item[{string \&}]{code2 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Checks the validity of a pipe between two vertexes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em code1} & Reference to the code of the first vertex. \\
+\hline
+{\em code2} & Reference to the code of the second vertex. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the \mbox{\hyperlink{classEdge}{Edge}} if the pipe is valid, nullptr otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMenu_a06067396347df06742dab6186f917bd2}\label{classMenu_a06067396347df06742dab6186f917bd2}} 
+\index{Menu@{Menu}!validReservoir@{validReservoir}}
+\index{validReservoir@{validReservoir}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{validReservoir()}{validReservoir()}}
+{\footnotesize\ttfamily bool Menu\+::valid\+Reservoir (\begin{DoxyParamCaption}\item[{string \&}]{code }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Checks the validity of a reservoir code. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em code} & Reference to the reservoir code. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the reservoir code is valid, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classMenu_aad8cb21fcb9203f365563f9c12612199}\label{classMenu_aad8cb21fcb9203f365563f9c12612199}} 
+\index{Menu@{Menu}!validStation@{validStation}}
+\index{validStation@{validStation}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{validStation()}{validStation()}}
+{\footnotesize\ttfamily bool Menu\+::valid\+Station (\begin{DoxyParamCaption}\item[{string \&}]{code }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Checks the validity of a station code. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em code} & Reference to the station code. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the station code is valid, false otherwise. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classMenu_a8344a2b994f50b790ce312b5d229230a}\label{classMenu_a8344a2b994f50b790ce312b5d229230a}} 
+\index{Menu@{Menu}!manager@{manager}}
+\index{manager@{manager}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{manager}{manager}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classManager}{Manager}}$\ast$ Menu\+::manager\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Pointer to a manager instance. 
+
+\mbox{\Hypertarget{classMenu_a39a7f8af2042c66d1d9e48e55cc00ed0}\label{classMenu_a39a7f8af2042c66d1d9e48e55cc00ed0}} 
+\index{Menu@{Menu}!menuStack@{menuStack}}
+\index{menuStack@{menuStack}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{menuStack}{menuStack}}
+{\footnotesize\ttfamily stack$<$void(Menu\+::$\ast$)()$>$ Menu\+::menu\+Stack\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+A stack that stores pointers to visited Menus. 
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-view/menu.\+h\item 
-view/menu.\+cpp\end{DoxyCompactItemize}
+src/view/\mbox{\hyperlink{menu_8h}{menu.\+h}}\item 
+src/view/\mbox{\hyperlink{menu_8cpp}{menu.\+cpp}}\end{DoxyCompactItemize}

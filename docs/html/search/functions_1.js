@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['city_84',['City',['../classCity.html#a9f181ce1c2e3f38e5da29664c2849512',1,'City']]]
+  ['bfs_5fflow_208',['bfs_flow',['../classManager.html#a9a5e72b7a6977c3508e1c12a26278f06',1,'Manager']]]
 ];

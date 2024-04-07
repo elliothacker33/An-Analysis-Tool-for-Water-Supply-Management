@@ -80,8 +80,6 @@ This class represents a pipe in the context of the problem, and is represented b
 
 Constructs an edge between two vertices with specified capacity and type. 
 
-Constructs an \mbox{\hyperlink{classEdge}{Edge}} object with the given parameters.
-
 Time Complexity\+: O(1)
 
 
@@ -92,20 +90,7 @@ Time Complexity\+: O(1)
 \hline
 {\em capacity} & The capacity of the edge. \\
 \hline
-{\em type} & The type of the edge.\\
-\hline
-\end{DoxyParams}
-This constructor initializes an \mbox{\hyperlink{classEdge}{Edge}} object with the specified origin vertex, destination vertex, capacity, and type. This serves to represnt the pipes in the model specified.
-
-
-\begin{DoxyParams}{Parameters}
-{\em orig} & Pointer to the origin vertex of the edge. \\
-\hline
-{\em dest} & Pointer to the destination vertex of the edge. \\
-\hline
-{\em capacity} & The capacity of the edge. \\
-\hline
-{\em type} & The type of the edge (e.\+g., \char`\"{}directed\char`\"{}, \char`\"{}undirected\char`\"{}). \\
+{\em type} & The type of the edge. \\
 \hline
 \end{DoxyParams}
 
@@ -121,14 +106,10 @@ This constructor initializes an \mbox{\hyperlink{classEdge}{Edge}} object with t
 
 Retrieves the capacity of the edge. 
 
-Returns the capacity of the edge.
-
 Time Complexity\+: O(1)
 
 \begin{DoxyReturn}{Returns}
-The capacity of the edge.
-
-capacity 
+The capacity of the edge. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classEdge_a5cda44e9ba257b03963a1ac301371a59}\label{classEdge_a5cda44e9ba257b03963a1ac301371a59}} 
 \index{Edge@{Edge}!getDest@{getDest}}
@@ -143,12 +124,7 @@ Retrieves the destination vertex of the edge.
 Time Complexity\+: O(1)
 
 \begin{DoxyReturn}{Returns}
-Pointer to the destination vertex.
-\end{DoxyReturn}
-This function returns a pointer to the destination vertex of the edge. The destination vertex is the vertex to which the edge leads.
-
-\begin{DoxyReturn}{Returns}
-A pointer to the destination vertex. 
+Pointer to the destination vertex. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classEdge_a7d4ea1360d5d2dc593f4daa772283e8f}\label{classEdge_a7d4ea1360d5d2dc593f4daa772283e8f}} 
 \index{Edge@{Edge}!getFlow@{getFlow}}
@@ -161,11 +137,6 @@ A pointer to the destination vertex.
 Retrieves the flow of the edge. 
 
 Time Complexity\+: O(1)
-
-\begin{DoxyReturn}{Returns}
-The current flow value of the edge.
-\end{DoxyReturn}
-This function returns the current flow value of the edge.
 
 \begin{DoxyReturn}{Returns}
 The current flow value of the edge. 
@@ -183,12 +154,7 @@ Retrieves the origin vertex of the edge.
 Time Complexity\+: O(1)
 
 \begin{DoxyReturn}{Returns}
-Pointer to the origin vertex.
-\end{DoxyReturn}
-This function returns a pointer to the origin vertex of the edge. The origin vertex is the vertex from which the edge originates.
-
-\begin{DoxyReturn}{Returns}
-A pointer to the origin vertex. 
+Pointer to the origin vertex. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classEdge_a4f2010617b90304cc333ee1ff27cbaec}\label{classEdge_a4f2010617b90304cc333ee1ff27cbaec}} 
 \index{Edge@{Edge}!getReverseEdge@{getReverseEdge}}
@@ -200,14 +166,10 @@ A pointer to the origin vertex.
 
 Retrieves the reverse edge of this edge. 
 
-This function allows to get the reverse edge.
-
 Time Complexity\+: O(1)
 
 \begin{DoxyReturn}{Returns}
-Pointer to the reverse edge.
-
-reverse edge 
+Pointer to the reverse edge. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classEdge_aa119b382cdd8b5c09786bf747a36a922}\label{classEdge_aa119b382cdd8b5c09786bf747a36a922}} 
 \index{Edge@{Edge}!getType@{getType}}
@@ -219,14 +181,10 @@ reverse edge
 
 Retrieves the type of the edge. 
 
-Returns the type of the edge.
-
 Time Complexity\+: O(1)
 
 \begin{DoxyReturn}{Returns}
-The type of the edge.
-
-type of edge -\/$>$ \char`\"{}normal\char`\"{} or \char`\"{}residual\char`\"{} 
+The type of the edge. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classEdge_aa10055f890f28dec70cc37bcc08c8dc1}\label{classEdge_aa10055f890f28dec70cc37bcc08c8dc1}} 
 \index{Edge@{Edge}!isEnabled@{isEnabled}}
@@ -238,14 +196,10 @@ type of edge -\/$>$ \char`\"{}normal\char`\"{} or \char`\"{}residual\char`\"{}
 
 Checks if the edge is enabled. 
 
-Returns a boolean value representing the working status of a pipe.
-
 Time Complexity\+: O(1)
 
 \begin{DoxyReturn}{Returns}
-True if the edge is enabled, false otherwise.
-
-enabled (\char`\"{}\+True\char`\"{} or \char`\"{}\+False\char`\"{}) 
+True if the edge is enabled, false otherwise. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classEdge_a06ad11522e8d7efdffbfcfe964eda4f0}\label{classEdge_a06ad11522e8d7efdffbfcfe964eda4f0}} 
 \index{Edge@{Edge}!setEnabled@{setEnabled}}
@@ -261,18 +215,7 @@ Time Complexity\+: O(1)
 
 
 \begin{DoxyParams}{Parameters}
-{\em is\+Enabled} & The new enabled state for the edge.\\
-\hline
-\end{DoxyParams}
-This function allows setting the enabled state of the edge. When an edge is enabled, it is considered active or usable in the context of the graph.
-
-
-\begin{DoxyParams}{Parameters}
-{\em is\+Enabled} & A boolean value indicating whether the edge should be enabled or not.
-\begin{DoxyItemize}
-\item true\+: Enable the edge.
-\item false\+: Disable the edge. 
-\end{DoxyItemize}\\
+{\em is\+Enabled} & The new enabled state for the edge. \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classEdge_a4aafeb6e74cc45cec5e2ac1c354a67fe}\label{classEdge_a4aafeb6e74cc45cec5e2ac1c354a67fe}} 
@@ -289,16 +232,6 @@ Time Complexity\+: O(1)
 
 
 \begin{DoxyParams}{Parameters}
-{\em flow} & The new flow value to be set for the edge.\\
-\hline
-\end{DoxyParams}
-This function allows changing the flow of an edge in a network flow graph. It updates the flow value of the edge to the specified value.
-
-\begin{DoxySeeAlso}{See also}
-Manager\+::max\+Flow Max \mbox{\hyperlink{classEdge_a189258d91c07f4a0b76798cb7fe2b112}{flow}} algorithm implemented in the \mbox{\hyperlink{classManager}{Manager}} class.
-\end{DoxySeeAlso}
-
-\begin{DoxyParams}{Parameters}
 {\em flow} & The new flow value to be set for the edge. \\
 \hline
 \end{DoxyParams}
@@ -306,7 +239,7 @@ Manager\+::max\+Flow Max \mbox{\hyperlink{classEdge_a189258d91c07f4a0b76798cb7fe
 \index{Edge@{Edge}!setReverseEdge@{setReverseEdge}}
 \index{setReverseEdge@{setReverseEdge}!Edge@{Edge}}
 \doxysubsubsection{\texorpdfstring{setReverseEdge()}{setReverseEdge()}}
-{\footnotesize\ttfamily void Edge\+::set\+Reverse\+Edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEdge}{Edge}} $\ast$}]{edge }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Edge\+::set\+Reverse\+Edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEdge}{Edge}} $\ast$}]{e }\end{DoxyParamCaption})}
 
 
 
@@ -316,12 +249,7 @@ Time Complexity\+: O(1)
 
 
 \begin{DoxyParams}{Parameters}
-{\em e} & Pointer to the reverse edge.\\
-\hline
-\end{DoxyParams}
-This function allows to set the reverse edge (Original -\/ X-\/Y, Reverse-\/ Y-\/X) 
-\begin{DoxyParams}{Parameters}
-{\em edge} & \\
+{\em e} & Pointer to the reverse edge. \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classEdge_a8debc5b06962551ab31aa8345c5956e2}\label{classEdge_a8debc5b06962551ab31aa8345c5956e2}} 
@@ -390,5 +318,5 @@ Type of the edge
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-model/\mbox{\hyperlink{Edge_8h}{Edge.\+h}}\item 
-model/\mbox{\hyperlink{Edge_8cpp}{Edge.\+cpp}}\end{DoxyCompactItemize}
+src/model/\mbox{\hyperlink{Edge_8h}{Edge.\+h}}\item 
+src/model/\mbox{\hyperlink{Edge_8cpp}{Edge.\+cpp}}\end{DoxyCompactItemize}

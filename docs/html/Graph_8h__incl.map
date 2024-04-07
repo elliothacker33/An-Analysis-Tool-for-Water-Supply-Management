@@ -1,5 +1,5 @@
-<map id="model/Graph.h" name="model/Graph.h">
-<area shape="rect" id="node1" title="This file contains the Graph header." alt="" coords="126,5,245,32"/>
+<map id="src/model/Graph.h" name="src/model/Graph.h">
+<area shape="rect" id="node1" title="This file contains the Graph header." alt="" coords="115,5,256,32"/>
 <area shape="rect" id="node2" href="$Edge_8h.html" title="This file contains the Edge header." alt="" coords="5,80,72,107"/>
 <area shape="rect" id="node3" title=" " alt="" coords="80,155,139,181"/>
 <area shape="rect" id="node4" href="$Vertex_8h.html" title="This file contains the Vertex header." alt="" coords="147,80,223,107"/>

@@ -1,0 +1,5 @@
+<map id="Menu" name="Menu">
+<area shape="rect" id="node1" title="This is the menu interface to access funcionalities on manager." alt="" coords="15,184,74,211"/>
+<area shape="rect" id="node2" href="$classManager.html" title="The Manager class manages various operations related to the network graph." alt="" coords="5,95,84,121"/>
+<area shape="rect" id="node3" href="$classGraph.html" title="Represents a graph data structure." alt="" coords="14,5,75,32"/>
+</map>

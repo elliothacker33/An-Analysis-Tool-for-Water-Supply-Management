@@ -183,24 +183,13 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Constructs an edge between two vertices with specified capacity and type. </p>
-<p>Constructs an <a class="el" href="classEdge.html" title="Represents a edge that connects two vertexes in a graph.">Edge</a> object with the given parameters.</p>
 <p>Time Complexity: O(1)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">orig</td><td>Pointer to the origin vertex. </td></tr>
     <tr><td class="paramname">dest</td><td>Pointer to the destination vertex. </td></tr>
     <tr><td class="paramname">capacity</td><td>The capacity of the edge. </td></tr>
-    <tr><td class="paramname">type</td><td>The type of the edge.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>This constructor initializes an <a class="el" href="classEdge.html" title="Represents a edge that connects two vertexes in a graph.">Edge</a> object with the specified origin vertex, destination vertex, capacity, and type. This serves to represnt the pipes in the model specified.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">orig</td><td>Pointer to the origin vertex of the edge. </td></tr>
-    <tr><td class="paramname">dest</td><td>Pointer to the destination vertex of the edge. </td></tr>
-    <tr><td class="paramname">capacity</td><td>The capacity of the edge. </td></tr>
-    <tr><td class="paramname">type</td><td>The type of the edge (e.g., "directed", "undirected"). </td></tr>
+    <tr><td class="paramname">type</td><td>The type of the edge. </td></tr>
   </table>
   </dd>
 </dl>
@@ -224,11 +213,8 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Retrieves the capacity of the edge. </p>
-<p>Returns the capacity of the edge.</p>
 <p>Time Complexity: O(1)</p>
-<dl class="section return"><dt>Returns</dt><dd>The capacity of the edge.</dd>
-<dd>
-capacity </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The capacity of the edge. </dd></dl>
 
 </div>
 </div>
@@ -249,9 +235,7 @@ capacity </dd></dl>
 
 <p>Retrieves the destination vertex of the edge. </p>
 <p>Time Complexity: O(1)</p>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to the destination vertex.</dd></dl>
-<p>This function returns a pointer to the destination vertex of the edge. The destination vertex is the vertex to which the edge leads.</p>
-<dl class="section return"><dt>Returns</dt><dd>A pointer to the destination vertex. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the destination vertex. </dd></dl>
 
 </div>
 </div>
@@ -272,8 +256,6 @@ capacity </dd></dl>
 
 <p>Retrieves the flow of the edge. </p>
 <p>Time Complexity: O(1)</p>
-<dl class="section return"><dt>Returns</dt><dd>The current flow value of the edge.</dd></dl>
-<p>This function returns the current flow value of the edge.</p>
 <dl class="section return"><dt>Returns</dt><dd>The current flow value of the edge. </dd></dl>
 
 </div>
@@ -295,9 +277,7 @@ capacity </dd></dl>
 
 <p>Retrieves the origin vertex of the edge. </p>
 <p>Time Complexity: O(1)</p>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to the origin vertex.</dd></dl>
-<p>This function returns a pointer to the origin vertex of the edge. The origin vertex is the vertex from which the edge originates.</p>
-<dl class="section return"><dt>Returns</dt><dd>A pointer to the origin vertex. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the origin vertex. </dd></dl>
 
 </div>
 </div>
@@ -317,11 +297,8 @@ capacity </dd></dl>
 </div><div class="memdoc">
 
 <p>Retrieves the reverse edge of this edge. </p>
-<p>This function allows to get the reverse edge.</p>
 <p>Time Complexity: O(1)</p>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to the reverse edge.</dd>
-<dd>
-reverse edge </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the reverse edge. </dd></dl>
 
 </div>
 </div>
@@ -341,11 +318,8 @@ reverse edge </dd></dl>
 </div><div class="memdoc">
 
 <p>Retrieves the type of the edge. </p>
-<p>Returns the type of the edge.</p>
 <p>Time Complexity: O(1)</p>
-<dl class="section return"><dt>Returns</dt><dd>The type of the edge.</dd>
-<dd>
-type of edge -&gt; "normal" or "residual" </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The type of the edge. </dd></dl>
 
 </div>
 </div>
@@ -365,11 +339,8 @@ type of edge -&gt; "normal" or "residual" </dd></dl>
 </div><div class="memdoc">
 
 <p>Checks if the edge is enabled. </p>
-<p>Returns a boolean value representing the working status of a pipe.</p>
 <p>Time Complexity: O(1)</p>
-<dl class="section return"><dt>Returns</dt><dd>True if the edge is enabled, false otherwise.</dd>
-<dd>
-enabled ("True" or "False") </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the edge is enabled, false otherwise. </dd></dl>
 
 </div>
 </div>
@@ -393,18 +364,7 @@ enabled ("True" or "False") </dd></dl>
 <p>Time Complexity: O(1)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">isEnabled</td><td>The new enabled state for the edge.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>This function allows setting the enabled state of the edge. When an edge is enabled, it is considered active or usable in the context of the graph.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">isEnabled</td><td>A boolean value indicating whether the edge should be enabled or not.<ul>
-<li>true: Enable the edge.</li>
-<li>false: Disable the edge. </li>
-</ul>
-</td></tr>
+    <tr><td class="paramname">isEnabled</td><td>The new enabled state for the edge. </td></tr>
   </table>
   </dd>
 </dl>
@@ -431,14 +391,6 @@ enabled ("True" or "False") </dd></dl>
 <p>Time Complexity: O(1)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">flow</td><td>The new flow value to be set for the edge.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>This function allows changing the flow of an edge in a network flow graph. It updates the flow value of the edge to the specified value.</p>
-<dl class="section see"><dt>See also</dt><dd>Manager::maxFlow Max <a class="el" href="classEdge.html#a189258d91c07f4a0b76798cb7fe2b112">flow</a> algorithm implemented in the <a class="el" href="classManager.html">Manager</a> class.</dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
     <tr><td class="paramname">flow</td><td>The new flow value to be set for the edge. </td></tr>
   </table>
   </dd>
@@ -456,7 +408,7 @@ enabled ("True" or "False") </dd></dl>
           <td class="memname">void Edge::setReverseEdge </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classEdge.html">Edge</a> *&#160;</td>
-          <td class="paramname"><em>edge</em></td><td>)</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -466,13 +418,7 @@ enabled ("True" or "False") </dd></dl>
 <p>Time Complexity: O(1)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">e</td><td>Pointer to the reverse edge.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>This function allows to set the reverse edge (Original - X-Y, Reverse- Y-X) </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">edge</td><td></td></tr>
+    <tr><td class="paramname">e</td><td>Pointer to the reverse edge. </td></tr>
   </table>
   </dd>
 </dl>
@@ -669,8 +615,8 @@ enabled ("True" or "False") </dd></dl>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>model/<a class="el" href="Edge_8h_source.html">Edge.h</a></li>
-<li>model/<a class="el" href="Edge_8cpp.html">Edge.cpp</a></li>
+<li>src/model/<a class="el" href="Edge_8h_source.html">Edge.h</a></li>
+<li>src/model/<a class="el" href="Edge_8cpp.html">Edge.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

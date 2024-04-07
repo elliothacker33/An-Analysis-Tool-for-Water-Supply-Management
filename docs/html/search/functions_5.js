@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['removeedge_108',['removeEdge',['../classGraph.html#a36ddcc53ec9724d20e3d96880a07fee1',1,'Graph::removeEdge()'],['../classVertex.html#ab9a9913bf1df28fdf64970b5f338789a',1,'Vertex::removeEdge()']]],
-  ['removeedgeincoming_109',['removeEdgeIncoming',['../classVertex.html#ae24b11c2ffa425dad889d9a1b51b96fa',1,'Vertex']]],
-  ['removevertex_110',['removeVertex',['../classGraph.html#aa9bf892a442aa0f2922c36d861951cb6',1,'Graph']]],
-  ['reservoir_111',['Reservoir',['../classReservoir.html#a1333e25eba41745e4aea91494c972ea9',1,'Reservoir']]]
+  ['findminedge_249',['findMinEdge',['../classManager.html#af49449ce093a81ebfcfb9bf8532e2b88',1,'Manager']]],
+  ['findvertexinmap_250',['findVertexInMap',['../classManager.html#aba725d09476c8059ae993338e9ffb028',1,'Manager']]],
+  ['flowratepercityedmondskarp_251',['flowRatePerCityEdmondsKarp',['../classManager.html#acf9def191d117b0a0b90380a8ae5ce0b',1,'Manager']]],
+  ['flowratepercityfordfulkerson_252',['flowRatePerCityFordFulkerson',['../classManager.html#a331d9cff865e09975bf36837f41f8d14',1,'Manager']]]
 ];

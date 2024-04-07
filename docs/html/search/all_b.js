@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['removeedge_45',['removeEdge',['../classGraph.html#a36ddcc53ec9724d20e3d96880a07fee1',1,'Graph::removeEdge()'],['../classVertex.html#ab9a9913bf1df28fdf64970b5f338789a',1,'Vertex::removeEdge()']]],
-  ['removeedgeincoming_46',['removeEdgeIncoming',['../classVertex.html#ae24b11c2ffa425dad889d9a1b51b96fa',1,'Vertex']]],
-  ['removevertex_47',['removeVertex',['../classGraph.html#aa9bf892a442aa0f2922c36d861951cb6',1,'Graph']]],
-  ['reservoir_48',['Reservoir',['../classReservoir.html',1,'Reservoir'],['../classReservoir.html#a1333e25eba41745e4aea91494c972ea9',1,'Reservoir::Reservoir()']]],
-  ['reverse_49',['reverse',['../classEdge.html#abcadfaa8985d0d593a124d0fea39130a',1,'Edge']]]
+  ['parseint_135',['parseInt',['../classManager.html#ae178bc922084b46339b9f019d1b72d8d',1,'Manager']]],
+  ['path_136',['path',['../classVertex.html#a4e83821f961f6eb63ad210260ba0e1e2',1,'Vertex']]],
+  ['population_137',['population',['../classCity.html#a02355b0d03c7c1fdaf04496fc3b20330',1,'City']]],
+  ['printflowmetrics_138',['printFlowMetrics',['../classManager.html#a08f822178b9abb0634e9681777a34693',1,'Manager']]],
+  ['printtopkflows_139',['printTopKFlows',['../classManager.html#a2323d4d100d8b5fe7407524aeff948b5',1,'Manager']]]
 ];

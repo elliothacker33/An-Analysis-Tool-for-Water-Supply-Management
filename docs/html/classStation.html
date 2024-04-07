@@ -63,6 +63,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classStation-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Station Class Reference<span class="mlabels"><span class="mlabel">final</span></span></div>  </div>
@@ -95,7 +96,7 @@ Collaboration diagram for Station:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a5b28cd79199a4cb51e6945322ce9cf47"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStation.html#a5b28cd79199a4cb51e6945322ce9cf47">Station</a> (const int id, const string &amp;code)</td></tr>
+<tr class="memitem:a5b28cd79199a4cb51e6945322ce9cf47"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStation.html#a5b28cd79199a4cb51e6945322ce9cf47">Station</a> (const int <a class="el" href="classStation.html#a4144cd1a5a69d5900f473ea9d792b3fe">id</a>, const string &amp;<a class="el" href="classStation.html#ad545c5bb42be068442fe33571c83c72b">code</a>)</td></tr>
 <tr class="memdesc:a5b28cd79199a4cb51e6945322ce9cf47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor to initialize a <a class="el" href="classStation.html" title="Represents a station vertex in a graph.">Station</a> object.  <a href="classStation.html#a5b28cd79199a4cb51e6945322ce9cf47">More...</a><br /></td></tr>
 <tr class="separator:a5b28cd79199a4cb51e6945322ce9cf47"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ed667b8b35b02533e7e9a68781089f9"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStation.html#a1ed667b8b35b02533e7e9a68781089f9">getType</a> () const override</td></tr>
@@ -158,6 +159,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:af82c54a43ccbef87e0e8d3b5e406923e inherit pub_methods_classVertex"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="classEdge.html">Edge</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVertex.html#af82c54a43ccbef87e0e8d3b5e406923e">getAdj</a> ()</td></tr>
 <tr class="memdesc:af82c54a43ccbef87e0e8d3b5e406923e inherit pub_methods_classVertex"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the vector of adjacent edges.  <a href="classVertex.html#af82c54a43ccbef87e0e8d3b5e406923e">More...</a><br /></td></tr>
 <tr class="separator:af82c54a43ccbef87e0e8d3b5e406923e inherit pub_methods_classVertex"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:ad545c5bb42be068442fe33571c83c72b"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStation.html#ad545c5bb42be068442fe33571c83c72b">code</a></td></tr>
+<tr class="separator:ad545c5bb42be068442fe33571c83c72b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4144cd1a5a69d5900f473ea9d792b3fe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classStation.html#a4144cd1a5a69d5900f473ea9d792b3fe">id</a></td></tr>
+<tr class="separator:a4144cd1a5a69d5900f473ea9d792b3fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -251,11 +259,8 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Gets the code of the station. </p>
-<p>Gets the code of the city.</p>
 <p>Time Complexity - O(1)</p>
-<dl class="section return"><dt>Returns</dt><dd>The code of the station.</dd></dl>
-<p>This function returns the code of the city.</p>
-<dl class="section return"><dt>Returns</dt><dd>The code of the city. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The code of the station. </dd></dl>
 
 </div>
 </div>
@@ -275,11 +280,8 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Gets the ID of the station. </p>
-<p>Gets the ID of the city.</p>
 <p>Time Complexity - O(1)</p>
-<dl class="section return"><dt>Returns</dt><dd>The ID of the station.</dd></dl>
-<p>This function returns the ID of the city.</p>
-<dl class="section return"><dt>Returns</dt><dd>The ID of the city. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The ID of the station. </dd></dl>
 
 </div>
 </div>
@@ -307,19 +309,63 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Gets the type of the vertex. </p>
-<p>Gets the type of the station.</p>
 <p>Time Complexity - O(1)</p>
-<dl class="section return"><dt>Returns</dt><dd>The type of the vertex ('S' for <a class="el" href="classStation.html" title="Represents a station vertex in a graph.">Station</a>).</dd></dl>
-<p>This function returns the type of the station, which is represented by the character 'S'.</p>
-<dl class="section return"><dt>Returns</dt><dd>The character representing the type of the station ('S'). </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The type of the vertex ('S' for <a class="el" href="classStation.html" title="Represents a station vertex in a graph.">Station</a>). </dd></dl>
 
-<p>Implements <a class="el" href="classVertex.html">Vertex</a>.</p>
+<p>Implements <a class="el" href="classVertex.html#a0381c1cbf4629c638b67a2c16f81614e">Vertex</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="ad545c5bb42be068442fe33571c83c72b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad545c5bb42be068442fe33571c83c72b">&#9670;&nbsp;</a></span>code</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Station::code</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The code of the station. </p>
+
+</div>
+</div>
+<a id="a4144cd1a5a69d5900f473ea9d792b3fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4144cd1a5a69d5900f473ea9d792b3fe">&#9670;&nbsp;</a></span>id</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Station::id</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The ID of the station. </p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>model/<a class="el" href="Vertex_8h_source.html">Vertex.h</a></li>
-<li>model/<a class="el" href="Vertex_8cpp.html">Vertex.cpp</a></li>
+<li>src/model/<a class="el" href="Vertex_8h_source.html">Vertex.h</a></li>
+<li>src/model/<a class="el" href="Vertex_8cpp.html">Vertex.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

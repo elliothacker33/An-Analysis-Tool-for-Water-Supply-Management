@@ -1,101 +1,1387 @@
 \hypertarget{classManager}{}\doxysection{Manager Class Reference}
 \label{classManager}\index{Manager@{Manager}}
+
+
+The \mbox{\hyperlink{classManager}{Manager}} class manages various operations related to the network graph.  
+
+
+
+
+{\ttfamily \#include $<$manager.\+h$>$}
+
+
+
+Collaboration diagram for Manager\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=141pt]{classManager__coll__graph}
+\end{center}
+\end{figure}
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classManager_ab1d20d37fe54190c329c5c3e4bd505c2}\label{classManager_ab1d20d37fe54190c329c5c3e4bd505c2}} 
-\mbox{\hyperlink{classGraph}{Graph}} $\ast$ {\bfseries get\+Graph} () const
+\mbox{\hyperlink{classManager_a1658ff9f18e38ccd9cb8b0b371b9c20b}{Manager}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor for the \mbox{\hyperlink{classManager}{Manager}} class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classManager_a322cad25d7007438b3a043ad02253d29}{$\sim$\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Destructor for the \mbox{\hyperlink{classManager}{Manager}} class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classGraph}{Graph}} $\ast$ \mbox{\hyperlink{classManager_ab1d20d37fe54190c329c5c3e4bd505c2}{get\+Graph}} () const
+\begin{DoxyCompactList}\small\item\em Getter function for the graph object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_a8fa6ee0b9328b3c7f16640558e5326ae}{import\+Files}} (const string \&path\+Cities, const string \&path\+Reservoirs, const string \&path\+Stations, const string \&path\+Pipes)
+\begin{DoxyCompactList}\small\item\em Imports data from files to initialize the graph. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_a6b28e6723d6c47a59bae1a714fc21f05}{reset\+Graph}} ()
+\begin{DoxyCompactList}\small\item\em Resets the graph and its properties. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_a37a31d560f41b364e2eb5b5ddfe2f1c3}{reset\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Resets the manager and its properties. \end{DoxyCompactList}\item 
+unordered\+\_\+map$<$ string, \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ $>$ \mbox{\hyperlink{classManager_a4639dd382f3444c0682384382dcad365}{get\+Stations}} () const
+\begin{DoxyCompactList}\small\item\em Get the unordered map of stations. \end{DoxyCompactList}\item 
+unordered\+\_\+map$<$ string, \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ $>$ \mbox{\hyperlink{classManager_a42bb9c734c4c7b8d734fc00b78aec15a}{get\+Reservoirs}} () const
+\begin{DoxyCompactList}\small\item\em Get the unordered map of reservoirs. \end{DoxyCompactList}\item 
+unordered\+\_\+map$<$ string, \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ $>$ \mbox{\hyperlink{classManager_ab7d5a3b252c993e24c74c0392d7e5508}{get\+Cities}} () const
+\begin{DoxyCompactList}\small\item\em Get the unordered map of cities. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVertex}{Vertex}} $\ast$ \mbox{\hyperlink{classManager_aba725d09476c8059ae993338e9ffb028}{find\+Vertex\+In\+Map}} (const string \&identifier) const
+\begin{DoxyCompactList}\small\item\em Find a vertex in the manager\textquotesingle{}s maps based on its identifier. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classManager_a663651c684e7b4b18f9c5aadf6b6a799}{get\+How\+Many\+Edges}} () const
+\begin{DoxyCompactList}\small\item\em Get the total number of edges in the graph. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_ac21099c7512d44c26d1538c5ae18a850}{get\+Edmonds\+Karp\+X\+City}} (vector$<$ string $>$ \&\mbox{\hyperlink{classManager_aaa62a1c2646f61f5cbc386814e53486a}{cities}})
+\begin{DoxyCompactList}\small\item\em Perform the Edmonds-\/\+Karp algorithm and print flow metrics for selected cities. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_aff62e0fd78f3a401ed93116c28cf412a}{get\+Ford\+Fulkerson\+X\+City}} (vector$<$ string $>$ \&\mbox{\hyperlink{classManager_aaa62a1c2646f61f5cbc386814e53486a}{cities}})
+\begin{DoxyCompactList}\small\item\em Computes the maximum flow using the Ford-\/\+Fulkerson algorithm for the specified cities. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_ad7564d41b3395ac48aa83af12e734160}{get\+Edmonds\+Karp\+All\+Cities}} (bool reset=true)
+\begin{DoxyCompactList}\small\item\em Run the Edmonds-\/\+Karp algorithm to find maximum flow for all cities. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_ac90f913be6a8a6305356d0b153923acf}{get\+Ford\+Fulkerson\+All\+Cities}} (bool reset=true)
+\begin{DoxyCompactList}\small\item\em Run the Ford-\/\+Fulkerson algorithm to find maximum flow for all cities. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_ad4bc2ea1c1e7bc0903abfeaa2609326c}{can\+City\+X\+Get\+Enough\+Water\+EK}} (vector$<$ string $>$ \&\mbox{\hyperlink{classManager_aaa62a1c2646f61f5cbc386814e53486a}{cities}})
+\begin{DoxyCompactList}\small\item\em Check if specified cities can get enough water using the Edmonds-\/\+Karp algorithm. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_a2a6a62a12babc7593e503f5f48e4a677}{can\+City\+X\+Get\+Enough\+Water\+FF}} (vector$<$ string $>$ \&\mbox{\hyperlink{classManager_aaa62a1c2646f61f5cbc386814e53486a}{cities}})
+\begin{DoxyCompactList}\small\item\em Check if specified cities can get enough water using the Ford-\/\+Fulkerson algorithm. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_a1dca5a50ca0223fb76346bcddfd2bf5f}{can\+All\+Cities\+Get\+Enough\+Water\+EK}} ()
+\begin{DoxyCompactList}\small\item\em Check if all cities can get enough water using the Edmonds-\/\+Karp algorithm. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_a0247fa02bdda901b10ea34cdff0b0c89}{can\+All\+Cities\+Get\+Enough\+Water\+FF}} ()
+\begin{DoxyCompactList}\small\item\em Check if all cities can get enough water using the Ford-\/\+Fulkerson algorithm. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_ab9e05f589fea385e57e7501dd57f2343}{improve\+Pipes\+Heuristic}} ()
 \item 
-\mbox{\Hypertarget{classManager_a8fa6ee0b9328b3c7f16640558e5326ae}\label{classManager_a8fa6ee0b9328b3c7f16640558e5326ae}} 
-void {\bfseries import\+Files} (const string \&path\+Cities, const string \&path\+Reservoirs, const string \&path\+Stations, const string \&path\+Pipes)
+void \mbox{\hyperlink{classManager_a0133df45b30bfe9f2de569416c9c9eef}{disable\+Each\+Reservoir\+Edmonds\+Karp}} ()
+\begin{DoxyCompactList}\small\item\em Disable each reservoir and check if it affects the network flow using Edmonds-\/\+Karp algorithm. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_aa9e86f09e089584bd0e5fdabc7e986e6}{disable\+Each\+Reservoir\+Ford\+Fulkerson}} ()
 \item 
-\mbox{\Hypertarget{classManager_a6b28e6723d6c47a59bae1a714fc21f05}\label{classManager_a6b28e6723d6c47a59bae1a714fc21f05}} 
-void {\bfseries reset\+Graph} ()
+void \mbox{\hyperlink{classManager_a4c134eacc08d00dc9c1675cf437c7190}{disable\+Selected\+Reservoirs\+Edmonds\+Karp}} (vector$<$ string $>$ \&\mbox{\hyperlink{classManager_a006edc827f09ecb523e2d2dbe1f53baf}{reservoirs}})
 \item 
-\mbox{\Hypertarget{classManager_a37a31d560f41b364e2eb5b5ddfe2f1c3}\label{classManager_a37a31d560f41b364e2eb5b5ddfe2f1c3}} 
-void {\bfseries reset\+Manager} ()
+void \mbox{\hyperlink{classManager_a01201638a8a9bf6d29cf28da7567847c}{disable\+Selected\+Reservoirs\+Ford\+Fulkerson}} (vector$<$ string $>$ \&\mbox{\hyperlink{classManager_a006edc827f09ecb523e2d2dbe1f53baf}{reservoirs}})
 \item 
-\mbox{\Hypertarget{classManager_a4639dd382f3444c0682384382dcad365}\label{classManager_a4639dd382f3444c0682384382dcad365}} 
-unordered\+\_\+map$<$ string, \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ $>$ {\bfseries get\+Stations} () const
+void \mbox{\hyperlink{classManager_a5dd8ed268402a1d2f10053a601c83a43}{disable\+Each\+Station\+Edmonds\+Karp}} ()
+\begin{DoxyCompactList}\small\item\em Disable each station individually and measure network impact using Edmonds-\/\+Karp algorithm. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_a1d425d7bc1a7e529ddc26ed976090906}{disable\+Each\+Station\+Ford\+Fulkerson}} ()
+\begin{DoxyCompactList}\small\item\em Disable each station individually and measure network impact using Ford-\/\+Fulkerson algorithm. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_ab986bceaf4eb6f761bf8e888be498a6f}{disable\+Selected\+Stations\+Edmonds\+Karp}} (vector$<$ string $>$ \&\mbox{\hyperlink{classManager_a4044dec3eb14d1d16e60eb1b88f1be1d}{stations}})
+\begin{DoxyCompactList}\small\item\em Disable selected stations and measure the decrease in flow rates using the Edmonds-\/\+Karp algorithm. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_a0ca0be8a9c9d12b9b7bc499fe921f9fc}{disable\+Selected\+Stations\+Ford\+Fulkerson}} (vector$<$ string $>$ \&\mbox{\hyperlink{classManager_a4044dec3eb14d1d16e60eb1b88f1be1d}{stations}})
+\begin{DoxyCompactList}\small\item\em Disable selected stations and measure the decrease in flow rates using the Ford-\/\+Fulkerson algorithm. \end{DoxyCompactList}\item 
+vector$<$ pair$<$ string, double $>$ $>$ \mbox{\hyperlink{classManager_af3177a947122954a0d90a97edcaa7af0}{shutdown\+Stations\+Getting\+Decrease\+Flows}} (vector$<$ pair$<$ string, int $>$$>$(Manager\+::$\ast$function)(), vector$<$ string $>$ \&\mbox{\hyperlink{classManager_a4044dec3eb14d1d16e60eb1b88f1be1d}{stations}})
+\begin{DoxyCompactList}\small\item\em Shutdown selected stations and measure the decrease in flow rates. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_ad8f9f61b55876c67a803adcc61ba7ea7}{disable\+Each\+Pipe\+Edmonds\+Karp}} ()
+\begin{DoxyCompactList}\small\item\em Disable each pipe individually and check if it affects the network flow using Edmonds-\/\+Karp algorithm. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_ad33e85d84d26af0ce288d5ac9c705f52}{disable\+Each\+Pipe\+Ford\+Fulkerson}} ()
+\begin{DoxyCompactList}\small\item\em Disable each pipe individually and check if it affects the network flow using Ford-\/\+Fulkerson algorithm. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_aaf87e5942b0ca0f3297484a9baab0713}{disable\+Selected\+Pipes\+Edmonds\+Karp}} (vector$<$ \mbox{\hyperlink{classEdge}{Edge}} $\ast$ $>$ \&pipes)
+\begin{DoxyCompactList}\small\item\em Disable selected pipes and calculate the decrease rate in flow using Edmonds-\/\+Karp algorithm. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_a10765721006d80fa74f3b54845114ffe}{disable\+Selected\+Pipes\+Ford\+Fulkerson}} (vector$<$ \mbox{\hyperlink{classEdge}{Edge}} $\ast$ $>$ \&pipes)
+\begin{DoxyCompactList}\small\item\em Disable selected pipes and calculate the decrease rate in flow using Ford-\/\+Fulkerson algorithm. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_aa9822fd770e7ccb4e9854a470ceed054}{top\+K\+Flow\+Edmonds\+Karp\+Cities}} (int k)
+\begin{DoxyCompactList}\small\item\em Find the top K cities with the highest flow using the Edmonds-\/\+Karp algorithm. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_afe5d91cd4468ba3b6e4b694f56265e73}{top\+K\+Flow\+Ford\+Fulkerson\+Cities}} (int k)
+\begin{DoxyCompactList}\small\item\em Find the top K cities with the highest flow using the Ford-\/\+Fulkerson algorithm. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_acf9def191d117b0a0b90380a8ae5ce0b}{flow\+Rate\+Per\+City\+Edmonds\+Karp}} ()
+\begin{DoxyCompactList}\small\item\em Calculate the flow rate per city using the Edmonds-\/\+Karp algorithm. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_a331d9cff865e09975bf36837f41f8d14}{flow\+Rate\+Per\+City\+Ford\+Fulkerson}} ()
+\begin{DoxyCompactList}\small\item\em Calculate the flow rate per city using the Ford-\/\+Fulkerson algorithm. \end{DoxyCompactList}\item 
+vector$<$ int $>$ \mbox{\hyperlink{classManager_a7d544d53df94014591d0a172eed97edb}{get\+Metrics}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classManager_a42bb9c734c4c7b8d734fc00b78aec15a}\label{classManager_a42bb9c734c4c7b8d734fc00b78aec15a}} 
-unordered\+\_\+map$<$ string, \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ $>$ {\bfseries get\+Reservoirs} () const
+void \mbox{\hyperlink{classManager_a049f52e54751bc65bcf95eb545d0bb2f}{import\+Cities}} (const string \&path\+Cities)
+\begin{DoxyCompactList}\small\item\em Imports the cities from csv. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_a228800505ebed9710ba2662c47760ee0}{import\+Reservoirs}} (const string \&path\+Reservoirs)
+\begin{DoxyCompactList}\small\item\em Imports the reservoirs from csv. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_a2543bf30b978a5b01335e1c907315a66}{import\+Stations}} (const string \&path\+Stations)
+\begin{DoxyCompactList}\small\item\em Imports the stations from csv. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_ae6f454ba34a0eaa92e9a8784de84760c}{import\+Pipes}} (const string \&path\+Pipes) const
+\begin{DoxyCompactList}\small\item\em Imports the pipes from csv. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVertex}{Vertex}} $\ast$ \mbox{\hyperlink{classManager_a86cc890113b77dd667c92253fa0d07d2}{add\+Super\+Sink}} ()
+\begin{DoxyCompactList}\small\item\em Adds the super sink vertex to the graph. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classVertex}{Vertex}} $\ast$ \mbox{\hyperlink{classManager_ada300e81aa77a888955c9b314a52af1b}{add\+Super\+Source}} ()
+\begin{DoxyCompactList}\small\item\em Adds a super source vertex to the graph. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classManager_ae178bc922084b46339b9f019d1b72d8d}{parse\+Int}} (const string \&text) const
+\begin{DoxyCompactList}\small\item\em Performs a breadth-\/first search (B\+FS) to find a flow path from the super source to the super sink. \end{DoxyCompactList}\item 
+vector$<$ \mbox{\hyperlink{classEdge}{Edge}} $\ast$ $>$ \mbox{\hyperlink{classManager_a9a5e72b7a6977c3508e1c12a26278f06}{bfs\+\_\+flow}} (\mbox{\hyperlink{classVertex}{Vertex}} $\ast$super\+Source, \mbox{\hyperlink{classVertex}{Vertex}} $\ast$super\+Sink)
 \item 
-\mbox{\Hypertarget{classManager_ab7d5a3b252c993e24c74c0392d7e5508}\label{classManager_ab7d5a3b252c993e24c74c0392d7e5508}} 
-unordered\+\_\+map$<$ string, \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ $>$ {\bfseries get\+Cities} () const
+vector$<$ \mbox{\hyperlink{classEdge}{Edge}} $\ast$ $>$ \mbox{\hyperlink{classManager_a0048746dfb3028b76024742feadc5b50}{dfs\+\_\+flow}} (\mbox{\hyperlink{classVertex}{Vertex}} $\ast$super\+Source, \mbox{\hyperlink{classVertex}{Vertex}} $\ast$super\+Sink)
+\begin{DoxyCompactList}\small\item\em Performs a depth-\/first search (D\+FS) to find a flow path from the super source to the super sink. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classManager_ac3c51a9cecbd68c77d10bfe1dbb52267}{dfs\+\_\+helper}} (\mbox{\hyperlink{classVertex}{Vertex}} $\ast$current\+Vertex, \mbox{\hyperlink{classVertex}{Vertex}} $\ast$super\+Sink, vector$<$ \mbox{\hyperlink{classEdge}{Edge}} $\ast$ $>$ \&path)
+\begin{DoxyCompactList}\small\item\em Helper function for depth-\/first search (D\+FS) to find a flow path from the current vertex to the super sink. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classManager_af49449ce093a81ebfcfb9bf8532e2b88}{find\+Min\+Edge}} (const vector$<$ \mbox{\hyperlink{classEdge}{Edge}} $\ast$ $>$ \&path)
+\begin{DoxyCompactList}\small\item\em Finds the minimum flow value among the edges in the given path. \end{DoxyCompactList}\item 
+vector$<$ pair$<$ string, int $>$ $>$ \mbox{\hyperlink{classManager_a728e14dc6869785748aa23dc0520c6d3}{max\+Flow}} (vector$<$ \mbox{\hyperlink{classEdge}{Edge}} $\ast$ $>$(Manager\+::$\ast$function)(\mbox{\hyperlink{classVertex}{Vertex}} $\ast$, \mbox{\hyperlink{classVertex}{Vertex}} $\ast$))
+\begin{DoxyCompactList}\small\item\em Finds the maximum flow in the graph using a specified flow path exploration method. \end{DoxyCompactList}\item 
+vector$<$ pair$<$ string, int $>$ $>$ \mbox{\hyperlink{classManager_a2541ea7ccb2e6b3375bde5d1deb3379a}{max\+Flow\+Edmonds\+Karp}} ()
+\begin{DoxyCompactList}\small\item\em Finds the maximum flow in the graph using the Edmonds-\/\+Karp algorithm. \end{DoxyCompactList}\item 
+vector$<$ pair$<$ string, int $>$ $>$ \mbox{\hyperlink{classManager_afe32ce8910096068d5e750a5bdbd1e60}{max\+Flow\+Ford\+Fulkerson}} ()
+\begin{DoxyCompactList}\small\item\em Finds the maximum flow in the graph using the Ford-\/\+Fulkerson algorithm. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_a2ed6e03ded4b1e500cd7b9c7ee2a579c}{create\+Csv\+File\+Flows}} (const string \&path, vector$<$ pair$<$ string, int $>$$>$ \&flows)
+\begin{DoxyCompactList}\small\item\em Creates a C\+SV file containing flow information. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_a4d1446668c1a5cb26c3066f985096ecd}{create\+Csv\+File\+Disable}} (const string \&path, vector$<$ pair$<$ string, bool $>$$>$ \&disable)
+\begin{DoxyCompactList}\small\item\em Creates a C\+SV file indicating whether stations can be disabled. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_ac63a58342e17c1796667dca972d7c0f3}{create\+Csv\+File\+Pipes\+Disable}} (const string \&path, vector$<$ pair$<$ \mbox{\hyperlink{classEdge}{Edge}} $\ast$, bool $>$ $>$ \&disable)
+\begin{DoxyCompactList}\small\item\em Creates a C\+SV file indicating whether pipes can be disabled. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_a8091172d82ed8cdad60f4e1d95f7135b}{create\+Csv\+File\+Enough\+Water}} (const string \&path, vector$<$ pair$<$ string, bool $>$$>$ \&enough\+Water)
+\begin{DoxyCompactList}\small\item\em Creates a C\+SV file indicating whether cities have enough water. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_acdf398db1ca84e0f988c39abf59f70cc}{create\+Csv\+File\+Rates}} (const string \&path, vector$<$ pair$<$ string, double $>$$>$ \&rates)
+\begin{DoxyCompactList}\small\item\em Creates a C\+SV file containing rates information. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_adc7a36d344a302d10ff09c709bb616f8}{calculate\+Flow\+Rates}} (const vector$<$ pair$<$ string, int $>$$>$ \&flows, const string \&output\+File)
+\begin{DoxyCompactList}\small\item\em Calculates flow rates for cities based on the provided flows and generates a C\+SV file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_a2323d4d100d8b5fe7407524aeff948b5}{print\+Top\+K\+Flows}} (vector$<$ pair$<$ string, int $>$$>$ \&flows, int k, const string \&output\+File)
+\begin{DoxyCompactList}\small\item\em Prints and exports the top K flows to a C\+SV file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_a08f822178b9abb0634e9681777a34693}{print\+Flow\+Metrics}} (vector$<$ pair$<$ string, int $>$$>$ \&flows, vector$<$ string $>$ \&chosen\+Cities, const string \&output\+File)
+\begin{DoxyCompactList}\small\item\em Prints flow metrics for chosen cities and exports them to a C\+SV file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_a233fff398666f11d68a9a81039bef967}{disable\+Stations}} (vector$<$ string $>$ \&\mbox{\hyperlink{classManager_a4044dec3eb14d1d16e60eb1b88f1be1d}{stations}})
+\begin{DoxyCompactList}\small\item\em Disables stations with the given codes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_a2724d3f1553a296838cb4ea915dcda12}{disable\+Pipes}} (vector$<$ \mbox{\hyperlink{classEdge}{Edge}} $\ast$ $>$ \&pipes)
+\begin{DoxyCompactList}\small\item\em Disables the specified pipes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_a3164eaa0a72adb807150bbd8ab785b35}{disable\+Reservoirs}} (vector$<$ string $>$ \&\mbox{\hyperlink{classManager_a006edc827f09ecb523e2d2dbe1f53baf}{reservoirs}})
+\begin{DoxyCompactList}\small\item\em Disables reservoirs with the given codes. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classManager_a92f80e744f526e5e4a5b1b7b135ba788}{dfs\+\_\+disable}} (\mbox{\hyperlink{classVertex}{Vertex}} $\ast$reservoir, int flow\+To\+Remove)
 \item 
-\mbox{\Hypertarget{classManager_aba725d09476c8059ae993338e9ffb028}\label{classManager_aba725d09476c8059ae993338e9ffb028}} 
-\mbox{\hyperlink{classVertex}{Vertex}} $\ast$ {\bfseries find\+Vertex\+In\+Map} (const string \&identifier) const
+bool \mbox{\hyperlink{classManager_a7ec2f5813eb658141961a037e29dc218}{shutdown\+Reservoirs}} (vector$<$ pair$<$ string, int $>$$>$(Manager\+::$\ast$flowfunction)(), vector$<$ string $>$ \&\mbox{\hyperlink{classManager_a006edc827f09ecb523e2d2dbe1f53baf}{reservoirs}})
+\begin{DoxyCompactList}\small\item\em Shuts down reservoirs and checks the impact on network flow. \end{DoxyCompactList}\item 
+vector$<$ pair$<$ string, double $>$ $>$ \mbox{\hyperlink{classManager_a7a0d57a80922837c488b47da4870d1e6}{shutdown\+Reservoirs\+With\+Decrease}} (vector$<$ pair$<$ string, int $>$$>$(Manager\+::$\ast$flowfunction)(), vector$<$ string $>$ \&\mbox{\hyperlink{classManager_a006edc827f09ecb523e2d2dbe1f53baf}{reservoirs}})
 \item 
-\mbox{\Hypertarget{classManager_a663651c684e7b4b18f9c5aadf6b6a799}\label{classManager_a663651c684e7b4b18f9c5aadf6b6a799}} 
-int {\bfseries get\+How\+Many\+Edges} () const
+bool \mbox{\hyperlink{classManager_a656cf977e031ff97a5c80df2eda6ab6e}{shutdown\+Pipes}} (vector$<$ pair$<$ string, int $>$$>$(Manager\+::$\ast$flowfunction)(), vector$<$ \mbox{\hyperlink{classEdge}{Edge}} $\ast$ $>$ \&pipes)
+\begin{DoxyCompactList}\small\item\em Shuts down pipes and checks the impact on network flow. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classManager_ac6366f03b880d0a34196c24170d769fd}{shutdown\+Stations}} (vector$<$ pair$<$ string, int $>$$>$(Manager\+::$\ast$function)(), vector$<$ string $>$ \&\mbox{\hyperlink{classManager_a4044dec3eb14d1d16e60eb1b88f1be1d}{stations}})
+\begin{DoxyCompactList}\small\item\em Shuts down stations and checks the impact on network flow. \end{DoxyCompactList}\item 
+vector$<$ pair$<$ string, int $>$ $>$ \mbox{\hyperlink{classManager_a0243f6d3fccd56dccff3c08ad7419331}{graph\+Change\+Flows\+After\+Reservoirs\+Disabled}} (vector$<$ string $>$ \&\mbox{\hyperlink{classManager_a006edc827f09ecb523e2d2dbe1f53baf}{reservoirs}})
 \item 
-\mbox{\Hypertarget{classManager_ac21099c7512d44c26d1538c5ae18a850}\label{classManager_ac21099c7512d44c26d1538c5ae18a850}} 
-void {\bfseries get\+Edmonds\+Karp\+X\+City} (vector$<$ string $>$ \&cities)
+vector$<$ pair$<$ string, double $>$ $>$ \mbox{\hyperlink{classManager_aa6f5683705abd464b20f5ceef1fb21fa}{shutdown\+Pipes\+With\+Decrease}} (vector$<$ pair$<$ string, int $>$$>$(Manager\+::$\ast$flowfunction)(), vector$<$ \mbox{\hyperlink{classEdge}{Edge}} $\ast$ $>$ \&pipes)
+\begin{DoxyCompactList}\small\item\em Shuts down pipes and calculates the percentage decrease in flow for each city. \end{DoxyCompactList}\item 
+vector$<$ pair$<$ string, bool $>$ $>$ \mbox{\hyperlink{classManager_a20b5051191933610a0b8d31ea991fc18}{can\+City\+Get\+Enough\+Water}} (vector$<$ string $>$ \&codes, vector$<$ pair$<$ string, int $>$$>$ \&flows)
+\begin{DoxyCompactList}\small\item\em Determines if each city can get enough water based on provided flow data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classManager_aff62e0fd78f3a401ed93116c28cf412a}\label{classManager_aff62e0fd78f3a401ed93116c28cf412a}} 
-void {\bfseries get\+Ford\+Fulkerson\+X\+City} (vector$<$ string $>$ \&cities)
+\mbox{\hyperlink{classGraph}{Graph}} $\ast$ \mbox{\hyperlink{classManager_a0b625d7d11ab782a335286d0e9175e83}{graph}}
 \item 
-\mbox{\Hypertarget{classManager_acc2842bfd3d577acdbd546a6acfdfbaf}\label{classManager_acc2842bfd3d577acdbd546a6acfdfbaf}} 
-void {\bfseries get\+Edmonds\+Karp\+All\+Cities} ()
+unordered\+\_\+map$<$ string, \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ $>$ \mbox{\hyperlink{classManager_a4044dec3eb14d1d16e60eb1b88f1be1d}{stations}}
 \item 
-\mbox{\Hypertarget{classManager_ac56661fe59faa58bd7c8e7049d6a7099}\label{classManager_ac56661fe59faa58bd7c8e7049d6a7099}} 
-void {\bfseries get\+Ford\+Fulkerson\+All\+Cities} ()
+unordered\+\_\+map$<$ string, \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ $>$ \mbox{\hyperlink{classManager_a006edc827f09ecb523e2d2dbe1f53baf}{reservoirs}}
 \item 
-\mbox{\Hypertarget{classManager_ad4bc2ea1c1e7bc0903abfeaa2609326c}\label{classManager_ad4bc2ea1c1e7bc0903abfeaa2609326c}} 
-void {\bfseries can\+City\+X\+Get\+Enough\+Water\+EK} (vector$<$ string $>$ \&cities)
-\item 
-\mbox{\Hypertarget{classManager_a2a6a62a12babc7593e503f5f48e4a677}\label{classManager_a2a6a62a12babc7593e503f5f48e4a677}} 
-void {\bfseries can\+City\+X\+Get\+Enough\+Water\+FF} (vector$<$ string $>$ \&cities)
-\item 
-\mbox{\Hypertarget{classManager_a1dca5a50ca0223fb76346bcddfd2bf5f}\label{classManager_a1dca5a50ca0223fb76346bcddfd2bf5f}} 
-void {\bfseries can\+All\+Cities\+Get\+Enough\+Water\+EK} ()
-\item 
-\mbox{\Hypertarget{classManager_a0247fa02bdda901b10ea34cdff0b0c89}\label{classManager_a0247fa02bdda901b10ea34cdff0b0c89}} 
-void {\bfseries can\+All\+Cities\+Get\+Enough\+Water\+FF} ()
-\item 
-\mbox{\Hypertarget{classManager_a5dd8ed268402a1d2f10053a601c83a43}\label{classManager_a5dd8ed268402a1d2f10053a601c83a43}} 
-void {\bfseries disable\+Each\+Station\+Edmonds\+Karp} ()
-\item 
-\mbox{\Hypertarget{classManager_a1d425d7bc1a7e529ddc26ed976090906}\label{classManager_a1d425d7bc1a7e529ddc26ed976090906}} 
-void {\bfseries disable\+Each\+Station\+Ford\+Fulkerson} ()
-\item 
-\mbox{\Hypertarget{classManager_ab986bceaf4eb6f761bf8e888be498a6f}\label{classManager_ab986bceaf4eb6f761bf8e888be498a6f}} 
-void {\bfseries disable\+Selected\+Stations\+Edmonds\+Karp} (vector$<$ string $>$ \&stations)
-\item 
-\mbox{\Hypertarget{classManager_a0ca0be8a9c9d12b9b7bc499fe921f9fc}\label{classManager_a0ca0be8a9c9d12b9b7bc499fe921f9fc}} 
-void {\bfseries disable\+Selected\+Stations\+Ford\+Fulkerson} (vector$<$ string $>$ \&stations)
-\item 
-\mbox{\Hypertarget{classManager_af3177a947122954a0d90a97edcaa7af0}\label{classManager_af3177a947122954a0d90a97edcaa7af0}} 
-vector$<$ pair$<$ string, double $>$ $>$ {\bfseries shutdown\+Stations\+Getting\+Decrease\+Flows} (vector$<$ pair$<$ string, int $>$$>$(Manager\+::$\ast$function)(), vector$<$ string $>$ \&stations)
-\item 
-\mbox{\Hypertarget{classManager_ad8f9f61b55876c67a803adcc61ba7ea7}\label{classManager_ad8f9f61b55876c67a803adcc61ba7ea7}} 
-void {\bfseries disable\+Each\+Pipe\+Edmonds\+Karp} ()
-\item 
-\mbox{\Hypertarget{classManager_ad33e85d84d26af0ce288d5ac9c705f52}\label{classManager_ad33e85d84d26af0ce288d5ac9c705f52}} 
-void {\bfseries disable\+Each\+Pipe\+Ford\+Fulkerson} ()
-\item 
-\mbox{\Hypertarget{classManager_aaf87e5942b0ca0f3297484a9baab0713}\label{classManager_aaf87e5942b0ca0f3297484a9baab0713}} 
-void {\bfseries disable\+Selected\+Pipes\+Edmonds\+Karp} (vector$<$ \mbox{\hyperlink{classEdge}{Edge}} $\ast$ $>$ \&pipes)
-\item 
-\mbox{\Hypertarget{classManager_a10765721006d80fa74f3b54845114ffe}\label{classManager_a10765721006d80fa74f3b54845114ffe}} 
-void {\bfseries disable\+Selected\+Pipes\+Ford\+Fulkerson} (vector$<$ \mbox{\hyperlink{classEdge}{Edge}} $\ast$ $>$ \&pipes)
-\item 
-\mbox{\Hypertarget{classManager_aa9822fd770e7ccb4e9854a470ceed054}\label{classManager_aa9822fd770e7ccb4e9854a470ceed054}} 
-void {\bfseries top\+K\+Flow\+Edmonds\+Karp\+Cities} (int k)
-\item 
-\mbox{\Hypertarget{classManager_afe5d91cd4468ba3b6e4b694f56265e73}\label{classManager_afe5d91cd4468ba3b6e4b694f56265e73}} 
-void {\bfseries top\+K\+Flow\+Ford\+Fulkerson\+Cities} (int k)
-\item 
-\mbox{\Hypertarget{classManager_acf9def191d117b0a0b90380a8ae5ce0b}\label{classManager_acf9def191d117b0a0b90380a8ae5ce0b}} 
-void {\bfseries flow\+Rate\+Per\+City\+Edmonds\+Karp} ()
-\item 
-\mbox{\Hypertarget{classManager_a331d9cff865e09975bf36837f41f8d14}\label{classManager_a331d9cff865e09975bf36837f41f8d14}} 
-void {\bfseries flow\+Rate\+Per\+City\+Ford\+Fulkerson} ()
+unordered\+\_\+map$<$ string, \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ $>$ \mbox{\hyperlink{classManager_aaa62a1c2646f61f5cbc386814e53486a}{cities}}
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+The \mbox{\hyperlink{classManager}{Manager}} class manages various operations related to the network graph. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classManager_a1658ff9f18e38ccd9cb8b0b371b9c20b}\label{classManager_a1658ff9f18e38ccd9cb8b0b371b9c20b}} 
+\index{Manager@{Manager}!Manager@{Manager}}
+\index{Manager@{Manager}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{Manager()}{Manager()}}
+{\footnotesize\ttfamily Manager\+::\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Default constructor for the \mbox{\hyperlink{classManager}{Manager}} class. 
+
+This constructor initializes a new \mbox{\hyperlink{classManager}{Manager}} object. It creates a new instance of the \mbox{\hyperlink{classGraph}{Graph}} class to manage the underlying graph data structure.
+
+Time complexity\+: O(1) \mbox{\Hypertarget{classManager_a322cad25d7007438b3a043ad02253d29}\label{classManager_a322cad25d7007438b3a043ad02253d29}} 
+\index{Manager@{Manager}!````~Manager@{$\sim$Manager}}
+\index{````~Manager@{$\sim$Manager}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{$\sim$Manager()}{~Manager()}}
+{\footnotesize\ttfamily Manager\+::$\sim$\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor for the \mbox{\hyperlink{classManager}{Manager}} class. 
+
+This destructor cleans up resources used by the \mbox{\hyperlink{classManager}{Manager}} object. It deletes the dynamically allocated graph object to prevent memory leaks.
+
+Time complexity\+: O(n + m), where n is the number of vertices and m is the number of edges in the graph. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classManager_a86cc890113b77dd667c92253fa0d07d2}\label{classManager_a86cc890113b77dd667c92253fa0d07d2}} 
+\index{Manager@{Manager}!addSuperSink@{addSuperSink}}
+\index{addSuperSink@{addSuperSink}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{addSuperSink()}{addSuperSink()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ Manager\+::add\+Super\+Sink (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Adds the super sink vertex to the graph. 
+
+This function creates a super sink vertex with a predefined identifier and adds it to the graph.
+
+Time complexity\+: O(V + C), where V is the number of vertices and C the number of cities
+
+\begin{DoxyReturn}{Returns}
+Pointer to the added super sink vertex. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classManager_ada300e81aa77a888955c9b314a52af1b}\label{classManager_ada300e81aa77a888955c9b314a52af1b}} 
+\index{Manager@{Manager}!addSuperSource@{addSuperSource}}
+\index{addSuperSource@{addSuperSource}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{addSuperSource()}{addSuperSource()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ Manager\+::add\+Super\+Source (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Adds a super source vertex to the graph. 
+
+This function creates a super source vertex with a predefined identifier and adds it to the graph.
+
+Time complexity\+: O(V + R), where V is the number of vertices and R the number of reservoirs
+
+\begin{DoxyReturn}{Returns}
+Pointer to the added super source vertex. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classManager_a9a5e72b7a6977c3508e1c12a26278f06}\label{classManager_a9a5e72b7a6977c3508e1c12a26278f06}} 
+\index{Manager@{Manager}!bfs\_flow@{bfs\_flow}}
+\index{bfs\_flow@{bfs\_flow}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{bfs\_flow()}{bfs\_flow()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{classEdge}{Edge}} $\ast$ $>$ Manager\+::bfs\+\_\+flow (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}} $\ast$}]{super\+Source,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}} $\ast$}]{super\+Sink }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classManager_adc7a36d344a302d10ff09c709bb616f8}\label{classManager_adc7a36d344a302d10ff09c709bb616f8}} 
+\index{Manager@{Manager}!calculateFlowRates@{calculateFlowRates}}
+\index{calculateFlowRates@{calculateFlowRates}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{calculateFlowRates()}{calculateFlowRates()}}
+{\footnotesize\ttfamily void Manager\+::calculate\+Flow\+Rates (\begin{DoxyParamCaption}\item[{const vector$<$ pair$<$ string, int $>$$>$ \&}]{flows,  }\item[{const string \&}]{output\+File }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Calculates flow rates for cities based on the provided flows and generates a C\+SV file. 
+
+This function calculates flow rates for cities based on the provided flows and generates a C\+SV file containing the calculated rates. It takes a vector of pairs where each pair contains the code of a city and its corresponding flow value. It calculates the flow rate for each city as a percentage of the total flow. The C\+SV file format includes columns for the city code and its corresponding flow rate.
+
+Time complexity\+: O(n + m), where n is the number of pairs in the flows vector and m is the number of pairs in the rates vector.
+
+
+\begin{DoxyParams}{Parameters}
+{\em flows} & A vector of pairs where each pair contains the code of a city and its corresponding flow value. \\
+\hline
+{\em output\+File} & The file path where the C\+SV file with flow rates will be created. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classManager_a1dca5a50ca0223fb76346bcddfd2bf5f}\label{classManager_a1dca5a50ca0223fb76346bcddfd2bf5f}} 
+\index{Manager@{Manager}!canAllCitiesGetEnoughWaterEK@{canAllCitiesGetEnoughWaterEK}}
+\index{canAllCitiesGetEnoughWaterEK@{canAllCitiesGetEnoughWaterEK}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{canAllCitiesGetEnoughWaterEK()}{canAllCitiesGetEnoughWaterEK()}}
+{\footnotesize\ttfamily void Manager\+::can\+All\+Cities\+Get\+Enough\+Water\+EK (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Check if all cities can get enough water using the Edmonds-\/\+Karp algorithm. 
+
+This function calculates the maximum flow in the network using the Edmonds-\/\+Karp algorithm and checks if all cities in the network can get enough water based on the calculated flows. It then saves the results to a C\+SV file and resets the graph.
+
+Time complexity\+: O(V + E) \mbox{\Hypertarget{classManager_a0247fa02bdda901b10ea34cdff0b0c89}\label{classManager_a0247fa02bdda901b10ea34cdff0b0c89}} 
+\index{Manager@{Manager}!canAllCitiesGetEnoughWaterFF@{canAllCitiesGetEnoughWaterFF}}
+\index{canAllCitiesGetEnoughWaterFF@{canAllCitiesGetEnoughWaterFF}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{canAllCitiesGetEnoughWaterFF()}{canAllCitiesGetEnoughWaterFF()}}
+{\footnotesize\ttfamily void Manager\+::can\+All\+Cities\+Get\+Enough\+Water\+FF (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Check if all cities can get enough water using the Ford-\/\+Fulkerson algorithm. 
+
+This function calculates the maximum flow in the network using the Ford-\/\+Fulkerson algorithm and checks if all cities in the network can get enough water based on the calculated flows. It then saves the results to a C\+SV file and resets the graph.
+
+Time complexity\+: O(\+V $\ast$ E $\ast$ f). \mbox{\Hypertarget{classManager_a20b5051191933610a0b8d31ea991fc18}\label{classManager_a20b5051191933610a0b8d31ea991fc18}} 
+\index{Manager@{Manager}!canCityGetEnoughWater@{canCityGetEnoughWater}}
+\index{canCityGetEnoughWater@{canCityGetEnoughWater}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{canCityGetEnoughWater()}{canCityGetEnoughWater()}}
+{\footnotesize\ttfamily vector$<$ pair$<$ string, bool $>$ $>$ Manager\+::can\+City\+Get\+Enough\+Water (\begin{DoxyParamCaption}\item[{vector$<$ string $>$ \&}]{codes,  }\item[{vector$<$ pair$<$ string, int $>$$>$ \&}]{flows }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Determines if each city can get enough water based on provided flow data. 
+
+This function determines if each city in the provided list of city codes can get enough water based on the flow data provided. It compares the flow data with the demand for each city and returns a vector of pairs indicating whether each city can get enough water.
+
+Time complexity\+: O(m), where m is the number of flow data entries.
+
+
+\begin{DoxyParams}{Parameters}
+{\em codes} & A vector containing the codes of the cities to be checked. \\
+\hline
+{\em flows} & A vector containing pairs of city codes and corresponding flow data. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of pairs containing the city code and a boolean indicating if the city can get enough water. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classManager_ad4bc2ea1c1e7bc0903abfeaa2609326c}\label{classManager_ad4bc2ea1c1e7bc0903abfeaa2609326c}} 
+\index{Manager@{Manager}!canCityXGetEnoughWaterEK@{canCityXGetEnoughWaterEK}}
+\index{canCityXGetEnoughWaterEK@{canCityXGetEnoughWaterEK}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{canCityXGetEnoughWaterEK()}{canCityXGetEnoughWaterEK()}}
+{\footnotesize\ttfamily void Manager\+::can\+City\+X\+Get\+Enough\+Water\+EK (\begin{DoxyParamCaption}\item[{vector$<$ string $>$ \&}]{cities }\end{DoxyParamCaption})}
+
+
+
+Check if specified cities can get enough water using the Edmonds-\/\+Karp algorithm. 
+
+This function calculates the maximum flow in the network using the Edmonds-\/\+Karp algorithm and checks if the specified cities can get enough water based on the calculated flows. It then saves the results to a C\+SV file and resets the graph.
+
+time complecity\+: O(V+E) 
+\begin{DoxyParams}{Parameters}
+{\em cities} & A vector of city codes to check for water availability. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classManager_a2a6a62a12babc7593e503f5f48e4a677}\label{classManager_a2a6a62a12babc7593e503f5f48e4a677}} 
+\index{Manager@{Manager}!canCityXGetEnoughWaterFF@{canCityXGetEnoughWaterFF}}
+\index{canCityXGetEnoughWaterFF@{canCityXGetEnoughWaterFF}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{canCityXGetEnoughWaterFF()}{canCityXGetEnoughWaterFF()}}
+{\footnotesize\ttfamily void Manager\+::can\+City\+X\+Get\+Enough\+Water\+FF (\begin{DoxyParamCaption}\item[{vector$<$ string $>$ \&}]{cities }\end{DoxyParamCaption})}
+
+
+
+Check if specified cities can get enough water using the Ford-\/\+Fulkerson algorithm. 
+
+This function calculates the maximum flow in the network using the Ford-\/\+Fulkerson algorithm and checks if the specified cities can get enough water based on the calculated flows. It then saves the results to a C\+SV file and resets the graph.
+
+Time complexity\+: O(\+E $\ast$ f), where E is the number of edges and f is the maximum flow.
+
+
+\begin{DoxyParams}{Parameters}
+{\em cities} & A vector of city codes to check for water availability. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classManager_a4d1446668c1a5cb26c3066f985096ecd}\label{classManager_a4d1446668c1a5cb26c3066f985096ecd}} 
+\index{Manager@{Manager}!createCsvFileDisable@{createCsvFileDisable}}
+\index{createCsvFileDisable@{createCsvFileDisable}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{createCsvFileDisable()}{createCsvFileDisable()}}
+{\footnotesize\ttfamily void Manager\+::create\+Csv\+File\+Disable (\begin{DoxyParamCaption}\item[{const string \&}]{path,  }\item[{vector$<$ pair$<$ string, bool $>$$>$ \&}]{disable }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Creates a C\+SV file indicating whether stations can be disabled. 
+
+This function creates a C\+SV file at the specified path indicating whether each station can be disabled. It takes a vector of pairs where each pair contains the code of a station and a boolean indicating whether it can be disabled. The C\+SV file format includes columns for the station code and whether it can be disabled.
+
+Time complexity\+: O(n), where n is the number of pairs in the disable vector.
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & The file path where the C\+SV file will be created. \\
+\hline
+{\em disable} & A vector of pairs where each pair contains the code of a station and a boolean indicating whether it can be disabled. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classManager_a8091172d82ed8cdad60f4e1d95f7135b}\label{classManager_a8091172d82ed8cdad60f4e1d95f7135b}} 
+\index{Manager@{Manager}!createCsvFileEnoughWater@{createCsvFileEnoughWater}}
+\index{createCsvFileEnoughWater@{createCsvFileEnoughWater}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{createCsvFileEnoughWater()}{createCsvFileEnoughWater()}}
+{\footnotesize\ttfamily void Manager\+::create\+Csv\+File\+Enough\+Water (\begin{DoxyParamCaption}\item[{const string \&}]{path,  }\item[{vector$<$ pair$<$ string, bool $>$$>$ \&}]{enough\+Water }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Creates a C\+SV file indicating whether cities have enough water. 
+
+This function creates a C\+SV file at the specified path indicating whether each city has enough water. It takes a vector of pairs where each pair contains the code of a city and a boolean indicating whether it has enough water. The C\+SV file format includes columns for the city code and whether it has enough water.
+
+Time complexity\+: O(n), where n is the number of pairs in the enough\+Water vector.
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & The file path where the C\+SV file will be created. \\
+\hline
+{\em enough\+Water} & A vector of pairs where each pair contains the code of a city and a boolean indicating whether it has enough water. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classManager_a2ed6e03ded4b1e500cd7b9c7ee2a579c}\label{classManager_a2ed6e03ded4b1e500cd7b9c7ee2a579c}} 
+\index{Manager@{Manager}!createCsvFileFlows@{createCsvFileFlows}}
+\index{createCsvFileFlows@{createCsvFileFlows}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{createCsvFileFlows()}{createCsvFileFlows()}}
+{\footnotesize\ttfamily void Manager\+::create\+Csv\+File\+Flows (\begin{DoxyParamCaption}\item[{const string \&}]{path,  }\item[{vector$<$ pair$<$ string, int $>$$>$ \&}]{flows }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Creates a C\+SV file containing flow information. 
+
+This function creates a C\+SV file at the specified path containing flow information for each city. It takes a vector of pairs where each pair contains the code of a city and its corresponding flow value. The C\+SV file format includes columns for the name of the city, its code, and the flow value.
+
+Time complexity\+: O(n), where n is the number of pairs in the flows vector.
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & The file path where the C\+SV file will be created. \\
+\hline
+{\em flows} & A vector of pairs where each pair contains the code of a city and its corresponding flow value. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classManager_ac63a58342e17c1796667dca972d7c0f3}\label{classManager_ac63a58342e17c1796667dca972d7c0f3}} 
+\index{Manager@{Manager}!createCsvFilePipesDisable@{createCsvFilePipesDisable}}
+\index{createCsvFilePipesDisable@{createCsvFilePipesDisable}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{createCsvFilePipesDisable()}{createCsvFilePipesDisable()}}
+{\footnotesize\ttfamily void Manager\+::create\+Csv\+File\+Pipes\+Disable (\begin{DoxyParamCaption}\item[{const string \&}]{path,  }\item[{vector$<$ pair$<$ \mbox{\hyperlink{classEdge}{Edge}} $\ast$, bool $>$ $>$ \&}]{disable }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Creates a C\+SV file indicating whether pipes can be disabled. 
+
+This function creates a C\+SV file at the specified path indicating whether each pipe can be disabled. It takes a vector of pairs where each pair contains a pointer to a pipe edge and a boolean indicating whether it can be disabled. The C\+SV file format includes columns for the origin vertex code, destination vertex code, and whether the pipe can be disabled.
+
+Time complexity\+: O(n), where n is the number of pairs in the disable vector.
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & The file path where the C\+SV file will be created. \\
+\hline
+{\em disable} & A vector of pairs where each pair contains a pointer to a pipe edge and a boolean indicating whether it can be disabled. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classManager_acdf398db1ca84e0f988c39abf59f70cc}\label{classManager_acdf398db1ca84e0f988c39abf59f70cc}} 
+\index{Manager@{Manager}!createCsvFileRates@{createCsvFileRates}}
+\index{createCsvFileRates@{createCsvFileRates}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{createCsvFileRates()}{createCsvFileRates()}}
+{\footnotesize\ttfamily void Manager\+::create\+Csv\+File\+Rates (\begin{DoxyParamCaption}\item[{const string \&}]{path,  }\item[{vector$<$ pair$<$ string, double $>$$>$ \&}]{rates }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Creates a C\+SV file containing rates information. 
+
+This function creates a C\+SV file at the specified path containing rates information for each entity. It takes a vector of pairs where each pair contains the code of an entity and its corresponding rate value. The C\+SV file format includes columns for the name of the entity, its code, and the rate value.
+
+Time complexity\+: O(n), where n is the number of pairs in the rates vector.
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & The file path where the C\+SV file will be created. \\
+\hline
+{\em rates} & A vector of pairs where each pair contains the code of an entity and its corresponding rate value. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classManager_a92f80e744f526e5e4a5b1b7b135ba788}\label{classManager_a92f80e744f526e5e4a5b1b7b135ba788}} 
+\index{Manager@{Manager}!dfs\_disable@{dfs\_disable}}
+\index{dfs\_disable@{dfs\_disable}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{dfs\_disable()}{dfs\_disable()}}
+{\footnotesize\ttfamily void Manager\+::dfs\+\_\+disable (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}} $\ast$}]{reservoir,  }\item[{int}]{flow\+To\+Remove }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classManager_a0048746dfb3028b76024742feadc5b50}\label{classManager_a0048746dfb3028b76024742feadc5b50}} 
+\index{Manager@{Manager}!dfs\_flow@{dfs\_flow}}
+\index{dfs\_flow@{dfs\_flow}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{dfs\_flow()}{dfs\_flow()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{classEdge}{Edge}} $\ast$ $>$ Manager\+::dfs\+\_\+flow (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}} $\ast$}]{super\+Source,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}} $\ast$}]{super\+Sink }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Performs a depth-\/first search (D\+FS) to find a flow path from the super source to the super sink. 
+
+This function performs a D\+FS traversal starting from the super source vertex and explores adjacent vertices recursively to find a path to the super sink vertex. The search continues until a path from the super source to the super sink is found or until all reachable vertices are visited.
+
+Time complexity\+: O(V + E), where V is the number of vertices and E is the number of edges in the graph.
+
+
+\begin{DoxyParams}{Parameters}
+{\em super\+Source} & Pointer to the super source vertex. \\
+\hline
+{\em super\+Sink} & Pointer to the super sink vertex. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of edges representing the flow path from the super source to the super sink, if found. If no path is found, an empty vector is returned. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classManager_ac3c51a9cecbd68c77d10bfe1dbb52267}\label{classManager_ac3c51a9cecbd68c77d10bfe1dbb52267}} 
+\index{Manager@{Manager}!dfs\_helper@{dfs\_helper}}
+\index{dfs\_helper@{dfs\_helper}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{dfs\_helper()}{dfs\_helper()}}
+{\footnotesize\ttfamily bool Manager\+::dfs\+\_\+helper (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}} $\ast$}]{current\+Vertex,  }\item[{\mbox{\hyperlink{classVertex}{Vertex}} $\ast$}]{super\+Sink,  }\item[{vector$<$ \mbox{\hyperlink{classEdge}{Edge}} $\ast$ $>$ \&}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Helper function for depth-\/first search (D\+FS) to find a flow path from the current vertex to the super sink. 
+
+This function is a helper function used in a depth-\/first search (D\+FS) traversal to find a flow path from the current vertex to the super sink vertex. It recursively explores adjacent vertices and edges to find a path to the super sink. If a path is found, it is stored in the provided vector.
+
+Time complexity\+: O(V + E), where V is the number of vertices and E is the number of edges in the graph.
+
+
+\begin{DoxyParams}{Parameters}
+{\em current\+Vertex} & Pointer to the current vertex being visited. \\
+\hline
+{\em super\+Sink} & Pointer to the super sink vertex. \\
+\hline
+{\em path} & Reference to a vector to store the flow path if found. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if a flow path from the current vertex to the super sink is found, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classManager_ad8f9f61b55876c67a803adcc61ba7ea7}\label{classManager_ad8f9f61b55876c67a803adcc61ba7ea7}} 
+\index{Manager@{Manager}!disableEachPipeEdmondsKarp@{disableEachPipeEdmondsKarp}}
+\index{disableEachPipeEdmondsKarp@{disableEachPipeEdmondsKarp}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{disableEachPipeEdmondsKarp()}{disableEachPipeEdmondsKarp()}}
+{\footnotesize\ttfamily void Manager\+::disable\+Each\+Pipe\+Edmonds\+Karp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Disable each pipe individually and check if it affects the network flow using Edmonds-\/\+Karp algorithm. 
+
+This function iterates through each pipe in the graph, disables it, and checks if the network flow is affected using the Edmonds-\/\+Karp algorithm. It records the result for each pipe and saves it to a C\+SV file.
+
+Time complexity\+: O(m$^\wedge$2) \mbox{\Hypertarget{classManager_ad33e85d84d26af0ce288d5ac9c705f52}\label{classManager_ad33e85d84d26af0ce288d5ac9c705f52}} 
+\index{Manager@{Manager}!disableEachPipeFordFulkerson@{disableEachPipeFordFulkerson}}
+\index{disableEachPipeFordFulkerson@{disableEachPipeFordFulkerson}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{disableEachPipeFordFulkerson()}{disableEachPipeFordFulkerson()}}
+{\footnotesize\ttfamily void Manager\+::disable\+Each\+Pipe\+Ford\+Fulkerson (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Disable each pipe individually and check if it affects the network flow using Ford-\/\+Fulkerson algorithm. 
+
+This function iterates through each pipe in the graph, disables it, and checks if the network flow is affected using the Ford-\/\+Fulkerson algorithm. It records the result for each pipe and saves it to a C\+SV file.
+
+Time complexity\+: O(m$^\wedge$2) \mbox{\Hypertarget{classManager_a0133df45b30bfe9f2de569416c9c9eef}\label{classManager_a0133df45b30bfe9f2de569416c9c9eef}} 
+\index{Manager@{Manager}!disableEachReservoirEdmondsKarp@{disableEachReservoirEdmondsKarp}}
+\index{disableEachReservoirEdmondsKarp@{disableEachReservoirEdmondsKarp}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{disableEachReservoirEdmondsKarp()}{disableEachReservoirEdmondsKarp()}}
+{\footnotesize\ttfamily void Manager\+::disable\+Each\+Reservoir\+Edmonds\+Karp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Disable each reservoir and check if it affects the network flow using Edmonds-\/\+Karp algorithm. 
+
+This function disables each reservoir in the network one by one and checks if it affects the network flow using the Edmonds-\/\+Karp algorithm. It creates a C\+SV file with the results indicating whether each reservoir can be disabled without affecting the flow.
+
+Time complexity\+: O(\+V\+E$^\wedge$2). \mbox{\Hypertarget{classManager_aa9e86f09e089584bd0e5fdabc7e986e6}\label{classManager_aa9e86f09e089584bd0e5fdabc7e986e6}} 
+\index{Manager@{Manager}!disableEachReservoirFordFulkerson@{disableEachReservoirFordFulkerson}}
+\index{disableEachReservoirFordFulkerson@{disableEachReservoirFordFulkerson}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{disableEachReservoirFordFulkerson()}{disableEachReservoirFordFulkerson()}}
+{\footnotesize\ttfamily void Manager\+::disable\+Each\+Reservoir\+Ford\+Fulkerson (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classManager_a5dd8ed268402a1d2f10053a601c83a43}\label{classManager_a5dd8ed268402a1d2f10053a601c83a43}} 
+\index{Manager@{Manager}!disableEachStationEdmondsKarp@{disableEachStationEdmondsKarp}}
+\index{disableEachStationEdmondsKarp@{disableEachStationEdmondsKarp}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{disableEachStationEdmondsKarp()}{disableEachStationEdmondsKarp()}}
+{\footnotesize\ttfamily void Manager\+::disable\+Each\+Station\+Edmonds\+Karp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Disable each station individually and measure network impact using Edmonds-\/\+Karp algorithm. 
+
+This function iterates over each station in the network, disables it, and calculates the maximum flow in the network using the Edmonds-\/\+Karp algorithm. It then records whether the network was affected by the station\textquotesingle{}s disablement and saves the results to a C\+SV file.
+
+Time complexity\+: O(n $\ast$ f(n)). \mbox{\Hypertarget{classManager_a1d425d7bc1a7e529ddc26ed976090906}\label{classManager_a1d425d7bc1a7e529ddc26ed976090906}} 
+\index{Manager@{Manager}!disableEachStationFordFulkerson@{disableEachStationFordFulkerson}}
+\index{disableEachStationFordFulkerson@{disableEachStationFordFulkerson}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{disableEachStationFordFulkerson()}{disableEachStationFordFulkerson()}}
+{\footnotesize\ttfamily void Manager\+::disable\+Each\+Station\+Ford\+Fulkerson (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Disable each station individually and measure network impact using Ford-\/\+Fulkerson algorithm. 
+
+This function iterates over each station in the network, disables it, and calculates the maximum flow in the network using the Ford-\/\+Fulkerson algorithm. It then records whether the network was affected by the station\textquotesingle{}s disablement and saves the results to a C\+SV file.
+
+Time complexity\+: O(n $\ast$ f(n)). \mbox{\Hypertarget{classManager_a2724d3f1553a296838cb4ea915dcda12}\label{classManager_a2724d3f1553a296838cb4ea915dcda12}} 
+\index{Manager@{Manager}!disablePipes@{disablePipes}}
+\index{disablePipes@{disablePipes}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{disablePipes()}{disablePipes()}}
+{\footnotesize\ttfamily void Manager\+::disable\+Pipes (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classEdge}{Edge}} $\ast$ $>$ \&}]{pipes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Disables the specified pipes. 
+
+This function disables the pipes in the graph based on the provided vector of pipe pointers. It iterates over the provided vector of pipe pointers and disables each corresponding pipe in the graph.
+
+Time compplexity\+: O(n), where n is the number of pipes in the pipes vector.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pipes} & A vector containing pointers to the pipes to be disabled. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classManager_a3164eaa0a72adb807150bbd8ab785b35}\label{classManager_a3164eaa0a72adb807150bbd8ab785b35}} 
+\index{Manager@{Manager}!disableReservoirs@{disableReservoirs}}
+\index{disableReservoirs@{disableReservoirs}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{disableReservoirs()}{disableReservoirs()}}
+{\footnotesize\ttfamily void Manager\+::disable\+Reservoirs (\begin{DoxyParamCaption}\item[{vector$<$ string $>$ \&}]{reservoirs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Disables reservoirs with the given codes. 
+
+This function disables reservoirs in the graph based on the provided reservoir codes. It iterates over the provided vector of reservoir codes and disables each corresponding reservoir in the graph.
+
+Time complexity\+: O(n), where n is the number of reservoir codes in the reservoirs vector.
+
+
+\begin{DoxyParams}{Parameters}
+{\em reservoirs} & A vector containing the codes of the reservoirs to be disabled. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classManager_aaf87e5942b0ca0f3297484a9baab0713}\label{classManager_aaf87e5942b0ca0f3297484a9baab0713}} 
+\index{Manager@{Manager}!disableSelectedPipesEdmondsKarp@{disableSelectedPipesEdmondsKarp}}
+\index{disableSelectedPipesEdmondsKarp@{disableSelectedPipesEdmondsKarp}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{disableSelectedPipesEdmondsKarp()}{disableSelectedPipesEdmondsKarp()}}
+{\footnotesize\ttfamily void Manager\+::disable\+Selected\+Pipes\+Edmonds\+Karp (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classEdge}{Edge}} $\ast$ $>$ \&}]{pipes }\end{DoxyParamCaption})}
+
+
+
+Disable selected pipes and calculate the decrease rate in flow using Edmonds-\/\+Karp algorithm. 
+
+This function disables the specified pipes and calculates the decrease rate in flow for each affected city using the Edmonds-\/\+Karp algorithm. It saves the results to a C\+SV file.
+
+Time complexity\+: O(p⋅m), where p is the number of selected pipes and m is the number of edges in the graph.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pipes} & A vector of pointers to the pipes to be disabled. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classManager_a10765721006d80fa74f3b54845114ffe}\label{classManager_a10765721006d80fa74f3b54845114ffe}} 
+\index{Manager@{Manager}!disableSelectedPipesFordFulkerson@{disableSelectedPipesFordFulkerson}}
+\index{disableSelectedPipesFordFulkerson@{disableSelectedPipesFordFulkerson}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{disableSelectedPipesFordFulkerson()}{disableSelectedPipesFordFulkerson()}}
+{\footnotesize\ttfamily void Manager\+::disable\+Selected\+Pipes\+Ford\+Fulkerson (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classEdge}{Edge}} $\ast$ $>$ \&}]{pipes }\end{DoxyParamCaption})}
+
+
+
+Disable selected pipes and calculate the decrease rate in flow using Ford-\/\+Fulkerson algorithm. 
+
+This function disables the specified pipes and calculates the decrease rate in flow for each affected city using the Ford-\/\+Fulkerson algorithm. It saves the results to a C\+SV file.
+
+Time complexity\+: O(p⋅m), where p is the number of selected pipes and m is the number of edges in the graph.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pipes} & A vector of pointers to the pipes to be disabled. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classManager_a4c134eacc08d00dc9c1675cf437c7190}\label{classManager_a4c134eacc08d00dc9c1675cf437c7190}} 
+\index{Manager@{Manager}!disableSelectedReservoirsEdmondsKarp@{disableSelectedReservoirsEdmondsKarp}}
+\index{disableSelectedReservoirsEdmondsKarp@{disableSelectedReservoirsEdmondsKarp}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{disableSelectedReservoirsEdmondsKarp()}{disableSelectedReservoirsEdmondsKarp()}}
+{\footnotesize\ttfamily void Manager\+::disable\+Selected\+Reservoirs\+Edmonds\+Karp (\begin{DoxyParamCaption}\item[{vector$<$ string $>$ \&}]{reservoirs }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classManager_a01201638a8a9bf6d29cf28da7567847c}\label{classManager_a01201638a8a9bf6d29cf28da7567847c}} 
+\index{Manager@{Manager}!disableSelectedReservoirsFordFulkerson@{disableSelectedReservoirsFordFulkerson}}
+\index{disableSelectedReservoirsFordFulkerson@{disableSelectedReservoirsFordFulkerson}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{disableSelectedReservoirsFordFulkerson()}{disableSelectedReservoirsFordFulkerson()}}
+{\footnotesize\ttfamily void Manager\+::disable\+Selected\+Reservoirs\+Ford\+Fulkerson (\begin{DoxyParamCaption}\item[{vector$<$ string $>$ \&}]{reservoirs }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classManager_ab986bceaf4eb6f761bf8e888be498a6f}\label{classManager_ab986bceaf4eb6f761bf8e888be498a6f}} 
+\index{Manager@{Manager}!disableSelectedStationsEdmondsKarp@{disableSelectedStationsEdmondsKarp}}
+\index{disableSelectedStationsEdmondsKarp@{disableSelectedStationsEdmondsKarp}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{disableSelectedStationsEdmondsKarp()}{disableSelectedStationsEdmondsKarp()}}
+{\footnotesize\ttfamily void Manager\+::disable\+Selected\+Stations\+Edmonds\+Karp (\begin{DoxyParamCaption}\item[{vector$<$ string $>$ \&}]{stations }\end{DoxyParamCaption})}
+
+
+
+Disable selected stations and measure the decrease in flow rates using the Edmonds-\/\+Karp algorithm. 
+
+This function takes a vector of station codes, disables each selected station individually, and calculates the decrease in flow rates for each city using the Edmonds-\/\+Karp algorithm. It then saves the results to a C\+SV file.
+
+Time complexity\+: O(f(n)).
+
+
+\begin{DoxyParams}{Parameters}
+{\em stations} & A vector containing the codes of the stations to be disabled. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classManager_a0ca0be8a9c9d12b9b7bc499fe921f9fc}\label{classManager_a0ca0be8a9c9d12b9b7bc499fe921f9fc}} 
+\index{Manager@{Manager}!disableSelectedStationsFordFulkerson@{disableSelectedStationsFordFulkerson}}
+\index{disableSelectedStationsFordFulkerson@{disableSelectedStationsFordFulkerson}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{disableSelectedStationsFordFulkerson()}{disableSelectedStationsFordFulkerson()}}
+{\footnotesize\ttfamily void Manager\+::disable\+Selected\+Stations\+Ford\+Fulkerson (\begin{DoxyParamCaption}\item[{vector$<$ string $>$ \&}]{stations }\end{DoxyParamCaption})}
+
+
+
+Disable selected stations and measure the decrease in flow rates using the Ford-\/\+Fulkerson algorithm. 
+
+This function takes a vector of station codes, disables each selected station individually, and calculates the decrease in flow rates for each city using the Ford-\/\+Fulkerson algorithm. It then saves the results to a C\+SV file.
+
+Time complexity\+: O(f(n)).
+
+
+\begin{DoxyParams}{Parameters}
+{\em stations} & A vector containing the codes of the stations to be disabled. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classManager_a233fff398666f11d68a9a81039bef967}\label{classManager_a233fff398666f11d68a9a81039bef967}} 
+\index{Manager@{Manager}!disableStations@{disableStations}}
+\index{disableStations@{disableStations}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{disableStations()}{disableStations()}}
+{\footnotesize\ttfamily void Manager\+::disable\+Stations (\begin{DoxyParamCaption}\item[{vector$<$ string $>$ \&}]{stations }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Disables stations with the given codes. 
+
+This function disables stations in the graph based on the provided station codes. It iterates over the provided vector of station codes and disables each corresponding station in the graph.
+
+Time complexity\+: O(n), where n is the number of station codes in the stations vector.
+
+
+\begin{DoxyParams}{Parameters}
+{\em stations} & A vector containing the codes of the stations to be disabled. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classManager_af49449ce093a81ebfcfb9bf8532e2b88}\label{classManager_af49449ce093a81ebfcfb9bf8532e2b88}} 
+\index{Manager@{Manager}!findMinEdge@{findMinEdge}}
+\index{findMinEdge@{findMinEdge}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{findMinEdge()}{findMinEdge()}}
+{\footnotesize\ttfamily int Manager\+::find\+Min\+Edge (\begin{DoxyParamCaption}\item[{const vector$<$ \mbox{\hyperlink{classEdge}{Edge}} $\ast$ $>$ \&}]{path }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Finds the minimum flow value among the edges in the given path. 
+
+This function iterates over the edges in the provided path and finds the minimum flow value among them.
+
+Time complexity\+: O(n), where n is the number of edges in the provided path.
+
+
+\begin{DoxyParams}{Parameters}
+{\em path} & A vector of pointers to edges representing a flow path. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The minimum flow value among the edges in the path. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classManager_aba725d09476c8059ae993338e9ffb028}\label{classManager_aba725d09476c8059ae993338e9ffb028}} 
+\index{Manager@{Manager}!findVertexInMap@{findVertexInMap}}
+\index{findVertexInMap@{findVertexInMap}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{findVertexInMap()}{findVertexInMap()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ Manager\+::find\+Vertex\+In\+Map (\begin{DoxyParamCaption}\item[{const string \&}]{identifier }\end{DoxyParamCaption}) const}
+
+
+
+Find a vertex in the manager\textquotesingle{}s maps based on its identifier. 
+
+This function searches for a vertex with the given identifier in the maps of cities, reservoirs, and stations. If found, it returns a pointer to the corresponding vertex; otherwise, it returns nullptr.
+
+Time complexity\+: O(1)
+
+
+\begin{DoxyParams}{Parameters}
+{\em identifier} & The identifier of the vertex to find. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the vertex if found; otherwise, nullptr. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classManager_acf9def191d117b0a0b90380a8ae5ce0b}\label{classManager_acf9def191d117b0a0b90380a8ae5ce0b}} 
+\index{Manager@{Manager}!flowRatePerCityEdmondsKarp@{flowRatePerCityEdmondsKarp}}
+\index{flowRatePerCityEdmondsKarp@{flowRatePerCityEdmondsKarp}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{flowRatePerCityEdmondsKarp()}{flowRatePerCityEdmondsKarp()}}
+{\footnotesize\ttfamily void Manager\+::flow\+Rate\+Per\+City\+Edmonds\+Karp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Calculate the flow rate per city using the Edmonds-\/\+Karp algorithm. 
+
+This function calculates the flow rate for each city in the network using the Edmonds-\/\+Karp algorithm for finding the maximum flow. It saves the results to a C\+SV file.
+
+Time complexity\+: =(V\+E$^\wedge$2) \mbox{\Hypertarget{classManager_a331d9cff865e09975bf36837f41f8d14}\label{classManager_a331d9cff865e09975bf36837f41f8d14}} 
+\index{Manager@{Manager}!flowRatePerCityFordFulkerson@{flowRatePerCityFordFulkerson}}
+\index{flowRatePerCityFordFulkerson@{flowRatePerCityFordFulkerson}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{flowRatePerCityFordFulkerson()}{flowRatePerCityFordFulkerson()}}
+{\footnotesize\ttfamily void Manager\+::flow\+Rate\+Per\+City\+Ford\+Fulkerson (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Calculate the flow rate per city using the Ford-\/\+Fulkerson algorithm. 
+
+This function calculates the flow rate for each city in the network using the Ford-\/\+Fulkerson algorithm for finding the maximum flow. It saves the results to a C\+SV file.
+
+Time complexity\+: O(E.\+f). \mbox{\Hypertarget{classManager_ab7d5a3b252c993e24c74c0392d7e5508}\label{classManager_ab7d5a3b252c993e24c74c0392d7e5508}} 
+\index{Manager@{Manager}!getCities@{getCities}}
+\index{getCities@{getCities}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{getCities()}{getCities()}}
+{\footnotesize\ttfamily unordered\+\_\+map$<$ string, \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ $>$ Manager\+::get\+Cities (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the unordered map of cities. 
+
+\begin{DoxyReturn}{Returns}
+An unordered map containing the cities, where the keys are the city codes and the values are pointers to the corresponding vertex objects. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classManager_ad7564d41b3395ac48aa83af12e734160}\label{classManager_ad7564d41b3395ac48aa83af12e734160}} 
+\index{Manager@{Manager}!getEdmondsKarpAllCities@{getEdmondsKarpAllCities}}
+\index{getEdmondsKarpAllCities@{getEdmondsKarpAllCities}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{getEdmondsKarpAllCities()}{getEdmondsKarpAllCities()}}
+{\footnotesize\ttfamily void Manager\+::get\+Edmonds\+Karp\+All\+Cities (\begin{DoxyParamCaption}\item[{bool}]{reset = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Run the Edmonds-\/\+Karp algorithm to find maximum flow for all cities. 
+
+This function runs the Edmonds-\/\+Karp algorithm to find the maximum flow for all cities in the network. It optionally resets the graph after computation and saves the results to a C\+SV file.
+
+Time complexity\+: O(V.\+E$^\wedge$2)
+
+
+\begin{DoxyParams}{Parameters}
+{\em reset} & Flag indicating whether to reset the graph after computation. Default is true. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classManager_ac21099c7512d44c26d1538c5ae18a850}\label{classManager_ac21099c7512d44c26d1538c5ae18a850}} 
+\index{Manager@{Manager}!getEdmondsKarpXCity@{getEdmondsKarpXCity}}
+\index{getEdmondsKarpXCity@{getEdmondsKarpXCity}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{getEdmondsKarpXCity()}{getEdmondsKarpXCity()}}
+{\footnotesize\ttfamily void Manager\+::get\+Edmonds\+Karp\+X\+City (\begin{DoxyParamCaption}\item[{vector$<$ string $>$ \&}]{cities }\end{DoxyParamCaption})}
+
+
+
+Perform the Edmonds-\/\+Karp algorithm and print flow metrics for selected cities. 
+
+This function calculates the maximum flow in the network using the Edmonds-\/\+Karp algorithm and prints flow metrics for the selected cities to a C\+SV file.
+
+Time complexity\+: O(V + E)
+
+
+\begin{DoxyParams}{Parameters}
+{\em cities} & A vector containing the codes of cities for which flow metrics are to be calculated. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classManager_ac90f913be6a8a6305356d0b153923acf}\label{classManager_ac90f913be6a8a6305356d0b153923acf}} 
+\index{Manager@{Manager}!getFordFulkersonAllCities@{getFordFulkersonAllCities}}
+\index{getFordFulkersonAllCities@{getFordFulkersonAllCities}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{getFordFulkersonAllCities()}{getFordFulkersonAllCities()}}
+{\footnotesize\ttfamily void Manager\+::get\+Ford\+Fulkerson\+All\+Cities (\begin{DoxyParamCaption}\item[{bool}]{reset = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+Run the Ford-\/\+Fulkerson algorithm to find maximum flow for all cities. 
+
+This function runs the Ford-\/\+Fulkerson algorithm to find the maximum flow for all cities in the network. It optionally resets the graph after computation and saves the results to a C\+SV file.
+
+Time complexity\+: O(E⋅f).
+
+
+\begin{DoxyParams}{Parameters}
+{\em reset} & Flag indicating whether to reset the graph after computation. Default is true. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classManager_aff62e0fd78f3a401ed93116c28cf412a}\label{classManager_aff62e0fd78f3a401ed93116c28cf412a}} 
+\index{Manager@{Manager}!getFordFulkersonXCity@{getFordFulkersonXCity}}
+\index{getFordFulkersonXCity@{getFordFulkersonXCity}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{getFordFulkersonXCity()}{getFordFulkersonXCity()}}
+{\footnotesize\ttfamily void Manager\+::get\+Ford\+Fulkerson\+X\+City (\begin{DoxyParamCaption}\item[{vector$<$ string $>$ \&}]{cities }\end{DoxyParamCaption})}
+
+
+
+Computes the maximum flow using the Ford-\/\+Fulkerson algorithm for the specified cities. 
+
+This function calculates the maximum flow for each city in the input vector using the Ford-\/\+Fulkerson algorithm and prints the flow metrics to a C\+SV file.
+
+Time complexity\+: O(V + E)
+
+
+\begin{DoxyParams}{Parameters}
+{\em cities} & A vector of strings representing the codes of cities for which the maximum flow is to be calculated. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classManager_ab1d20d37fe54190c329c5c3e4bd505c2}\label{classManager_ab1d20d37fe54190c329c5c3e4bd505c2}} 
+\index{Manager@{Manager}!getGraph@{getGraph}}
+\index{getGraph@{getGraph}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{getGraph()}{getGraph()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classGraph}{Graph}} $\ast$ Manager\+::get\+Graph (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Getter function for the graph object. 
+
+Time complexity\+: O(1)
+
+\begin{DoxyReturn}{Returns}
+A pointer to the graph object. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classManager_a663651c684e7b4b18f9c5aadf6b6a799}\label{classManager_a663651c684e7b4b18f9c5aadf6b6a799}} 
+\index{Manager@{Manager}!getHowManyEdges@{getHowManyEdges}}
+\index{getHowManyEdges@{getHowManyEdges}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{getHowManyEdges()}{getHowManyEdges()}}
+{\footnotesize\ttfamily int Manager\+::get\+How\+Many\+Edges (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the total number of edges in the graph. 
+
+This function calculates and returns the total number of edges present in the graph managed by the \mbox{\hyperlink{classManager}{Manager}} object.
+
+Time complexity\+: O(V + E)
+
+\begin{DoxyReturn}{Returns}
+The total number of edges in the graph. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classManager_a7d544d53df94014591d0a172eed97edb}\label{classManager_a7d544d53df94014591d0a172eed97edb}} 
+\index{Manager@{Manager}!getMetrics@{getMetrics}}
+\index{getMetrics@{getMetrics}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{getMetrics()}{getMetrics()}}
+{\footnotesize\ttfamily vector$<$ int $>$ Manager\+::get\+Metrics (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classManager_a42bb9c734c4c7b8d734fc00b78aec15a}\label{classManager_a42bb9c734c4c7b8d734fc00b78aec15a}} 
+\index{Manager@{Manager}!getReservoirs@{getReservoirs}}
+\index{getReservoirs@{getReservoirs}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{getReservoirs()}{getReservoirs()}}
+{\footnotesize\ttfamily unordered\+\_\+map$<$ string, \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ $>$ Manager\+::get\+Reservoirs (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the unordered map of reservoirs. 
+
+\begin{DoxyReturn}{Returns}
+An unordered map containing the reservoirs, where the keys are the reservoir codes and the values are pointers to the corresponding vertex objects. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classManager_a4639dd382f3444c0682384382dcad365}\label{classManager_a4639dd382f3444c0682384382dcad365}} 
+\index{Manager@{Manager}!getStations@{getStations}}
+\index{getStations@{getStations}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{getStations()}{getStations()}}
+{\footnotesize\ttfamily unordered\+\_\+map$<$ string, \mbox{\hyperlink{classVertex}{Vertex}} $\ast$ $>$ Manager\+::get\+Stations (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Get the unordered map of stations. 
+
+\begin{DoxyReturn}{Returns}
+An unordered map containing the stations, where the keys are the station codes and the values are pointers to the corresponding vertex objects. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classManager_a0243f6d3fccd56dccff3c08ad7419331}\label{classManager_a0243f6d3fccd56dccff3c08ad7419331}} 
+\index{Manager@{Manager}!graphChangeFlowsAfterReservoirsDisabled@{graphChangeFlowsAfterReservoirsDisabled}}
+\index{graphChangeFlowsAfterReservoirsDisabled@{graphChangeFlowsAfterReservoirsDisabled}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{graphChangeFlowsAfterReservoirsDisabled()}{graphChangeFlowsAfterReservoirsDisabled()}}
+{\footnotesize\ttfamily vector$<$ pair$<$ string, int $>$ $>$ Manager\+::graph\+Change\+Flows\+After\+Reservoirs\+Disabled (\begin{DoxyParamCaption}\item[{vector$<$ string $>$ \&}]{reservoirs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classManager_a049f52e54751bc65bcf95eb545d0bb2f}\label{classManager_a049f52e54751bc65bcf95eb545d0bb2f}} 
+\index{Manager@{Manager}!importCities@{importCities}}
+\index{importCities@{importCities}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{importCities()}{importCities()}}
+{\footnotesize\ttfamily void Manager\+::import\+Cities (\begin{DoxyParamCaption}\item[{const string \&}]{path\+Cities }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Imports the cities from csv. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path\+Cities} & Path to the C\+SV file containing city data. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classManager_a8fa6ee0b9328b3c7f16640558e5326ae}\label{classManager_a8fa6ee0b9328b3c7f16640558e5326ae}} 
+\index{Manager@{Manager}!importFiles@{importFiles}}
+\index{importFiles@{importFiles}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{importFiles()}{importFiles()}}
+{\footnotesize\ttfamily void Manager\+::import\+Files (\begin{DoxyParamCaption}\item[{const string \&}]{path\+Cities,  }\item[{const string \&}]{path\+Reservoirs,  }\item[{const string \&}]{path\+Stations,  }\item[{const string \&}]{path\+Pipes }\end{DoxyParamCaption})}
+
+
+
+Imports data from files to initialize the graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path\+Cities} & The path to the file containing city data. \\
+\hline
+{\em path\+Reservoirs} & The path to the file containing reservoir data. \\
+\hline
+{\em path\+Stations} & The path to the file containing station data. \\
+\hline
+{\em path\+Pipes} & The path to the file containing pipe data. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classManager_ae6f454ba34a0eaa92e9a8784de84760c}\label{classManager_ae6f454ba34a0eaa92e9a8784de84760c}} 
+\index{Manager@{Manager}!importPipes@{importPipes}}
+\index{importPipes@{importPipes}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{importPipes()}{importPipes()}}
+{\footnotesize\ttfamily void Manager\+::import\+Pipes (\begin{DoxyParamCaption}\item[{const string \&}]{path\+Pipes }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Imports the pipes from csv. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path\+Pipes} & Path to the C\+SV file containing pipe data. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classManager_a228800505ebed9710ba2662c47760ee0}\label{classManager_a228800505ebed9710ba2662c47760ee0}} 
+\index{Manager@{Manager}!importReservoirs@{importReservoirs}}
+\index{importReservoirs@{importReservoirs}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{importReservoirs()}{importReservoirs()}}
+{\footnotesize\ttfamily void Manager\+::import\+Reservoirs (\begin{DoxyParamCaption}\item[{const string \&}]{path\+Reservoirs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Imports the reservoirs from csv. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path\+Reservoirs} & Path to the C\+SV file containing reservoir data. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classManager_a2543bf30b978a5b01335e1c907315a66}\label{classManager_a2543bf30b978a5b01335e1c907315a66}} 
+\index{Manager@{Manager}!importStations@{importStations}}
+\index{importStations@{importStations}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{importStations()}{importStations()}}
+{\footnotesize\ttfamily void Manager\+::import\+Stations (\begin{DoxyParamCaption}\item[{const string \&}]{path\+Stations }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Imports the stations from csv. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path\+Stations} & Path to the C\+SV file containing station data. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classManager_ab9e05f589fea385e57e7501dd57f2343}\label{classManager_ab9e05f589fea385e57e7501dd57f2343}} 
+\index{Manager@{Manager}!improvePipesHeuristic@{improvePipesHeuristic}}
+\index{improvePipesHeuristic@{improvePipesHeuristic}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{improvePipesHeuristic()}{improvePipesHeuristic()}}
+{\footnotesize\ttfamily void Manager\+::improve\+Pipes\+Heuristic (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classManager_a728e14dc6869785748aa23dc0520c6d3}\label{classManager_a728e14dc6869785748aa23dc0520c6d3}} 
+\index{Manager@{Manager}!maxFlow@{maxFlow}}
+\index{maxFlow@{maxFlow}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{maxFlow()}{maxFlow()}}
+{\footnotesize\ttfamily vector$<$ pair$<$ string, int $>$ $>$ Manager\+::max\+Flow (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{classEdge}{Edge}} $\ast$ $>$(Manager\+::$\ast$)(\mbox{\hyperlink{classVertex}{Vertex}} $\ast$, \mbox{\hyperlink{classVertex}{Vertex}} $\ast$)}]{function }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Finds the maximum flow in the graph using a specified flow path exploration method. 
+
+This function calculates the maximum flow in the graph using a specified method for exploring flow paths. It first adds a super source and a super sink to the graph, initializes flow values on edges, and then iteratively explores flow paths using the specified method until no more flow paths can be found. The function returns a vector of pairs containing the code of each city and its corresponding flow value in the maximum flow.
+
+Time complexity\+: O(V + E), where V is the number of vertices and E is the number of edges in the graph.
+
+
+\begin{DoxyParams}{Parameters}
+{\em function} & Pointer to a member function of the \mbox{\hyperlink{classManager}{Manager}} class that represents the method for exploring flow paths. This function must take two \mbox{\hyperlink{classVertex}{Vertex}} pointers (super\+Source and super\+Sink) as arguments and return a vector of \mbox{\hyperlink{classEdge}{Edge}} pointers representing a flow path. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of pairs where each pair contains the code of a city and its corresponding flow value in the maximum flow. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classManager_a2541ea7ccb2e6b3375bde5d1deb3379a}\label{classManager_a2541ea7ccb2e6b3375bde5d1deb3379a}} 
+\index{Manager@{Manager}!maxFlowEdmondsKarp@{maxFlowEdmondsKarp}}
+\index{maxFlowEdmondsKarp@{maxFlowEdmondsKarp}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{maxFlowEdmondsKarp()}{maxFlowEdmondsKarp()}}
+{\footnotesize\ttfamily vector$<$ pair$<$ string, int $>$ $>$ Manager\+::max\+Flow\+Edmonds\+Karp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Finds the maximum flow in the graph using the Edmonds-\/\+Karp algorithm. 
+
+This function calculates the maximum flow in the graph using the Edmonds-\/\+Karp algorithm, which is based on the Ford-\/\+Fulkerson method with B\+FS (breadth-\/first search) for finding augmenting paths. It returns a vector of pairs containing the code of each city and its corresponding flow value in the maximum flow.
+
+Time complexity\+: O(V + E), where V is the number of vertices and E is the number of edges in the graph.
+
+\begin{DoxyReturn}{Returns}
+A vector of pairs where each pair contains the code of a city and its corresponding flow value in the maximum flow. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classManager_afe32ce8910096068d5e750a5bdbd1e60}\label{classManager_afe32ce8910096068d5e750a5bdbd1e60}} 
+\index{Manager@{Manager}!maxFlowFordFulkerson@{maxFlowFordFulkerson}}
+\index{maxFlowFordFulkerson@{maxFlowFordFulkerson}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{maxFlowFordFulkerson()}{maxFlowFordFulkerson()}}
+{\footnotesize\ttfamily vector$<$ pair$<$ string, int $>$ $>$ Manager\+::max\+Flow\+Ford\+Fulkerson (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Finds the maximum flow in the graph using the Ford-\/\+Fulkerson algorithm. 
+
+This function calculates the maximum flow in the graph using the Ford-\/\+Fulkerson algorithm, which is based on the method of augmenting paths. It uses depth-\/first search (D\+FS) for finding augmenting paths. It returns a vector of pairs containing the code of each city and its corresponding flow value in the maximum flow.
+
+Time complexity\+: O(V + E), where V is the number of vertices and E is the number of edges in the graph.
+
+\begin{DoxyReturn}{Returns}
+A vector of pairs where each pair contains the code of a city and its corresponding flow value in the maximum flow. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classManager_ae178bc922084b46339b9f019d1b72d8d}\label{classManager_ae178bc922084b46339b9f019d1b72d8d}} 
+\index{Manager@{Manager}!parseInt@{parseInt}}
+\index{parseInt@{parseInt}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{parseInt()}{parseInt()}}
+{\footnotesize\ttfamily int Manager\+::parse\+Int (\begin{DoxyParamCaption}\item[{const string \&}]{text }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Performs a breadth-\/first search (B\+FS) to find a flow path from the super source to the super sink. 
+
+This function performs a B\+FS traversal starting from the super source vertex and explores adjacent vertices to find a path to the super sink vertex. The search continues until a path from the super source to the super sink is found or until all reachable vertices are visited.
+
+Time complexity\+: O(V + E), where V is the number of vertices and E is the number of edges in the graph.
+
+
+\begin{DoxyParams}{Parameters}
+{\em super\+Source} & Pointer to the super source vertex. \\
+\hline
+{\em super\+Sink} & Pointer to the super sink vertex. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of edges representing the flow path from the super source to the super sink, if found. If no path is found, an empty vector is returned.
+\end{DoxyReturn}
+Auxiliary function to parse numbers in Csv files. \mbox{\Hypertarget{classManager_a08f822178b9abb0634e9681777a34693}\label{classManager_a08f822178b9abb0634e9681777a34693}} 
+\index{Manager@{Manager}!printFlowMetrics@{printFlowMetrics}}
+\index{printFlowMetrics@{printFlowMetrics}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{printFlowMetrics()}{printFlowMetrics()}}
+{\footnotesize\ttfamily void Manager\+::print\+Flow\+Metrics (\begin{DoxyParamCaption}\item[{vector$<$ pair$<$ string, int $>$$>$ \&}]{flows,  }\item[{vector$<$ string $>$ \&}]{chosen\+Cities,  }\item[{const string \&}]{output\+File }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Prints flow metrics for chosen cities and exports them to a C\+SV file. 
+
+This function calculates and prints flow metrics for the chosen cities based on the provided flows. It calculates the total flow for the chosen cities, prints individual flow values for each chosen city, and exports the flow metrics to a C\+SV file at the specified path. The C\+SV file format includes columns for the city code and its corresponding flow value.
+
+Time complexity\+: O(n + m), where n is the number of pairs in the flows vector and m is the number of chosen cities.
+
+
+\begin{DoxyParams}{Parameters}
+{\em flows} & A vector of pairs where each pair contains the code of a city and its corresponding flow value. \\
+\hline
+{\em chosen\+Cities} & A vector containing the codes of the chosen cities for which flow metrics will be calculated. \\
+\hline
+{\em output\+File} & The file path where the C\+SV file with flow metrics will be created. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classManager_a2323d4d100d8b5fe7407524aeff948b5}\label{classManager_a2323d4d100d8b5fe7407524aeff948b5}} 
+\index{Manager@{Manager}!printTopKFlows@{printTopKFlows}}
+\index{printTopKFlows@{printTopKFlows}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{printTopKFlows()}{printTopKFlows()}}
+{\footnotesize\ttfamily void Manager\+::print\+Top\+K\+Flows (\begin{DoxyParamCaption}\item[{vector$<$ pair$<$ string, int $>$$>$ \&}]{flows,  }\item[{int}]{k,  }\item[{const string \&}]{output\+File }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Prints and exports the top K flows to a C\+SV file. 
+
+This function sorts the flows vector in descending order based on flow values and prints the top K flows to the console. It then exports the top K flows to a C\+SV file at the specified path. The C\+SV file format includes columns for the city code and its corresponding flow value.
+
+Time complexity\+: O(n log n), where n is the number of pairs in the flows vector.
+
+
+\begin{DoxyParams}{Parameters}
+{\em flows} & A vector of pairs where each pair contains the code of a city and its corresponding flow value. \\
+\hline
+{\em k} & The number of top flows to print and export. \\
+\hline
+{\em output\+File} & The file path where the C\+SV file with top flows will be created. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classManager_a6b28e6723d6c47a59bae1a714fc21f05}\label{classManager_a6b28e6723d6c47a59bae1a714fc21f05}} 
+\index{Manager@{Manager}!resetGraph@{resetGraph}}
+\index{resetGraph@{resetGraph}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{resetGraph()}{resetGraph()}}
+{\footnotesize\ttfamily void Manager\+::reset\+Graph (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Resets the graph and its properties. 
+
+Time complexity\+: O(V + E + R), where V is the number of vertices, E is the number of edges, and R is the number of residual edges. \mbox{\Hypertarget{classManager_a37a31d560f41b364e2eb5b5ddfe2f1c3}\label{classManager_a37a31d560f41b364e2eb5b5ddfe2f1c3}} 
+\index{Manager@{Manager}!resetManager@{resetManager}}
+\index{resetManager@{resetManager}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{resetManager()}{resetManager()}}
+{\footnotesize\ttfamily void Manager\+::reset\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Resets the manager and its properties. 
+
+Time complexity\+: O(V + E), where V is the number of vertices and E is the number of edges in the graph. \mbox{\Hypertarget{classManager_a656cf977e031ff97a5c80df2eda6ab6e}\label{classManager_a656cf977e031ff97a5c80df2eda6ab6e}} 
+\index{Manager@{Manager}!shutdownPipes@{shutdownPipes}}
+\index{shutdownPipes@{shutdownPipes}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{shutdownPipes()}{shutdownPipes()}}
+{\footnotesize\ttfamily bool Manager\+::shutdown\+Pipes (\begin{DoxyParamCaption}\item[{vector$<$ pair$<$ string, int $>$$>$(Manager\+::$\ast$)()}]{flowfunction,  }\item[{vector$<$ \mbox{\hyperlink{classEdge}{Edge}} $\ast$ $>$ \&}]{pipes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Shuts down pipes and checks the impact on network flow. 
+
+This function shuts down the specified pipes and checks the impact on the network flow using the specified flow calculation function.
+
+Time complexity\+: O(f + m + n), where f is the time complexity of the specified flow calculation function, m is the number of pipes, and n is the number of cities.
+
+
+\begin{DoxyParams}{Parameters}
+{\em flowfunction} & A pointer to a member function of the \mbox{\hyperlink{classManager}{Manager}} class that calculates network flow. \\
+\hline
+{\em pipes} & A vector containing pointers to the edges (pipes) to be shut down. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the network flow remains unaffected after shutting down the pipes, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classManager_aa6f5683705abd464b20f5ceef1fb21fa}\label{classManager_aa6f5683705abd464b20f5ceef1fb21fa}} 
+\index{Manager@{Manager}!shutdownPipesWithDecrease@{shutdownPipesWithDecrease}}
+\index{shutdownPipesWithDecrease@{shutdownPipesWithDecrease}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{shutdownPipesWithDecrease()}{shutdownPipesWithDecrease()}}
+{\footnotesize\ttfamily vector$<$ pair$<$ string, double $>$ $>$ Manager\+::shutdown\+Pipes\+With\+Decrease (\begin{DoxyParamCaption}\item[{vector$<$ pair$<$ string, int $>$$>$(Manager\+::$\ast$)()}]{flowfunction,  }\item[{vector$<$ \mbox{\hyperlink{classEdge}{Edge}} $\ast$ $>$ \&}]{pipes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Shuts down pipes and calculates the percentage decrease in flow for each city. 
+
+This function shuts down the specified pipes and calculates the percentage decrease in flow for each city using the specified flow calculation function.
+
+Time complexity\+: O(f + p + n), where f is the time complexity of the specified flow calculation function, p is the number of pipes, and n is the number of cities.
+
+
+\begin{DoxyParams}{Parameters}
+{\em flowfunction} & A pointer to a member function of the \mbox{\hyperlink{classManager}{Manager}} class that calculates network flow. \\
+\hline
+{\em pipes} & A vector containing pointers to the pipes to be shut down. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of pairs containing the city code and the percentage decrease in flow for each city. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classManager_a7ec2f5813eb658141961a037e29dc218}\label{classManager_a7ec2f5813eb658141961a037e29dc218}} 
+\index{Manager@{Manager}!shutdownReservoirs@{shutdownReservoirs}}
+\index{shutdownReservoirs@{shutdownReservoirs}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{shutdownReservoirs()}{shutdownReservoirs()}}
+{\footnotesize\ttfamily bool Manager\+::shutdown\+Reservoirs (\begin{DoxyParamCaption}\item[{vector$<$ pair$<$ string, int $>$$>$(Manager\+::$\ast$)()}]{flowfunction,  }\item[{vector$<$ string $>$ \&}]{reservoirs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Shuts down reservoirs and checks the impact on network flow. 
+
+This function shuts down the reservoirs specified in the {\ttfamily reservoirs} vector and checks the impact on the network flow using the specified flow calculation function.
+
+Time complexity\+: O(f + n + m), where f is the time complexity of the specified flow calculation function, n is the number of cities, and m is the number of reservoirs.
+
+
+\begin{DoxyParams}{Parameters}
+{\em flowfunction} & A pointer to a member function of the \mbox{\hyperlink{classManager}{Manager}} class that calculates network flow. \\
+\hline
+{\em reservoirs} & A vector containing the codes of the reservoirs to be shut down. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the network flow remains unaffected after shutting down the reservoirs, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classManager_a7a0d57a80922837c488b47da4870d1e6}\label{classManager_a7a0d57a80922837c488b47da4870d1e6}} 
+\index{Manager@{Manager}!shutdownReservoirsWithDecrease@{shutdownReservoirsWithDecrease}}
+\index{shutdownReservoirsWithDecrease@{shutdownReservoirsWithDecrease}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{shutdownReservoirsWithDecrease()}{shutdownReservoirsWithDecrease()}}
+{\footnotesize\ttfamily vector$<$ pair$<$ string, double $>$ $>$ Manager\+::shutdown\+Reservoirs\+With\+Decrease (\begin{DoxyParamCaption}\item[{vector$<$ pair$<$ string, int $>$$>$(Manager\+::$\ast$)()}]{flowfunction,  }\item[{vector$<$ string $>$ \&}]{reservoirs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classManager_ac6366f03b880d0a34196c24170d769fd}\label{classManager_ac6366f03b880d0a34196c24170d769fd}} 
+\index{Manager@{Manager}!shutdownStations@{shutdownStations}}
+\index{shutdownStations@{shutdownStations}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{shutdownStations()}{shutdownStations()}}
+{\footnotesize\ttfamily bool Manager\+::shutdown\+Stations (\begin{DoxyParamCaption}\item[{vector$<$ pair$<$ string, int $>$$>$(Manager\+::$\ast$)()}]{function,  }\item[{vector$<$ string $>$ \&}]{stations }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Shuts down stations and checks the impact on network flow. 
+
+This function shuts down the specified stations and checks the impact on the network flow using the specified flow calculation function.
+
+Time complexity\+: O(f + s + n), where f is the time complexity of the specified flow calculation function, s is the number of stations, and n is the number of cities.
+
+
+\begin{DoxyParams}{Parameters}
+{\em function} & A pointer to a member function of the \mbox{\hyperlink{classManager}{Manager}} class that calculates network flow. \\
+\hline
+{\em stations} & A vector containing the codes of stations to be shut down. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the network flow remains unaffected after shutting down the stations, false otherwise. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classManager_af3177a947122954a0d90a97edcaa7af0}\label{classManager_af3177a947122954a0d90a97edcaa7af0}} 
+\index{Manager@{Manager}!shutdownStationsGettingDecreaseFlows@{shutdownStationsGettingDecreaseFlows}}
+\index{shutdownStationsGettingDecreaseFlows@{shutdownStationsGettingDecreaseFlows}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{shutdownStationsGettingDecreaseFlows()}{shutdownStationsGettingDecreaseFlows()}}
+{\footnotesize\ttfamily vector$<$ pair$<$ string, double $>$ $>$ Manager\+::shutdown\+Stations\+Getting\+Decrease\+Flows (\begin{DoxyParamCaption}\item[{vector$<$ pair$<$ string, int $>$$>$(Manager\+::$\ast$)()}]{function,  }\item[{vector$<$ string $>$ \&}]{stations }\end{DoxyParamCaption})}
+
+
+
+Shutdown selected stations and measure the decrease in flow rates. 
+
+This function takes a flow calculation function pointer and a vector of station codes, shuts down each selected station individually, calculates the decrease in flow rates for each city, and returns the results as a vector of pairs containing the city code and the percentage decrease in flow rate.
+
+Time complexity\+: O(n$^\wedge$2).
+
+
+\begin{DoxyParams}{Parameters}
+{\em function} & A pointer to a flow calculation function. \\
+\hline
+{\em stations} & A vector containing the codes of the stations to be shut down. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector of pairs containing the city code and the percentage decrease in flow rate. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classManager_aa9822fd770e7ccb4e9854a470ceed054}\label{classManager_aa9822fd770e7ccb4e9854a470ceed054}} 
+\index{Manager@{Manager}!topKFlowEdmondsKarpCities@{topKFlowEdmondsKarpCities}}
+\index{topKFlowEdmondsKarpCities@{topKFlowEdmondsKarpCities}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{topKFlowEdmondsKarpCities()}{topKFlowEdmondsKarpCities()}}
+{\footnotesize\ttfamily void Manager\+::top\+K\+Flow\+Edmonds\+Karp\+Cities (\begin{DoxyParamCaption}\item[{int}]{k }\end{DoxyParamCaption})}
+
+
+
+Find the top K cities with the highest flow using the Edmonds-\/\+Karp algorithm. 
+
+This function calculates the maximum flow using the Edmonds-\/\+Karp algorithm and then identifies the top K cities with the highest flow. It saves the results to a C\+SV file.
+
+Time complexity\+: O(n$^\wedge$2.m)
+
+
+\begin{DoxyParams}{Parameters}
+{\em k} & The number of top cities to find. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classManager_afe5d91cd4468ba3b6e4b694f56265e73}\label{classManager_afe5d91cd4468ba3b6e4b694f56265e73}} 
+\index{Manager@{Manager}!topKFlowFordFulkersonCities@{topKFlowFordFulkersonCities}}
+\index{topKFlowFordFulkersonCities@{topKFlowFordFulkersonCities}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{topKFlowFordFulkersonCities()}{topKFlowFordFulkersonCities()}}
+{\footnotesize\ttfamily void Manager\+::top\+K\+Flow\+Ford\+Fulkerson\+Cities (\begin{DoxyParamCaption}\item[{int}]{k }\end{DoxyParamCaption})}
+
+
+
+Find the top K cities with the highest flow using the Ford-\/\+Fulkerson algorithm. 
+
+This function calculates the maximum flow using the Ford-\/\+Fulkerson algorithm and then identifies the top K cities with the highest flow. It saves the results to a C\+SV file.
+
+Time complexity\+: O(V+E)
+
+
+\begin{DoxyParams}{Parameters}
+{\em k} & \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classManager_aaa62a1c2646f61f5cbc386814e53486a}\label{classManager_aaa62a1c2646f61f5cbc386814e53486a}} 
+\index{Manager@{Manager}!cities@{cities}}
+\index{cities@{cities}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{cities}{cities}}
+{\footnotesize\ttfamily unordered\+\_\+map$<$string,\mbox{\hyperlink{classVertex}{Vertex}}$\ast$$>$ Manager\+::cities\hspace{0.3cm}{\ttfamily [private]}}
+
+Identifier that maps a string to a \mbox{\hyperlink{classCity}{City}} on the graph. \mbox{\Hypertarget{classManager_a0b625d7d11ab782a335286d0e9175e83}\label{classManager_a0b625d7d11ab782a335286d0e9175e83}} 
+\index{Manager@{Manager}!graph@{graph}}
+\index{graph@{graph}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{graph}{graph}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classGraph}{Graph}}$\ast$ Manager\+::graph\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classManager_a006edc827f09ecb523e2d2dbe1f53baf}\label{classManager_a006edc827f09ecb523e2d2dbe1f53baf}} 
+\index{Manager@{Manager}!reservoirs@{reservoirs}}
+\index{reservoirs@{reservoirs}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{reservoirs}{reservoirs}}
+{\footnotesize\ttfamily unordered\+\_\+map$<$string,\mbox{\hyperlink{classVertex}{Vertex}}$\ast$$>$ Manager\+::reservoirs\hspace{0.3cm}{\ttfamily [private]}}
+
+Identifier that maps a string to a \mbox{\hyperlink{classReservoir}{Reservoir}} on the graph. \mbox{\Hypertarget{classManager_a4044dec3eb14d1d16e60eb1b88f1be1d}\label{classManager_a4044dec3eb14d1d16e60eb1b88f1be1d}} 
+\index{Manager@{Manager}!stations@{stations}}
+\index{stations@{stations}!Manager@{Manager}}
+\doxysubsubsection{\texorpdfstring{stations}{stations}}
+{\footnotesize\ttfamily unordered\+\_\+map$<$string,\mbox{\hyperlink{classVertex}{Vertex}}$\ast$$>$ Manager\+::stations\hspace{0.3cm}{\ttfamily [private]}}
+
+Identifier that maps a string to a \mbox{\hyperlink{classStation}{Station}} on the graph. 
+
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-controller/manager.\+h\item 
-controller/manager.\+cpp\end{DoxyCompactItemize}
+src/controller/\mbox{\hyperlink{manager_8h}{manager.\+h}}\item 
+src/controller/\mbox{\hyperlink{manager_8cpp}{manager.\+cpp}}\end{DoxyCompactItemize}

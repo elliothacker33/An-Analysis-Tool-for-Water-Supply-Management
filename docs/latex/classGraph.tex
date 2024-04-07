@@ -20,6 +20,8 @@ int \mbox{\hyperlink{classGraph_a395a8c42a2e8b8a1270118345a1bb7af}{get\+Number\+
 \begin{DoxyCompactList}\small\item\em Gets the number of vertices in the graph. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classGraph_a59a5e666d2b7dc025704d7e6bce95c01}{add\+Vertex}} (\mbox{\hyperlink{classVertex}{Vertex}} $\ast$v)
 \begin{DoxyCompactList}\small\item\em Adds a vertex to the graph. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classGraph_a00c89f9300992b2ac69104bb7ddcc868}{reset\+Visited}} ()
+\item 
 void \mbox{\hyperlink{classGraph_aa9bf892a442aa0f2922c36d861951cb6}{remove\+Vertex}} (\mbox{\hyperlink{classVertex}{Vertex}} $\ast$v)
 \begin{DoxyCompactList}\small\item\em Removes a vertex from the graph. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{classGraph_a36ddcc53ec9724d20e3d96880a07fee1}{remove\+Edge}} (const \mbox{\hyperlink{classEdge}{Edge}} $\ast$e)
@@ -58,9 +60,7 @@ This class represents a graph data structure consisting of vertices and edges.
 
 Destructor for the \mbox{\hyperlink{classGraph}{Graph}} class. This destructor cleans up the memory allocated for the graph\textquotesingle{}s vertices and edges. 
 
-Destructor for the \mbox{\hyperlink{classGraph}{Graph}} class.
 
-This destructor cleans up the memory allocated for the vertices in the graph. It removes all vertices from the vertex set and deletes them. 
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classGraph_a48d852ab742b4ed48dbe0ebdd4d83fc7}\label{classGraph_a48d852ab742b4ed48dbe0ebdd4d83fc7}} 
@@ -72,8 +72,6 @@ This destructor cleans up the memory allocated for the vertices in the graph. It
 
 
 Adds an edge between two vertices in the graph. 
-
-Add edge to a vertex on the graph.
 
 Time Complexity -\/ O(\+E)
 
@@ -89,21 +87,7 @@ Time Complexity -\/ O(\+E)
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Pointer to the added edge.
-\end{DoxyReturn}
-
-\begin{DoxyParams}{Parameters}
-{\em orig} & Origin vertex \\
-\hline
-{\em dest} & Dest vertex \\
-\hline
-{\em capacity} & Capacity of edge \\
-\hline
-{\em type} & \char`\"{}normal\char`\"{} or \char`\"{}residual\char`\"{} \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-\mbox{\hyperlink{classEdge}{Edge}} pointer 
+Pointer to the added edge. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classGraph_a59a5e666d2b7dc025704d7e6bce95c01}\label{classGraph_a59a5e666d2b7dc025704d7e6bce95c01}} 
 \index{Graph@{Graph}!addVertex@{addVertex}}
@@ -115,8 +99,6 @@ Pointer to the added edge.
 
 Adds a vertex to the graph. 
 
-Add vertex This function adds a vertex to the graph.
-
 Time Complexity -\/ O(\+V)
 
 
@@ -125,15 +107,7 @@ Time Complexity -\/ O(\+V)
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-True if the vertex was successfully added, false otherwise.
-\end{DoxyReturn}
-
-\begin{DoxyParams}{Parameters}
-{\em v} & \mbox{\hyperlink{classVertex}{Vertex}} pointer \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-If vertex was added returns true else false 
+True if the vertex was successfully added, false otherwise. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classGraph_aad119988b83b9db7aa736a735fc60dab}\label{classGraph_aad119988b83b9db7aa736a735fc60dab}} 
 \index{Graph@{Graph}!getCode@{getCode}}
@@ -145,19 +119,7 @@ If vertex was added returns true else false
 
 Gets the code associated with the specified vertex. 
 
-Gets the code associated with the given vertex.
-
 Time Complexity -\/ O(1)
-
-
-\begin{DoxyParams}{Parameters}
-{\em v} & Pointer to the vertex. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-The code associated with the vertex.
-\end{DoxyReturn}
-This function retrieves the code associated with the given vertex. If the vertex is of type \mbox{\hyperlink{classCity}{City}}, \mbox{\hyperlink{classReservoir}{Reservoir}}, or \mbox{\hyperlink{classStation}{Station}}, it returns the respective code. Otherwise, it prints an error message and exits the program.
 
 
 \begin{DoxyParams}{Parameters}
@@ -177,19 +139,7 @@ The code associated with the vertex.
 
 Gets the name associated with the specified vertex. 
 
-Gets the name associated with the given vertex.
-
 Time Complexity -\/ O(1)
-
-
-\begin{DoxyParams}{Parameters}
-{\em v} & Pointer to the vertex. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-The name associated with the vertex.
-\end{DoxyReturn}
-This function retrieves the name associated with the given vertex. If the vertex is of type \mbox{\hyperlink{classCity}{City}} or \mbox{\hyperlink{classReservoir}{Reservoir}}, it returns the respective name. Otherwise, it prints an error message and exits the program.
 
 
 \begin{DoxyParams}{Parameters}
@@ -209,14 +159,10 @@ The name associated with the vertex.
 
 Gets the number of vertices in the graph. 
 
-Returns the number of vertexes.
-
 Time Complexity -\/ O(1)
 
 \begin{DoxyReturn}{Returns}
-The number of vertices in the graph.
-
-number of vertexes 
+The number of vertices in the graph. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classGraph_a56576f9c2ee0afadc4b77dcbe3acb704}\label{classGraph_a56576f9c2ee0afadc4b77dcbe3acb704}} 
 \index{Graph@{Graph}!getVertexSet@{getVertexSet}}
@@ -228,34 +174,26 @@ number of vertexes
 
 Gets the vector of vertices in the graph. 
 
-Returns the set of vertexes.
-
 Time Complexity -\/ O(1)
 
 \begin{DoxyReturn}{Returns}
-Vector containing pointers to the vertices in the graph.
-
-vector of vertex pointers 
+Vector containing pointers to the vertices in the graph. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classGraph_a36ddcc53ec9724d20e3d96880a07fee1}\label{classGraph_a36ddcc53ec9724d20e3d96880a07fee1}} 
 \index{Graph@{Graph}!removeEdge@{removeEdge}}
 \index{removeEdge@{removeEdge}!Graph@{Graph}}
 \doxysubsubsection{\texorpdfstring{removeEdge()}{removeEdge()}}
-{\footnotesize\ttfamily void Graph\+::remove\+Edge (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classEdge}{Edge}} $\ast$}]{edge }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Graph\+::remove\+Edge (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classEdge}{Edge}} $\ast$}]{e }\end{DoxyParamCaption})}
 
 
 
 Removes an edge from the graph. 
 
-Remove edge interface This functions removes a edge of the graph.
-
 Time Complexity -\/ O(\+E)
 
 
 \begin{DoxyParams}{Parameters}
-{\em e} & Pointer to the edge to be removed.\\
-\hline
-{\em edge} & \mbox{\hyperlink{classEdge}{Edge}} pointer \\
+{\em e} & Pointer to the edge to be removed. \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classGraph_aa9bf892a442aa0f2922c36d861951cb6}\label{classGraph_aa9bf892a442aa0f2922c36d861951cb6}} 
@@ -268,17 +206,19 @@ Time Complexity -\/ O(\+E)
 
 Removes a vertex from the graph. 
 
-Remove vertex This functions removes a vertex of the graph.
-
 Time Complexity -\/ O(\+V\+E)
 
 
 \begin{DoxyParams}{Parameters}
-{\em v} & Pointer to the vertex to be removed.\\
-\hline
-{\em v} & \mbox{\hyperlink{classVertex}{Vertex}} pointer \\
+{\em v} & Pointer to the vertex to be removed. \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{classGraph_a00c89f9300992b2ac69104bb7ddcc868}\label{classGraph_a00c89f9300992b2ac69104bb7ddcc868}} 
+\index{Graph@{Graph}!resetVisited@{resetVisited}}
+\index{resetVisited@{resetVisited}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{resetVisited()}{resetVisited()}}
+{\footnotesize\ttfamily void Graph\+::reset\+Visited (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
 
 
 \doxysubsection{Member Data Documentation}
@@ -298,5 +238,5 @@ Vector containing pointers to the vertices of the graph.
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-model/\mbox{\hyperlink{Graph_8h}{Graph.\+h}}\item 
-model/\mbox{\hyperlink{Graph_8cpp}{Graph.\+cpp}}\end{DoxyCompactItemize}
+src/model/\mbox{\hyperlink{Graph_8h}{Graph.\+h}}\item 
+src/model/\mbox{\hyperlink{Graph_8cpp}{Graph.\+cpp}}\end{DoxyCompactItemize}

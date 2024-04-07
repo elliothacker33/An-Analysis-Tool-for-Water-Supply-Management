@@ -90,6 +90,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a59a5e666d2b7dc025704d7e6bce95c01"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#a59a5e666d2b7dc025704d7e6bce95c01">addVertex</a> (<a class="el" href="classVertex.html">Vertex</a> *v)</td></tr>
 <tr class="memdesc:a59a5e666d2b7dc025704d7e6bce95c01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a vertex to the graph.  <a href="classGraph.html#a59a5e666d2b7dc025704d7e6bce95c01">More...</a><br /></td></tr>
 <tr class="separator:a59a5e666d2b7dc025704d7e6bce95c01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00c89f9300992b2ac69104bb7ddcc868"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#a00c89f9300992b2ac69104bb7ddcc868">resetVisited</a> ()</td></tr>
+<tr class="separator:a00c89f9300992b2ac69104bb7ddcc868"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa9bf892a442aa0f2922c36d861951cb6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html#aa9bf892a442aa0f2922c36d861951cb6">removeVertex</a> (<a class="el" href="classVertex.html">Vertex</a> *v)</td></tr>
 <tr class="memdesc:aa9bf892a442aa0f2922c36d861951cb6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes a vertex from the graph.  <a href="classGraph.html#aa9bf892a442aa0f2922c36d861951cb6">More...</a><br /></td></tr>
 <tr class="separator:aa9bf892a442aa0f2922c36d861951cb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -136,8 +138,6 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Destructor for the <a class="el" href="classGraph.html" title="Represents a graph data structure.">Graph</a> class. This destructor cleans up the memory allocated for the graph's vertices and edges. </p>
-<p>Destructor for the <a class="el" href="classGraph.html" title="Represents a graph data structure.">Graph</a> class.</p>
-<p>This destructor cleans up the memory allocated for the vertices in the graph. It removes all vertices from the vertex set and deletes them. </p>
 
 </div>
 </div>
@@ -181,7 +181,6 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Adds an edge between two vertices in the graph. </p>
-<p>Add edge to a vertex on the graph.</p>
 <p>Time Complexity - O(E)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -192,17 +191,7 @@ Protected Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to the added edge.</dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">orig</td><td>Origin vertex </td></tr>
-    <tr><td class="paramname">dest</td><td>Dest vertex </td></tr>
-    <tr><td class="paramname">capacity</td><td>Capacity of edge </td></tr>
-    <tr><td class="paramname">type</td><td>"normal" or "residual" </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd><a class="el" href="classEdge.html" title="Represents a edge that connects two vertexes in a graph.">Edge</a> pointer </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the added edge. </dd></dl>
 
 </div>
 </div>
@@ -223,7 +212,6 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Adds a vertex to the graph. </p>
-<p>Add vertex This function adds a vertex to the graph.</p>
 <p>Time Complexity - O(V)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -231,14 +219,7 @@ Protected Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>True if the vertex was successfully added, false otherwise.</dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">v</td><td><a class="el" href="classVertex.html" title="Represents an abstract class that represents a Vertex.">Vertex</a> pointer </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>If vertex was added returns true else false </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the vertex was successfully added, false otherwise. </dd></dl>
 
 </div>
 </div>
@@ -267,16 +248,7 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Gets the code associated with the specified vertex. </p>
-<p>Gets the code associated with the given vertex.</p>
 <p>Time Complexity - O(1)</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">v</td><td>Pointer to the vertex. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The code associated with the vertex.</dd></dl>
-<p>This function retrieves the code associated with the given vertex. If the vertex is of type <a class="el" href="classCity.html" title="Represents a city vertex in a graph.">City</a>, <a class="el" href="classReservoir.html" title="Represents a reservoir vertex in a graph.">Reservoir</a>, or <a class="el" href="classStation.html" title="Represents a station vertex in a graph.">Station</a>, it returns the respective code. Otherwise, it prints an error message and exits the program.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">v</td><td>Pointer to the vertex. </td></tr>
@@ -312,16 +284,7 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Gets the name associated with the specified vertex. </p>
-<p>Gets the name associated with the given vertex.</p>
 <p>Time Complexity - O(1)</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">v</td><td>Pointer to the vertex. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>The name associated with the vertex.</dd></dl>
-<p>This function retrieves the name associated with the given vertex. If the vertex is of type <a class="el" href="classCity.html" title="Represents a city vertex in a graph.">City</a> or <a class="el" href="classReservoir.html" title="Represents a reservoir vertex in a graph.">Reservoir</a>, it returns the respective name. Otherwise, it prints an error message and exits the program.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">v</td><td>Pointer to the vertex. </td></tr>
@@ -348,11 +311,8 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Gets the number of vertices in the graph. </p>
-<p>Returns the number of vertexes.</p>
 <p>Time Complexity - O(1)</p>
-<dl class="section return"><dt>Returns</dt><dd>The number of vertices in the graph.</dd>
-<dd>
-number of vertexes </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of vertices in the graph. </dd></dl>
 
 </div>
 </div>
@@ -372,11 +332,8 @@ number of vertexes </dd></dl>
 </div><div class="memdoc">
 
 <p>Gets the vector of vertices in the graph. </p>
-<p>Returns the set of vertexes.</p>
 <p>Time Complexity - O(1)</p>
-<dl class="section return"><dt>Returns</dt><dd>Vector containing pointers to the vertices in the graph.</dd>
-<dd>
-vector of vertex pointers </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector containing pointers to the vertices in the graph. </dd></dl>
 
 </div>
 </div>
@@ -390,19 +347,17 @@ vector of vertex pointers </dd></dl>
           <td class="memname">void Graph::removeEdge </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="classEdge.html">Edge</a> *&#160;</td>
-          <td class="paramname"><em>edge</em></td><td>)</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Removes an edge from the graph. </p>
-<p>Remove edge interface This functions removes a edge of the graph.</p>
 <p>Time Complexity - O(E)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">e</td><td>Pointer to the edge to be removed.</td></tr>
-    <tr><td class="paramname">edge</td><td><a class="el" href="classEdge.html" title="Represents a edge that connects two vertexes in a graph.">Edge</a> pointer </td></tr>
+    <tr><td class="paramname">e</td><td>Pointer to the edge to be removed. </td></tr>
   </table>
   </dd>
 </dl>
@@ -426,15 +381,30 @@ vector of vertex pointers </dd></dl>
 </div><div class="memdoc">
 
 <p>Removes a vertex from the graph. </p>
-<p>Remove vertex This functions removes a vertex of the graph.</p>
 <p>Time Complexity - O(VE)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">v</td><td>Pointer to the vertex to be removed.</td></tr>
-    <tr><td class="paramname">v</td><td><a class="el" href="classVertex.html" title="Represents an abstract class that represents a Vertex.">Vertex</a> pointer </td></tr>
+    <tr><td class="paramname">v</td><td>Pointer to the vertex to be removed. </td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a00c89f9300992b2ac69104bb7ddcc868"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a00c89f9300992b2ac69104bb7ddcc868">&#9670;&nbsp;</a></span>resetVisited()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Graph::resetVisited </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -486,8 +456,8 @@ vector of vertex pointers </dd></dl>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>model/<a class="el" href="Graph_8h_source.html">Graph.h</a></li>
-<li>model/<a class="el" href="Graph_8cpp.html">Graph.cpp</a></li>
+<li>src/model/<a class="el" href="Graph_8h_source.html">Graph.h</a></li>
+<li>src/model/<a class="el" href="Graph_8cpp.html">Graph.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

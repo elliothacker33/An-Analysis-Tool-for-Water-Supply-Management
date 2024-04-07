@@ -30,7 +30,7 @@ Collaboration diagram for City\+:\nopagebreak
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classCity_a9f181ce1c2e3f38e5da29664c2849512}{City}} (const string \&name, const int id, const string \&code, const int demand, const int population)
+\mbox{\hyperlink{classCity_a9f181ce1c2e3f38e5da29664c2849512}{City}} (const string \&\mbox{\hyperlink{classCity_a38b5e8b9bd4e263434eae0344913d341}{name}}, const int \mbox{\hyperlink{classCity_aef9846a5f7e0653bf951576cc17670f3}{id}}, const string \&\mbox{\hyperlink{classCity_a276381d97fc4167957db72ff50c64d3d}{code}}, const int \mbox{\hyperlink{classCity_ad781e5ca5ab707514b3ab0b9ca589ade}{demand}}, const int \mbox{\hyperlink{classCity_a02355b0d03c7c1fdaf04496fc3b20330}{population}})
 \begin{DoxyCompactList}\small\item\em Constructor to initialize a \mbox{\hyperlink{classCity}{City}} object. \end{DoxyCompactList}\item 
 char \mbox{\hyperlink{classCity_ab27bc0b7f3ab62da7dab3da58385ba6d}{get\+Type}} () const override
 \begin{DoxyCompactList}\small\item\em Gets the type of the vertex. \end{DoxyCompactList}\item 
@@ -44,6 +44,19 @@ int \mbox{\hyperlink{classCity_a23be6779c2ba1f5ee0f303b9a160216d}{get\+Populatio
 \begin{DoxyCompactList}\small\item\em Gets the population of the city. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classCity_ab894c3d0332e6374849b6ebcf910122c}{get\+Id}} () const
 \begin{DoxyCompactList}\small\item\em Gets the ID of the city. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{classCity_a38b5e8b9bd4e263434eae0344913d341}{name}}
+\item 
+string \mbox{\hyperlink{classCity_a276381d97fc4167957db72ff50c64d3d}{code}}
+\item 
+int \mbox{\hyperlink{classCity_ad781e5ca5ab707514b3ab0b9ca589ade}{demand}}
+\item 
+int \mbox{\hyperlink{classCity_a02355b0d03c7c1fdaf04496fc3b20330}{population}}
+\item 
+int \mbox{\hyperlink{classCity_aef9846a5f7e0653bf951576cc17670f3}{id}}
+\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
 
@@ -94,11 +107,6 @@ Gets the code of the city.
 Time Complexity -\/ O(1)
 
 \begin{DoxyReturn}{Returns}
-The code of the city.
-\end{DoxyReturn}
-This function returns the code of the city.
-
-\begin{DoxyReturn}{Returns}
 The code of the city. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classCity_a49d90f5913832295150b401643f341e7}\label{classCity_a49d90f5913832295150b401643f341e7}} 
@@ -112,11 +120,6 @@ The code of the city.
 Gets the demand of the city. 
 
 Time Complexity -\/ O(1)
-
-\begin{DoxyReturn}{Returns}
-The demand of the city.
-\end{DoxyReturn}
-This function returns the demand of the city.
 
 \begin{DoxyReturn}{Returns}
 The demand of the city. 
@@ -134,11 +137,6 @@ Gets the ID of the city.
 Time Complexity -\/ O(1)
 
 \begin{DoxyReturn}{Returns}
-The ID of the city.
-\end{DoxyReturn}
-This function returns the ID of the city.
-
-\begin{DoxyReturn}{Returns}
 The ID of the city. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classCity_a4843313c0238390843ae5760ec5b6561}\label{classCity_a4843313c0238390843ae5760ec5b6561}} 
@@ -152,11 +150,6 @@ The ID of the city.
 Gets the name of the city. 
 
 Time Complexity -\/ O(1)
-
-\begin{DoxyReturn}{Returns}
-The name of the city.
-\end{DoxyReturn}
-This function returns the name of the city.
 
 \begin{DoxyReturn}{Returns}
 The name of the city. 
@@ -174,11 +167,6 @@ Gets the population of the city.
 Time Complexity -\/ O(1)
 
 \begin{DoxyReturn}{Returns}
-The population of the city.
-\end{DoxyReturn}
-This function returns the population of the city.
-
-\begin{DoxyReturn}{Returns}
 The population of the city. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classCity_ab27bc0b7f3ab62da7dab3da58385ba6d}\label{classCity_ab27bc0b7f3ab62da7dab3da58385ba6d}} 
@@ -191,25 +179,51 @@ The population of the city.
 
 Gets the type of the vertex. 
 
-Gets the type of the city.
-
 Time Complexity -\/ O(1)
 
 \begin{DoxyReturn}{Returns}
-The type of the vertex (\textquotesingle{}C\textquotesingle{} for \mbox{\hyperlink{classCity}{City}}).
-\end{DoxyReturn}
-This function returns the type of the city, which is represented by the character \textquotesingle{}C\textquotesingle{}.
-
-\begin{DoxyReturn}{Returns}
-The character representing the type of the city (\textquotesingle{}C\textquotesingle{}). 
+The type of the vertex (\textquotesingle{}C\textquotesingle{} for \mbox{\hyperlink{classCity}{City}}). 
 \end{DoxyReturn}
 
 
-Implements \mbox{\hyperlink{classVertex}{Vertex}}.
+Implements \mbox{\hyperlink{classVertex_a0381c1cbf4629c638b67a2c16f81614e}{Vertex}}.
 
 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classCity_a276381d97fc4167957db72ff50c64d3d}\label{classCity_a276381d97fc4167957db72ff50c64d3d}} 
+\index{City@{City}!code@{code}}
+\index{code@{code}!City@{City}}
+\doxysubsubsection{\texorpdfstring{code}{code}}
+{\footnotesize\ttfamily string City\+::code\hspace{0.3cm}{\ttfamily [private]}}
+
+The code of the city. \mbox{\Hypertarget{classCity_ad781e5ca5ab707514b3ab0b9ca589ade}\label{classCity_ad781e5ca5ab707514b3ab0b9ca589ade}} 
+\index{City@{City}!demand@{demand}}
+\index{demand@{demand}!City@{City}}
+\doxysubsubsection{\texorpdfstring{demand}{demand}}
+{\footnotesize\ttfamily int City\+::demand\hspace{0.3cm}{\ttfamily [private]}}
+
+The demand of the city. \mbox{\Hypertarget{classCity_aef9846a5f7e0653bf951576cc17670f3}\label{classCity_aef9846a5f7e0653bf951576cc17670f3}} 
+\index{City@{City}!id@{id}}
+\index{id@{id}!City@{City}}
+\doxysubsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily int City\+::id\hspace{0.3cm}{\ttfamily [private]}}
+
+The ID of the city. \mbox{\Hypertarget{classCity_a38b5e8b9bd4e263434eae0344913d341}\label{classCity_a38b5e8b9bd4e263434eae0344913d341}} 
+\index{City@{City}!name@{name}}
+\index{name@{name}!City@{City}}
+\doxysubsubsection{\texorpdfstring{name}{name}}
+{\footnotesize\ttfamily string City\+::name\hspace{0.3cm}{\ttfamily [private]}}
+
+The name of the city. \mbox{\Hypertarget{classCity_a02355b0d03c7c1fdaf04496fc3b20330}\label{classCity_a02355b0d03c7c1fdaf04496fc3b20330}} 
+\index{City@{City}!population@{population}}
+\index{population@{population}!City@{City}}
+\doxysubsubsection{\texorpdfstring{population}{population}}
+{\footnotesize\ttfamily int City\+::population\hspace{0.3cm}{\ttfamily [private]}}
+
+The population of the city. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-model/\mbox{\hyperlink{Vertex_8h}{Vertex.\+h}}\item 
-model/\mbox{\hyperlink{Vertex_8cpp}{Vertex.\+cpp}}\end{DoxyCompactItemize}
+src/model/\mbox{\hyperlink{Vertex_8h}{Vertex.\+h}}\item 
+src/model/\mbox{\hyperlink{Vertex_8cpp}{Vertex.\+cpp}}\end{DoxyCompactItemize}

@@ -1,12 +1,13 @@
 var searchData=
 [
-  ['setenabled_50',['setEnabled',['../classEdge.html#a06ad11522e8d7efdffbfcfe964eda4f0',1,'Edge::setEnabled()'],['../classVertex.html#a4deafcc665210563468a40eae3ff37f6',1,'Vertex::setEnabled()']]],
-  ['setflow_51',['setFlow',['../classEdge.html#a4aafeb6e74cc45cec5e2ac1c354a67fe',1,'Edge']]],
-  ['setindegree_52',['setInDegree',['../classVertex.html#a28ec2708571d3ce59b21626fdb9a4585',1,'Vertex']]],
-  ['setoutdegree_53',['setOutDegree',['../classVertex.html#a06a095505f1d7e99ce144301570c206a',1,'Vertex']]],
-  ['setpath_54',['setPath',['../classVertex.html#a0b59a1ae0392cdf016c99bc3882a4763',1,'Vertex']]],
-  ['setreverseedge_55',['setReverseEdge',['../classEdge.html#a247db2605f9b738954e8e4c1cc0a1797',1,'Edge']]],
-  ['settype_56',['setType',['../classEdge.html#a8debc5b06962551ab31aa8345c5956e2',1,'Edge']]],
-  ['setvisited_57',['setVisited',['../classVertex.html#ac29125ddca49e8c53f43cc03b103f0e4',1,'Vertex']]],
-  ['station_58',['Station',['../classStation.html',1,'Station'],['../classStation.html#a5b28cd79199a4cb51e6945322ce9cf47',1,'Station::Station()']]]
+  ['removeedge_140',['removeEdge',['../classGraph.html#a36ddcc53ec9724d20e3d96880a07fee1',1,'Graph::removeEdge()'],['../classVertex.html#ab9a9913bf1df28fdf64970b5f338789a',1,'Vertex::removeEdge()']]],
+  ['removeedgeincoming_141',['removeEdgeIncoming',['../classVertex.html#ae24b11c2ffa425dad889d9a1b51b96fa',1,'Vertex']]],
+  ['removeleadingtrailingspaces_142',['removeLeadingTrailingSpaces',['../classMenu.html#ac2bf13cad12ab17054e0d86db00a3cce',1,'Menu']]],
+  ['removevertex_143',['removeVertex',['../classGraph.html#aa9bf892a442aa0f2922c36d861951cb6',1,'Graph']]],
+  ['reservoir_144',['Reservoir',['../classReservoir.html',1,'Reservoir'],['../classReservoir.html#a1333e25eba41745e4aea91494c972ea9',1,'Reservoir::Reservoir()']]],
+  ['reservoirs_145',['reservoirs',['../classManager.html#a006edc827f09ecb523e2d2dbe1f53baf',1,'Manager']]],
+  ['resetgraph_146',['resetGraph',['../classManager.html#a6b28e6723d6c47a59bae1a714fc21f05',1,'Manager']]],
+  ['resetmanager_147',['resetManager',['../classManager.html#a37a31d560f41b364e2eb5b5ddfe2f1c3',1,'Manager']]],
+  ['resetvisited_148',['resetVisited',['../classGraph.html#a00c89f9300992b2ac69104bb7ddcc868',1,'Graph']]],
+  ['reverse_149',['reverse',['../classEdge.html#abcadfaa8985d0d593a124d0fea39130a',1,'Edge']]]
 ];

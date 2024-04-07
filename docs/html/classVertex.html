@@ -97,8 +97,7 @@ Collaboration diagram for Vertex:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a0381c1cbf4629c638b67a2c16f81614e"><td class="memItemLeft" align="right" valign="top"><a id="a0381c1cbf4629c638b67a2c16f81614e"></a>
-virtual char&#160;</td><td class="memItemRight" valign="bottom"><b>getType</b> () const =0</td></tr>
+<tr class="memitem:a0381c1cbf4629c638b67a2c16f81614e"><td class="memItemLeft" align="right" valign="top">virtual char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVertex.html#a0381c1cbf4629c638b67a2c16f81614e">getType</a> () const =0</td></tr>
 <tr class="separator:a0381c1cbf4629c638b67a2c16f81614e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad7a0ce588b7f688dc4488a0f567d9155"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classVertex.html#ad7a0ce588b7f688dc4488a0f567d9155">~Vertex</a> ()</td></tr>
 <tr class="separator:ad7a0ce588b7f688dc4488a0f567d9155"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -200,7 +199,6 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Destrunctor of vertex. Deletes the vertex and the edges associated with him. </p>
 
 </div>
 </div>
@@ -215,7 +213,7 @@ Protected Attributes</h2></td></tr>
           <td class="memname"><a class="el" href="classEdge.html">Edge</a> * Vertex::addEdge </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classVertex.html">Vertex</a> *&#160;</td>
-          <td class="paramname"><em>destination</em>, </td>
+          <td class="paramname"><em>t</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -238,7 +236,6 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Adds an edge to the vertex. </p>
-<p>Add a edge to the vertex.</p>
 <p>Time Compleity: O(E)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -248,16 +245,7 @@ Protected Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to the added edge.</dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">destination</td><td>Destination vertex </td></tr>
-    <tr><td class="paramname">capacity</td><td>Capacity of the edge </td></tr>
-    <tr><td class="paramname">type</td><td>Type of the edge ("normal" or "residual") </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>a pointer to the edge added </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the added edge. </dd></dl>
 
 </div>
 </div>
@@ -271,14 +259,13 @@ Protected Attributes</h2></td></tr>
           <td class="memname">bool Vertex::addIncoming </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classEdge.html">Edge</a> *&#160;</td>
-          <td class="paramname"><em>edge</em></td><td>)</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Adds an incoming edge to the vertex. </p>
-<p>Add a incoming edge.</p>
 <p>Time Complexity: O(E)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -286,14 +273,7 @@ Protected Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>True if the edge was successfully added, false otherwise.</dd></dl>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">edge</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>boolean value representing if the addition of the edge was successfull or not. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the edge was successfully added, false otherwise. </dd></dl>
 
 </div>
 </div>
@@ -313,11 +293,8 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Gets the vector of adjacent edges. </p>
-<p>Return vector of adjacent edges.</p>
 <p>Time Complexity: O(1)</p>
-<dl class="section return"><dt>Returns</dt><dd>Vector of adjacent edges.</dd>
-<dd>
-vector of adjacent edges </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector of adjacent edges. </dd></dl>
 
 </div>
 </div>
@@ -337,11 +314,8 @@ vector of adjacent edges </dd></dl>
 </div><div class="memdoc">
 
 <p>Gets the vector of incoming edges. </p>
-<p>Return vector of incoming edges.</p>
 <p>Time Complexity: O(1)</p>
-<dl class="section return"><dt>Returns</dt><dd>Vector of incoming edges.</dd>
-<dd>
-vector of incoming edges </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector of incoming edges. </dd></dl>
 
 </div>
 </div>
@@ -361,11 +335,8 @@ vector of incoming edges </dd></dl>
 </div><div class="memdoc">
 
 <p>Retrieves the number of incoming edges. </p>
-<p>Get the number of incoming edges.</p>
 <p>Time Complexity: O(1)</p>
-<dl class="section return"><dt>Returns</dt><dd>Number of incoming edges.</dd>
-<dd>
-number of incoming edges </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Number of incoming edges. </dd></dl>
 
 </div>
 </div>
@@ -385,11 +356,8 @@ number of incoming edges </dd></dl>
 </div><div class="memdoc">
 
 <p>Retrieves the number of adjacent edges. </p>
-<p>Get the number of adjacent edges.</p>
 <p>Time Complexity: O(1)</p>
-<dl class="section return"><dt>Returns</dt><dd>Number of adjacent edges.</dd>
-<dd>
-number of adjacent edges </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Number of adjacent edges. </dd></dl>
 
 </div>
 </div>
@@ -409,11 +377,35 @@ number of adjacent edges </dd></dl>
 </div><div class="memdoc">
 
 <p>Gets the path edge of the vertex. </p>
-<p>Return the last visited edge during a dfs/bfs.</p>
 <p>Time Complexity: O(1)</p>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to the path edge of the vertex.</dd>
-<dd>
-path </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the path edge of the vertex. </dd></dl>
+
+</div>
+</div>
+<a id="a0381c1cbf4629c638b67a2c16f81614e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0381c1cbf4629c638b67a2c16f81614e">&#9670;&nbsp;</a></span>getType()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual char Vertex::getType </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implemented in <a class="el" href="classReservoir.html#ac60645853c9f61ede99e8e674e174747">Reservoir</a>, <a class="el" href="classStation.html#a1ed667b8b35b02533e7e9a68781089f9">Station</a>, and <a class="el" href="classCity.html#ab27bc0b7f3ab62da7dab3da58385ba6d">City</a>.</p>
 
 </div>
 </div>
@@ -433,11 +425,8 @@ path </dd></dl>
 </div><div class="memdoc">
 
 <p>Checks if the vertex is enabled. </p>
-<p>This function returns if the vertex is working or not.</p>
 <p>Time Complexity: O(1)</p>
-<dl class="section return"><dt>Returns</dt><dd>True if the vertex is enabled, false otherwise.</dd>
-<dd>
-enabled ("True" or "False") </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the vertex is enabled, false otherwise. </dd></dl>
 
 </div>
 </div>
@@ -458,8 +447,7 @@ enabled ("True" or "False") </dd></dl>
 
 <p>Checks if the vertex has been visited. </p>
 <p>Time Complexity: O(1)</p>
-<dl class="section return"><dt>Returns</dt><dd>True if the vertex has been visited, false otherwise.</dd></dl>
-<p>&lt; Standard C++ algorithm library </p>
+<dl class="section return"><dt>Returns</dt><dd>True if the vertex has been visited, false otherwise. </dd></dl>
 
 </div>
 </div>
@@ -473,19 +461,17 @@ enabled ("True" or "False") </dd></dl>
           <td class="memname">void Vertex::removeEdge </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="classEdge.html">Edge</a> *&#160;</td>
-          <td class="paramname"><em>edge</em></td><td>)</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Removes an edge from the vertex. </p>
-<p>Remove the edge from a vertex.</p>
 <p>Time Compleity: O(E)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">e</td><td>Pointer to the edge to be removed.</td></tr>
-    <tr><td class="paramname">edge</td><td></td></tr>
+    <tr><td class="paramname">e</td><td>Pointer to the edge to be removed. </td></tr>
   </table>
   </dd>
 </dl>
@@ -502,19 +488,17 @@ enabled ("True" or "False") </dd></dl>
           <td class="memname">void Vertex::removeEdgeIncoming </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="classEdge.html">Edge</a> *&#160;</td>
-          <td class="paramname"><em>edge</em></td><td>)</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Removes an incoming edge from the vertex. </p>
-<p>Remove edge from destination vertex.</p>
 <p>Time Complexity: O(E)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">e</td><td>Pointer to the incoming edge to be removed.</td></tr>
-    <tr><td class="paramname">edge</td><td></td></tr>
+    <tr><td class="paramname">e</td><td>Pointer to the incoming edge to be removed. </td></tr>
   </table>
   </dd>
 </dl>
@@ -538,12 +522,10 @@ enabled ("True" or "False") </dd></dl>
 </div><div class="memdoc">
 
 <p>Sets the enabled state of the vertex. </p>
-<p>This function allows to change the state of a vertex, to working or not working.</p>
 <p>Time Complexity: O(1)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">isEnabled</td><td>The enabled state to set.</td></tr>
-    <tr><td class="paramname">isEnabled</td><td></td></tr>
+    <tr><td class="paramname">isEnabled</td><td>The enabled state to set. </td></tr>
   </table>
   </dd>
 </dl>
@@ -570,13 +552,7 @@ enabled ("True" or "False") </dd></dl>
 <p>Time Complexity: O(1)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">outDegree</td><td>Number of incoming edges.</td></tr>
-  </table>
-  </dd>
-</dl>
-<p>Change the current number of incoming edges, after adding a new edge. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">inDegree</td><td></td></tr>
+    <tr><td class="paramname">outDegree</td><td>Number of incoming edges. </td></tr>
   </table>
   </dd>
 </dl>
@@ -600,12 +576,10 @@ enabled ("True" or "False") </dd></dl>
 </div><div class="memdoc">
 
 <p>Sets the number of adjacent edges. </p>
-<p>Change the current number of adjacent edges, after adding a new edge.</p>
 <p>Time Complexity: O(1)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">outDegree</td><td>Number of adjacent edges.</td></tr>
-    <tr><td class="paramname">outDegree</td><td></td></tr>
+    <tr><td class="paramname">outDegree</td><td>Number of adjacent edges. </td></tr>
   </table>
   </dd>
 </dl>
@@ -622,19 +596,17 @@ enabled ("True" or "False") </dd></dl>
           <td class="memname">void Vertex::setPath </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classEdge.html">Edge</a> *&#160;</td>
-          <td class="paramname"><em>edge</em></td><td>)</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Sets the path edge of the vertex. </p>
-<p>Set path is used in dfs and bfs. It represents the edge that was visited last.</p>
 <p>Time Complexity: O(1)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">e</td><td>Pointer to the path edge.</td></tr>
-    <tr><td class="paramname">edge</td><td></td></tr>
+    <tr><td class="paramname">e</td><td>Pointer to the path edge. </td></tr>
   </table>
   </dd>
 </dl>
@@ -658,12 +630,10 @@ enabled ("True" or "False") </dd></dl>
 </div><div class="memdoc">
 
 <p>Sets the visited state of the vertex. </p>
-<p>This function allows changing the state of a vertex,to visited or not visited.</p>
 <p>Time Complexity: O(1)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">isVisited</td><td>The visited state to set.</td></tr>
-    <tr><td class="paramname">isVisited</td><td></td></tr>
+    <tr><td class="paramname">isVisited</td><td>The visited state to set. </td></tr>
   </table>
   </dd>
 </dl>
@@ -847,8 +817,8 @@ enabled ("True" or "False") </dd></dl>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>model/<a class="el" href="Vertex_8h_source.html">Vertex.h</a></li>
-<li>model/<a class="el" href="Vertex_8cpp.html">Vertex.cpp</a></li>
+<li>src/model/<a class="el" href="Vertex_8h_source.html">Vertex.h</a></li>
+<li>src/model/<a class="el" href="Vertex_8cpp.html">Vertex.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

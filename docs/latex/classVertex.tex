@@ -30,8 +30,7 @@ Collaboration diagram for Vertex\+:\nopagebreak
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classVertex_a0381c1cbf4629c638b67a2c16f81614e}\label{classVertex_a0381c1cbf4629c638b67a2c16f81614e}} 
-virtual char {\bfseries get\+Type} () const =0
+virtual char \mbox{\hyperlink{classVertex_a0381c1cbf4629c638b67a2c16f81614e}{get\+Type}} () const =0
 \item 
 virtual \mbox{\hyperlink{classVertex_ad7a0ce588b7f688dc4488a0f567d9155}{$\sim$\+Vertex}} ()
 \item 
@@ -96,20 +95,18 @@ Represents an abstract class that represents a \mbox{\hyperlink{classVertex}{Ver
 \doxysubsubsection{\texorpdfstring{$\sim$Vertex()}{~Vertex()}}
 {\footnotesize\ttfamily Vertex\+::$\sim$\+Vertex (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
-Destrunctor of vertex. Deletes the vertex and the edges associated with him. 
+
 
 \doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classVertex_a089b9001288f71733b14bd8b625d97cd}\label{classVertex_a089b9001288f71733b14bd8b625d97cd}} 
 \index{Vertex@{Vertex}!addEdge@{addEdge}}
 \index{addEdge@{addEdge}!Vertex@{Vertex}}
 \doxysubsubsection{\texorpdfstring{addEdge()}{addEdge()}}
-{\footnotesize\ttfamily \mbox{\hyperlink{classEdge}{Edge}} $\ast$ Vertex\+::add\+Edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}} $\ast$}]{destination,  }\item[{int}]{capacity,  }\item[{const string \&}]{type }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily \mbox{\hyperlink{classEdge}{Edge}} $\ast$ Vertex\+::add\+Edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classVertex}{Vertex}} $\ast$}]{t,  }\item[{int}]{capacity,  }\item[{const string \&}]{type }\end{DoxyParamCaption})}
 
 
 
 Adds an edge to the vertex. 
-
-Add a edge to the vertex.
 
 Time Compleity\+: O(\+E)
 
@@ -123,31 +120,17 @@ Time Compleity\+: O(\+E)
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Pointer to the added edge.
-\end{DoxyReturn}
-
-\begin{DoxyParams}{Parameters}
-{\em destination} & Destination vertex \\
-\hline
-{\em capacity} & Capacity of the edge \\
-\hline
-{\em type} & Type of the edge (\char`\"{}normal\char`\"{} or \char`\"{}residual\char`\"{}) \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-a pointer to the edge added 
+Pointer to the added edge. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classVertex_a0c0d7035cc85e26cb8ee27cbb562c77d}\label{classVertex_a0c0d7035cc85e26cb8ee27cbb562c77d}} 
 \index{Vertex@{Vertex}!addIncoming@{addIncoming}}
 \index{addIncoming@{addIncoming}!Vertex@{Vertex}}
 \doxysubsubsection{\texorpdfstring{addIncoming()}{addIncoming()}}
-{\footnotesize\ttfamily bool Vertex\+::add\+Incoming (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEdge}{Edge}} $\ast$}]{edge }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool Vertex\+::add\+Incoming (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEdge}{Edge}} $\ast$}]{e }\end{DoxyParamCaption})}
 
 
 
 Adds an incoming edge to the vertex. 
-
-Add a incoming edge.
 
 Time Complexity\+: O(\+E)
 
@@ -157,15 +140,7 @@ Time Complexity\+: O(\+E)
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-True if the edge was successfully added, false otherwise.
-\end{DoxyReturn}
-
-\begin{DoxyParams}{Parameters}
-{\em edge} & \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-boolean value representing if the addition of the edge was successfull or not. 
+True if the edge was successfully added, false otherwise. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classVertex_af82c54a43ccbef87e0e8d3b5e406923e}\label{classVertex_af82c54a43ccbef87e0e8d3b5e406923e}} 
 \index{Vertex@{Vertex}!getAdj@{getAdj}}
@@ -177,14 +152,10 @@ boolean value representing if the addition of the edge was successfull or not.
 
 Gets the vector of adjacent edges. 
 
-Return vector of adjacent edges.
-
 Time Complexity\+: O(1)
 
 \begin{DoxyReturn}{Returns}
-Vector of adjacent edges.
-
-vector of adjacent edges 
+Vector of adjacent edges. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classVertex_ad4cf82bed41b9011e0debb863d72dfc9}\label{classVertex_ad4cf82bed41b9011e0debb863d72dfc9}} 
 \index{Vertex@{Vertex}!getIncoming@{getIncoming}}
@@ -196,14 +167,10 @@ vector of adjacent edges
 
 Gets the vector of incoming edges. 
 
-Return vector of incoming edges.
-
 Time Complexity\+: O(1)
 
 \begin{DoxyReturn}{Returns}
-Vector of incoming edges.
-
-vector of incoming edges 
+Vector of incoming edges. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classVertex_a67353c75591b01e03e2996597df6f4cd}\label{classVertex_a67353c75591b01e03e2996597df6f4cd}} 
 \index{Vertex@{Vertex}!getInDegree@{getInDegree}}
@@ -215,14 +182,10 @@ vector of incoming edges
 
 Retrieves the number of incoming edges. 
 
-Get the number of incoming edges.
-
 Time Complexity\+: O(1)
 
 \begin{DoxyReturn}{Returns}
-Number of incoming edges.
-
-number of incoming edges 
+Number of incoming edges. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classVertex_a5006087dce4a5b5913fbfca22006fc95}\label{classVertex_a5006087dce4a5b5913fbfca22006fc95}} 
 \index{Vertex@{Vertex}!getOutDegree@{getOutDegree}}
@@ -234,14 +197,10 @@ number of incoming edges
 
 Retrieves the number of adjacent edges. 
 
-Get the number of adjacent edges.
-
 Time Complexity\+: O(1)
 
 \begin{DoxyReturn}{Returns}
-Number of adjacent edges.
-
-number of adjacent edges 
+Number of adjacent edges. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classVertex_a6e120e57da6af94892fae44e05868794}\label{classVertex_a6e120e57da6af94892fae44e05868794}} 
 \index{Vertex@{Vertex}!getPath@{getPath}}
@@ -253,15 +212,21 @@ number of adjacent edges
 
 Gets the path edge of the vertex. 
 
-Return the last visited edge during a dfs/bfs.
-
 Time Complexity\+: O(1)
 
 \begin{DoxyReturn}{Returns}
-Pointer to the path edge of the vertex.
-
-path 
+Pointer to the path edge of the vertex. 
 \end{DoxyReturn}
+\mbox{\Hypertarget{classVertex_a0381c1cbf4629c638b67a2c16f81614e}\label{classVertex_a0381c1cbf4629c638b67a2c16f81614e}} 
+\index{Vertex@{Vertex}!getType@{getType}}
+\index{getType@{getType}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{getType()}{getType()}}
+{\footnotesize\ttfamily virtual char Vertex\+::get\+Type (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implemented in \mbox{\hyperlink{classReservoir_ac60645853c9f61ede99e8e674e174747}{Reservoir}}, \mbox{\hyperlink{classStation_a1ed667b8b35b02533e7e9a68781089f9}{Station}}, and \mbox{\hyperlink{classCity_ab27bc0b7f3ab62da7dab3da58385ba6d}{City}}.
+
 \mbox{\Hypertarget{classVertex_aede3d33119d4be6b9dd5d5cf5726ec27}\label{classVertex_aede3d33119d4be6b9dd5d5cf5726ec27}} 
 \index{Vertex@{Vertex}!isEnabled@{isEnabled}}
 \index{isEnabled@{isEnabled}!Vertex@{Vertex}}
@@ -272,14 +237,10 @@ path
 
 Checks if the vertex is enabled. 
 
-This function returns if the vertex is working or not.
-
 Time Complexity\+: O(1)
 
 \begin{DoxyReturn}{Returns}
-True if the vertex is enabled, false otherwise.
-
-enabled (\char`\"{}\+True\char`\"{} or \char`\"{}\+False\char`\"{}) 
+True if the vertex is enabled, false otherwise. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classVertex_aa4bd82105b85ee53a917391f4811cd8a}\label{classVertex_aa4bd82105b85ee53a917391f4811cd8a}} 
 \index{Vertex@{Vertex}!isVisited@{isVisited}}
@@ -294,48 +255,40 @@ Checks if the vertex has been visited.
 Time Complexity\+: O(1)
 
 \begin{DoxyReturn}{Returns}
-True if the vertex has been visited, false otherwise.
+True if the vertex has been visited, false otherwise. 
 \end{DoxyReturn}
-$<$ Standard C++ algorithm library \mbox{\Hypertarget{classVertex_ab9a9913bf1df28fdf64970b5f338789a}\label{classVertex_ab9a9913bf1df28fdf64970b5f338789a}} 
+\mbox{\Hypertarget{classVertex_ab9a9913bf1df28fdf64970b5f338789a}\label{classVertex_ab9a9913bf1df28fdf64970b5f338789a}} 
 \index{Vertex@{Vertex}!removeEdge@{removeEdge}}
 \index{removeEdge@{removeEdge}!Vertex@{Vertex}}
 \doxysubsubsection{\texorpdfstring{removeEdge()}{removeEdge()}}
-{\footnotesize\ttfamily void Vertex\+::remove\+Edge (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classEdge}{Edge}} $\ast$}]{edge }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Vertex\+::remove\+Edge (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classEdge}{Edge}} $\ast$}]{e }\end{DoxyParamCaption})}
 
 
 
 Removes an edge from the vertex. 
 
-Remove the edge from a vertex.
-
 Time Compleity\+: O(\+E)
 
 
 \begin{DoxyParams}{Parameters}
-{\em e} & Pointer to the edge to be removed.\\
-\hline
-{\em edge} & \\
+{\em e} & Pointer to the edge to be removed. \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classVertex_ae24b11c2ffa425dad889d9a1b51b96fa}\label{classVertex_ae24b11c2ffa425dad889d9a1b51b96fa}} 
 \index{Vertex@{Vertex}!removeEdgeIncoming@{removeEdgeIncoming}}
 \index{removeEdgeIncoming@{removeEdgeIncoming}!Vertex@{Vertex}}
 \doxysubsubsection{\texorpdfstring{removeEdgeIncoming()}{removeEdgeIncoming()}}
-{\footnotesize\ttfamily void Vertex\+::remove\+Edge\+Incoming (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classEdge}{Edge}} $\ast$}]{edge }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Vertex\+::remove\+Edge\+Incoming (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classEdge}{Edge}} $\ast$}]{e }\end{DoxyParamCaption})}
 
 
 
 Removes an incoming edge from the vertex. 
 
-Remove edge from destination vertex.
-
 Time Complexity\+: O(\+E)
 
 
 \begin{DoxyParams}{Parameters}
-{\em e} & Pointer to the incoming edge to be removed.\\
-\hline
-{\em edge} & \\
+{\em e} & Pointer to the incoming edge to be removed. \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classVertex_a4deafcc665210563468a40eae3ff37f6}\label{classVertex_a4deafcc665210563468a40eae3ff37f6}} 
@@ -348,15 +301,11 @@ Time Complexity\+: O(\+E)
 
 Sets the enabled state of the vertex. 
 
-This function allows to change the state of a vertex, to working or not working.
-
 Time Complexity\+: O(1)
 
 
 \begin{DoxyParams}{Parameters}
-{\em is\+Enabled} & The enabled state to set.\\
-\hline
-{\em is\+Enabled} & \\
+{\em is\+Enabled} & The enabled state to set. \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classVertex_a28ec2708571d3ce59b21626fdb9a4585}\label{classVertex_a28ec2708571d3ce59b21626fdb9a4585}} 
@@ -373,12 +322,7 @@ Time Complexity\+: O(1)
 
 
 \begin{DoxyParams}{Parameters}
-{\em out\+Degree} & Number of incoming edges.\\
-\hline
-\end{DoxyParams}
-Change the current number of incoming edges, after adding a new edge. 
-\begin{DoxyParams}{Parameters}
-{\em in\+Degree} & \\
+{\em out\+Degree} & Number of incoming edges. \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classVertex_a06a095505f1d7e99ce144301570c206a}\label{classVertex_a06a095505f1d7e99ce144301570c206a}} 
@@ -391,36 +335,28 @@ Change the current number of incoming edges, after adding a new edge.
 
 Sets the number of adjacent edges. 
 
-Change the current number of adjacent edges, after adding a new edge.
-
 Time Complexity\+: O(1)
 
 
 \begin{DoxyParams}{Parameters}
-{\em out\+Degree} & Number of adjacent edges.\\
-\hline
-{\em out\+Degree} & \\
+{\em out\+Degree} & Number of adjacent edges. \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classVertex_a0b59a1ae0392cdf016c99bc3882a4763}\label{classVertex_a0b59a1ae0392cdf016c99bc3882a4763}} 
 \index{Vertex@{Vertex}!setPath@{setPath}}
 \index{setPath@{setPath}!Vertex@{Vertex}}
 \doxysubsubsection{\texorpdfstring{setPath()}{setPath()}}
-{\footnotesize\ttfamily void Vertex\+::set\+Path (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEdge}{Edge}} $\ast$}]{edge }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Vertex\+::set\+Path (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classEdge}{Edge}} $\ast$}]{e }\end{DoxyParamCaption})}
 
 
 
 Sets the path edge of the vertex. 
 
-Set path is used in dfs and bfs. It represents the edge that was visited last.
-
 Time Complexity\+: O(1)
 
 
 \begin{DoxyParams}{Parameters}
-{\em e} & Pointer to the path edge.\\
-\hline
-{\em edge} & \\
+{\em e} & Pointer to the path edge. \\
 \hline
 \end{DoxyParams}
 \mbox{\Hypertarget{classVertex_ac29125ddca49e8c53f43cc03b103f0e4}\label{classVertex_ac29125ddca49e8c53f43cc03b103f0e4}} 
@@ -433,15 +369,11 @@ Time Complexity\+: O(1)
 
 Sets the visited state of the vertex. 
 
-This function allows changing the state of a vertex,to visited or not visited.
-
 Time Complexity\+: O(1)
 
 
 \begin{DoxyParams}{Parameters}
-{\em is\+Visited} & The visited state to set.\\
-\hline
-{\em is\+Visited} & \\
+{\em is\+Visited} & The visited state to set. \\
 \hline
 \end{DoxyParams}
 
@@ -521,5 +453,5 @@ This boolean field is used to track whether the vertex has been visited during g
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-model/\mbox{\hyperlink{Vertex_8h}{Vertex.\+h}}\item 
-model/\mbox{\hyperlink{Vertex_8cpp}{Vertex.\+cpp}}\end{DoxyCompactItemize}
+src/model/\mbox{\hyperlink{Vertex_8h}{Vertex.\+h}}\item 
+src/model/\mbox{\hyperlink{Vertex_8cpp}{Vertex.\+cpp}}\end{DoxyCompactItemize}

@@ -30,7 +30,7 @@ Collaboration diagram for Station\+:\nopagebreak
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{classStation_a5b28cd79199a4cb51e6945322ce9cf47}{Station}} (const int id, const string \&code)
+\mbox{\hyperlink{classStation_a5b28cd79199a4cb51e6945322ce9cf47}{Station}} (const int \mbox{\hyperlink{classStation_a4144cd1a5a69d5900f473ea9d792b3fe}{id}}, const string \&\mbox{\hyperlink{classStation_ad545c5bb42be068442fe33571c83c72b}{code}})
 \begin{DoxyCompactList}\small\item\em Constructor to initialize a \mbox{\hyperlink{classStation}{Station}} object. \end{DoxyCompactList}\item 
 char \mbox{\hyperlink{classStation_a1ed667b8b35b02533e7e9a68781089f9}{get\+Type}} () const override
 \begin{DoxyCompactList}\small\item\em Gets the type of the vertex. \end{DoxyCompactList}\item 
@@ -38,6 +38,13 @@ string \mbox{\hyperlink{classStation_acd9258538cd9118782127ef05df025e6}{get\+Cod
 \begin{DoxyCompactList}\small\item\em Gets the code of the station. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classStation_afd0de4c1f7e51648bfe465c5b8b02c88}{get\+Id}} () const
 \begin{DoxyCompactList}\small\item\em Gets the ID of the station. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{classStation_ad545c5bb42be068442fe33571c83c72b}{code}}
+\item 
+int \mbox{\hyperlink{classStation_a4144cd1a5a69d5900f473ea9d792b3fe}{id}}
+\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
 
@@ -79,17 +86,10 @@ Constructs a \mbox{\hyperlink{classStation}{Station}} object with the specified 
 
 Gets the code of the station. 
 
-Gets the code of the city.
-
 Time Complexity -\/ O(1)
 
 \begin{DoxyReturn}{Returns}
-The code of the station.
-\end{DoxyReturn}
-This function returns the code of the city.
-
-\begin{DoxyReturn}{Returns}
-The code of the city. 
+The code of the station. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classStation_afd0de4c1f7e51648bfe465c5b8b02c88}\label{classStation_afd0de4c1f7e51648bfe465c5b8b02c88}} 
 \index{Station@{Station}!getId@{getId}}
@@ -101,17 +101,10 @@ The code of the city.
 
 Gets the ID of the station. 
 
-Gets the ID of the city.
-
 Time Complexity -\/ O(1)
 
 \begin{DoxyReturn}{Returns}
-The ID of the station.
-\end{DoxyReturn}
-This function returns the ID of the city.
-
-\begin{DoxyReturn}{Returns}
-The ID of the city. 
+The ID of the station. 
 \end{DoxyReturn}
 \mbox{\Hypertarget{classStation_a1ed667b8b35b02533e7e9a68781089f9}\label{classStation_a1ed667b8b35b02533e7e9a68781089f9}} 
 \index{Station@{Station}!getType@{getType}}
@@ -123,25 +116,33 @@ The ID of the city.
 
 Gets the type of the vertex. 
 
-Gets the type of the station.
-
 Time Complexity -\/ O(1)
 
 \begin{DoxyReturn}{Returns}
-The type of the vertex (\textquotesingle{}S\textquotesingle{} for \mbox{\hyperlink{classStation}{Station}}).
-\end{DoxyReturn}
-This function returns the type of the station, which is represented by the character \textquotesingle{}S\textquotesingle{}.
-
-\begin{DoxyReturn}{Returns}
-The character representing the type of the station (\textquotesingle{}S\textquotesingle{}). 
+The type of the vertex (\textquotesingle{}S\textquotesingle{} for \mbox{\hyperlink{classStation}{Station}}). 
 \end{DoxyReturn}
 
 
-Implements \mbox{\hyperlink{classVertex}{Vertex}}.
+Implements \mbox{\hyperlink{classVertex_a0381c1cbf4629c638b67a2c16f81614e}{Vertex}}.
 
 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classStation_ad545c5bb42be068442fe33571c83c72b}\label{classStation_ad545c5bb42be068442fe33571c83c72b}} 
+\index{Station@{Station}!code@{code}}
+\index{code@{code}!Station@{Station}}
+\doxysubsubsection{\texorpdfstring{code}{code}}
+{\footnotesize\ttfamily string Station\+::code\hspace{0.3cm}{\ttfamily [private]}}
+
+The code of the station. \mbox{\Hypertarget{classStation_a4144cd1a5a69d5900f473ea9d792b3fe}\label{classStation_a4144cd1a5a69d5900f473ea9d792b3fe}} 
+\index{Station@{Station}!id@{id}}
+\index{id@{id}!Station@{Station}}
+\doxysubsubsection{\texorpdfstring{id}{id}}
+{\footnotesize\ttfamily int Station\+::id\hspace{0.3cm}{\ttfamily [private]}}
+
+The ID of the station. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-model/\mbox{\hyperlink{Vertex_8h}{Vertex.\+h}}\item 
-model/\mbox{\hyperlink{Vertex_8cpp}{Vertex.\+cpp}}\end{DoxyCompactItemize}
+src/model/\mbox{\hyperlink{Vertex_8h}{Vertex.\+h}}\item 
+src/model/\mbox{\hyperlink{Vertex_8cpp}{Vertex.\+cpp}}\end{DoxyCompactItemize}
